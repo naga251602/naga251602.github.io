@@ -1,0 +1,1923 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Creative Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Roboto+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <style>
+      :root {
+        --primary-color: #ff007f; /* Hot Pink */
+        --background-color: #111111; /* Near Black */
+        --card-background: #1a1a1a;
+        --text-color: #f0f0f0;
+        --border-color: rgba(255, 0, 127, 0.4);
+      }
+
+      body {
+        background-color: var(--background-color);
+        color: var(--text-color);
+        font-family: "Roboto Mono", monospace;
+        scroll-behavior: smooth;
+      }
+
+      .font-montserrat {
+        font-family: "Montserrat", sans-serif;
+      }
+
+      .page {
+        animation: fadeIn 0.5s ease-in-out;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .section-heading {
+        position: relative;
+        display: inline-block;
+      }
+
+      .section-heading .heading-text {
+        position: relative;
+        z-index: 1;
+      }
+
+      .section-heading .brush-stroke {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 120%;
+        height: 120%;
+        z-index: 0;
+        opacity: 0.8;
+        color: var(--primary-color);
+      }
+
+      .brand-logo {
+        color: var(--text-color);
+        font-weight: 900;
+        font-size: 2rem;
+      }
+      .brand-logo .highlight {
+        color: var(--primary-color);
+      }
+
+      .neon-button {
+        border: 2px solid var(--primary-color);
+        color: var(--primary-color);
+        background: transparent;
+        transition: all 0.3s ease;
+      }
+      .neon-button:hover {
+        background-color: var(--primary-color);
+        color: var(--background-color);
+        box-shadow: 0 0 20px var(--primary-color);
+      }
+
+      .card {
+        background: var(--card-background);
+        border: 1px solid #333;
+        transition: all 0.3s ease;
+        overflow: hidden;
+      }
+      .card:hover {
+        border-color: var(--primary-color);
+        box-shadow: 0 10px 30px -10px var(--primary-color);
+        transform: translateY(-8px);
+      }
+
+      .skills-scroller {
+        height: 300px;
+        overflow: hidden;
+        position: relative;
+        mask-image: linear-gradient(
+          to bottom,
+          transparent,
+          black 20%,
+          black 80%,
+          transparent
+        );
+      }
+      .skills-scroller-inner {
+        display: flex;
+        flex-direction: column;
+        animation: scroll 20s linear infinite;
+      }
+      @keyframes scroll {
+        0% {
+          transform: translateY(0);
+        }
+        100% {
+          transform: translateY(-50%);
+        }
+      }
+      #globe-container {
+        width: 100%;
+        height: 300px;
+        cursor: grab;
+      }
+      .tag {
+        background-color: var(--primary-color);
+        color: var(--background-color);
+        font-weight: bold;
+      }
+      .accordion-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s ease-in-out;
+      }
+      .accordion-header.active .accordion-icon {
+        transform: rotate(180deg);
+      }
+    </style>
+  </head>
+  <body class="bg-background-color text-text-color">
+    <!-- Header -->
+    <header
+      class="bg-opacity-80 bg-background-color backdrop-blur-sm sticky top-0 z-50 border-b border-gray-800"
+    >
+      <div
+        class="container mx-auto px-4 py-4 flex justify-between items-center"
+      >
+        <a href="#" class="font-montserrat brand-logo" id="home-link"
+          >G<span class="highlight">.</span>N</a
+        >
+        <nav class="hidden md:flex space-x-8 items-center font-bold main-nav">
+          <a href="#about" class="hover:text-primary-color transition-colors"
+            >About</a
+          >
+          <a href="#works" class="hover:text-primary-color transition-colors"
+            >Works</a
+          >
+          <a href="#projects" class="hover:text-primary-color transition-colors"
+            >Projects</a
+          >
+          <a
+            href="#publications"
+            class="hover:text-primary-color transition-colors"
+            >Publications</a
+          >
+          <a href="#contact" class="hover:text-primary-color transition-colors"
+            >Contact</a
+          >
+        </nav>
+        <button
+          id="mobile-menu-button"
+          class="md:hidden text-2xl text-primary-color"
+        >
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="hidden md:hidden">
+        <nav
+          class="flex flex-col items-center space-y-4 py-4 font-bold main-nav"
+        >
+          <a href="#about" class="hover:text-primary-color transition-colors"
+            >About</a
+          >
+          <a href="#works" class="hover:text-primary-color transition-colors"
+            >Works</a
+          >
+          <a href="#projects" class="hover:text-primary-color transition-colors"
+            >Projects</a
+          >
+          <a
+            href="#publications"
+            class="hover:text-primary-color transition-colors"
+            >Publications</a
+          >
+          <a href="#contact" class="hover:text-primary-color transition-colors"
+            >Contact</a
+          >
+        </nav>
+      </div>
+    </header>
+
+    <div id="main-content" class="page">
+      <main class="container mx-auto px-4 py-16">
+        <!-- About Section -->
+        <section id="about" class="mb-32">
+          <div class="text-center lg:mb-12">
+            <div class="section-heading max-md:hidden">
+              <svg
+                class="brush-stroke"
+                viewBox="0 0 500 100"
+                preserveAspectRatio="none"
+              >
+                <path
+                  d="M5.4,62.8C24.2,53.2,43.2,43.8,62.5,35.4c18.1-7.9,36.8-15.5,55.5-22.3C139.1,6.2,160,0.5,182,0c22.7-0.5,45,4.9,67.5,9.2c22.5,4.3,45,8.2,67.5,12.3c21.5,4,43,8.2,64.5,13.1c22.4,5.1,44.8,11.1,67,16.5c21.8,5.3,43.5,10.2,65,15.2c10.8,2.5,21.5,5.3,32.5,7.8"
+                  fill="currentColor"
+                ></path>
+              </svg>
+              <h2
+                class="heading-text text-4xl md:text-5xl font-montserrat font-black"
+              >
+                ABOUT ME
+              </h2>
+            </div>
+          </div>
+
+          <!-- Mobile View -->
+          <div class="md:hidden">
+            <div class="flex items-center justify-between mb-6">
+              <div class="flex items-center">
+                <img
+                  src="https://placehold.co/256x256/111111/ff007f?text=GN"
+                  alt="Portrait"
+                  class="w-20 h-20 rounded-full object-cover"
+                />
+                <div>
+                  <h3 class="text-xl font-montserrat font-bold text-white">
+                    Gaurav N V
+                  </h3>
+                  <p class="text-sm">Web Developer and Data Scientist</p>
+                </div>
+              </div>
+              <div class="relative">
+                <button
+                  id="follow-btn-mobile"
+                  class="neon-button px-4 py-2 text-sm"
+                >
+                  Follow
+                </button>
+                <div
+                  id="social-dropdown-mobile"
+                  class="hidden absolute right-0 mt-2 w-56 bg-card-background border border-gray-700 rounded-lg shadow-lg z-20 bg-gray-900"
+                >
+                  <ul class="text-sm space-y-2 p-2">
+                    <li>
+                      <a
+                        href="https://www.usc.edu/"
+                        target="_blank"
+                        class="flex items-center text-gray-400 hover:text-primary-color transition-colors"
+                        ><i
+                          class="fas fa-building-columns w-8 text-center text-xl"
+                        ></i
+                        ><span class="ml-2 text-sm"
+                          >University Of Southern California</span
+                        ></a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        href="https://github.com/naga251602"
+                        target="_blank"
+                        class="flex items-center text-gray-400 hover:text-primary-color transition-colors"
+                        ><i class="fab fa-github w-8 text-center text-xl"></i
+                        ><span class="ml-2">naga251602</span></a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        href="https://scholar.google.com/citations?hl=en&user=61snQVkAAAAJ"
+                        target="_blank"
+                        class="flex items-center text-gray-400 hover:text-primary-color transition-colors"
+                        ><i
+                          class="fas fa-graduation-cap w-8 text-center text-xl"
+                        ></i
+                        ><span class="ml-2">Gaurav N V</span></a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        href="https://www.linkedin.com/in/gauravnv/"
+                        target="_blank"
+                        class="flex items-center text-gray-400 hover:text-primary-color transition-colors"
+                        ><i class="fab fa-linkedin w-8 text-center text-xl"></i
+                        ><span class="ml-2">Gaurav N V</span></a
+                      >
+                    </li>
+
+                    <li>
+                      <a
+                        href="https://leetcode.com/u/naga251602/"
+                        target="_blank"
+                        class="flex items-center text-gray-400 hover:text-primary-color transition-colors"
+                        ><i class="fas fa-code w-8 text-center text-xl"></i
+                        ><span class="ml-2">naga251602</span></a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="text-lg text-gray-300">
+              <p class="mb-4 text-center">
+                I'm a graduate student at the University of Southern California
+                pursuing a Master's in Applied Science, with a deep passion for
+                full-stack development and cloud technologies.
+              </p>
+              <p class="mb-6 text-center">
+                My focus is on building efficient, scalable web applications,
+                and I have proven experience in optimizing performance and
+                enhancing user experience through my work as a Full Stack
+                Engineer and Frontend Team Lead. Based in Los Angeles, I'm eager
+                to tackle new challenges and transform innovative ideas into
+                reality.
+              </p>
+              <div
+                class="my-6 p-4 border-l-4 border-r-4 text-center border-primary-color bg-card-background/50 rounded-r-lg"
+              >
+                <p class="text-base font-bold text-gray-200">
+                  <i class="fas fa-briefcase text-primary-color mr-2"></i>
+                  Looking for <strong>Summer 2025 internships</strong> in
+                  Frontend Engineering or UX Development.
+                </p>
+              </div>
+              <div class="mb-8 text-center">
+                <a
+                  href="#"
+                  class="read-more-about-btn text-primary-color font-bold hover:underline"
+                  >Read more...</a
+                >
+              </div>
+              <div class="flex space-x-4 justify-center">
+                <a
+                  href="#"
+                  class="neon-button px-6 py-2 text-base font-bold flex items-center"
+                  ><i class="fas fa-file-alt mr-2"></i> Resume</a
+                >
+                <a
+                  href="#"
+                  class="neon-button px-6 py-2 text-base font-bold flex items-center"
+                  ><i class="fas fa-file-download mr-2"></i> CV</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Desktop View -->
+          <div class="hidden md:grid md:grid-cols-3 gap-12 items-center">
+            <div class="md:col-span-1 flex flex-col items-center">
+              <div class="w-64 h-64 rounded-full p-2 relative">
+                <div
+                  class="absolute inset-0 rounded-full border-2 border-primary-color animate-spin"
+                  style="animation-duration: 8s"
+                ></div>
+                <img
+                  src="https://placehold.co/256x256/111111/ff007f?text=GN"
+                  alt="Portrait"
+                  class="rounded-full w-full h-full object-cover"
+                  onerror="this.onerror=null;this.src='https://placehold.co/256x256/111111/e0e0e0?text=Error';"
+                />
+              </div>
+              <h3
+                class="text-3xl font-montserrat font-bold text-primary-color mt-6"
+              >
+                Gaurav N V
+              </h3>
+              <div class="mt-6 w-full max-w-xs">
+                <ul class="space-y-3 text-lg">
+                  <li>
+                    <a
+                      href="https://www.usc.edu/"
+                      target="_blank"
+                      class="flex items-center text-gray-400 hover:text-primary-color transition-colors"
+                      ><i
+                        class="fas fa-building-columns w-8 text-center text-xl"
+                      ></i
+                      ><span class="ml-2 text-sm"
+                        >University Of Southern California</span
+                      ></a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://github.com/naga251602"
+                      target="_blank"
+                      class="flex items-center text-gray-400 hover:text-primary-color transition-colors"
+                      ><i class="fab fa-github w-8 text-center text-xl"></i
+                      ><span class="ml-2">naga251602</span></a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://scholar.google.com/citations?hl=en&user=61snQVkAAAAJ"
+                      target="_blank"
+                      class="flex items-center text-gray-400 hover:text-primary-color transition-colors"
+                      ><i
+                        class="fas fa-graduation-cap w-8 text-center text-xl"
+                      ></i
+                      ><span class="ml-2">Gaurav N V</span></a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://www.linkedin.com/in/gauravnv/"
+                      target="_blank"
+                      class="flex items-center text-gray-400 hover:text-primary-color transition-colors"
+                      ><i class="fab fa-linkedin w-8 text-center text-xl"></i
+                      ><span class="ml-2">Gaurav N V</span></a
+                    >
+                  </li>
+
+                  <li>
+                    <a
+                      href="https://leetcode.com/u/naga251602/"
+                      target="_blank"
+                      class="flex items-center text-gray-400 hover:text-primary-color transition-colors"
+                      ><i class="fas fa-code w-8 text-center text-xl"></i
+                      ><span class="ml-2">naga251602</span></a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="md:col-span-2 text-lg text-gray-300">
+              <p class="mb-4">
+                I'm a graduate student at the University of Southern California
+                pursuing a Master's in Applied Science, with a deep passion for
+                full-stack development and cloud technologies. My focus is on
+                building efficient, scalable web applications, and I have proven
+                experience in optimizing performance and enhancing user
+                experience through my work as a Full Stack Engineer and Frontend
+                Team Lead.
+              </p>
+              <p class="mb-6">
+                My focus is on building efficient, scalable web applications,
+                and I have proven experience in optimizing performance and
+                enhancing user experience through my work as a Full Stack
+                Engineer and Frontend Team Lead. Based in Los Angeles, I'm eager
+                to tackle new challenges and transform innovative ideas into
+                reality.
+              </p>
+              <div
+                class="my-6 p-4 border-l-4 border-primary-color bg-card-background/50 rounded-r-lg"
+              >
+                <p class="text-base font-bold text-gray-200">
+                  <i class="fas fa-briefcase text-primary-color mr-2"></i>
+                  Looking for <strong>Summer 2025 internships</strong> in
+                  Frontend Engineering or UX Development.
+                </p>
+              </div>
+              <div class="mb-8">
+                <a
+                  href="#"
+                  class="read-more-about-btn text-primary-color font-bold hover:underline"
+                  >Read more...</a
+                >
+              </div>
+              <div class="flex space-x-4">
+                <a
+                  href="#"
+                  class="neon-button px-6 py-2 text-base font-bold flex items-center"
+                >
+                  <i class="fas fa-file-alt mr-2"></i> Resume
+                </a>
+                <a
+                  href="#"
+                  class="neon-button px-6 py-2 text-base font-bold flex items-center"
+                >
+                  <i class="fas fa-file-download mr-2"></i> CV
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Skills and Globe Section -->
+        <section
+          id="skills-globe"
+          class="mb-32 flex flex-col md:flex-row gap-12"
+        >
+          <div class="flex-1 card p-8">
+            <h3
+              class="text-3xl font-montserrat font-bold mb-6 text-center text-primary-color"
+            >
+              Core Skills
+            </h3>
+            <div class="skills-scroller">
+              <div class="skills-scroller-inner">
+                <ul class="text-lg space-y-4">
+                  <li>
+                    <i class="fas fa-code text-primary-color w-6 mr-2"></i>
+                    JavaScript (ES6+)
+                  </li>
+                  <li>
+                    <i class="fab fa-react text-primary-color w-6 mr-2"></i>
+                    React & Next.js
+                  </li>
+                  <li>
+                    <i class="fab fa-node-js text-primary-color w-6 mr-2"></i>
+                    Node.js & Express
+                  </li>
+                  <li>
+                    <i class="fab fa-python text-primary-color w-6 mr-2"></i>
+                    Python & Django
+                  </li>
+                  <li>
+                    <i class="fas fa-database text-primary-color w-6 mr-2"></i>
+                    PostgreSQL & MongoDB
+                  </li>
+                  <li>
+                    <i class="fab fa-docker text-primary-color w-6 mr-2"></i>
+                    Docker & Kubernetes
+                  </li>
+                  <li>
+                    <i class="fab fa-aws text-primary-color w-6 mr-2"></i> AWS &
+                    GCP
+                  </li>
+                  <li>
+                    <i class="fas fa-sitemap text-primary-color w-6 mr-2"></i>
+                    Systems Architecture
+                  </li>
+                  <li>
+                    <i class="fas fa-palette text-primary-color w-6 mr-2"></i>
+                    UI/UX Design
+                  </li>
+                </ul>
+                <ul class="text-lg space-y-4 pt-4">
+                  <!-- Duplicate for seamless scroll -->
+                  <li>
+                    <i class="fas fa-code text-primary-color w-6 mr-2"></i>
+                    JavaScript (ES6+)
+                  </li>
+                  <li>
+                    <i class="fab fa-react text-primary-color w-6 mr-2"></i>
+                    React & Next.js
+                  </li>
+                  <li>
+                    <i class="fab fa-node-js text-primary-color w-6 mr-2"></i>
+                    Node.js & Express
+                  </li>
+                  <li>
+                    <i class="fab fa-python text-primary-color w-6 mr-2"></i>
+                    Python & Django
+                  </li>
+                  <li>
+                    <i class="fas fa-database text-primary-color w-6 mr-2"></i>
+                    PostgreSQL & MongoDB
+                  </li>
+                  <li>
+                    <i class="fab fa-docker text-primary-color w-6 mr-2"></i>
+                    Docker & Kubernetes
+                  </li>
+                  <li>
+                    <i class="fab fa-aws text-primary-color w-6 mr-2"></i> AWS &
+                    GCP
+                  </li>
+                  <li>
+                    <i class="fas fa-sitemap text-primary-color w-6 mr-2"></i>
+                    Systems Architecture
+                  </li>
+                  <li>
+                    <i class="fas fa-palette text-primary-color w-6 mr-2"></i>
+                    UI/UX Design
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="flex-1 card p-8 flex flex-col">
+            <h3
+              class="text-3xl font-montserrat font-bold mb-6 text-center text-primary-color"
+            >
+              Home Base // LA
+            </h3>
+            <div id="globe-container" class="flex-grow"></div>
+          </div>
+        </section>
+
+        <!-- Featured Works Section -->
+        <section id="works" class="mb-32">
+          <div class="text-center mb-12">
+            <div class="section-heading">
+              <svg
+                class="brush-stroke"
+                viewBox="0 0 500 100"
+                preserveAspectRatio="none"
+              >
+                <path
+                  d="M5.4,62.8C24.2,53.2,43.2,43.8,62.5,35.4c18.1-7.9,36.8-15.5,55.5-22.3C139.1,6.2,160,0.5,182,0c22.7-0.5,45,4.9,67.5,9.2c22.5,4.3,45,8.2,67.5,12.3c21.5,4,43,8.2,64.5,13.1c22.4,5.1,44.8,11.1,67,16.5c21.8,5.3,43.5,10.2,65,15.2c10.8,2.5,21.5,5.3,32.5,7.8"
+                  fill="currentColor"
+                ></path>
+              </svg>
+              <h2
+                class="heading-text text-3xl md:text-5xl font-montserrat font-black"
+              >
+                FEATURED WORKS
+              </h2>
+            </div>
+          </div>
+          <div
+            id="featured-projects-container"
+            class="grid md:grid-cols-2 gap-8"
+          >
+            <!-- Project cards will be injected here by JavaScript -->
+          </div>
+        </section>
+
+        <!-- More Projects Section -->
+        <section id="projects" class="mb-32">
+          <div class="text-center mb-12">
+            <div class="section-heading">
+              <svg
+                class="brush-stroke"
+                viewBox="0 0 500 100"
+                preserveAspectRatio="none"
+              >
+                <path
+                  d="M5.4,62.8C24.2,53.2,43.2,43.8,62.5,35.4c18.1-7.9,36.8-15.5,55.5-22.3C139.1,6.2,160,0.5,182,0c22.7-0.5,45,4.9,67.5,9.2c22.5,4.3,45,8.2,67.5,12.3c21.5,4,43,8.2,64.5,13.1c22.4,5.1,44.8,11.1,67,16.5c21.8,5.3,43.5,10.2,65,15.2c10.8,2.5,21.5,5.3,32.5,7.8"
+                  fill="currentColor"
+                ></path>
+              </svg>
+              <h2
+                class="heading-text text-4xl md:text-5xl font-montserrat font-black"
+              >
+                PROJECTS
+              </h2>
+            </div>
+          </div>
+          <div id="more-projects-container" class="grid md:grid-cols-2 gap-8">
+            <!-- Project cards will be injected here by JavaScript -->
+          </div>
+          <div class="text-center mt-12">
+            <button
+              id="view-all-projects-btn"
+              class="neon-button px-8 py-3 font-bold rounded-lg"
+            >
+              View All Projects
+            </button>
+          </div>
+        </section>
+
+        <!-- Certifications Section -->
+        <section id="certifications" class="mb-32">
+          <div class="text-center mb-12">
+            <div class="section-heading">
+              <svg
+                class="brush-stroke"
+                viewBox="0 0 500 100"
+                preserveAspectRatio="none"
+              >
+                <path
+                  d="M5.4,62.8C24.2,53.2,43.2,43.8,62.5,35.4c18.1-7.9,36.8-15.5,55.5-22.3C139.1,6.2,160,0.5,182,0c22.7-0.5,45,4.9,67.5,9.2c22.5,4.3,45,8.2,67.5,12.3c21.5,4,43,8.2,64.5,13.1c22.4,5.1,44.8,11.1,67,16.5c21.8,5.3,43.5,10.2,65,15.2c10.8,2.5,21.5,5.3,32.5,7.8"
+                  fill="currentColor"
+                ></path>
+              </svg>
+              <h2
+                class="heading-text text-4xl md:text-5xl font-montserrat font-black"
+              >
+                CERTIFICATIONS
+              </h2>
+            </div>
+          </div>
+          <div
+            id="certifications-container"
+            class="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+          >
+            <!-- Certifications will be dynamically injected here -->
+          </div>
+        </section>
+
+        <!-- Publications Section -->
+        <section id="publications" class="mb-32">
+          <div class="text-center mb-12">
+            <div class="section-heading">
+              <svg
+                class="brush-stroke"
+                viewBox="0 0 500 100"
+                preserveAspectRatio="none"
+              >
+                <path
+                  d="M5.4,62.8C24.2,53.2,43.2,43.8,62.5,35.4c18.1-7.9,36.8-15.5,55.5-22.3C139.1,6.2,160,0.5,182,0c22.7-0.5,45,4.9,67.5,9.2c22.5,4.3,45,8.2,67.5,12.3c21.5,4,43,8.2,64.5,13.1c22.4,5.1,44.8,11.1,67,16.5c21.8,5.3,43.5,10.2,65,15.2c10.8,2.5,21.5,5.3,32.5,7.8"
+                  fill="currentColor"
+                ></path>
+              </svg>
+              <h2
+                class="heading-text text-4xl md:text-5xl font-montserrat font-black"
+              >
+                PUBLICATIONS
+              </h2>
+            </div>
+          </div>
+          <div class="space-y-6 max-w-4xl mx-auto">
+            <div class="card p-6">
+              <h3 class="text-xl font-montserrat font-bold text-primary-color">
+                "Human AI collaboration for backend text generation: Dynamic
+                content recommendation (DCR) for websites based on keywords"
+              </h3>
+              <p class="text-gray-400 italic">
+                2024 International Conference on Computing and Data Science
+                (ICCDS)
+              </p>
+              <p class="mt-2 text-gray-300">
+                Exploring novel consensus algorithms for high-throughput,
+                secure, and decentralized applications.
+              </p>
+              <a
+                href="#"
+                class="inline-block mt-3 text-secondary-color font-bold hover:text-primary-color transition-colors"
+                >Read Paper <i class="fas fa-arrow-right ml-1"></i
+              ></a>
+            </div>
+            <div class="card p-6">
+              <h3 class="text-xl font-montserrat font-bold text-primary-color">
+                "Human-AI Symbiosis: UI/UX Paradigms for Neural Interfaces"
+              </h3>
+              <p class="text-gray-400 italic">
+                Proceedings of the International Conference on Cybernetic
+                Futures, 2023
+              </p>
+              <p class="mt-2 text-gray-300">
+                A study on intuitive user interfaces for brain-computer
+                interaction, focusing on reducing cognitive load.
+              </p>
+              <a
+                href="#"
+                class="inline-block mt-3 text-secondary-color font-bold hover:text-primary-color transition-colors"
+                >Read Paper <i class="fas fa-arrow-right ml-1"></i
+              ></a>
+            </div>
+          </div>
+          <div class="text-center mt-12">
+            <button
+              id="view-all-pubs-btn"
+              class="neon-button px-8 py-3 font-bold rounded-lg"
+            >
+              View All Publications
+            </button>
+          </div>
+        </section>
+
+        <!-- Extra Curricular Section -->
+        <section id="extracurricular" class="mb-32">
+          <div class="text-center mb-12">
+            <div class="section-heading">
+              <svg
+                class="brush-stroke"
+                viewBox="0 0 500 100"
+                preserveAspectRatio="none"
+              >
+                <path
+                  d="M5.4,62.8C24.2,53.2,43.2,43.8,62.5,35.4c18.1-7.9,36.8-15.5,55.5-22.3C139.1,6.2,160,0.5,182,0c22.7-0.5,45,4.9,67.5,9.2c22.5,4.3,45,8.2,67.5,12.3c21.5,4,43,8.2,64.5,13.1c22.4,5.1,44.8,11.1,67,16.5c21.8,5.3,43.5,10.2,65,15.2c10.8,2.5,21.5,5.3,32.5,7.8"
+                  fill="currentColor"
+                ></path>
+              </svg>
+              <h2
+                class="heading-text text-2xl md:text-5xl font-montserrat font-black"
+              >
+                EXTRACURRICULAR
+              </h2>
+            </div>
+          </div>
+          <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <div class="card p-8 text-center">
+              <i
+                class="fas fa-code-branch text-4xl text-primary-color mb-4"
+              ></i>
+              <h3 class="text-2xl font-montserrat font-bold mb-2">
+                Open Source
+              </h3>
+              <p class="text-gray-400">
+                Regular contributor to data visualization libraries, focusing on
+                accessibility and performance improvements.
+              </p>
+            </div>
+            <div class="card p-8 text-center">
+              <i
+                class="fas fa-chalkboard-teacher text-4xl text-primary-color mb-4"
+              ></i>
+              <h3 class="text-2xl font-montserrat font-bold mb-2">
+                Mentorship
+              </h3>
+              <p class="text-gray-400">
+                Volunteer mentor for a coding bootcamp, guiding new developers
+                through their learning journey.
+              </p>
+            </div>
+            <div class="card p-8 text-center">
+              <i class="fas fa-palette text-4xl text-primary-color mb-4"></i>
+              <h3 class="text-2xl font-montserrat font-bold mb-2">
+                Creative Coding
+              </h3>
+              <p class="text-gray-400">
+                Exploring generative art and audio-visual projects using p5.js
+                and the Web Audio API.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="mb-16">
+          <div class="text-center mb-12">
+            <div class="section-heading">
+              <svg
+                class="brush-stroke"
+                viewBox="0 0 500 100"
+                preserveAspectRatio="none"
+              >
+                <path
+                  d="M5.4,62.8C24.2,53.2,43.2,43.8,62.5,35.4c18.1-7.9,36.8-15.5,55.5-22.3C139.1,6.2,160,0.5,182,0c22.7-0.5,45,4.9,67.5,9.2c22.5,4.3,45,8.2,67.5,12.3c21.5,4,43,8.2,64.5,13.1c22.4,5.1,44.8,11.1,67,16.5c21.8,5.3,43.5,10.2,65,15.2c10.8,2.5,21.5,5.3,32.5,7.8"
+                  fill="currentColor"
+                ></path>
+              </svg>
+              <h2
+                class="heading-text text-4xl md:text-5xl font-montserrat font-black"
+              >
+                GET IN TOUCH
+              </h2>
+            </div>
+          </div>
+          <form class="max-w-2xl mx-auto card p-8">
+            <div class="mb-6">
+              <label
+                for="handle"
+                class="block mb-2 text-primary-color font-bold"
+                >Your Name</label
+              >
+              <input
+                type="text"
+                id="handle"
+                class="w-full bg-gray-900 border-2 border-gray-700 focus:border-primary-color focus:outline-none p-3 rounded-lg transition-colors"
+                placeholder="Gaurav Nagalapuram"
+              />
+            </div>
+            <div class="mb-6">
+              <label for="email" class="block mb-2 text-primary-color font-bold"
+                >Your Email</label
+              >
+              <input
+                type="email"
+                id="email"
+                class="w-full bg-gray-900 border-2 border-gray-700 focus:border-primary-color focus:outline-none p-3 rounded-lg transition-colors"
+                placeholder="you@example.com"
+              />
+            </div>
+            <div class="mb-6">
+              <label
+                for="message"
+                class="block mb-2 text-primary-color font-bold"
+                >Message</label
+              >
+              <textarea
+                id="message"
+                rows="6"
+                class="w-full bg-gray-900 border-2 border-gray-700 focus:border-primary-color focus:outline-none p-3 rounded-lg transition-colors"
+                placeholder="Let's build something amazing..."
+              ></textarea>
+            </div>
+            <div class="text-center">
+              <button
+                type="submit"
+                class="neon-button px-10 py-3 font-bold w-full md:w-auto rounded-lg"
+              >
+                Send Message
+              </button>
+            </div>
+          </form>
+        </section>
+      </main>
+    </div>
+
+    <!-- About Me Full Page -->
+    <div id="about-me-page" class="hidden page">
+      <div class="container mx-auto px-4 py-16">
+        <div class="text-left mb-12">
+          <button
+            class="back-to-home-btn neon-button px-6 py-2 font-bold rounded-lg"
+          >
+            <i class="fas fa-arrow-left mr-2"></i> Back to Home
+          </button>
+        </div>
+        <div class="max-w-4xl mx-auto">
+          <div class="text-center mb-12">
+            <div class="section-heading">
+              <svg
+                class="brush-stroke"
+                viewBox="0 0 500 100"
+                preserveAspectRatio="none"
+              >
+                <path
+                  d="M5.4,62.8C24.2,53.2,43.2,43.8,62.5,35.4c18.1-7.9,36.8-15.5,55.5-22.3C139.1,6.2,160,0.5,182,0c22.7-0.5,45,4.9,67.5,9.2c22.5,4.3,45,8.2,67.5,12.3c21.5,4,43,8.2,64.5,13.1c22.4,5.1,44.8,11.1,67,16.5c21.8,5.3,43.5,10.2,65,15.2c10.8,2.5,21.5,5.3,32.5,7.8"
+                  fill="currentColor"
+                ></path>
+              </svg>
+              <h2
+                class="heading-text text-4xl md:text-5xl font-montserrat font-black"
+              >
+                ABOUT ME
+              </h2>
+            </div>
+          </div>
+
+          <div class="text-lg text-gray-300 space-y-4 mb-16">
+            <p class="max-md:text-center">
+              I'm a graduate student at the University of Southern California
+              pursuing a Master's in Applied Science, with a deep passion for
+              full-stack development and cloud technologies.
+            </p>
+            <p class="max-md:text-center">
+              My focus is on building efficient, scalable web applications, and
+              I have proven experience in optimizing performance and enhancing
+              user experience through my work as a Full Stack Engineer and
+              Frontend Team Lead. Based in Los Angeles, I'm eager to tackle new
+              challenges and transform innovative ideas into reality.
+            </p>
+          </div>
+
+          <div class="text-center mb-12">
+            <div class="section-heading">
+              <svg
+                class="brush-stroke"
+                viewBox="0 0 500 100"
+                preserveAspectRatio="none"
+              >
+                <path
+                  d="M5.4,62.8C24.2,53.2,43.2,43.8,62.5,35.4c18.1-7.9,36.8-15.5,55.5-22.3C139.1,6.2,160,0.5,182,0c22.7-0.5,45,4.9,67.5,9.2c22.5,4.3,45,8.2,67.5,12.3c21.5,4,43,8.2,64.5,13.1c22.4,5.1,44.8,11.1,67,16.5c21.8,5.3,43.5,10.2,65,15.2c10.8,2.5,21.5,5.3,32.5,7.8"
+                  fill="currentColor"
+                ></path>
+              </svg>
+              <h2
+                class="heading-text text-4xl md:text-5xl font-montserrat font-black"
+              >
+                EDUCATION
+              </h2>
+            </div>
+          </div>
+
+          <div class="space-y-12">
+            <!-- MS Institution -->
+            <div>
+              <h3 class="text-2xl font-montserrat font-bold text-primary-color">
+                University of Southern California
+              </h3>
+              <p class="text-gray-400 italic mt-1 text-base">
+                Master of Science in Data Science | Jan, 2025 - Dec, 2026
+              </p>
+              <div class="accordion space-y-3 text-sm mt-4">
+                <!-- Coursework -->
+                <div class="card overflow-hidden">
+                  <button
+                    class="accordion-header w-full flex justify-between items-center p-4 text-left"
+                  >
+                    <span class="font-montserrat font-bold text-primary-color"
+                      ><i class="fas fa-book-open mr-3"></i>Coursework</span
+                    >
+                    <i
+                      class="fas fa-chevron-down accordion-icon transition-transform duration-300"
+                    ></i>
+                  </button>
+                  <div class="accordion-content">
+                    <ul
+                      class="p-4 pt-0 text-gray-400 space-y-1 list-disc list-inside"
+                    >
+                      <li>
+                        DSCI 510 - Principles of programming for DataScience
+                        (Python)
+                      </li>
+                      <li>DSCI 552 - Machine Learning For Data Science</li>
+                    </ul>
+                  </div>
+                </div>
+                <!-- Research -->
+                <div class="card overflow-hidden">
+                  <button
+                    class="accordion-header w-full flex justify-between items-center p-4 text-left"
+                  >
+                    <span class="font-montserrat font-bold text-primary-color"
+                      ><i class="fas fa-flask mr-3"></i>Research</span
+                    >
+                    <i
+                      class="fas fa-chevron-down accordion-icon transition-transform duration-300"
+                    ></i>
+                  </button>
+                  <div class="accordion-content">
+                    <ul
+                      class="p-4 pt-0 text-gray-400 space-y-1 list-disc list-inside"
+                    >
+                      <li>Fuzzy Score</li>
+                    </ul>
+                  </div>
+                </div>
+                <!-- Clubs -->
+                <div class="card overflow-hidden">
+                  <button
+                    class="accordion-header w-full flex justify-between items-center p-4 text-left"
+                  >
+                    <span class="font-montserrat font-bold text-primary-color"
+                      ><i class="fas fa-users mr-3"></i>Clubs</span
+                    >
+                    <i
+                      class="fas fa-chevron-down accordion-icon transition-transform duration-300"
+                    ></i>
+                  </button>
+                  <div class="accordion-content">
+                    <ul
+                      class="p-4 pt-0 text-gray-400 space-y-1 list-disc list-inside"
+                    >
+                      <li>Cryptography Club</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- B.Tech Institution -->
+            <div>
+              <h3 class="text-2xl font-montserrat font-bold text-primary-color">
+                R.M.K. Engineering College, Anna University
+              </h3>
+              <p class="text-gray-400 italic mt-1 text-base">
+                Bachelor of Technology in Information Technology| 2020 - 2024
+              </p>
+              <div class="accordion space-y-3 text-sm mt-4">
+                <!-- Coursework -->
+                <div class="card overflow-hidden">
+                  <button
+                    class="accordion-header w-full flex justify-between items-center p-4 text-left"
+                  >
+                    <span class="font-montserrat font-bold text-primary-color"
+                      ><i class="fas fa-book-open mr-3"></i>Coursework</span
+                    >
+                    <i
+                      class="fas fa-chevron-down accordion-icon transition-transform duration-300"
+                    ></i>
+                  </button>
+                  <div class="accordion-content">
+                    <ul
+                      class="p-4 pt-0 text-gray-400 space-y-1 list-disc list-inside"
+                    >
+                      <li>Data Structures</li>
+                      <li>Object Oriented Programming</li>
+                      <li>Operating Systems</li>
+                      <li>DBMS</li>
+                      <li>Cloud Computing</li>
+                    </ul>
+                  </div>
+                </div>
+                <!-- Research -->
+                <div class="card overflow-hidden">
+                  <button
+                    class="accordion-header w-full flex justify-between items-center p-4 text-left"
+                  >
+                    <span class="font-montserrat font-bold text-primary-color"
+                      ><i class="fas fa-flask mr-3"></i>Research</span
+                    >
+                    <i
+                      class="fas fa-chevron-down accordion-icon transition-transform duration-300"
+                    ></i>
+                  </button>
+                  <div class="accordion-content">
+                    <ul
+                      class="p-4 pt-0 text-gray-400 space-y-1 list-disc list-inside"
+                    >
+                      <li>MLP - multilayer perceptron</li>
+                      <li>Neural Networks</li>
+                      <li>Web Optimizations</li>
+                    </ul>
+                  </div>
+                </div>
+                <!-- Clubs -->
+                <!-- <div class="card overflow-hidden">
+                  <button
+                    class="accordion-header w-full flex justify-between items-center p-4 text-left"
+                  >
+                    <span class="font-montserrat font-bold text-primary-color"
+                      ><i class="fas fa-users mr-3"></i>Clubs</span
+                    >
+                    <i
+                      class="fas fa-chevron-down accordion-icon transition-transform duration-300"
+                    ></i>
+                  </button>
+                  <div class="accordion-content">
+                    <ul
+                      class="p-4 pt-0 text-gray-400 space-y-1 list-disc list-inside"
+                    >
+                      <li>Yoga</li>
+                    </ul>
+                  </div>
+                </div> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- All Projects Page -->
+    <div id="all-projects-page" class="hidden page">
+      <div class="container mx-auto px-4 py-16">
+        <div class="text-center mb-12">
+          <div class="section-heading">
+            <svg
+              class="brush-stroke"
+              viewBox="0 0 500 100"
+              preserveAspectRatio="none"
+            >
+              <path
+                d="M5.4,62.8C24.2,53.2,43.2,43.8,62.5,35.4c18.1-7.9,36.8-15.5,55.5-22.3C139.1,6.2,160,0.5,182,0c22.7-0.5,45,4.9,67.5,9.2c22.5,4.3,45,8.2,67.5,12.3c21.5,4,43,8.2,64.5,13.1c22.4,5.1,44.8,11.1,67,16.5c21.8,5.3,43.5,10.2,65,15.2c10.8,2.5,21.5,5.3,32.5,7.8"
+                fill="currentColor"
+              ></path>
+            </svg>
+            <h2
+              class="heading-text text-4xl md:text-5xl font-montserrat font-black"
+            >
+              PROJECT ARCHIVE
+            </h2>
+          </div>
+        </div>
+        <div class="text-left mb-12">
+          <button
+            class="back-to-home-btn neon-button px-6 py-2 font-bold rounded-lg"
+          >
+            <i class="fas fa-arrow-left mr-2"></i> Back to Home
+          </button>
+        </div>
+        <div
+          id="all-projects-archive-container"
+          class="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+        >
+          <!-- All project cards will be injected here by JavaScript -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Project Detail Page -->
+    <div id="project-detail-page" class="hidden page">
+      <div class="container mx-auto px-4 py-16">
+        <div class="text-left mb-12">
+          <button
+            class="back-to-home-btn neon-button px-6 py-2 font-bold rounded-lg"
+          >
+            <i class="fas fa-arrow-left mr-2"></i> Back to Projects
+          </button>
+        </div>
+        <div class="max-w-4xl mx-auto">
+          <h2
+            id="detail-title"
+            class="text-4xl md:text-5xl font-montserrat font-black text-primary-color mb-4"
+          ></h2>
+          <div id="detail-tags" class="flex flex-wrap gap-2 mb-8"></div>
+
+          <img
+            id="detail-image"
+            src=""
+            alt="Project main image"
+            class="w-full h-auto rounded-lg shadow-lg mb-8"
+            onerror="this.onerror=null;this.src='https://placehold.co/1200x800/111111/e0e0e0?text=Error';"
+          />
+
+          <div class="text-lg text-gray-300 space-y-4 mb-12">
+            <p id="detail-long-description"></p>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-8">
+            <div class="card p-6">
+              <h3
+                class="text-2xl font-montserrat font-bold text-primary-color mb-4"
+              >
+                Key Features
+              </h3>
+              <ul
+                id="detail-features"
+                class="list-disc list-inside space-y-2 text-gray-400"
+              ></ul>
+            </div>
+            <div class="card p-6">
+              <h3
+                class="text-2xl font-montserrat font-bold text-primary-color mb-4"
+              >
+                Technology Stack
+              </h3>
+              <ul
+                id="detail-tech"
+                class="list-disc list-inside space-y-2 text-gray-400"
+              ></ul>
+            </div>
+          </div>
+
+          <div id="detail-links" class="flex justify-center space-x-4 mt-12">
+            <!-- Links will be injected here -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- All Publications Page -->
+    <div id="all-publications-page" class="hidden page">
+      <div class="container mx-auto px-4 py-16">
+        <div class="text-center mb-12">
+          <div class="section-heading">
+            <svg
+              class="brush-stroke"
+              viewBox="0 0 500 100"
+              preserveAspectRatio="none"
+            >
+              <path
+                d="M5.4,62.8C24.2,53.2,43.2,43.8,62.5,35.4c18.1-7.9,36.8-15.5,55.5-22.3C139.1,6.2,160,0.5,182,0c22.7-0.5,45,4.9,67.5,9.2c22.5,4.3,45,8.2,67.5,12.3c21.5,4,43,8.2,64.5,13.1c22.4,5.1,44.8,11.1,67,16.5c21.8,5.3,43.5,10.2,65,15.2c10.8,2.5,21.5,5.3,32.5,7.8"
+                fill="currentColor"
+              ></path>
+            </svg>
+            <h2
+              class="heading-text text-4xl md:text-5xl font-montserrat font-black"
+            >
+              PUBLICATION ARCHIVE
+            </h2>
+          </div>
+        </div>
+        <div class="text-left mb-12">
+          <button
+            class="back-to-home-btn neon-button px-6 py-2 font-bold rounded-lg"
+          >
+            <i class="fas fa-arrow-left mr-2"></i> Back to Home
+          </button>
+        </div>
+        <div class="space-y-8 max-w-4xl mx-auto">
+          <div class="card p-6">
+            <h3 class="text-xl font-montserrat font-bold text-primary-color">
+              "Cognitive Architectures in Decentralized Networks"
+            </h3>
+            <p class="text-gray-400 italic">
+              Journal of Advanced Cryptography, Vol. 42, 2024
+            </p>
+            <a
+              href="#"
+              class="inline-block mt-3 text-secondary-color font-bold hover:text-primary-color transition-colors"
+              >Read Paper <i class="fas fa-arrow-right ml-1"></i
+            ></a>
+          </div>
+          <div class="card p-6">
+            <h3 class="text-xl font-montserrat font-bold text-primary-color">
+              "Human-AI Symbiosis: UI/UX Paradigms for Neural Interfaces"
+            </h3>
+            <p class="text-gray-400 italic">
+              Proceedings of the International Conference on Cybernetic Futures,
+              2023
+            </p>
+            <a
+              href="#"
+              class="inline-block mt-3 text-secondary-color font-bold hover:text-primary-color transition-colors"
+              >Read Paper <i class="fas fa-arrow-right ml-1"></i
+            ></a>
+          </div>
+          <div class="card p-6">
+            <h3 class="text-xl font-montserrat font-bold text-primary-color">
+              "The Aesthetics of Procedural Generation in Art"
+            </h3>
+            <p class="text-gray-400 italic">
+              Journal of Digital Creativity, Vol. 18, 2022
+            </p>
+            <a
+              href="#"
+              class="inline-block mt-3 text-secondary-color font-bold hover:text-primary-color transition-colors"
+              >Read Paper <i class="fas fa-arrow-right ml-1"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="border-t border-gray-800 py-8">
+      <div class="container mx-auto px-4 text-center text-gray-500">
+        <div class="flex justify-center space-x-6 mb-4">
+          <a
+            href="#"
+            class="text-3xl hover:text-primary-color transition-colors"
+            ><i class="fab fa-github"></i
+          ></a>
+          <a
+            href="#"
+            class="text-3xl hover:text-primary-color transition-colors"
+            ><i class="fab fa-linkedin"></i
+          ></a>
+          <a
+            href="#"
+            class="text-3xl hover:text-primary-color transition-colors"
+            ><i class="fab fa-twitter"></i
+          ></a>
+        </div>
+        <p class="font-bold">
+          &copy; 2024 Gaurav Nagalapuram. Crafted with
+          <i class="fas fa-heart text-primary-color"></i> in Los Angeles.
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // --- Data ---
+        const projects = [
+          {
+            id: "sentient",
+            title: "Project Sentient",
+            shortDescription:
+              "A real-time threat detection system for corporate networks using machine learning.",
+            longDescription:
+              "Project Sentient is an advanced cybersecurity platform that leverages machine learning algorithms to identify and neutralize threats in real-time. By analyzing network traffic patterns and user behavior, it can detect anomalies that traditional signature-based systems might miss. The system provides a comprehensive dashboard for security analysts to visualize threats, investigate incidents, and manage responses effectively.",
+            image:
+              "https://placehold.co/600x400/111111/ff007f?text=Project+Sentient",
+            tags: ["CyberSec", "AI/ML", "Go"],
+            features: [
+              "Real-time threat detection",
+              "Behavioral analysis engine",
+              "Interactive security dashboard",
+              "Automated incident response",
+            ],
+            technologies: [
+              "Go",
+              "Python (TensorFlow)",
+              "PostgreSQL",
+              "React",
+              "D3.js",
+            ],
+            demoUrl: "#",
+            codeUrl: "#",
+          },
+          {
+            id: "geoweave",
+            title: "GeoWeave",
+            shortDescription:
+              "A geo-spatial data analysis tool for urban planning and environmental impact assessment.",
+            longDescription:
+              "GeoWeave is a web-based platform designed for urban planners, environmental scientists, and researchers. It allows users to upload, visualize, and analyze complex geo-spatial datasets. The tool includes features for layer management, spatial querying, and generating heatmaps to aid in decision-making for city development and conservation efforts.",
+            image: "https://placehold.co/600x400/111111/f9d923?text=GeoWeave",
+            tags: ["GIS", "Data", "React"],
+            features: [
+              "Interactive map interface",
+              "Multiple data layer support (GeoJSON, KML)",
+              "Spatial analysis tools",
+              "Data export functionality",
+            ],
+            technologies: [
+              "React",
+              "Mapbox GL JS",
+              "Node.js",
+              "PostGIS",
+              "Python (Geopandas)",
+            ],
+            demoUrl: "#",
+            codeUrl: "#",
+          },
+          {
+            id: "synthwave",
+            title: "SynthWave Player",
+            shortDescription:
+              "A retro-themed music player application with audio visualization effects.",
+            longDescription:
+              "SynthWave Player is a creative coding project that combines a functional music player with stunning, real-time audio visualizations. Built using the Web Audio API, it processes sound frequencies to generate dynamic visual patterns reminiscent of 80s retro-futurism. Users can upload their own tracks and experience a unique audio-visual journey.",
+            image:
+              "https://placehold.co/600x400/111111/00ffff?text=SynthWave+Player",
+            tags: ["Web Audio API", "Creative Coding"],
+            features: [
+              "Music playback from local files",
+              "Multiple visualization modes",
+              "Customizable color schemes",
+              "Responsive design",
+            ],
+            technologies: [
+              "JavaScript",
+              "HTML5 Canvas",
+              "Web Audio API",
+              "CSS3",
+            ],
+            demoUrl: "#",
+            codeUrl: "#",
+          },
+          {
+            id: "dashboard",
+            title: "Data Dashboard",
+            shortDescription:
+              "A customizable business intelligence dashboard for data visualization.",
+            longDescription:
+              "This project is a modular and customizable dashboard for visualizing key business metrics. It connects to various data sources via a REST API and presents the information using interactive charts and graphs. Users can drag, drop, and resize widgets to create personalized layouts.",
+            image:
+              "https://placehold.co/600x400/111111/7f00ff?text=Data+Dashboard",
+            tags: ["BI", "Data Viz", "SaaS"],
+            features: [
+              "Drag-and-drop widget interface",
+              "Variety of chart types (bar, line, pie)",
+              "Real-time data updates",
+              "User authentication",
+            ],
+            technologies: ["Vue.js", "Chart.js", "Node.js", "MongoDB"],
+            demoUrl: "#",
+            codeUrl: "#",
+          },
+        ];
+
+        const certifications = [
+          {
+            title: "AWS Certified Cloud Practitioner",
+            issuer: "Amazon Web Services",
+            date: "Issued: May 2024",
+            image: "https://placehold.co/600x400/111111/FF9900?text=AWS+CLF",
+            url: "#",
+          },
+          {
+            title: "TensorFlow Developer Certificate",
+            issuer: "Google",
+            date: "Issued: Jan 2024",
+            image: "https://placehold.co/600x400/111111/4285F4?text=TensorFlow",
+            url: "#",
+          },
+          {
+            title: "Certified Kubernetes Administrator",
+            issuer: "The Linux Foundation",
+            date: "Issued: Sep 2023",
+            image: "https://placehold.co/600x400/111111/326CE5?text=CKA",
+            url: "#",
+          },
+        ];
+
+        // --- Page Navigation ---
+        const mainContent = document.getElementById("main-content");
+        const allProjectsPage = document.getElementById("all-projects-page");
+        const allPublicationsPage = document.getElementById(
+          "all-publications-page"
+        );
+        const projectDetailPage = document.getElementById(
+          "project-detail-page"
+        );
+        const aboutMePage = document.getElementById("about-me-page");
+
+        const viewAllProjectsBtn = document.getElementById(
+          "view-all-projects-btn"
+        );
+        const viewAllPubsBtn = document.getElementById("view-all-pubs-btn");
+        const backToHomeBtns = document.querySelectorAll(".back-to-home-btn");
+        const homeLink = document.getElementById("home-link");
+        const mainNavLinks = document.querySelectorAll(".main-nav a");
+        const readMoreAboutBtns = document.querySelectorAll(
+          ".read-more-about-btn"
+        );
+
+        function showPage(pageToShow) {
+          const pages = [
+            mainContent,
+            allProjectsPage,
+            allPublicationsPage,
+            projectDetailPage,
+            aboutMePage,
+          ];
+          pages.forEach((page) => {
+            if (page) page.classList.add("hidden");
+          });
+          if (pageToShow) {
+            pageToShow.classList.remove("hidden");
+          }
+          window.scrollTo(0, 0);
+        }
+
+        viewAllProjectsBtn.addEventListener("click", () =>
+          showPage(allProjectsPage)
+        );
+        viewAllPubsBtn.addEventListener("click", () =>
+          showPage(allPublicationsPage)
+        );
+        readMoreAboutBtns.forEach((btn) => {
+          btn.addEventListener("click", (e) => {
+            e.preventDefault();
+            showPage(aboutMePage);
+          });
+        });
+
+        backToHomeBtns.forEach((btn) => {
+          btn.addEventListener("click", () => showPage(mainContent));
+        });
+
+        homeLink.addEventListener("click", (e) => {
+          e.preventDefault();
+          showPage(mainContent);
+        });
+
+        mainNavLinks.forEach((link) => {
+          link.addEventListener("click", (e) => {
+            if (!mainContent.classList.contains("hidden")) return;
+            e.preventDefault();
+            showPage(mainContent);
+            setTimeout(() => {
+              const targetId = link.getAttribute("href");
+              const targetElement = document.querySelector(targetId);
+              if (targetElement)
+                targetElement.scrollIntoView({ behavior: "smooth" });
+            }, 100);
+          });
+        });
+
+        // --- Dynamic Content Rendering ---
+
+        function createProjectCard(project, isArchive = false) {
+          const cardClass = "card group project-card-clickable";
+          const titleClass = isArchive ? "text-xl" : "text-2xl";
+
+          return `
+              <div class="${cardClass}" data-project-id="${project.id}">
+                  <img src="${
+                    project.image
+                  }" class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105" onerror="this.onerror=null;this.src='https://placehold.co/600x400/111111/e0e0e0?text=Error';">
+                  <div class="p-6">
+                      <h3 class="${titleClass} font-montserrat font-bold text-primary-color mb-2">${project.title}</h3>
+                      ${
+                        !isArchive
+                          ? `<p class="text-gray-400 mb-4">${project.shortDescription}</p>`
+                          : ""
+                      }
+                      <div class="flex space-x-4 mt-4">
+                           <a href="${
+                             project.demoUrl
+                           }" target="_blank" class="neon-button px-4 py-2 text-sm font-bold"><i class="fas fa-globe mr-2"></i>Demo</a>
+                           <a href="${
+                             project.codeUrl
+                           }" target="_blank" class="neon-button px-4 py-2 text-sm font-bold"><i class="fab fa-github mr-2"></i>Code</a>
+                      </div>
+                  </div>
+              </div>
+          `;
+        }
+
+        function createCertificationCard(cert) {
+          return `
+            <a href="${cert.url}" target="_blank" class="card group block">
+                <img src="${cert.image}" class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105" onerror="this.onerror=null;this.src='https://placehold.co/600x400/111111/e0e0e0?text=Error';">
+                <div class="p-6">
+                    <h3 class="text-xl font-montserrat font-bold text-primary-color mb-1">${cert.title}</h3>
+                    <p class="text-gray-400 font-bold">${cert.issuer}</p>
+                    <p class="text-gray-500 text-sm">${cert.date}</p>
+                </div>
+            </a>
+        `;
+        }
+
+        function renderContent() {
+          const featuredContainer = document.getElementById(
+            "featured-projects-container"
+          );
+          const moreContainer = document.getElementById(
+            "more-projects-container"
+          );
+          const archiveContainer = document.getElementById(
+            "all-projects-archive-container"
+          );
+          const certsContainer = document.getElementById(
+            "certifications-container"
+          );
+
+          const featuredPublicationHtml = `
+            <div class="card flex flex-col justify-center p-6">
+              <h3 class="text-2xl font-montserrat font-bold text-primary-color">"Cognitive Architectures in Decentralized Networks"</h3>
+              <p class="text-gray-400 italic mt-2">Journal of Advanced Cryptography, Vol. 42, 2024</p>
+              <p class="mt-4 text-gray-300 flex-grow">Exploring novel consensus algorithms for high-throughput, secure, and decentralized applications.</p>
+              <a href="#" class="inline-block mt-4 text-secondary-color font-bold hover:text-primary-color transition-colors self-start">Read Paper <i class="fas fa-arrow-right ml-1"></i></a>
+            </div>
+          `;
+
+          if (featuredContainer) {
+            featuredContainer.innerHTML =
+              createProjectCard(projects[0]) + featuredPublicationHtml;
+          }
+
+          if (moreContainer)
+            moreContainer.innerHTML = projects
+              .slice(1, 3)
+              .map((p) => createProjectCard(p))
+              .join("");
+          if (archiveContainer)
+            archiveContainer.innerHTML = projects
+              .map((p) => createProjectCard(p, true))
+              .join("");
+          if (certsContainer)
+            certsContainer.innerHTML = certifications
+              .map((c) => createCertificationCard(c))
+              .join("");
+        }
+
+        function populateAndShowProjectDetail(projectId) {
+          const project = projects.find((p) => p.id === projectId);
+          if (!project) return;
+
+          document.getElementById("detail-title").textContent = project.title;
+          document.getElementById("detail-image").src = project.image.replace(
+            "600x400",
+            "1200x800"
+          );
+          document.getElementById("detail-long-description").textContent =
+            project.longDescription;
+
+          document.getElementById("detail-tags").innerHTML = project.tags
+            .map(
+              (tag) =>
+                `<span class="tag text-sm px-3 py-1 rounded">${tag}</span>`
+            )
+            .join("");
+          document.getElementById("detail-features").innerHTML =
+            project.features.map((f) => `<li>${f}</li>`).join("");
+          document.getElementById("detail-tech").innerHTML =
+            project.technologies.map((t) => `<li>${t}</li>`).join("");
+
+          document.getElementById("detail-links").innerHTML = `
+              <a href="${project.demoUrl}" target="_blank" class="neon-button px-8 py-3 font-bold rounded-lg"><i class="fas fa-globe mr-2"></i>Live Demo</a>
+              <a href="${project.codeUrl}" target="_blank" class="neon-button px-8 py-3 font-bold rounded-lg"><i class="fab fa-github mr-2"></i>View Code</a>
+          `;
+
+          showPage(projectDetailPage);
+        }
+
+        document.body.addEventListener("click", function (e) {
+          const card = e.target.closest(".project-card-clickable");
+          if (card) {
+            if (e.target.closest("a")) return;
+            e.preventDefault();
+            const projectId = card.dataset.projectId;
+            populateAndShowProjectDetail(projectId);
+          }
+        });
+
+        // --- UI Toggles ---
+        const mobileMenuButton = document.getElementById("mobile-menu-button");
+        const mobileMenu = document.getElementById("mobile-menu");
+        mobileMenuButton.addEventListener("click", () => {
+          mobileMenu.classList.toggle("hidden");
+        });
+
+        const accordionHeaders = document.querySelectorAll(".accordion-header");
+        accordionHeaders.forEach((header) => {
+          header.addEventListener("click", () => {
+            header.classList.toggle("active");
+            const content = header.nextElementSibling;
+            if (content.style.maxHeight) {
+              content.style.maxHeight = null;
+            } else {
+              content.style.maxHeight = content.scrollHeight + "px";
+            }
+          });
+        });
+
+        const followBtnMobile = document.getElementById("follow-btn-mobile");
+        const socialDropdownMobile = document.getElementById(
+          "social-dropdown-mobile"
+        );
+
+        if (followBtnMobile && socialDropdownMobile) {
+          followBtnMobile.addEventListener("click", (e) => {
+            e.stopPropagation();
+            socialDropdownMobile.classList.toggle("hidden");
+          });
+
+          window.addEventListener("click", () => {
+            if (!socialDropdownMobile.classList.contains("hidden")) {
+              socialDropdownMobile.classList.add("hidden");
+            }
+          });
+        }
+
+        // --- Three.js Globe ---
+        const container = document.getElementById("globe-container");
+        function initGlobe() {
+          if (!container) return;
+
+          let renderer = new THREE.WebGLRenderer({
+            antialias: true,
+            alpha: true,
+          });
+          let scene = new THREE.Scene();
+          let aspect = container.clientWidth / container.clientHeight;
+          let camera = new THREE.PerspectiveCamera(45, aspect, 0.1, 1500);
+          let cameraRotation = 0;
+          let cameraRotationSpeed = 0.001;
+          let cameraAutoRotation = true;
+
+          renderer.setSize(container.clientWidth, container.clientHeight);
+          container.innerHTML = "";
+          container.appendChild(renderer.domElement);
+
+          let orbitControls = new THREE.OrbitControls(
+            camera,
+            renderer.domElement
+          );
+          orbitControls.enablePan = false;
+          orbitControls.enableZoom = true;
+          orbitControls.enableDamping = true;
+          orbitControls.minDistance = 1.2;
+          orbitControls.maxDistance = 2.5;
+          orbitControls.rotateSpeed = 0.3;
+          orbitControls.dampingFactor = 0.1;
+          orbitControls.addEventListener("start", () => {
+            cameraAutoRotation = false;
+          });
+
+          let spotLight = new THREE.SpotLight(0xffffff, 1.2, 0, 10, 2);
+          spotLight.position.set(2, 0, 1);
+          scene.add(spotLight);
+          const ambientLight = new THREE.AmbientLight(0x404040, 1);
+          scene.add(ambientLight);
+
+          let planetProto = {
+            sphere: (size) => new THREE.SphereGeometry(size, 32, 32),
+            material: (options) => {
+              let mat = new THREE.MeshPhongMaterial();
+              if (options) {
+                for (var prop in options) {
+                  mat[prop] = options[prop];
+                }
+              }
+              return mat;
+            },
+            glowMaterial: (intensity, fade, color) =>
+              new THREE.ShaderMaterial({
+                uniforms: {
+                  c: { type: "f", value: intensity },
+                  p: { type: "f", value: fade },
+                  glowColor: { type: "c", value: new THREE.Color(color) },
+                  viewVector: { type: "v3", value: camera.position },
+                },
+                vertexShader: `
+              uniform vec3 viewVector; uniform float c; uniform float p; varying float intensity;
+              void main() {
+                  vec3 vNormal = normalize( normalMatrix * normal );
+                  vec3 vNormel = normalize( normalMatrix * viewVector );
+                  intensity = pow( c - dot(vNormal, vNormel), p );
+                  gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
+              }`,
+                fragmentShader: `
+              uniform vec3 glowColor; varying float intensity;
+              void main() { gl_FragColor = vec4( glowColor * intensity, 1.0 ); }`,
+                side: THREE.BackSide,
+                blending: THREE.AdditiveBlending,
+                transparent: true,
+              }),
+            texture: (material, property, uri) => {
+              let tl = new THREE.TextureLoader();
+              tl.crossOrigin = "anonymous";
+              tl.load(uri, (tex) => {
+                material[property] = tex;
+                material.needsUpdate = true;
+              });
+            },
+          };
+
+          let createPlanet = (options) => {
+            let surface = new THREE.Mesh(
+              planetProto.sphere(options.surface.size),
+              planetProto.material(options.surface.material)
+            );
+            let atmosphere = new THREE.Mesh(
+              planetProto.sphere(
+                options.surface.size + options.atmosphere.size
+              ),
+              planetProto.material({
+                side: THREE.DoubleSide,
+                transparent: true,
+                ...options.atmosphere.material,
+              })
+            );
+            let atmosphericGlow = new THREE.Mesh(
+              planetProto.sphere(
+                options.surface.size +
+                  options.atmosphere.size +
+                  options.atmosphere.glow.size
+              ),
+              planetProto.glowMaterial(
+                options.atmosphere.glow.intensity,
+                options.atmosphere.glow.fade,
+                options.atmosphere.glow.color
+              )
+            );
+            let planet = new THREE.Object3D();
+            surface.name = "surface";
+            planet.add(surface, atmosphere, atmosphericGlow);
+            for (let texProp in options.surface.textures) {
+              planetProto.texture(
+                surface.material,
+                texProp,
+                options.surface.textures[texProp]
+              );
+            }
+            for (let texProp in options.atmosphere.textures) {
+              planetProto.texture(
+                atmosphere.material,
+                texProp,
+                options.atmosphere.textures[texProp]
+              );
+            }
+            return planet;
+          };
+
+          let earth = createPlanet({
+            surface: {
+              size: 0.5,
+              material: {
+                bumpScale: 0.02,
+                specular: new THREE.Color("grey"),
+                shininess: 5,
+              },
+              textures: {
+                map: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/141228/earthmap1k.jpg",
+                bumpMap:
+                  "https://s3-us-west-2.amazonaws.com/s.cdpn.io/141228/earthbump1k.jpg",
+                specularMap:
+                  "https://s3-us-west-2.amazonaws.com/s.cdpn.io/141228/earthspec1k.jpg",
+              },
+            },
+            atmosphere: {
+              size: 0.003,
+              material: { opacity: 0.8 },
+              textures: {
+                map: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/141228/earthcloudmap.jpg",
+                alphaMap:
+                  "https://s3-us-west-2.amazonaws.com/s.cdpn.io/141228/earthcloudmaptrans.jpg",
+              },
+              glow: { size: 0.02, intensity: 0.6, fade: 7, color: 0xff007f },
+            },
+          });
+
+          let markerProto = {
+            latLongToVector3: (lat, long, radius, height) => {
+              var phi = (lat * Math.PI) / 180;
+              var theta = ((long - 180) * Math.PI) / 180;
+              var x = -(radius + height) * Math.cos(phi) * Math.cos(theta);
+              var y = (radius + height) * Math.sin(phi);
+              var z = (radius + height) * Math.cos(phi) * Math.sin(theta);
+              return new THREE.Vector3(x, y, z);
+            },
+            marker: (size, color, vec3Pos) => {
+              let markerGeo = new THREE.SphereGeometry(size);
+              let markerMat = new THREE.MeshLambertMaterial({
+                color: color,
+                emissive: color,
+                emissiveIntensity: 2,
+              });
+              let markerMesh = new THREE.Mesh(markerGeo, markerMat);
+              markerMesh.position.copy(vec3Pos);
+              return markerMesh;
+            },
+          };
+
+          let placeMarker = (object, options) => {
+            let pos = markerProto.latLongToVector3(
+              options.latitude,
+              options.longitude,
+              options.radius,
+              options.height
+            );
+            let marker = markerProto.marker(options.size, options.color, pos);
+            object.add(marker);
+          };
+
+          placeMarker(earth.getObjectByName("surface"), {
+            latitude: 34.0522,
+            longitude: -118.2437,
+            radius: 0.5,
+            height: 0,
+            size: 0.01,
+            color: 0xffffff,
+          });
+
+          camera.position.set(1, 1, 1.5);
+          scene.add(camera, earth);
+
+          window.addEventListener("resize", () => {
+            if (!container) return;
+            camera.aspect = container.clientWidth / container.clientHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(container.clientWidth, container.clientHeight);
+          });
+
+          let render = () => {
+            orbitControls.update();
+            earth.getObjectByName("surface").rotation.y += (1 / 32) * 0.01;
+            if (cameraAutoRotation) {
+              cameraRotation += cameraRotationSpeed;
+              camera.position.set(
+                1.5 * Math.sin(cameraRotation),
+                0,
+                1.5 * Math.cos(cameraRotation)
+              );
+              camera.lookAt(earth.position);
+            }
+            requestAnimationFrame(render);
+            renderer.render(scene, camera);
+          };
+          render();
+        }
+
+        // --- Initial Load ---
+        renderContent();
+        initGlobe();
+      });
+    </script>
+  </body>
+</html>
