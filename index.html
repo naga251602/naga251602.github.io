@@ -1,1923 +1,1090 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" class="scroll-smooth overflow-x-hidden">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Creative Portfolio</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Roboto+Mono:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
-    <style>
-      :root {
-        --primary-color: #ff007f; /* Hot Pink */
-        --background-color: #111111; /* Near Black */
-        --card-background: #1a1a1a;
-        --text-color: #f0f0f0;
-        --border-color: rgba(255, 0, 127, 0.4);
-      }
+    <title>Gaurav N V | Coffee & Code</title>
 
-      body {
-        background-color: var(--background-color);
-        color: var(--text-color);
-        font-family: "Roboto Mono", monospace;
-        scroll-behavior: smooth;
-      }
+    <script src="https://unpkg.com/lucide@latest"></script>
 
-      .font-montserrat {
-        font-family: "Montserrat", sans-serif;
-      }
-
-      .page {
-        animation: fadeIn 0.5s ease-in-out;
-      }
-
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-          transform: translateY(10px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      .section-heading {
-        position: relative;
-        display: inline-block;
-      }
-
-      .section-heading .heading-text {
-        position: relative;
-        z-index: 1;
-      }
-
-      .section-heading .brush-stroke {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 120%;
-        height: 120%;
-        z-index: 0;
-        opacity: 0.8;
-        color: var(--primary-color);
-      }
-
-      .brand-logo {
-        color: var(--text-color);
-        font-weight: 900;
-        font-size: 2rem;
-      }
-      .brand-logo .highlight {
-        color: var(--primary-color);
-      }
-
-      .neon-button {
-        border: 2px solid var(--primary-color);
-        color: var(--primary-color);
-        background: transparent;
-        transition: all 0.3s ease;
-      }
-      .neon-button:hover {
-        background-color: var(--primary-color);
-        color: var(--background-color);
-        box-shadow: 0 0 20px var(--primary-color);
-      }
-
-      .card {
-        background: var(--card-background);
-        border: 1px solid #333;
-        transition: all 0.3s ease;
-        overflow: hidden;
-      }
-      .card:hover {
-        border-color: var(--primary-color);
-        box-shadow: 0 10px 30px -10px var(--primary-color);
-        transform: translateY(-8px);
-      }
-
-      .skills-scroller {
-        height: 300px;
-        overflow: hidden;
-        position: relative;
-        mask-image: linear-gradient(
-          to bottom,
-          transparent,
-          black 20%,
-          black 80%,
-          transparent
-        );
-      }
-      .skills-scroller-inner {
-        display: flex;
-        flex-direction: column;
-        animation: scroll 20s linear infinite;
-      }
-      @keyframes scroll {
-        0% {
-          transform: translateY(0);
-        }
-        100% {
-          transform: translateY(-50%);
-        }
-      }
-      #globe-container {
-        width: 100%;
-        height: 300px;
-        cursor: grab;
-      }
-      .tag {
-        background-color: var(--primary-color);
-        color: var(--background-color);
-        font-weight: bold;
-      }
-      .accordion-content {
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.5s ease-in-out;
-      }
-      .accordion-header.active .accordion-icon {
-        transform: rotate(180deg);
-      }
-    </style>
+    <link rel="stylesheet" href="./css/output.css" />
   </head>
-  <body class="bg-background-color text-text-color">
-    <!-- Header -->
-    <header
-      class="bg-opacity-80 bg-background-color backdrop-blur-sm sticky top-0 z-50 border-b border-gray-800"
+  <body
+    class="min-h-screen selection:bg-orange-900 selection:text-white overflow-x-hidden relative"
+  >
+    <div
+      class="fixed top-20 left-10 w-64 h-64 bg-orange-900/20 rounded-full blur-[100px] -z-10"
+    ></div>
+    <div
+      class="fixed bottom-20 right-10 w-96 h-96 bg-stone-800/20 rounded-full blur-[100px] -z-10"
+    ></div>
+
+    <div
+      class="fixed top-0 left-0 w-full z-[60] bg-orange-950/90 backdrop-blur-md border-b border-orange-900/30 text-center py-2 shadow-lg"
     >
-      <div
-        class="container mx-auto px-4 py-4 flex justify-between items-center"
+      <p
+        class="text-xs font-medium text-orange-200 tracking-wide flex items-center justify-center gap-2"
       >
-        <a href="#" class="font-montserrat brand-logo" id="home-link"
-          >G<span class="highlight">.</span>N</a
+        <span>☕</span>
+        <span
+          >Open for:
+          <span class="text-white font-bold">Summer '26 Internships</span> &
+          <span class="text-white font-bold">Full-time Dec '26</span></span
         >
-        <nav class="hidden md:flex space-x-8 items-center font-bold main-nav">
-          <a href="#about" class="hover:text-primary-color transition-colors"
-            >About</a
-          >
-          <a href="#works" class="hover:text-primary-color transition-colors"
-            >Works</a
-          >
-          <a href="#projects" class="hover:text-primary-color transition-colors"
-            >Projects</a
-          >
-          <a
-            href="#publications"
-            class="hover:text-primary-color transition-colors"
-            >Publications</a
-          >
-          <a href="#contact" class="hover:text-primary-color transition-colors"
-            >Contact</a
-          >
-        </nav>
-        <button
-          id="mobile-menu-button"
-          class="md:hidden text-2xl text-primary-color"
-        >
-          <i class="fas fa-bars"></i>
-        </button>
-      </div>
-      <!-- Mobile Menu -->
-      <div id="mobile-menu" class="hidden md:hidden">
-        <nav
-          class="flex flex-col items-center space-y-4 py-4 font-bold main-nav"
-        >
-          <a href="#about" class="hover:text-primary-color transition-colors"
-            >About</a
-          >
-          <a href="#works" class="hover:text-primary-color transition-colors"
-            >Works</a
-          >
-          <a href="#projects" class="hover:text-primary-color transition-colors"
-            >Projects</a
-          >
-          <a
-            href="#publications"
-            class="hover:text-primary-color transition-colors"
-            >Publications</a
-          >
-          <a href="#contact" class="hover:text-primary-color transition-colors"
-            >Contact</a
-          >
-        </nav>
-      </div>
-    </header>
-
-    <div id="main-content" class="page">
-      <main class="container mx-auto px-4 py-16">
-        <!-- About Section -->
-        <section id="about" class="mb-32">
-          <div class="text-center lg:mb-12">
-            <div class="section-heading max-md:hidden">
-              <svg
-                class="brush-stroke"
-                viewBox="0 0 500 100"
-                preserveAspectRatio="none"
-              >
-                <path
-                  d="M5.4,62.8C24.2,53.2,43.2,43.8,62.5,35.4c18.1-7.9,36.8-15.5,55.5-22.3C139.1,6.2,160,0.5,182,0c22.7-0.5,45,4.9,67.5,9.2c22.5,4.3,45,8.2,67.5,12.3c21.5,4,43,8.2,64.5,13.1c22.4,5.1,44.8,11.1,67,16.5c21.8,5.3,43.5,10.2,65,15.2c10.8,2.5,21.5,5.3,32.5,7.8"
-                  fill="currentColor"
-                ></path>
-              </svg>
-              <h2
-                class="heading-text text-4xl md:text-5xl font-montserrat font-black"
-              >
-                ABOUT ME
-              </h2>
-            </div>
-          </div>
-
-          <!-- Mobile View -->
-          <div class="md:hidden">
-            <div class="flex items-center justify-between mb-6">
-              <div class="flex items-center">
-                <img
-                  src="https://placehold.co/256x256/111111/ff007f?text=GN"
-                  alt="Portrait"
-                  class="w-20 h-20 rounded-full object-cover"
-                />
-                <div>
-                  <h3 class="text-xl font-montserrat font-bold text-white">
-                    Gaurav N V
-                  </h3>
-                  <p class="text-sm">Web Developer and Data Scientist</p>
-                </div>
-              </div>
-              <div class="relative">
-                <button
-                  id="follow-btn-mobile"
-                  class="neon-button px-4 py-2 text-sm"
-                >
-                  Follow
-                </button>
-                <div
-                  id="social-dropdown-mobile"
-                  class="hidden absolute right-0 mt-2 w-56 bg-card-background border border-gray-700 rounded-lg shadow-lg z-20 bg-gray-900"
-                >
-                  <ul class="text-sm space-y-2 p-2">
-                    <li>
-                      <a
-                        href="https://www.usc.edu/"
-                        target="_blank"
-                        class="flex items-center text-gray-400 hover:text-primary-color transition-colors"
-                        ><i
-                          class="fas fa-building-columns w-8 text-center text-xl"
-                        ></i
-                        ><span class="ml-2 text-sm"
-                          >University Of Southern California</span
-                        ></a
-                      >
-                    </li>
-                    <li>
-                      <a
-                        href="https://github.com/naga251602"
-                        target="_blank"
-                        class="flex items-center text-gray-400 hover:text-primary-color transition-colors"
-                        ><i class="fab fa-github w-8 text-center text-xl"></i
-                        ><span class="ml-2">naga251602</span></a
-                      >
-                    </li>
-                    <li>
-                      <a
-                        href="https://scholar.google.com/citations?hl=en&user=61snQVkAAAAJ"
-                        target="_blank"
-                        class="flex items-center text-gray-400 hover:text-primary-color transition-colors"
-                        ><i
-                          class="fas fa-graduation-cap w-8 text-center text-xl"
-                        ></i
-                        ><span class="ml-2">Gaurav N V</span></a
-                      >
-                    </li>
-                    <li>
-                      <a
-                        href="https://www.linkedin.com/in/gauravnv/"
-                        target="_blank"
-                        class="flex items-center text-gray-400 hover:text-primary-color transition-colors"
-                        ><i class="fab fa-linkedin w-8 text-center text-xl"></i
-                        ><span class="ml-2">Gaurav N V</span></a
-                      >
-                    </li>
-
-                    <li>
-                      <a
-                        href="https://leetcode.com/u/naga251602/"
-                        target="_blank"
-                        class="flex items-center text-gray-400 hover:text-primary-color transition-colors"
-                        ><i class="fas fa-code w-8 text-center text-xl"></i
-                        ><span class="ml-2">naga251602</span></a
-                      >
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div class="text-lg text-gray-300">
-              <p class="mb-4 text-center">
-                I'm a graduate student at the University of Southern California
-                pursuing a Master's in Applied Science, with a deep passion for
-                full-stack development and cloud technologies.
-              </p>
-              <p class="mb-6 text-center">
-                My focus is on building efficient, scalable web applications,
-                and I have proven experience in optimizing performance and
-                enhancing user experience through my work as a Full Stack
-                Engineer and Frontend Team Lead. Based in Los Angeles, I'm eager
-                to tackle new challenges and transform innovative ideas into
-                reality.
-              </p>
-              <div
-                class="my-6 p-4 border-l-4 border-r-4 text-center border-primary-color bg-card-background/50 rounded-r-lg"
-              >
-                <p class="text-base font-bold text-gray-200">
-                  <i class="fas fa-briefcase text-primary-color mr-2"></i>
-                  Looking for <strong>Summer 2025 internships</strong> in
-                  Frontend Engineering or UX Development.
-                </p>
-              </div>
-              <div class="mb-8 text-center">
-                <a
-                  href="#"
-                  class="read-more-about-btn text-primary-color font-bold hover:underline"
-                  >Read more...</a
-                >
-              </div>
-              <div class="flex space-x-4 justify-center">
-                <a
-                  href="#"
-                  class="neon-button px-6 py-2 text-base font-bold flex items-center"
-                  ><i class="fas fa-file-alt mr-2"></i> Resume</a
-                >
-                <a
-                  href="#"
-                  class="neon-button px-6 py-2 text-base font-bold flex items-center"
-                  ><i class="fas fa-file-download mr-2"></i> CV</a
-                >
-              </div>
-            </div>
-          </div>
-
-          <!-- Desktop View -->
-          <div class="hidden md:grid md:grid-cols-3 gap-12 items-center">
-            <div class="md:col-span-1 flex flex-col items-center">
-              <div class="w-64 h-64 rounded-full p-2 relative">
-                <div
-                  class="absolute inset-0 rounded-full border-2 border-primary-color animate-spin"
-                  style="animation-duration: 8s"
-                ></div>
-                <img
-                  src="https://placehold.co/256x256/111111/ff007f?text=GN"
-                  alt="Portrait"
-                  class="rounded-full w-full h-full object-cover"
-                  onerror="this.onerror=null;this.src='https://placehold.co/256x256/111111/e0e0e0?text=Error';"
-                />
-              </div>
-              <h3
-                class="text-3xl font-montserrat font-bold text-primary-color mt-6"
-              >
-                Gaurav N V
-              </h3>
-              <div class="mt-6 w-full max-w-xs">
-                <ul class="space-y-3 text-lg">
-                  <li>
-                    <a
-                      href="https://www.usc.edu/"
-                      target="_blank"
-                      class="flex items-center text-gray-400 hover:text-primary-color transition-colors"
-                      ><i
-                        class="fas fa-building-columns w-8 text-center text-xl"
-                      ></i
-                      ><span class="ml-2 text-sm"
-                        >University Of Southern California</span
-                      ></a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="https://github.com/naga251602"
-                      target="_blank"
-                      class="flex items-center text-gray-400 hover:text-primary-color transition-colors"
-                      ><i class="fab fa-github w-8 text-center text-xl"></i
-                      ><span class="ml-2">naga251602</span></a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="https://scholar.google.com/citations?hl=en&user=61snQVkAAAAJ"
-                      target="_blank"
-                      class="flex items-center text-gray-400 hover:text-primary-color transition-colors"
-                      ><i
-                        class="fas fa-graduation-cap w-8 text-center text-xl"
-                      ></i
-                      ><span class="ml-2">Gaurav N V</span></a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="https://www.linkedin.com/in/gauravnv/"
-                      target="_blank"
-                      class="flex items-center text-gray-400 hover:text-primary-color transition-colors"
-                      ><i class="fab fa-linkedin w-8 text-center text-xl"></i
-                      ><span class="ml-2">Gaurav N V</span></a
-                    >
-                  </li>
-
-                  <li>
-                    <a
-                      href="https://leetcode.com/u/naga251602/"
-                      target="_blank"
-                      class="flex items-center text-gray-400 hover:text-primary-color transition-colors"
-                      ><i class="fas fa-code w-8 text-center text-xl"></i
-                      ><span class="ml-2">naga251602</span></a
-                    >
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div class="md:col-span-2 text-lg text-gray-300">
-              <p class="mb-4">
-                I'm a graduate student at the University of Southern California
-                pursuing a Master's in Applied Science, with a deep passion for
-                full-stack development and cloud technologies. My focus is on
-                building efficient, scalable web applications, and I have proven
-                experience in optimizing performance and enhancing user
-                experience through my work as a Full Stack Engineer and Frontend
-                Team Lead.
-              </p>
-              <p class="mb-6">
-                My focus is on building efficient, scalable web applications,
-                and I have proven experience in optimizing performance and
-                enhancing user experience through my work as a Full Stack
-                Engineer and Frontend Team Lead. Based in Los Angeles, I'm eager
-                to tackle new challenges and transform innovative ideas into
-                reality.
-              </p>
-              <div
-                class="my-6 p-4 border-l-4 border-primary-color bg-card-background/50 rounded-r-lg"
-              >
-                <p class="text-base font-bold text-gray-200">
-                  <i class="fas fa-briefcase text-primary-color mr-2"></i>
-                  Looking for <strong>Summer 2025 internships</strong> in
-                  Frontend Engineering or UX Development.
-                </p>
-              </div>
-              <div class="mb-8">
-                <a
-                  href="#"
-                  class="read-more-about-btn text-primary-color font-bold hover:underline"
-                  >Read more...</a
-                >
-              </div>
-              <div class="flex space-x-4">
-                <a
-                  href="#"
-                  class="neon-button px-6 py-2 text-base font-bold flex items-center"
-                >
-                  <i class="fas fa-file-alt mr-2"></i> Resume
-                </a>
-                <a
-                  href="#"
-                  class="neon-button px-6 py-2 text-base font-bold flex items-center"
-                >
-                  <i class="fas fa-file-download mr-2"></i> CV
-                </a>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Skills and Globe Section -->
-        <section
-          id="skills-globe"
-          class="mb-32 flex flex-col md:flex-row gap-12"
-        >
-          <div class="flex-1 card p-8">
-            <h3
-              class="text-3xl font-montserrat font-bold mb-6 text-center text-primary-color"
-            >
-              Core Skills
-            </h3>
-            <div class="skills-scroller">
-              <div class="skills-scroller-inner">
-                <ul class="text-lg space-y-4">
-                  <li>
-                    <i class="fas fa-code text-primary-color w-6 mr-2"></i>
-                    JavaScript (ES6+)
-                  </li>
-                  <li>
-                    <i class="fab fa-react text-primary-color w-6 mr-2"></i>
-                    React & Next.js
-                  </li>
-                  <li>
-                    <i class="fab fa-node-js text-primary-color w-6 mr-2"></i>
-                    Node.js & Express
-                  </li>
-                  <li>
-                    <i class="fab fa-python text-primary-color w-6 mr-2"></i>
-                    Python & Django
-                  </li>
-                  <li>
-                    <i class="fas fa-database text-primary-color w-6 mr-2"></i>
-                    PostgreSQL & MongoDB
-                  </li>
-                  <li>
-                    <i class="fab fa-docker text-primary-color w-6 mr-2"></i>
-                    Docker & Kubernetes
-                  </li>
-                  <li>
-                    <i class="fab fa-aws text-primary-color w-6 mr-2"></i> AWS &
-                    GCP
-                  </li>
-                  <li>
-                    <i class="fas fa-sitemap text-primary-color w-6 mr-2"></i>
-                    Systems Architecture
-                  </li>
-                  <li>
-                    <i class="fas fa-palette text-primary-color w-6 mr-2"></i>
-                    UI/UX Design
-                  </li>
-                </ul>
-                <ul class="text-lg space-y-4 pt-4">
-                  <!-- Duplicate for seamless scroll -->
-                  <li>
-                    <i class="fas fa-code text-primary-color w-6 mr-2"></i>
-                    JavaScript (ES6+)
-                  </li>
-                  <li>
-                    <i class="fab fa-react text-primary-color w-6 mr-2"></i>
-                    React & Next.js
-                  </li>
-                  <li>
-                    <i class="fab fa-node-js text-primary-color w-6 mr-2"></i>
-                    Node.js & Express
-                  </li>
-                  <li>
-                    <i class="fab fa-python text-primary-color w-6 mr-2"></i>
-                    Python & Django
-                  </li>
-                  <li>
-                    <i class="fas fa-database text-primary-color w-6 mr-2"></i>
-                    PostgreSQL & MongoDB
-                  </li>
-                  <li>
-                    <i class="fab fa-docker text-primary-color w-6 mr-2"></i>
-                    Docker & Kubernetes
-                  </li>
-                  <li>
-                    <i class="fab fa-aws text-primary-color w-6 mr-2"></i> AWS &
-                    GCP
-                  </li>
-                  <li>
-                    <i class="fas fa-sitemap text-primary-color w-6 mr-2"></i>
-                    Systems Architecture
-                  </li>
-                  <li>
-                    <i class="fas fa-palette text-primary-color w-6 mr-2"></i>
-                    UI/UX Design
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="flex-1 card p-8 flex flex-col">
-            <h3
-              class="text-3xl font-montserrat font-bold mb-6 text-center text-primary-color"
-            >
-              Home Base // LA
-            </h3>
-            <div id="globe-container" class="flex-grow"></div>
-          </div>
-        </section>
-
-        <!-- Featured Works Section -->
-        <section id="works" class="mb-32">
-          <div class="text-center mb-12">
-            <div class="section-heading">
-              <svg
-                class="brush-stroke"
-                viewBox="0 0 500 100"
-                preserveAspectRatio="none"
-              >
-                <path
-                  d="M5.4,62.8C24.2,53.2,43.2,43.8,62.5,35.4c18.1-7.9,36.8-15.5,55.5-22.3C139.1,6.2,160,0.5,182,0c22.7-0.5,45,4.9,67.5,9.2c22.5,4.3,45,8.2,67.5,12.3c21.5,4,43,8.2,64.5,13.1c22.4,5.1,44.8,11.1,67,16.5c21.8,5.3,43.5,10.2,65,15.2c10.8,2.5,21.5,5.3,32.5,7.8"
-                  fill="currentColor"
-                ></path>
-              </svg>
-              <h2
-                class="heading-text text-3xl md:text-5xl font-montserrat font-black"
-              >
-                FEATURED WORKS
-              </h2>
-            </div>
-          </div>
-          <div
-            id="featured-projects-container"
-            class="grid md:grid-cols-2 gap-8"
-          >
-            <!-- Project cards will be injected here by JavaScript -->
-          </div>
-        </section>
-
-        <!-- More Projects Section -->
-        <section id="projects" class="mb-32">
-          <div class="text-center mb-12">
-            <div class="section-heading">
-              <svg
-                class="brush-stroke"
-                viewBox="0 0 500 100"
-                preserveAspectRatio="none"
-              >
-                <path
-                  d="M5.4,62.8C24.2,53.2,43.2,43.8,62.5,35.4c18.1-7.9,36.8-15.5,55.5-22.3C139.1,6.2,160,0.5,182,0c22.7-0.5,45,4.9,67.5,9.2c22.5,4.3,45,8.2,67.5,12.3c21.5,4,43,8.2,64.5,13.1c22.4,5.1,44.8,11.1,67,16.5c21.8,5.3,43.5,10.2,65,15.2c10.8,2.5,21.5,5.3,32.5,7.8"
-                  fill="currentColor"
-                ></path>
-              </svg>
-              <h2
-                class="heading-text text-4xl md:text-5xl font-montserrat font-black"
-              >
-                PROJECTS
-              </h2>
-            </div>
-          </div>
-          <div id="more-projects-container" class="grid md:grid-cols-2 gap-8">
-            <!-- Project cards will be injected here by JavaScript -->
-          </div>
-          <div class="text-center mt-12">
-            <button
-              id="view-all-projects-btn"
-              class="neon-button px-8 py-3 font-bold rounded-lg"
-            >
-              View All Projects
-            </button>
-          </div>
-        </section>
-
-        <!-- Certifications Section -->
-        <section id="certifications" class="mb-32">
-          <div class="text-center mb-12">
-            <div class="section-heading">
-              <svg
-                class="brush-stroke"
-                viewBox="0 0 500 100"
-                preserveAspectRatio="none"
-              >
-                <path
-                  d="M5.4,62.8C24.2,53.2,43.2,43.8,62.5,35.4c18.1-7.9,36.8-15.5,55.5-22.3C139.1,6.2,160,0.5,182,0c22.7-0.5,45,4.9,67.5,9.2c22.5,4.3,45,8.2,67.5,12.3c21.5,4,43,8.2,64.5,13.1c22.4,5.1,44.8,11.1,67,16.5c21.8,5.3,43.5,10.2,65,15.2c10.8,2.5,21.5,5.3,32.5,7.8"
-                  fill="currentColor"
-                ></path>
-              </svg>
-              <h2
-                class="heading-text text-4xl md:text-5xl font-montserrat font-black"
-              >
-                CERTIFICATIONS
-              </h2>
-            </div>
-          </div>
-          <div
-            id="certifications-container"
-            class="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
-          >
-            <!-- Certifications will be dynamically injected here -->
-          </div>
-        </section>
-
-        <!-- Publications Section -->
-        <section id="publications" class="mb-32">
-          <div class="text-center mb-12">
-            <div class="section-heading">
-              <svg
-                class="brush-stroke"
-                viewBox="0 0 500 100"
-                preserveAspectRatio="none"
-              >
-                <path
-                  d="M5.4,62.8C24.2,53.2,43.2,43.8,62.5,35.4c18.1-7.9,36.8-15.5,55.5-22.3C139.1,6.2,160,0.5,182,0c22.7-0.5,45,4.9,67.5,9.2c22.5,4.3,45,8.2,67.5,12.3c21.5,4,43,8.2,64.5,13.1c22.4,5.1,44.8,11.1,67,16.5c21.8,5.3,43.5,10.2,65,15.2c10.8,2.5,21.5,5.3,32.5,7.8"
-                  fill="currentColor"
-                ></path>
-              </svg>
-              <h2
-                class="heading-text text-4xl md:text-5xl font-montserrat font-black"
-              >
-                PUBLICATIONS
-              </h2>
-            </div>
-          </div>
-          <div class="space-y-6 max-w-4xl mx-auto">
-            <div class="card p-6">
-              <h3 class="text-xl font-montserrat font-bold text-primary-color">
-                "Human AI collaboration for backend text generation: Dynamic
-                content recommendation (DCR) for websites based on keywords"
-              </h3>
-              <p class="text-gray-400 italic">
-                2024 International Conference on Computing and Data Science
-                (ICCDS)
-              </p>
-              <p class="mt-2 text-gray-300">
-                Exploring novel consensus algorithms for high-throughput,
-                secure, and decentralized applications.
-              </p>
-              <a
-                href="#"
-                class="inline-block mt-3 text-secondary-color font-bold hover:text-primary-color transition-colors"
-                >Read Paper <i class="fas fa-arrow-right ml-1"></i
-              ></a>
-            </div>
-            <div class="card p-6">
-              <h3 class="text-xl font-montserrat font-bold text-primary-color">
-                "Human-AI Symbiosis: UI/UX Paradigms for Neural Interfaces"
-              </h3>
-              <p class="text-gray-400 italic">
-                Proceedings of the International Conference on Cybernetic
-                Futures, 2023
-              </p>
-              <p class="mt-2 text-gray-300">
-                A study on intuitive user interfaces for brain-computer
-                interaction, focusing on reducing cognitive load.
-              </p>
-              <a
-                href="#"
-                class="inline-block mt-3 text-secondary-color font-bold hover:text-primary-color transition-colors"
-                >Read Paper <i class="fas fa-arrow-right ml-1"></i
-              ></a>
-            </div>
-          </div>
-          <div class="text-center mt-12">
-            <button
-              id="view-all-pubs-btn"
-              class="neon-button px-8 py-3 font-bold rounded-lg"
-            >
-              View All Publications
-            </button>
-          </div>
-        </section>
-
-        <!-- Extra Curricular Section -->
-        <section id="extracurricular" class="mb-32">
-          <div class="text-center mb-12">
-            <div class="section-heading">
-              <svg
-                class="brush-stroke"
-                viewBox="0 0 500 100"
-                preserveAspectRatio="none"
-              >
-                <path
-                  d="M5.4,62.8C24.2,53.2,43.2,43.8,62.5,35.4c18.1-7.9,36.8-15.5,55.5-22.3C139.1,6.2,160,0.5,182,0c22.7-0.5,45,4.9,67.5,9.2c22.5,4.3,45,8.2,67.5,12.3c21.5,4,43,8.2,64.5,13.1c22.4,5.1,44.8,11.1,67,16.5c21.8,5.3,43.5,10.2,65,15.2c10.8,2.5,21.5,5.3,32.5,7.8"
-                  fill="currentColor"
-                ></path>
-              </svg>
-              <h2
-                class="heading-text text-2xl md:text-5xl font-montserrat font-black"
-              >
-                EXTRACURRICULAR
-              </h2>
-            </div>
-          </div>
-          <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            <div class="card p-8 text-center">
-              <i
-                class="fas fa-code-branch text-4xl text-primary-color mb-4"
-              ></i>
-              <h3 class="text-2xl font-montserrat font-bold mb-2">
-                Open Source
-              </h3>
-              <p class="text-gray-400">
-                Regular contributor to data visualization libraries, focusing on
-                accessibility and performance improvements.
-              </p>
-            </div>
-            <div class="card p-8 text-center">
-              <i
-                class="fas fa-chalkboard-teacher text-4xl text-primary-color mb-4"
-              ></i>
-              <h3 class="text-2xl font-montserrat font-bold mb-2">
-                Mentorship
-              </h3>
-              <p class="text-gray-400">
-                Volunteer mentor for a coding bootcamp, guiding new developers
-                through their learning journey.
-              </p>
-            </div>
-            <div class="card p-8 text-center">
-              <i class="fas fa-palette text-4xl text-primary-color mb-4"></i>
-              <h3 class="text-2xl font-montserrat font-bold mb-2">
-                Creative Coding
-              </h3>
-              <p class="text-gray-400">
-                Exploring generative art and audio-visual projects using p5.js
-                and the Web Audio API.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact" class="mb-16">
-          <div class="text-center mb-12">
-            <div class="section-heading">
-              <svg
-                class="brush-stroke"
-                viewBox="0 0 500 100"
-                preserveAspectRatio="none"
-              >
-                <path
-                  d="M5.4,62.8C24.2,53.2,43.2,43.8,62.5,35.4c18.1-7.9,36.8-15.5,55.5-22.3C139.1,6.2,160,0.5,182,0c22.7-0.5,45,4.9,67.5,9.2c22.5,4.3,45,8.2,67.5,12.3c21.5,4,43,8.2,64.5,13.1c22.4,5.1,44.8,11.1,67,16.5c21.8,5.3,43.5,10.2,65,15.2c10.8,2.5,21.5,5.3,32.5,7.8"
-                  fill="currentColor"
-                ></path>
-              </svg>
-              <h2
-                class="heading-text text-4xl md:text-5xl font-montserrat font-black"
-              >
-                GET IN TOUCH
-              </h2>
-            </div>
-          </div>
-          <form class="max-w-2xl mx-auto card p-8">
-            <div class="mb-6">
-              <label
-                for="handle"
-                class="block mb-2 text-primary-color font-bold"
-                >Your Name</label
-              >
-              <input
-                type="text"
-                id="handle"
-                class="w-full bg-gray-900 border-2 border-gray-700 focus:border-primary-color focus:outline-none p-3 rounded-lg transition-colors"
-                placeholder="Gaurav Nagalapuram"
-              />
-            </div>
-            <div class="mb-6">
-              <label for="email" class="block mb-2 text-primary-color font-bold"
-                >Your Email</label
-              >
-              <input
-                type="email"
-                id="email"
-                class="w-full bg-gray-900 border-2 border-gray-700 focus:border-primary-color focus:outline-none p-3 rounded-lg transition-colors"
-                placeholder="you@example.com"
-              />
-            </div>
-            <div class="mb-6">
-              <label
-                for="message"
-                class="block mb-2 text-primary-color font-bold"
-                >Message</label
-              >
-              <textarea
-                id="message"
-                rows="6"
-                class="w-full bg-gray-900 border-2 border-gray-700 focus:border-primary-color focus:outline-none p-3 rounded-lg transition-colors"
-                placeholder="Let's build something amazing..."
-              ></textarea>
-            </div>
-            <div class="text-center">
-              <button
-                type="submit"
-                class="neon-button px-10 py-3 font-bold w-full md:w-auto rounded-lg"
-              >
-                Send Message
-              </button>
-            </div>
-          </form>
-        </section>
-      </main>
+      </p>
     </div>
 
-    <!-- About Me Full Page -->
-    <div id="about-me-page" class="hidden page">
-      <div class="container mx-auto px-4 py-16">
-        <div class="text-left mb-12">
-          <button
-            class="back-to-home-btn neon-button px-6 py-2 font-bold rounded-lg"
+    <nav class="fixed w-full z-50 top-10 px-6 py-4">
+      <div
+        class="max-w-6xl mx-auto glass-panel rounded-full px-6 py-3 flex justify-between items-center transition-colors"
+      >
+        <div
+          class="flex items-center gap-2 cursor-pointer"
+          onclick="window.scrollTo(0, 0)"
+        >
+          <i data-lucide="coffee" class="text-orange-500 w-6 h-6"></i>
+          <span class="font-bold text-xl tracking-tight text-[var(--text-main)]"
+            >Gaurav<span class="font-light text-[var(--text-muted)]"
+              >NV</span
+            ></span
           >
-            <i class="fas fa-arrow-left mr-2"></i> Back to Home
+        </div>
+
+        <div
+          class="hidden md:flex gap-8 text-sm font-medium text-[var(--text-muted)]"
+        >
+          <a
+            href="#"
+            onclick="closeAllWorks()"
+            class="hover:text-orange-500 transition-colors"
+            >Home</a
+          >
+          <a
+            href="#experience"
+            onclick="closeAllWorks()"
+            class="hover:text-orange-500 transition-colors"
+            >Experience</a
+          >
+          <a
+            href="#projects"
+            onclick="closeAllWorks()"
+            class="hover:text-orange-500 transition-colors"
+            >Projects</a
+          >
+          <a
+            href="#skills"
+            onclick="closeAllWorks()"
+            class="hover:text-orange-500 transition-colors"
+            >Skills</a
+          >
+        </div>
+
+        <div class="flex items-center gap-4">
+          <button
+            onclick="openHireMe()"
+            class="hidden md:block bg-orange-600 hover:bg-orange-700 text-white px-5 py-2 rounded-full text-sm font-medium transition-all shadow-lg shadow-orange-900/20"
+          >
+            Hire me
+          </button>
+
+          <button
+            class="md:hidden p-2 text-[var(--text-main)]"
+            onclick="toggleMobileMenu()"
+          >
+            <i data-lucide="menu" class="w-6 h-6"></i>
           </button>
         </div>
-        <div class="max-w-4xl mx-auto">
-          <div class="text-center mb-12">
-            <div class="section-heading">
-              <svg
-                class="brush-stroke"
-                viewBox="0 0 500 100"
-                preserveAspectRatio="none"
-              >
-                <path
-                  d="M5.4,62.8C24.2,53.2,43.2,43.8,62.5,35.4c18.1-7.9,36.8-15.5,55.5-22.3C139.1,6.2,160,0.5,182,0c22.7-0.5,45,4.9,67.5,9.2c22.5,4.3,45,8.2,67.5,12.3c21.5,4,43,8.2,64.5,13.1c22.4,5.1,44.8,11.1,67,16.5c21.8,5.3,43.5,10.2,65,15.2c10.8,2.5,21.5,5.3,32.5,7.8"
-                  fill="currentColor"
-                ></path>
-              </svg>
-              <h2
-                class="heading-text text-4xl md:text-5xl font-montserrat font-black"
-              >
-                ABOUT ME
-              </h2>
+      </div>
+    </nav>
+
+    <div
+      id="mobile-menu"
+      class="fixed inset-0 z-[70] bg-black/95 backdrop-blur-xl hidden flex-col items-center justify-center gap-8 transition-opacity duration-300"
+    >
+      <button
+        class="absolute top-8 right-8 text-white p-2"
+        onclick="toggleMobileMenu()"
+      >
+        <i data-lucide="x" class="w-8 h-8"></i>
+      </button>
+      <a
+        href="#"
+        onclick="
+          toggleMobileMenu();
+          closeAllWorks();
+        "
+        class="text-3xl font-bold text-white hover:text-orange-500 transition-colors"
+        >Home</a
+      >
+      <a
+        href="#experience"
+        onclick="
+          toggleMobileMenu();
+          closeAllWorks();
+        "
+        class="text-3xl font-bold text-white hover:text-orange-500 transition-colors"
+        >Experience</a
+      >
+      <a
+        href="#projects"
+        onclick="
+          toggleMobileMenu();
+          closeAllWorks();
+        "
+        class="text-3xl font-bold text-white hover:text-orange-500 transition-colors"
+        >Projects</a
+      >
+      <a
+        href="#skills"
+        onclick="
+          toggleMobileMenu();
+          closeAllWorks();
+        "
+        class="text-3xl font-bold text-white hover:text-orange-500 transition-colors"
+        >Skills</a
+      >
+      <button
+        onclick="
+          toggleMobileMenu();
+          openHireMe();
+        "
+        class="text-3xl font-bold text-orange-500"
+      >
+        Contact
+      </button>
+    </div>
+
+    <main
+      id="main-content"
+      class="pt-40 pb-20 px-6 transition-opacity duration-300"
+    >
+      <section
+        class="max-w-6xl mx-auto min-h-[85vh] flex flex-col md:flex-row items-center justify-between gap-12 mb-32 relative"
+      >
+        <div
+          class="flex-1 space-y-8 relative z-10 flex flex-col items-center md:items-start text-center md:text-left"
+        >
+          <div
+            class="absolute -top-20 -left-20 w-96 h-96 bg-orange-600/10 rounded-full blur-[100px] pointer-events-none"
+          ></div>
+
+          <div
+            class="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-card border-orange-500/30 text-xs font-medium text-orange-500 fade-in-up"
+          >
+            <span
+              class="w-2 h-2 rounded-full bg-green-500 animate-pulse"
+            ></span>
+            USC Graduate Student
+          </div>
+
+          <h1
+            class="text-6xl md:text-8xl font-bold leading-[0.9] tracking-tight text-[var(--text-main)] fade-in-up delay-100"
+          >
+            Code. <br />
+            <span class="coffee-gradient">Brew.</span><br />
+            Deploy.
+          </h1>
+
+          <p
+            class="text-xl md:text-lg text-[var(--text-muted)] max-w-lg leading-relaxed border-l-0 md:border-l-2 border-orange-500/50 pl-0 md:pl-6 fade-in-up delay-200"
+          >
+            I'm
+            <span class="font-bold text-[var(--text-main)]">Gaurav N V</span>. A
+            Full Stack Engineer & Data Scientist brewing scalable web
+            applications and distilling insights from data in Los Angeles.
+          </p>
+
+          <div
+            class="flex flex-wrap justify-center md:justify-start gap-4 pt-4 fade-in-up delay-300"
+          >
+            <button
+              onclick="openAllWorks('projects')"
+              class="bg-[var(--text-main)] text-[var(--bg-main)] px-8 py-4 rounded-xl font-bold hover:opacity-90 transition-all transform hover:-translate-y-1 shadow-lg"
+            >
+              Explore Menu
+            </button>
+            <a
+              href="#"
+              target="_blank"
+              class="glass-card px-8 py-4 rounded-xl font-semibold text-[var(--text-main)] hover:bg-[var(--card-hover)] transition-all flex items-center gap-2 group"
+            >
+              <i
+                data-lucide="file-text"
+                class="w-4 h-4 group-hover:translate-y-1 transition-transform"
+              ></i>
+              Resume
+            </a>
+            <div id="hero-socials" class="flex items-center gap-3"></div>
+          </div>
+        </div>
+
+        <div
+          class="flex-1 relative w-full flex justify-center md:justify-end mt-12 md:mt-0 fade-in-up delay-200"
+        >
+          <div class="relative w-80 h-96 md:w-[450px] md:h-[550px]">
+            <div
+              class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-orange-600/10 rounded-full blur-3xl"
+            ></div>
+            <div
+              class="absolute inset-0 bg-stone-800 rounded-[40px] rotate-3 border border-stone-700 overflow-hidden shadow-2xl"
+            >
+              <img
+                src="./resources/head_shot.jpeg"
+                class="w-full h-full object-cover opacity-70 mix-blend-overlay"
+                alt="Coding Setup"
+              />
+            </div>
+            <div
+              class="absolute top-10 -left-4 md:-left-10 glass-panel p-4 rounded-2xl floating-icon"
+              style="animation-delay: 0s"
+            >
+              <i data-lucide="code" class="text-orange-500 w-8 h-8"></i>
+            </div>
+            <div
+              class="absolute bottom-20 -right-2 md:-right-5 glass-panel p-4 rounded-2xl floating-icon"
+              style="animation-delay: 1.5s"
+            >
+              <div class="text-xs font-mono text-[var(--text-muted)]">
+                commits
+              </div>
+              <div class="text-xl font-bold text-[var(--text-main)]">
+                1,240+
+              </div>
             </div>
           </div>
+        </div>
+      </section>
 
-          <div class="text-lg text-gray-300 space-y-4 mb-16">
-            <p class="max-md:text-center">
-              I'm a graduate student at the University of Southern California
-              pursuing a Master's in Applied Science, with a deep passion for
-              full-stack development and cloud technologies.
-            </p>
-            <p class="max-md:text-center">
-              My focus is on building efficient, scalable web applications, and
-              I have proven experience in optimizing performance and enhancing
-              user experience through my work as a Full Stack Engineer and
-              Frontend Team Lead. Based in Los Angeles, I'm eager to tackle new
-              challenges and transform innovative ideas into reality.
-            </p>
-          </div>
+      <section class="max-w-6xl mx-auto mb-32">
+        <div
+          id="stats-container"
+          class="glass-panel rounded-3xl p-8 grid grid-cols-2 md:grid-cols-4 gap-8 divide-x divide-[var(--text-muted)]/10"
+        ></div>
+      </section>
 
-          <div class="text-center mb-12">
-            <div class="section-heading">
-              <svg
-                class="brush-stroke"
-                viewBox="0 0 500 100"
-                preserveAspectRatio="none"
+      <section id="roast-profile" class="max-w-6xl mx-auto mb-32">
+        <div class="flex flex-col md:flex-row items-start gap-16">
+          <div class="flex-1 relative w-full md:w-auto md:sticky md:top-32">
+            <div
+              class="glass-card p-1 rounded-[2rem] border border-orange-500/20 rotate-[-2deg] hover:rotate-0 transition-transform duration-500 w-full"
+            >
+              <div
+                class="bg-[var(--coffee-bag-bg)] rounded-[1.8rem] p-8 relative overflow-hidden transition-colors"
               >
-                <path
-                  d="M5.4,62.8C24.2,53.2,43.2,43.8,62.5,35.4c18.1-7.9,36.8-15.5,55.5-22.3C139.1,6.2,160,0.5,182,0c22.7-0.5,45,4.9,67.5,9.2c22.5,4.3,45,8.2,67.5,12.3c21.5,4,43,8.2,64.5,13.1c22.4,5.1,44.8,11.1,67,16.5c21.8,5.3,43.5,10.2,65,15.2c10.8,2.5,21.5,5.3,32.5,7.8"
-                  fill="currentColor"
-                ></path>
-              </svg>
-              <h2
-                class="heading-text text-4xl md:text-5xl font-montserrat font-black"
-              >
-                EDUCATION
-              </h2>
-            </div>
-          </div>
+                <div
+                  class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-orange-500 via-yellow-500 to-orange-500"
+                ></div>
 
-          <div class="space-y-12">
-            <!-- MS Institution -->
-            <div>
-              <h3 class="text-2xl font-montserrat font-bold text-primary-color">
-                University of Southern California
-              </h3>
-              <p class="text-gray-400 italic mt-1 text-base">
-                Master of Science in Data Science | Jan, 2025 - Dec, 2026
-              </p>
-              <div class="accordion space-y-3 text-sm mt-4">
-                <!-- Coursework -->
-                <div class="card overflow-hidden">
-                  <button
-                    class="accordion-header w-full flex justify-between items-center p-4 text-left"
+                <div class="flex justify-between items-start mb-6">
+                  <div
+                    class="text-[10px] font-mono text-stone-500 border border-stone-700 px-2 py-1 rounded bg-black/20"
                   >
-                    <span class="font-montserrat font-bold text-primary-color"
-                      ><i class="fas fa-book-open mr-3"></i>Coursework</span
-                    >
-                    <i
-                      class="fas fa-chevron-down accordion-icon transition-transform duration-300"
-                    ></i>
-                  </button>
-                  <div class="accordion-content">
-                    <ul
-                      class="p-4 pt-0 text-gray-400 space-y-1 list-disc list-inside"
-                    >
-                      <li>
-                        DSCI 510 - Principles of programming for DataScience
-                        (Python)
-                      </li>
-                      <li>DSCI 552 - Machine Learning For Data Science</li>
-                    </ul>
+                    BATCH #2026
                   </div>
+                  <i data-lucide="bean" class="text-orange-500 w-5 h-5"></i>
                 </div>
-                <!-- Research -->
-                <div class="card overflow-hidden">
-                  <button
-                    class="accordion-header w-full flex justify-between items-center p-4 text-left"
-                  >
-                    <span class="font-montserrat font-bold text-primary-color"
-                      ><i class="fas fa-flask mr-3"></i>Research</span
+
+                <h2 class="text-3xl font-bold text-white mb-1">GAURAV N V</h2>
+                <div class="text-orange-400 font-mono text-xs mb-6">
+                  PREMIUM DEVELOPER BLEND
+                </div>
+
+                <div class="space-y-3 border-t border-white/10 pt-5">
+                  <div class="flex justify-between items-center text-xs">
+                    <span class="text-stone-500">ORIGIN</span>
+                    <span class="text-white font-bold text-right"
+                      >USC<br /><span
+                        class="text-[10px] text-stone-400 font-normal"
+                        >Los Angeles, CA</span
+                      ></span
                     >
-                    <i
-                      class="fas fa-chevron-down accordion-icon transition-transform duration-300"
-                    ></i>
-                  </button>
-                  <div class="accordion-content">
-                    <ul
-                      class="p-4 pt-0 text-gray-400 space-y-1 list-disc list-inside"
-                    >
-                      <li>Fuzzy Score</li>
-                    </ul>
                   </div>
-                </div>
-                <!-- Clubs -->
-                <div class="card overflow-hidden">
-                  <button
-                    class="accordion-header w-full flex justify-between items-center p-4 text-left"
-                  >
-                    <span class="font-montserrat font-bold text-primary-color"
-                      ><i class="fas fa-users mr-3"></i>Clubs</span
+                  <div class="flex justify-between items-center text-xs">
+                    <span class="text-stone-500">ROAST</span>
+                    <span class="text-white font-bold"
+                      >Full City (Full Stack)</span
                     >
-                    <i
-                      class="fas fa-chevron-down accordion-icon transition-transform duration-300"
-                    ></i>
-                  </button>
-                  <div class="accordion-content">
-                    <ul
-                      class="p-4 pt-0 text-gray-400 space-y-1 list-disc list-inside"
-                    >
-                      <li>Cryptography Club</li>
-                    </ul>
+                  </div>
+                  <div class="flex justify-between items-center text-xs">
+                    <span class="text-stone-500">ELEVATION</span>
+                    <span class="text-white font-bold">Graduate Level</span>
                   </div>
                 </div>
               </div>
             </div>
+          </div>
 
-            <!-- B.Tech Institution -->
-            <div>
-              <h3 class="text-2xl font-montserrat font-bold text-primary-color">
-                R.M.K. Engineering College, Anna University
-              </h3>
-              <p class="text-gray-400 italic mt-1 text-base">
-                Bachelor of Technology in Information Technology| 2020 - 2024
-              </p>
-              <div class="accordion space-y-3 text-sm mt-4">
-                <!-- Coursework -->
-                <div class="card overflow-hidden">
-                  <button
-                    class="accordion-header w-full flex justify-between items-center p-4 text-left"
-                  >
-                    <span class="font-montserrat font-bold text-primary-color"
-                      ><i class="fas fa-book-open mr-3"></i>Coursework</span
-                    >
-                    <i
-                      class="fas fa-chevron-down accordion-icon transition-transform duration-300"
-                    ></i>
-                  </button>
-                  <div class="accordion-content">
-                    <ul
-                      class="p-4 pt-0 text-gray-400 space-y-1 list-disc list-inside"
-                    >
-                      <li>Data Structures</li>
-                      <li>Object Oriented Programming</li>
-                      <li>Operating Systems</li>
-                      <li>DBMS</li>
-                      <li>Cloud Computing</li>
-                    </ul>
+          <div class="flex-1 space-y-6 w-full">
+            <h2
+              class="text-sm font-bold text-orange-500 uppercase tracking-widest"
+            >
+              The Profile
+            </h2>
+            <h3 class="text-4xl font-bold text-[var(--text-main)]">
+              More Than Just Code. <br />
+              <span class="text-[var(--text-muted)]">It's a Craft.</span>
+            </h3>
+            <p class="text-[var(--text-muted)] leading-relaxed">
+              Just like a barista fine-tunes the grind size and water
+              temperature, I fine-tune algorithms and system architectures. My
+              journey started with simple scripts and has brewed into complex,
+              cloud-native applications. Currently pursuing my Master's at USC.
+            </p>
+
+            <div class="mt-8">
+              <div
+                class="glass-panel rounded-xl overflow-hidden border border-[var(--glass-border)]"
+              >
+                <div
+                  class="flex items-center gap-3 p-4 border-b border-[var(--glass-border)]"
+                >
+                  <div class="p-1.5 rounded bg-orange-500/10 text-orange-500">
+                    <i data-lucide="graduation-cap" class="w-4 h-4"></i>
                   </div>
+                  <span class="font-bold text-[var(--text-main)]"
+                    >Education & Coursework</span
+                  >
                 </div>
-                <!-- Research -->
-                <div class="card overflow-hidden">
-                  <button
-                    class="accordion-header w-full flex justify-between items-center p-4 text-left"
-                  >
-                    <span class="font-montserrat font-bold text-primary-color"
-                      ><i class="fas fa-flask mr-3"></i>Research</span
-                    >
-                    <i
-                      class="fas fa-chevron-down accordion-icon transition-transform duration-300"
-                    ></i>
-                  </button>
-                  <div class="accordion-content">
-                    <ul
-                      class="p-4 pt-0 text-gray-400 space-y-1 list-disc list-inside"
-                    >
-                      <li>MLP - multilayer perceptron</li>
-                      <li>Neural Networks</li>
-                      <li>Web Optimizations</li>
-                    </ul>
-                  </div>
-                </div>
-                <!-- Clubs -->
-                <!-- <div class="card overflow-hidden">
-                  <button
-                    class="accordion-header w-full flex justify-between items-center p-4 text-left"
-                  >
-                    <span class="font-montserrat font-bold text-primary-color"
-                      ><i class="fas fa-users mr-3"></i>Clubs</span
-                    >
-                    <i
-                      class="fas fa-chevron-down accordion-icon transition-transform duration-300"
-                    ></i>
-                  </button>
-                  <div class="accordion-content">
-                    <ul
-                      class="p-4 pt-0 text-gray-400 space-y-1 list-disc list-inside"
-                    >
-                      <li>Yoga</li>
-                    </ul>
-                  </div>
-                </div> -->
+                <div
+                  id="education-container"
+                  class="divide-y divide-[var(--glass-border)] bg-black/5"
+                ></div>
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section id="experience" class="max-w-6xl mx-auto mb-32">
+        <div class="mb-12">
+          <h2
+            class="text-sm font-bold text-orange-500 uppercase tracking-widest mb-2"
+          >
+            Experience
+          </h2>
+          <h3 class="text-4xl font-bold text-[var(--text-main)]">
+            The Daily <span class="text-[var(--text-muted)]">Grind</span>
+          </h3>
+        </div>
+        <div class="relative pl-8 md:pl-0">
+          <div
+            class="absolute left-8 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-orange-500 via-[var(--text-muted)] to-transparent"
+          ></div>
+          <div id="experience-container" class="space-y-16"></div>
+        </div>
+      </section>
+
+      <section id="tech-stacks" class="max-w-6xl mx-auto mb-32">
+        <div class="mb-12 text-center md:text-left">
+          <h2
+            class="text-sm font-bold text-orange-500 uppercase tracking-widest mb-2"
+          >
+            Technical Origins
+          </h2>
+          <h3 class="text-4xl font-bold text-[var(--text-main)]">
+            Choose Your <span class="text-[var(--text-muted)]">Blend</span>
+          </h3>
+          <p class="text-[var(--text-muted)] mt-4 max-w-xl mx-auto md:mx-0">
+            Click a card to enter the
+            <span class="text-orange-500 font-bold">Octopus Tree Map</span>.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-8 px-4">
+          <div
+            class="relative group cursor-pointer h-80"
+            onclick="openMap('fullstack')"
+          >
+            <div
+              class="absolute inset-0 bg-stone-900 rounded-3xl rotate-3 group-hover:rotate-6 transition-transform duration-500 border border-stone-800 shadow-xl"
+            ></div>
+            <div
+              class="absolute inset-0 glass-card rounded-3xl p-8 -rotate-2 group-hover:-rotate-3 transition-transform duration-500 flex flex-col justify-between overflow-hidden"
+            >
+              <div
+                class="absolute -right-10 -top-10 w-40 h-40 bg-orange-600/10 rounded-full blur-3xl group-hover:bg-orange-600/20 transition-all"
+              ></div>
+              <div>
+                <div class="flex items-start justify-between mb-6">
+                  <div
+                    class="bg-stone-800 p-4 rounded-2xl border border-stone-700 group-hover:border-orange-500/50 transition-colors"
+                  >
+                    <i data-lucide="layers" class="w-8 h-8 text-orange-300"></i>
+                  </div>
+                  <span
+                    class="text-xs font-bold bg-[var(--text-main)]/10 px-3 py-1 rounded-full text-[var(--text-muted)] border border-[var(--text-main)]/10"
+                    >Explore Tree</span
+                  >
+                </div>
+                <h4
+                  class="text-2xl font-bold mb-2 group-hover:text-orange-500 transition-colors text-[var(--text-main)]"
+                >
+                  Full Stack & Cloud
+                </h4>
+                <p class="text-[var(--text-muted)] text-sm leading-relaxed">
+                  Building scalable apps with React, Node.js, AWS, and
+                  Kubernetes.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="relative group cursor-pointer h-80"
+            onclick="openMap('datascience')"
+          >
+            <div
+              class="absolute inset-0 bg-stone-900 rounded-3xl rotate-3 group-hover:rotate-6 transition-transform duration-500 border border-stone-800 shadow-xl"
+            ></div>
+            <div
+              class="absolute inset-0 glass-card rounded-3xl p-8 -rotate-2 group-hover:-rotate-3 transition-transform duration-500 flex flex-col justify-between overflow-hidden"
+            >
+              <div
+                class="absolute -right-10 -top-10 w-40 h-40 bg-blue-600/10 rounded-full blur-3xl group-hover:bg-blue-600/20 transition-all"
+              ></div>
+              <div>
+                <div class="flex items-start justify-between mb-6">
+                  <div
+                    class="bg-stone-800 p-4 rounded-2xl border border-stone-700 group-hover:border-blue-500/50 transition-colors"
+                  >
+                    <i
+                      data-lucide="brain-circuit"
+                      class="w-8 h-8 text-blue-300"
+                    ></i>
+                  </div>
+                  <span
+                    class="text-xs font-bold bg-[var(--text-main)]/10 px-3 py-1 rounded-full text-[var(--text-muted)] border border-[var(--text-main)]/10"
+                    >Explore Tree</span
+                  >
+                </div>
+                <h4
+                  class="text-2xl font-bold mb-2 group-hover:text-blue-500 transition-colors text-[var(--text-main)]"
+                >
+                  Data Science
+                </h4>
+                <p class="text-[var(--text-muted)] text-sm leading-relaxed">
+                  Python, Django, ETL Pipelines, and Machine Learning models.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="w-full min-h-screen relative flex items-center justify-center overflow-hidden mb-32 group"
+      >
+        <div class="absolute inset-0 bg-stone-900">
+          <img
+            src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80"
+            class="w-full h-full object-cover opacity-20 group-hover:scale-105 transition-transform duration-[2s]"
+          />
+          <div
+            class="absolute inset-0 bg-gradient-to-t from-[var(--bg-main)] via-transparent to-[var(--bg-main)]"
+          ></div>
+          <div class="absolute inset-0 bg-black/60"></div>
+        </div>
+
+        <div
+          class="relative z-10 max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-16 items-center"
+        >
+          <div class="order-2 md:order-1 text-center md:text-left">
+            <div
+              class="inline-flex items-center gap-2 mb-6 border border-blue-500/30 bg-blue-500/10 px-4 py-1.5 rounded-full backdrop-blur-sm"
+            >
+              <span
+                class="w-2 h-2 rounded-full bg-blue-500 animate-pulse"
+              ></span>
+              <span
+                class="text-xs font-bold text-blue-400 tracking-widest uppercase"
+                >Featured Roast</span
+              >
+            </div>
+
+            <h2
+              class="text-6xl md:text-8xl font-bold text-white mb-6 leading-none tracking-tight"
+            >
+              Sentinel<br /><span class="text-blue-500">AIOps.</span>
+            </h2>
+
+            <p
+              class="text-xl text-stone-300 mb-8 max-w-md mx-auto md:mx-0 leading-relaxed font-light"
+            >
+              Unsupervised detection of silent microservice failures. Correlates
+              metrics, logs, and traces to reduce simulated MTTD by ~40%.
+            </p>
+
+            <div
+              class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start"
+            >
+              <button
+                onclick="openProjectDetail('Sentinel')"
+                class="bg-white text-black hover:bg-stone-200 px-8 py-4 rounded-xl font-bold transition-all flex items-center justify-center gap-2"
+              >
+                View Case Study
+                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="order-1 md:order-2 flex justify-center">
+            <div
+              class="relative glass-card p-1 rounded-3xl transform rotate-3 hover:rotate-0 transition-transform duration-700 shadow-2xl shadow-blue-900/20 max-w-md w-full"
+            >
+              <div
+                class="bg-gradient-to-br from-stone-800 to-black rounded-[1.3rem] aspect-square flex items-center justify-center relative overflow-hidden group/card"
+              >
+                <div class="absolute inset-0 flex items-center justify-center">
+                  <span
+                    class="text-[200px] font-bold text-white/5 select-none font-serif"
+                    >S</span
+                  >
+                </div>
+                <div class="relative z-10 flex flex-col items-center">
+                  <div
+                    class="w-24 h-24 bg-blue-500 rounded-2xl flex items-center justify-center shadow-lg shadow-blue-900/50 mb-4 group-hover/card:scale-110 transition-transform duration-500"
+                  >
+                    <i
+                      data-lucide="shield-alert"
+                      class="text-black w-12 h-12"
+                    ></i>
+                  </div>
+                  <div class="text-center">
+                    <span
+                      class="text-xs font-mono text-blue-400 border border-blue-900/50 bg-blue-900/20 px-2 py-1 rounded"
+                      >Autoencoder Anomaly Detection</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects" class="max-w-6xl mx-auto mb-32">
+        <div
+          class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6"
+        >
+          <div>
+            <h2
+              class="text-sm font-bold text-orange-500 uppercase tracking-widest mb-2"
+            >
+              My Works
+            </h2>
+            <h3 class="text-4xl font-bold text-[var(--text-main)]">
+              Signature <span class="text-[var(--text-muted)]">Roasts</span>
+            </h3>
+          </div>
+          <div class="flex gap-2">
+            <button
+              onclick="openAllWorks('projects')"
+              class="text-xs font-mono border border-orange-500/30 px-3 py-1 rounded text-orange-500 hover:bg-orange-500/10 transition-colors"
+            >
+              VIEW ALL PROJECTS
+            </button>
+          </div>
+        </div>
+
+        <div
+          id="projects-container"
+          class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch px-4"
+        ></div>
+      </section>
+
+      <section id="skills" class="max-w-6xl mx-auto mb-32 overflow-hidden">
+        <div class="mb-12 px-6 text-center">
+          <h2
+            class="text-sm font-bold text-orange-500 uppercase tracking-widest mb-2"
+          >
+            Bean Counter
+          </h2>
+          <h3 class="text-4xl font-bold text-[var(--text-main)]">
+            Select Your <span class="text-[var(--text-muted)]">Grind</span>
+          </h3>
+          <p class="text-[var(--text-muted)] mt-4 text-sm">
+            Grab a jar from the moving belt to sample a flight of my work.
+          </p>
+        </div>
+
+        <div class="shelf-container">
+          <div class="shelf-track" id="skill-shelf"></div>
+        </div>
+      </section>
+
+      <section class="max-w-6xl mx-auto mb-32">
+        <div
+          class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6 px-4 md:px-0"
+        >
+          <div>
+            <h2
+              class="text-sm font-bold text-orange-500 uppercase tracking-widest mb-2"
+            >
+              Lab Notes
+            </h2>
+            <h3 class="text-4xl font-bold text-[var(--text-main)]">
+              Research & <span class="text-[var(--text-muted)]">Papers</span>
+            </h3>
+          </div>
+          <div class="flex gap-2">
+            <button
+              onclick="openAllWorks('publications')"
+              class="text-xs font-mono border border-blue-500/30 px-3 py-1 rounded text-blue-500 hover:bg-blue-500/10 transition-colors"
+            >
+              VIEW ALL NOTES
+            </button>
+          </div>
+        </div>
+        <div
+          id="publications-container"
+          class="grid grid-cols-1 md:grid-cols-2 gap-12"
+        ></div>
+      </section>
+
+      <section class="max-w-6xl mx-auto mb-32">
+        <h2
+          class="text-sm font-bold text-orange-500 uppercase tracking-widest mb-8"
+        >
+          Community Blend (Open Source)
+        </h2>
+        <div
+          id="oss-container"
+          class="grid grid-cols-1 md:grid-cols-3 gap-8 px-4"
+        ></div>
+      </section>
+
+      <section id="contact" class="max-w-xl mx-auto mb-32">
+        <div class="relative" id="contact-container-home"></div>
+      </section>
+    </main>
+
+    <div
+      id="all-works-page"
+      class="fixed inset-0 z-[100] bg-[var(--bg-main)] overflow-y-auto hidden transition-all duration-500"
+    >
+      <div class="max-w-6xl mx-auto px-6 py-20">
+        <div class="flex justify-between items-center mb-16">
+          <div>
+            <h2
+              class="text-sm font-bold text-orange-500 uppercase tracking-widest mb-2"
+            >
+              The Full Menu
+            </h2>
+            <h1
+              class="text-5xl font-bold text-[var(--text-main)]"
+              id="all-works-title"
+            >
+              All Works
+            </h1>
+          </div>
+          <button
+            onclick="closeAllWorks()"
+            class="p-4 rounded-full bg-[var(--bg-secondary)] text-[var(--text-main)] hover:bg-orange-600 hover:text-white transition-all"
+          >
+            <i data-lucide="x" class="w-8 h-8"></i>
+          </button>
+        </div>
+
+        <div
+          id="project-filters"
+          class="flex flex-wrap gap-2 mb-12 hidden"
+        ></div>
+
+        <div class="space-y-24">
+          <section id="section-all-projects">
+            <div
+              id="all-projects-grid"
+              class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            ></div>
+          </section>
+
+          <section id="section-all-pubs">
+            <div
+              id="all-publications-grid"
+              class="grid grid-cols-1 md:grid-cols-2 gap-8"
+            ></div>
+          </section>
+
+          <section id="section-all-oss">
+            <div
+              id="all-oss-grid"
+              class="grid grid-cols-1 md:grid-cols-3 gap-8"
+            ></div>
+          </section>
+        </div>
+
+        <div class="mt-20 text-center">
+          <button
+            onclick="closeAllWorks()"
+            class="text-[var(--text-muted)] hover:text-orange-500 underline decoration-dashed"
+          >
+            Return to Home
+          </button>
         </div>
       </div>
     </div>
 
-    <!-- All Projects Page -->
-    <div id="all-projects-page" class="hidden page">
-      <div class="container mx-auto px-4 py-16">
-        <div class="text-center mb-12">
-          <div class="section-heading">
-            <svg
-              class="brush-stroke"
-              viewBox="0 0 500 100"
-              preserveAspectRatio="none"
-            >
-              <path
-                d="M5.4,62.8C24.2,53.2,43.2,43.8,62.5,35.4c18.1-7.9,36.8-15.5,55.5-22.3C139.1,6.2,160,0.5,182,0c22.7-0.5,45,4.9,67.5,9.2c22.5,4.3,45,8.2,67.5,12.3c21.5,4,43,8.2,64.5,13.1c22.4,5.1,44.8,11.1,67,16.5c21.8,5.3,43.5,10.2,65,15.2c10.8,2.5,21.5,5.3,32.5,7.8"
-                fill="currentColor"
-              ></path>
-            </svg>
-            <h2
-              class="heading-text text-4xl md:text-5xl font-montserrat font-black"
-            >
-              PROJECT ARCHIVE
-            </h2>
-          </div>
-        </div>
-        <div class="text-left mb-12">
+    <div
+      id="hire-me-page"
+      class="fixed inset-0 z-[110] bg-[var(--bg-main)] overflow-y-auto hidden transition-all duration-500"
+    >
+      <div class="max-w-6xl mx-auto px-6 py-12 min-h-screen flex flex-col">
+        <div class="flex justify-between items-center mb-16">
           <button
-            class="back-to-home-btn neon-button px-6 py-2 font-bold rounded-lg"
+            onclick="closeHireMe()"
+            class="flex items-center gap-2 text-[var(--text-muted)] hover:text-orange-500 transition-colors"
           >
-            <i class="fas fa-arrow-left mr-2"></i> Back to Home
+            <i data-lucide="arrow-left" class="w-5 h-5"></i> Back to Home
+          </button>
+          <button
+            onclick="closeHireMe()"
+            class="p-2 rounded-full bg-[var(--bg-secondary)] text-[var(--text-main)] hover:bg-orange-600 hover:text-white transition-all"
+          >
+            <i data-lucide="x" class="w-6 h-6"></i>
+          </button>
+        </div>
+
+        <div class="flex-1 grid md:grid-cols-2 gap-16 items-start">
+          <div class="space-y-8">
+            <div>
+              <h2
+                class="text-sm font-bold text-orange-500 uppercase tracking-widest mb-4"
+              >
+                Let's Connect
+              </h2>
+              <h1
+                class="text-5xl md:text-6xl font-bold text-[var(--text-main)] leading-tight mb-6"
+              >
+                Ignite your next project with a
+                <span class="coffee-gradient">full-stack vision</span> and
+                data-driven execution.
+              </h1>
+              <p class="text-xl text-[var(--text-muted)] leading-relaxed">
+                Whether you need a Frontend Lead, a Data Scientist, or an
+                end-to-end cloud solution, I bring proven expertise in React,
+                Next.js, Cloud Architecture, and scalable Python backends.
+              </p>
+            </div>
+
+            <div class="space-y-4">
+              <div class="flex items-center gap-3">
+                <div class="p-3 bg-stone-900 rounded-full text-orange-500">
+                  <i data-lucide="mail" class="w-5 h-5"></i>
+                </div>
+                <a
+                  href="mailto:nagalapu@usc.edu"
+                  class="text-lg font-mono text-[var(--text-main)] hover:text-orange-500 transition-colors"
+                  >nagalapu@usc.edu</a
+                >
+              </div>
+              <a
+                href="https://linkedin.com/in/gaurav-nv"
+                target="_blank"
+                class="inline-flex items-center gap-2 bg-[#0077b5] hover:bg-[#006097] text-white px-6 py-3 rounded-xl font-bold transition-all"
+              >
+                <i data-lucide="linkedin" class="w-5 h-5"></i> Connect on
+                LinkedIn
+              </a>
+            </div>
+
+            <div class="pt-8 border-t border-[var(--glass-border)]">
+              <p class="text-sm font-mono text-orange-400">
+                YOUR INNOVATION. MY CODE. LET'S MAKE IT REAL.
+              </p>
+            </div>
+          </div>
+
+          <div class="relative w-full" id="contact-container-hire-me"></div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      id="citeModal"
+      class="fixed inset-0 z-[260] hidden items-center justify-center p-4"
+    >
+      <div
+        class="absolute inset-0 bg-black/80 backdrop-blur-sm"
+        onclick="closeCiteModal()"
+      ></div>
+      <div
+        class="glass-card w-full max-w-lg p-6 rounded-2xl relative z-10 animate-modal border-l-4 border-l-orange-500"
+      >
+        <div class="flex justify-between items-start mb-4">
+          <h3 class="text-xl font-bold text-white">Cite This Work</h3>
+          <button
+            onclick="closeCiteModal()"
+            class="text-[var(--text-muted)] hover:text-white"
+          >
+            <i data-lucide="x" class="w-5 h-5"></i>
           </button>
         </div>
         <div
-          id="all-projects-archive-container"
-          class="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
-        >
-          <!-- All project cards will be injected here by JavaScript -->
-        </div>
-      </div>
-    </div>
-
-    <!-- Project Detail Page -->
-    <div id="project-detail-page" class="hidden page">
-      <div class="container mx-auto px-4 py-16">
-        <div class="text-left mb-12">
-          <button
-            class="back-to-home-btn neon-button px-6 py-2 font-bold rounded-lg"
-          >
-            <i class="fas fa-arrow-left mr-2"></i> Back to Projects
-          </button>
-        </div>
-        <div class="max-w-4xl mx-auto">
-          <h2
-            id="detail-title"
-            class="text-4xl md:text-5xl font-montserrat font-black text-primary-color mb-4"
-          ></h2>
-          <div id="detail-tags" class="flex flex-wrap gap-2 mb-8"></div>
-
-          <img
-            id="detail-image"
-            src=""
-            alt="Project main image"
-            class="w-full h-auto rounded-lg shadow-lg mb-8"
-            onerror="this.onerror=null;this.src='https://placehold.co/1200x800/111111/e0e0e0?text=Error';"
-          />
-
-          <div class="text-lg text-gray-300 space-y-4 mb-12">
-            <p id="detail-long-description"></p>
-          </div>
-
-          <div class="grid md:grid-cols-2 gap-8">
-            <div class="card p-6">
-              <h3
-                class="text-2xl font-montserrat font-bold text-primary-color mb-4"
-              >
-                Key Features
-              </h3>
-              <ul
-                id="detail-features"
-                class="list-disc list-inside space-y-2 text-gray-400"
-              ></ul>
-            </div>
-            <div class="card p-6">
-              <h3
-                class="text-2xl font-montserrat font-bold text-primary-color mb-4"
-              >
-                Technology Stack
-              </h3>
-              <ul
-                id="detail-tech"
-                class="list-disc list-inside space-y-2 text-gray-400"
-              ></ul>
-            </div>
-          </div>
-
-          <div id="detail-links" class="flex justify-center space-x-4 mt-12">
-            <!-- Links will be injected here -->
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- All Publications Page -->
-    <div id="all-publications-page" class="hidden page">
-      <div class="container mx-auto px-4 py-16">
-        <div class="text-center mb-12">
-          <div class="section-heading">
-            <svg
-              class="brush-stroke"
-              viewBox="0 0 500 100"
-              preserveAspectRatio="none"
-            >
-              <path
-                d="M5.4,62.8C24.2,53.2,43.2,43.8,62.5,35.4c18.1-7.9,36.8-15.5,55.5-22.3C139.1,6.2,160,0.5,182,0c22.7-0.5,45,4.9,67.5,9.2c22.5,4.3,45,8.2,67.5,12.3c21.5,4,43,8.2,64.5,13.1c22.4,5.1,44.8,11.1,67,16.5c21.8,5.3,43.5,10.2,65,15.2c10.8,2.5,21.5,5.3,32.5,7.8"
-                fill="currentColor"
-              ></path>
-            </svg>
-            <h2
-              class="heading-text text-4xl md:text-5xl font-montserrat font-black"
-            >
-              PUBLICATION ARCHIVE
-            </h2>
-          </div>
-        </div>
-        <div class="text-left mb-12">
-          <button
-            class="back-to-home-btn neon-button px-6 py-2 font-bold rounded-lg"
-          >
-            <i class="fas fa-arrow-left mr-2"></i> Back to Home
-          </button>
-        </div>
-        <div class="space-y-8 max-w-4xl mx-auto">
-          <div class="card p-6">
-            <h3 class="text-xl font-montserrat font-bold text-primary-color">
-              "Cognitive Architectures in Decentralized Networks"
-            </h3>
-            <p class="text-gray-400 italic">
-              Journal of Advanced Cryptography, Vol. 42, 2024
-            </p>
-            <a
-              href="#"
-              class="inline-block mt-3 text-secondary-color font-bold hover:text-primary-color transition-colors"
-              >Read Paper <i class="fas fa-arrow-right ml-1"></i
-            ></a>
-          </div>
-          <div class="card p-6">
-            <h3 class="text-xl font-montserrat font-bold text-primary-color">
-              "Human-AI Symbiosis: UI/UX Paradigms for Neural Interfaces"
-            </h3>
-            <p class="text-gray-400 italic">
-              Proceedings of the International Conference on Cybernetic Futures,
-              2023
-            </p>
-            <a
-              href="#"
-              class="inline-block mt-3 text-secondary-color font-bold hover:text-primary-color transition-colors"
-              >Read Paper <i class="fas fa-arrow-right ml-1"></i
-            ></a>
-          </div>
-          <div class="card p-6">
-            <h3 class="text-xl font-montserrat font-bold text-primary-color">
-              "The Aesthetics of Procedural Generation in Art"
-            </h3>
-            <p class="text-gray-400 italic">
-              Journal of Digital Creativity, Vol. 18, 2022
-            </p>
-            <a
-              href="#"
-              class="inline-block mt-3 text-secondary-color font-bold hover:text-primary-color transition-colors"
-              >Read Paper <i class="fas fa-arrow-right ml-1"></i
-            ></a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <footer class="border-t border-gray-800 py-8">
-      <div class="container mx-auto px-4 text-center text-gray-500">
-        <div class="flex justify-center space-x-6 mb-4">
-          <a
-            href="#"
-            class="text-3xl hover:text-primary-color transition-colors"
-            ><i class="fab fa-github"></i
-          ></a>
-          <a
-            href="#"
-            class="text-3xl hover:text-primary-color transition-colors"
-            ><i class="fab fa-linkedin"></i
-          ></a>
-          <a
-            href="#"
-            class="text-3xl hover:text-primary-color transition-colors"
-            ><i class="fab fa-twitter"></i
-          ></a>
-        </div>
-        <p class="font-bold">
-          &copy; 2024 Gaurav Nagalapuram. Crafted with
-          <i class="fas fa-heart text-primary-color"></i> in Los Angeles.
-        </p>
-      </div>
-    </footer>
-
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        // --- Data ---
-        const projects = [
-          {
-            id: "sentient",
-            title: "Project Sentient",
-            shortDescription:
-              "A real-time threat detection system for corporate networks using machine learning.",
-            longDescription:
-              "Project Sentient is an advanced cybersecurity platform that leverages machine learning algorithms to identify and neutralize threats in real-time. By analyzing network traffic patterns and user behavior, it can detect anomalies that traditional signature-based systems might miss. The system provides a comprehensive dashboard for security analysts to visualize threats, investigate incidents, and manage responses effectively.",
-            image:
-              "https://placehold.co/600x400/111111/ff007f?text=Project+Sentient",
-            tags: ["CyberSec", "AI/ML", "Go"],
-            features: [
-              "Real-time threat detection",
-              "Behavioral analysis engine",
-              "Interactive security dashboard",
-              "Automated incident response",
-            ],
-            technologies: [
-              "Go",
-              "Python (TensorFlow)",
-              "PostgreSQL",
-              "React",
-              "D3.js",
-            ],
-            demoUrl: "#",
-            codeUrl: "#",
-          },
-          {
-            id: "geoweave",
-            title: "GeoWeave",
-            shortDescription:
-              "A geo-spatial data analysis tool for urban planning and environmental impact assessment.",
-            longDescription:
-              "GeoWeave is a web-based platform designed for urban planners, environmental scientists, and researchers. It allows users to upload, visualize, and analyze complex geo-spatial datasets. The tool includes features for layer management, spatial querying, and generating heatmaps to aid in decision-making for city development and conservation efforts.",
-            image: "https://placehold.co/600x400/111111/f9d923?text=GeoWeave",
-            tags: ["GIS", "Data", "React"],
-            features: [
-              "Interactive map interface",
-              "Multiple data layer support (GeoJSON, KML)",
-              "Spatial analysis tools",
-              "Data export functionality",
-            ],
-            technologies: [
-              "React",
-              "Mapbox GL JS",
-              "Node.js",
-              "PostGIS",
-              "Python (Geopandas)",
-            ],
-            demoUrl: "#",
-            codeUrl: "#",
-          },
-          {
-            id: "synthwave",
-            title: "SynthWave Player",
-            shortDescription:
-              "A retro-themed music player application with audio visualization effects.",
-            longDescription:
-              "SynthWave Player is a creative coding project that combines a functional music player with stunning, real-time audio visualizations. Built using the Web Audio API, it processes sound frequencies to generate dynamic visual patterns reminiscent of 80s retro-futurism. Users can upload their own tracks and experience a unique audio-visual journey.",
-            image:
-              "https://placehold.co/600x400/111111/00ffff?text=SynthWave+Player",
-            tags: ["Web Audio API", "Creative Coding"],
-            features: [
-              "Music playback from local files",
-              "Multiple visualization modes",
-              "Customizable color schemes",
-              "Responsive design",
-            ],
-            technologies: [
-              "JavaScript",
-              "HTML5 Canvas",
-              "Web Audio API",
-              "CSS3",
-            ],
-            demoUrl: "#",
-            codeUrl: "#",
-          },
-          {
-            id: "dashboard",
-            title: "Data Dashboard",
-            shortDescription:
-              "A customizable business intelligence dashboard for data visualization.",
-            longDescription:
-              "This project is a modular and customizable dashboard for visualizing key business metrics. It connects to various data sources via a REST API and presents the information using interactive charts and graphs. Users can drag, drop, and resize widgets to create personalized layouts.",
-            image:
-              "https://placehold.co/600x400/111111/7f00ff?text=Data+Dashboard",
-            tags: ["BI", "Data Viz", "SaaS"],
-            features: [
-              "Drag-and-drop widget interface",
-              "Variety of chart types (bar, line, pie)",
-              "Real-time data updates",
-              "User authentication",
-            ],
-            technologies: ["Vue.js", "Chart.js", "Node.js", "MongoDB"],
-            demoUrl: "#",
-            codeUrl: "#",
-          },
-        ];
-
-        const certifications = [
-          {
-            title: "AWS Certified Cloud Practitioner",
-            issuer: "Amazon Web Services",
-            date: "Issued: May 2024",
-            image: "https://placehold.co/600x400/111111/FF9900?text=AWS+CLF",
-            url: "#",
-          },
-          {
-            title: "TensorFlow Developer Certificate",
-            issuer: "Google",
-            date: "Issued: Jan 2024",
-            image: "https://placehold.co/600x400/111111/4285F4?text=TensorFlow",
-            url: "#",
-          },
-          {
-            title: "Certified Kubernetes Administrator",
-            issuer: "The Linux Foundation",
-            date: "Issued: Sep 2023",
-            image: "https://placehold.co/600x400/111111/326CE5?text=CKA",
-            url: "#",
-          },
-        ];
-
-        // --- Page Navigation ---
-        const mainContent = document.getElementById("main-content");
-        const allProjectsPage = document.getElementById("all-projects-page");
-        const allPublicationsPage = document.getElementById(
-          "all-publications-page"
-        );
-        const projectDetailPage = document.getElementById(
-          "project-detail-page"
-        );
-        const aboutMePage = document.getElementById("about-me-page");
-
-        const viewAllProjectsBtn = document.getElementById(
-          "view-all-projects-btn"
-        );
-        const viewAllPubsBtn = document.getElementById("view-all-pubs-btn");
-        const backToHomeBtns = document.querySelectorAll(".back-to-home-btn");
-        const homeLink = document.getElementById("home-link");
-        const mainNavLinks = document.querySelectorAll(".main-nav a");
-        const readMoreAboutBtns = document.querySelectorAll(
-          ".read-more-about-btn"
-        );
-
-        function showPage(pageToShow) {
-          const pages = [
-            mainContent,
-            allProjectsPage,
-            allPublicationsPage,
-            projectDetailPage,
-            aboutMePage,
-          ];
-          pages.forEach((page) => {
-            if (page) page.classList.add("hidden");
-          });
-          if (pageToShow) {
-            pageToShow.classList.remove("hidden");
-          }
-          window.scrollTo(0, 0);
-        }
-
-        viewAllProjectsBtn.addEventListener("click", () =>
-          showPage(allProjectsPage)
-        );
-        viewAllPubsBtn.addEventListener("click", () =>
-          showPage(allPublicationsPage)
-        );
-        readMoreAboutBtns.forEach((btn) => {
-          btn.addEventListener("click", (e) => {
-            e.preventDefault();
-            showPage(aboutMePage);
-          });
-        });
-
-        backToHomeBtns.forEach((btn) => {
-          btn.addEventListener("click", () => showPage(mainContent));
-        });
-
-        homeLink.addEventListener("click", (e) => {
-          e.preventDefault();
-          showPage(mainContent);
-        });
-
-        mainNavLinks.forEach((link) => {
-          link.addEventListener("click", (e) => {
-            if (!mainContent.classList.contains("hidden")) return;
-            e.preventDefault();
-            showPage(mainContent);
-            setTimeout(() => {
-              const targetId = link.getAttribute("href");
-              const targetElement = document.querySelector(targetId);
-              if (targetElement)
-                targetElement.scrollIntoView({ behavior: "smooth" });
-            }, 100);
-          });
-        });
-
-        // --- Dynamic Content Rendering ---
-
-        function createProjectCard(project, isArchive = false) {
-          const cardClass = "card group project-card-clickable";
-          const titleClass = isArchive ? "text-xl" : "text-2xl";
-
-          return `
-              <div class="${cardClass}" data-project-id="${project.id}">
-                  <img src="${
-                    project.image
-                  }" class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105" onerror="this.onerror=null;this.src='https://placehold.co/600x400/111111/e0e0e0?text=Error';">
-                  <div class="p-6">
-                      <h3 class="${titleClass} font-montserrat font-bold text-primary-color mb-2">${project.title}</h3>
-                      ${
-                        !isArchive
-                          ? `<p class="text-gray-400 mb-4">${project.shortDescription}</p>`
-                          : ""
-                      }
-                      <div class="flex space-x-4 mt-4">
-                           <a href="${
-                             project.demoUrl
-                           }" target="_blank" class="neon-button px-4 py-2 text-sm font-bold"><i class="fas fa-globe mr-2"></i>Demo</a>
-                           <a href="${
-                             project.codeUrl
-                           }" target="_blank" class="neon-button px-4 py-2 text-sm font-bold"><i class="fab fa-github mr-2"></i>Code</a>
-                      </div>
-                  </div>
-              </div>
-          `;
-        }
-
-        function createCertificationCard(cert) {
-          return `
-            <a href="${cert.url}" target="_blank" class="card group block">
-                <img src="${cert.image}" class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105" onerror="this.onerror=null;this.src='https://placehold.co/600x400/111111/e0e0e0?text=Error';">
-                <div class="p-6">
-                    <h3 class="text-xl font-montserrat font-bold text-primary-color mb-1">${cert.title}</h3>
-                    <p class="text-gray-400 font-bold">${cert.issuer}</p>
-                    <p class="text-gray-500 text-sm">${cert.date}</p>
-                </div>
-            </a>
-        `;
-        }
-
-        function renderContent() {
-          const featuredContainer = document.getElementById(
-            "featured-projects-container"
-          );
-          const moreContainer = document.getElementById(
-            "more-projects-container"
-          );
-          const archiveContainer = document.getElementById(
-            "all-projects-archive-container"
-          );
-          const certsContainer = document.getElementById(
-            "certifications-container"
-          );
-
-          const featuredPublicationHtml = `
-            <div class="card flex flex-col justify-center p-6">
-              <h3 class="text-2xl font-montserrat font-bold text-primary-color">"Cognitive Architectures in Decentralized Networks"</h3>
-              <p class="text-gray-400 italic mt-2">Journal of Advanced Cryptography, Vol. 42, 2024</p>
-              <p class="mt-4 text-gray-300 flex-grow">Exploring novel consensus algorithms for high-throughput, secure, and decentralized applications.</p>
-              <a href="#" class="inline-block mt-4 text-secondary-color font-bold hover:text-primary-color transition-colors self-start">Read Paper <i class="fas fa-arrow-right ml-1"></i></a>
-            </div>
-          `;
-
-          if (featuredContainer) {
-            featuredContainer.innerHTML =
-              createProjectCard(projects[0]) + featuredPublicationHtml;
-          }
-
-          if (moreContainer)
-            moreContainer.innerHTML = projects
-              .slice(1, 3)
-              .map((p) => createProjectCard(p))
-              .join("");
-          if (archiveContainer)
-            archiveContainer.innerHTML = projects
-              .map((p) => createProjectCard(p, true))
-              .join("");
-          if (certsContainer)
-            certsContainer.innerHTML = certifications
-              .map((c) => createCertificationCard(c))
-              .join("");
-        }
-
-        function populateAndShowProjectDetail(projectId) {
-          const project = projects.find((p) => p.id === projectId);
-          if (!project) return;
-
-          document.getElementById("detail-title").textContent = project.title;
-          document.getElementById("detail-image").src = project.image.replace(
-            "600x400",
-            "1200x800"
-          );
-          document.getElementById("detail-long-description").textContent =
-            project.longDescription;
-
-          document.getElementById("detail-tags").innerHTML = project.tags
-            .map(
-              (tag) =>
-                `<span class="tag text-sm px-3 py-1 rounded">${tag}</span>`
+          class="bg-black/30 p-4 rounded-lg border border-white/5 font-mono text-xs text-[var(--text-muted)] break-words mb-4"
+          id="citeText"
+        ></div>
+        <button
+          onclick="
+            navigator.clipboard.writeText(
+              document.getElementById('citeText').innerText,
             )
-            .join("");
-          document.getElementById("detail-features").innerHTML =
-            project.features.map((f) => `<li>${f}</li>`).join("");
-          document.getElementById("detail-tech").innerHTML =
-            project.technologies.map((t) => `<li>${t}</li>`).join("");
+          "
+          class="w-full bg-[var(--glass-bg)] hover:bg-white/10 text-[var(--text-main)] py-2 rounded-lg text-sm font-bold transition-all border border-white/10"
+        >
+          Copy to Clipboard
+        </button>
+      </div>
+    </div>
 
-          document.getElementById("detail-links").innerHTML = `
-              <a href="${project.demoUrl}" target="_blank" class="neon-button px-8 py-3 font-bold rounded-lg"><i class="fas fa-globe mr-2"></i>Live Demo</a>
-              <a href="${project.codeUrl}" target="_blank" class="neon-button px-8 py-3 font-bold rounded-lg"><i class="fab fa-github mr-2"></i>View Code</a>
-          `;
+    <div
+      id="skillModal"
+      class="fixed inset-0 z-[250] hidden items-center justify-center p-4"
+    >
+      <div
+        class="absolute inset-0 bg-black/90 backdrop-blur-md"
+        onclick="closeSkillModal()"
+      ></div>
+      <div
+        class="glass-panel w-full max-w-xl rounded-3xl relative z-10 animate-modal p-8 border border-white/10"
+      >
+        <div
+          class="flex justify-between items-center mb-8 border-b border-white/10 pb-6"
+        >
+          <h3
+            id="skillModalTitle"
+            class="text-3xl font-bold text-[var(--text-main)]"
+          >
+            Skill Flight
+          </h3>
+          <button
+            onclick="closeSkillModal()"
+            class="p-2 rounded-full hover:bg-white/10 text-[var(--text-main)]"
+          >
+            <i data-lucide="x"></i>
+          </button>
+        </div>
+        <div class="flex flex-col gap-4" id="skillContent"></div>
+      </div>
+    </div>
 
-          showPage(projectDetailPage);
-        }
+    <div
+      id="roadmapModal"
+      class="fixed inset-0 z-[100] hidden items-center justify-center"
+    >
+      <div
+        class="absolute inset-0 bg-black/95 backdrop-blur-xl"
+        onclick="closeMap()"
+      ></div>
+      <div
+        class="absolute top-0 left-0 w-full z-50 p-6 flex justify-between items-start pointer-events-none"
+      >
+        <div
+          class="pointer-events-auto bg-stone-950/80 backdrop-blur border border-white/10 px-6 py-4 rounded-2xl"
+        >
+          <span
+            id="modalCategory"
+            class="text-xs font-bold text-orange-400 uppercase tracking-widest"
+            >Map</span
+          >
+          <h3 id="modalTitle" class="text-2xl font-bold text-white mt-1">
+            Journey
+          </h3>
+        </div>
+        <button
+          onclick="closeMap()"
+          class="pointer-events-auto p-3 rounded-full bg-stone-900 hover:bg-white/10 text-white"
+        >
+          <i data-lucide="x"></i>
+        </button>
+      </div>
+      <div id="mapViewport" class="map-viewport no-scrollbar">
+        <div id="treeCanvas" class="tree-canvas">
+          <svg
+            id="connectionsLayer"
+            class="connections-layer"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <defs>
+              <linearGradient
+                id="gradientPath"
+                x1="0%"
+                y1="0%"
+                x2="100%"
+                y2="0%"
+              >
+                <stop
+                  offset="0%"
+                  style="stop-color: #451a03; stop-opacity: 1"
+                />
+                <stop
+                  offset="50%"
+                  style="stop-color: #f97316; stop-opacity: 1"
+                />
+                <stop
+                  offset="100%"
+                  style="stop-color: #451a03; stop-opacity: 1"
+                />
+              </linearGradient>
+            </defs>
+          </svg>
+          <div id="nodesContainer"></div>
+        </div>
+      </div>
+    </div>
 
-        document.body.addEventListener("click", function (e) {
-          const card = e.target.closest(".project-card-clickable");
-          if (card) {
-            if (e.target.closest("a")) return;
-            e.preventDefault();
-            const projectId = card.dataset.projectId;
-            populateAndShowProjectDetail(projectId);
-          }
-        });
+    <div
+      id="project-full-page"
+      class="fixed inset-0 z-[200] bg-[var(--bg-main)] overflow-y-auto hidden transition-all duration-300"
+    >
+      <div class="max-w-5xl mx-auto px-6 py-12 min-h-screen flex flex-col">
+        <div
+          class="sticky top-0 z-50 bg-[var(--bg-main)]/90 backdrop-blur-md py-4 border-b border-white/5 flex justify-between items-center mb-8"
+        >
+          <button
+            onclick="closeProject()"
+            class="flex items-center gap-2 text-[var(--text-muted)] hover:text-orange-500 transition-colors"
+          >
+            <i data-lucide="arrow-left" class="w-5 h-5"></i> Back to Portfolio
+          </button>
+        </div>
 
-        // --- UI Toggles ---
-        const mobileMenuButton = document.getElementById("mobile-menu-button");
-        const mobileMenu = document.getElementById("mobile-menu");
-        mobileMenuButton.addEventListener("click", () => {
-          mobileMenu.classList.toggle("hidden");
-        });
+        <div class="animate-modal">
+          <div class="flex items-start justify-between gap-6 mb-8">
+            <div class="w-full">
+              <div class="flex items-center gap-3 mb-4">
+                <span
+                  id="project-page-date"
+                  class="text-xs font-mono text-orange-400 border border-orange-400/50 px-2 py-0.5 rounded"
+                  >2024</span
+                >
+                <span
+                  id="project-page-tagline"
+                  class="text-xs font-bold text-[var(--text-muted)] uppercase tracking-wider"
+                  >Tagline</span
+                >
+              </div>
+              <h1
+                id="project-page-title"
+                class="text-5xl md:text-7xl font-bold text-white mb-4 leading-tight transition-transform duration-75"
+              >
+                Project Title
+              </h1>
 
-        const accordionHeaders = document.querySelectorAll(".accordion-header");
-        accordionHeaders.forEach((header) => {
-          header.addEventListener("click", () => {
-            header.classList.toggle("active");
-            const content = header.nextElementSibling;
-            if (content.style.maxHeight) {
-              content.style.maxHeight = null;
-            } else {
-              content.style.maxHeight = content.scrollHeight + "px";
-            }
-          });
-        });
+              <div class="flex flex-wrap gap-4 mb-4" id="project-page-actions">
+                <a
+                  id="project-page-demo"
+                  href="#"
+                  target="_blank"
+                  class="bg-white text-black text-sm font-bold px-6 py-3 rounded-lg hover:bg-stone-200 transition-colors inline-flex items-center gap-2"
+                  ><i data-lucide="external-link" class="w-4 h-4"></i> View
+                  Demo</a
+                >
+                <a
+                  id="project-page-code"
+                  href="#"
+                  target="_blank"
+                  class="border border-white/20 text-white text-sm font-bold px-6 py-3 rounded-lg hover:bg-white/10 transition-colors inline-flex items-center gap-2"
+                  ><i data-lucide="github" class="w-4 h-4"></i> View Code</a
+                >
+              </div>
+            </div>
+            <div
+              class="hidden md:flex w-24 h-24 bg-stone-900 rounded-2xl items-center justify-center border border-white/10 shrink-0"
+            >
+              <span
+                id="project-page-icon"
+                class="text-5xl flex items-center justify-center"
+                >☕</span
+              >
+            </div>
+          </div>
 
-        const followBtnMobile = document.getElementById("follow-btn-mobile");
-        const socialDropdownMobile = document.getElementById(
-          "social-dropdown-mobile"
-        );
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+            <div class="md:col-span-2 space-y-12">
+              <div id="project-page-images" class="space-y-4"></div>
 
-        if (followBtnMobile && socialDropdownMobile) {
-          followBtnMobile.addEventListener("click", (e) => {
-            e.stopPropagation();
-            socialDropdownMobile.classList.toggle("hidden");
-          });
+              <div class="prose prose-invert max-w-none">
+                <h3 class="text-2xl font-bold text-white mb-3">Overview</h3>
+                <p
+                  id="project-page-desc"
+                  class="text-[var(--text-muted)] text-xl leading-relaxed"
+                >
+                  Description goes here...
+                </p>
+              </div>
 
-          window.addEventListener("click", () => {
-            if (!socialDropdownMobile.classList.contains("hidden")) {
-              socialDropdownMobile.classList.add("hidden");
-            }
-          });
-        }
+              <div>
+                <h3 class="text-2xl font-bold text-white mb-4">Key Features</h3>
+                <ul
+                  id="project-page-features"
+                  class="grid grid-cols-1 md:grid-cols-2 gap-4 text-lg"
+                ></ul>
+              </div>
 
-        // --- Three.js Globe ---
-        const container = document.getElementById("globe-container");
-        function initGlobe() {
-          if (!container) return;
+              <div>
+                <h3 class="text-2xl font-bold text-white mb-4">
+                  Under the Hood
+                </h3>
+                <div class="code-block text-sm">
+                  <pre><code id="project-page-code-block" class="language-javascript">
+// Code snippet loading...
+                                </code></pre>
+                </div>
+              </div>
+            </div>
 
-          let renderer = new THREE.WebGLRenderer({
-            antialias: true,
-            alpha: true,
-          });
-          let scene = new THREE.Scene();
-          let aspect = container.clientWidth / container.clientHeight;
-          let camera = new THREE.PerspectiveCamera(45, aspect, 0.1, 1500);
-          let cameraRotation = 0;
-          let cameraRotationSpeed = 0.001;
-          let cameraAutoRotation = true;
+            <div class="space-y-8">
+              <div class="glass-panel p-6 rounded-xl border border-white/5">
+                <h4
+                  class="text-sm font-bold text-white uppercase tracking-widest mb-4"
+                >
+                  Tech Stack
+                </h4>
+                <div
+                  class="flex flex-wrap gap-2"
+                  id="project-page-stack-list"
+                ></div>
+              </div>
 
-          renderer.setSize(container.clientWidth, container.clientHeight);
-          container.innerHTML = "";
-          container.appendChild(renderer.domElement);
+              <div>
+                <h4
+                  class="text-sm font-bold text-white uppercase tracking-widest mb-4"
+                >
+                  Skill Blend
+                </h4>
+                <div
+                  class="flex flex-wrap gap-4"
+                  id="project-skill-shelf"
+                ></div>
+              </div>
 
-          let orbitControls = new THREE.OrbitControls(
-            camera,
-            renderer.domElement
-          );
-          orbitControls.enablePan = false;
-          orbitControls.enableZoom = true;
-          orbitControls.enableDamping = true;
-          orbitControls.minDistance = 1.2;
-          orbitControls.maxDistance = 2.5;
-          orbitControls.rotateSpeed = 0.3;
-          orbitControls.dampingFactor = 0.1;
-          orbitControls.addEventListener("start", () => {
-            cameraAutoRotation = false;
-          });
+              <div class="glass-panel p-6 rounded-xl border border-white/5">
+                <h4
+                  class="text-sm font-bold text-white uppercase tracking-widest mb-4"
+                >
+                  Quick Stats
+                </h4>
+                <div class="space-y-3 text-sm text-[var(--text-muted)]">
+                  <div class="flex justify-between">
+                    <span>Role</span>
+                    <span class="text-white">Lead Dev</span>
+                  </div>
+                  <div class="flex justify-between">
+                    <span>Timeline</span>
+                    <span class="text-white">4 Weeks</span>
+                  </div>
+                  <div class="flex justify-between">
+                    <span>Status</span>
+                    <span class="text-green-400">Live</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-          let spotLight = new THREE.SpotLight(0xffffff, 1.2, 0, 10, 2);
-          spotLight.position.set(2, 0, 1);
-          scene.add(spotLight);
-          const ambientLight = new THREE.AmbientLight(0x404040, 1);
-          scene.add(ambientLight);
-
-          let planetProto = {
-            sphere: (size) => new THREE.SphereGeometry(size, 32, 32),
-            material: (options) => {
-              let mat = new THREE.MeshPhongMaterial();
-              if (options) {
-                for (var prop in options) {
-                  mat[prop] = options[prop];
-                }
-              }
-              return mat;
-            },
-            glowMaterial: (intensity, fade, color) =>
-              new THREE.ShaderMaterial({
-                uniforms: {
-                  c: { type: "f", value: intensity },
-                  p: { type: "f", value: fade },
-                  glowColor: { type: "c", value: new THREE.Color(color) },
-                  viewVector: { type: "v3", value: camera.position },
-                },
-                vertexShader: `
-              uniform vec3 viewVector; uniform float c; uniform float p; varying float intensity;
-              void main() {
-                  vec3 vNormal = normalize( normalMatrix * normal );
-                  vec3 vNormel = normalize( normalMatrix * viewVector );
-                  intensity = pow( c - dot(vNormal, vNormel), p );
-                  gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
-              }`,
-                fragmentShader: `
-              uniform vec3 glowColor; varying float intensity;
-              void main() { gl_FragColor = vec4( glowColor * intensity, 1.0 ); }`,
-                side: THREE.BackSide,
-                blending: THREE.AdditiveBlending,
-                transparent: true,
-              }),
-            texture: (material, property, uri) => {
-              let tl = new THREE.TextureLoader();
-              tl.crossOrigin = "anonymous";
-              tl.load(uri, (tex) => {
-                material[property] = tex;
-                material.needsUpdate = true;
-              });
-            },
-          };
-
-          let createPlanet = (options) => {
-            let surface = new THREE.Mesh(
-              planetProto.sphere(options.surface.size),
-              planetProto.material(options.surface.material)
-            );
-            let atmosphere = new THREE.Mesh(
-              planetProto.sphere(
-                options.surface.size + options.atmosphere.size
-              ),
-              planetProto.material({
-                side: THREE.DoubleSide,
-                transparent: true,
-                ...options.atmosphere.material,
-              })
-            );
-            let atmosphericGlow = new THREE.Mesh(
-              planetProto.sphere(
-                options.surface.size +
-                  options.atmosphere.size +
-                  options.atmosphere.glow.size
-              ),
-              planetProto.glowMaterial(
-                options.atmosphere.glow.intensity,
-                options.atmosphere.glow.fade,
-                options.atmosphere.glow.color
-              )
-            );
-            let planet = new THREE.Object3D();
-            surface.name = "surface";
-            planet.add(surface, atmosphere, atmosphericGlow);
-            for (let texProp in options.surface.textures) {
-              planetProto.texture(
-                surface.material,
-                texProp,
-                options.surface.textures[texProp]
-              );
-            }
-            for (let texProp in options.atmosphere.textures) {
-              planetProto.texture(
-                atmosphere.material,
-                texProp,
-                options.atmosphere.textures[texProp]
-              );
-            }
-            return planet;
-          };
-
-          let earth = createPlanet({
-            surface: {
-              size: 0.5,
-              material: {
-                bumpScale: 0.02,
-                specular: new THREE.Color("grey"),
-                shininess: 5,
-              },
-              textures: {
-                map: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/141228/earthmap1k.jpg",
-                bumpMap:
-                  "https://s3-us-west-2.amazonaws.com/s.cdpn.io/141228/earthbump1k.jpg",
-                specularMap:
-                  "https://s3-us-west-2.amazonaws.com/s.cdpn.io/141228/earthspec1k.jpg",
-              },
-            },
-            atmosphere: {
-              size: 0.003,
-              material: { opacity: 0.8 },
-              textures: {
-                map: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/141228/earthcloudmap.jpg",
-                alphaMap:
-                  "https://s3-us-west-2.amazonaws.com/s.cdpn.io/141228/earthcloudmaptrans.jpg",
-              },
-              glow: { size: 0.02, intensity: 0.6, fade: 7, color: 0xff007f },
-            },
-          });
-
-          let markerProto = {
-            latLongToVector3: (lat, long, radius, height) => {
-              var phi = (lat * Math.PI) / 180;
-              var theta = ((long - 180) * Math.PI) / 180;
-              var x = -(radius + height) * Math.cos(phi) * Math.cos(theta);
-              var y = (radius + height) * Math.sin(phi);
-              var z = (radius + height) * Math.cos(phi) * Math.sin(theta);
-              return new THREE.Vector3(x, y, z);
-            },
-            marker: (size, color, vec3Pos) => {
-              let markerGeo = new THREE.SphereGeometry(size);
-              let markerMat = new THREE.MeshLambertMaterial({
-                color: color,
-                emissive: color,
-                emissiveIntensity: 2,
-              });
-              let markerMesh = new THREE.Mesh(markerGeo, markerMat);
-              markerMesh.position.copy(vec3Pos);
-              return markerMesh;
-            },
-          };
-
-          let placeMarker = (object, options) => {
-            let pos = markerProto.latLongToVector3(
-              options.latitude,
-              options.longitude,
-              options.radius,
-              options.height
-            );
-            let marker = markerProto.marker(options.size, options.color, pos);
-            object.add(marker);
-          };
-
-          placeMarker(earth.getObjectByName("surface"), {
-            latitude: 34.0522,
-            longitude: -118.2437,
-            radius: 0.5,
-            height: 0,
-            size: 0.01,
-            color: 0xffffff,
-          });
-
-          camera.position.set(1, 1, 1.5);
-          scene.add(camera, earth);
-
-          window.addEventListener("resize", () => {
-            if (!container) return;
-            camera.aspect = container.clientWidth / container.clientHeight;
-            camera.updateProjectionMatrix();
-            renderer.setSize(container.clientWidth, container.clientHeight);
-          });
-
-          let render = () => {
-            orbitControls.update();
-            earth.getObjectByName("surface").rotation.y += (1 / 32) * 0.01;
-            if (cameraAutoRotation) {
-              cameraRotation += cameraRotationSpeed;
-              camera.position.set(
-                1.5 * Math.sin(cameraRotation),
-                0,
-                1.5 * Math.cos(cameraRotation)
-              );
-              camera.lookAt(earth.position);
-            }
-            requestAnimationFrame(render);
-            renderer.render(scene, camera);
-          };
-          render();
-        }
-
-        // --- Initial Load ---
-        renderContent();
-        initGlobe();
-      });
-    </script>
+    <script src="./js/script.js"></script>
   </body>
 </html>
