@@ -422,7 +422,7 @@ const detailsData = {
       linkText: "Repository",
       linkIcon: "github",
       visual: `PostgreSQL Database<br/>↓<br/>Flask API & Columnar Engine<br/>↓<br/>Flask Dashboard`,
-      screenshots: ["./resources/demo.gif"],
+      screenshots: ["./resources/demo_aistora.gif"],
     },
     ipl_predictor: {
       title: "Deep IPL Predictor | Multi-Modal Win Forecasting",
