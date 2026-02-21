@@ -425,7 +425,7 @@ const detailsData = {
       screenshots: ["./resources/demo_aistora.gif"],
     },
     ipl_predictor: {
-      title: "Deep IPL Predictor | Multi-Modal Win Forecasting",
+      title: "Deep Neural Net IPL Predictor | Multi-Modal Win Forecasting",
       subtitle: "Project",
       description:
         "<p>Built a multi-modal deep learning framework for IPL match outcome prediction achieving 80% test accuracy on 2025 IPL matches, integrating performance data from 13 cricket competitions across 235 players using league-quality weighting and recency decay.</p><br/><p>Designed a Dynamic OVR rating system (55–97 scale) with phase-specific scores for batting positions (Top Order, Middle, Finisher) and bowling phases (Powerplay, Middle, Death), feeding a 4-source weighted attention transformer with learnable fusion weights across player strength, H2H history, recent form, and PvP matchups.</p><br/><p>Enhanced predictions with a 2-layer Graph Attention Network modeling batter–bowler confrontation asymmetries, combined with a 10,000-iteration Monte Carlo simulation engine yielding a Brier score of 0.24. Deployed as a production Flask API with SHAP explainability and sub-2-second latency.</p>",
@@ -437,7 +437,7 @@ const detailsData = {
         "Monte Carlo Simulation",
         "React",
       ],
-      link: "https://github.com/Nikhilr-28/CSCI_566",
+      link: "https://github.com/Nikhilr-28/Deep-Neural-Network-IPL-Prediction",
       linkText: "Repository",
       linkIcon: "github",
       visual: `13-League Data Pipeline<br/>↓<br/>Dynamic OVR Ratings<br/>↓<br/>GAT + Monte Carlo Engine`,
