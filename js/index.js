@@ -417,18 +417,31 @@ const detailsData = {
       subtitle: "Project",
       description:
         "<p>Architected an in-memory columnar query engine in Python processing 100K+ row datasets with sub-second filtering, grouping, and aggregation outperforming naive pandas by 3x on benchmarks.</p><br/><p>Exposed functionality via Flask REST APIs with JWT auth and RBAC, supporting secure multi-tenant querying with per-user schema isolation backed by PostgreSQL. Containerized all microservices with Docker Compose and automated CI/CD via GitHub Actions, maintaining 85% test coverage.</p><br/><p>Built a React dashboard with real-time chart rendering using Recharts, enabling non-technical users to query and visualize large datasets without SQL knowledge.</p>",
-      stack: [
-        "Python",
-        "Flask",
-        "PostgreSQL",
-        "Docker",
-        "GitHub Actions",
-      ],
+      stack: ["Python", "Flask", "PostgreSQL", "Docker", "GitHub Actions"],
       link: "https://github.com/naga251602/aistora",
       linkText: "Repository",
       linkIcon: "github",
       visual: `PostgreSQL Database<br/>↓<br/>Flask API & Columnar Engine<br/>↓<br/>Flask Dashboard`,
       screenshots: ["./resources/demo.gif"],
+    },
+    ipl_predictor: {
+      title: "Deep IPL Predictor | Multi-Modal Win Forecasting",
+      subtitle: "Project",
+      description:
+        "<p>Built a multi-modal deep learning framework for IPL match outcome prediction achieving 80% test accuracy on 2025 IPL matches, integrating performance data from 13 cricket competitions across 235 players using league-quality weighting and recency decay.</p><br/><p>Designed a Dynamic OVR rating system (55–97 scale) with phase-specific scores for batting positions (Top Order, Middle, Finisher) and bowling phases (Powerplay, Middle, Death), feeding a 4-source weighted attention transformer with learnable fusion weights across player strength, H2H history, recent form, and PvP matchups.</p><br/><p>Enhanced predictions with a 2-layer Graph Attention Network modeling batter–bowler confrontation asymmetries, combined with a 10,000-iteration Monte Carlo simulation engine yielding a Brier score of 0.24. Deployed as a production Flask API with SHAP explainability and sub-2-second latency.</p>",
+      stack: [
+        "Python",
+        "PyTorch",
+        "Flask",
+        "Graph Attention Networks",
+        "Monte Carlo Simulation",
+        "React",
+      ],
+      link: "https://github.com/Nikhilr-28/CSCI_566",
+      linkText: "Repository",
+      linkIcon: "github",
+      visual: `13-League Data Pipeline<br/>↓<br/>Dynamic OVR Ratings<br/>↓<br/>GAT + Monte Carlo Engine`,
+      screenshots: ["./resources/demo_ipl.png"],
     },
     graphql: {
       title: "GraphQL Task Management API",
