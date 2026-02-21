@@ -513,7 +513,7 @@ const detailsData = {
       description:
         "<p>Co-developed a keyword-driven content recommendation engine leveraging GPT-based AI pipelines to dynamically generate and personalize backend website copy, reducing manual authoring time by 60%.</p><br/><p>Evaluated system output quality against human-authored baselines through user studies with 40+ participants measuring coherence, relevance, and preference scores.</p>",
       stack: ["Python", "NLP", "GPT"],
-      link: "#",
+      link: "https://ieeexplore.ieee.org/abstract/document/10560437",
       linkText: "Read Paper",
       linkIcon: "file-text",
       visual: "",
@@ -524,7 +524,7 @@ const detailsData = {
       description:
         "<p>Co-developed an NLP pipeline using fine-tuned BERT on domain-specific patient review corpora to classify sentiment and generate ranked drug recommendations at 88% classification accuracy.</p><br/><p>Evaluated against TF-IDF and LSTM baselines, demonstrating a 12-point F1 improvement from transfer learning with biomedical pretraining. The study establishes robust methodologies for deriving therapeutic efficacy insights from unstructured patient testimonials.</p>",
       stack: ["Python", "NLP", "BERT"],
-      link: "#",
+      link: "https://www.researchgate.net/profile/Shai-Kumar/publication/394529865_A_Sentimental_Analysis_Approach_for_Personalized_Drug_Recommendations_Using_Machine_Learning/links/68a335762c7d3e0029b14b90/A-Sentimental-Analysis-Approach-for-Personalized-Drug-Recommendations-Using-Machine-Learning.pdf",
       linkText: "Read Paper",
       linkIcon: "file-text",
       visual: "",
@@ -535,7 +535,7 @@ const detailsData = {
       description:
         "<p>Co-trained DenseNet-121 on the CheXpert chest X-ray dataset with augmentation and class-weighting to handle label imbalance, achieving 92% precision-recall AUC on the held-out test set.</p><br/><p>Benchmarked against ResNet-50 and VGG-16; DenseNet outperformed by 6% AUC via dense skip connections enabling richer feature reuse across layers.</p>",
       stack: ["Python", "Computer Vision", "PyTorch", "DenseNet"],
-      link: "#",
+      link: "https://link.springer.com/chapter/10.1007/978-981-96-6124-4_8",
       linkText: "Read Paper",
       linkIcon: "file-text",
       visual: "",
