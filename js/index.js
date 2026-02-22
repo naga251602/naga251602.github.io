@@ -11,7 +11,15 @@ const detailsData = {
       isNew: false,
       description:
         "<p>Architected an in-memory columnar query engine in Python processing 100K+ row datasets with sub-second filtering, grouping, and aggregation outperforming naive pandas by 3x on benchmarks.</p><br/><p>Exposed functionality via Flask REST APIs with JWT auth and RBAC, supporting secure multi-tenant querying with per-user schema isolation backed by PostgreSQL. Containerized all microservices with Docker Compose and automated CI/CD via GitHub Actions, maintaining 85% test coverage.</p><br/><p>Built a React dashboard with real-time chart rendering using Recharts, enabling non-technical users to query and visualize large datasets without SQL knowledge.</p>",
-      stack: ["Python", "Flask", "PostgreSQL", "Docker", "GitHub Actions"],
+      stack: [
+        "Python",
+        "Flask",
+        "PostgreSQL",
+        "Docker",
+        "GitHub Actions",
+        "Tailwind CSS",
+        "JWT",
+      ],
       link: "https://github.com/naga251602/aistora",
       linkText: "Repository",
       linkIcon: "github",
@@ -67,12 +75,84 @@ const detailsData = {
       isNew: false,
       description:
         "<p>Built a Next.js SSG platform with Incremental Static Regeneration and automatic image optimization, achieving 95+ Lighthouse score on mobile and desktop audits.</p><br/><p>Implemented a custom AVL tree search index over post metadata, improving tag/category lookup from O(n) to O(log n) with automatic rebalancing on content updates.</p>",
-      stack: ["Next.js", "React", "Data Structures", "TypeScript"],
+      stack: [
+        "Next.js",
+        "React",
+        "Data Structures",
+        "TypeScript",
+        "Tailwind CSS",
+      ],
       link: "https://github.com/naga251602/gblog",
       linkText: "Repository",
       linkIcon: "github",
       visual: "",
       screenshots: ["./resources/demo_gblog.png"],
+    },
+    supablog: {
+      title: "SupaBlog | Node.js Blog Platform",
+      subtitle: "Project",
+      featured: false,
+      isNew: false,
+      description:
+        "<p>Built a full-stack server-rendered blogging platform using Node.js and Express with EJS templating, integrating Supabase as a backend-as-a-service for PostgreSQL database management and authentication.</p><br/><p>Implemented a complete user authentication system using Supabase Auth with secure session management via express-session, supporting sign-up, sign-in, and logout flows with protected routes for authenticated users.</p><br/><p>Designed RESTful routes for full CRUD blog post operations — create, list, and view — with environment-based configuration via dotenv and consistent UI structure using express-ejs-layouts.</p>",
+      stack: [
+        "Node.js",
+        "Express.js",
+        "EJS",
+        "Supabase",
+        "PostgreSQL",
+        "express-session",
+        "CSS",
+      ],
+      link: "https://github.com/naga251602/supablog",
+      linkText: "Repository",
+      linkIcon: "github",
+      visual: `Supabase Auth & PostgreSQL<br/>↓<br/>Express.js REST Routes<br/>↓<br/>EJS Server-Rendered Views`,
+      screenshots: [],
+    },
+    easymigrate: {
+      title: "EasyMigrate | Universal Database Migration Tool",
+      subtitle: "Project",
+      featured: false,
+      isNew: false,
+      description:
+        "<p>Built a universal any-to-any database migration CLI tool supporting PostgreSQL, MySQL, SQLite, SQL Server, MariaDB, and OracleDB — enabling seamless schema and data transfer across heterogeneous database systems with a single command.</p><br/><p>Leveraged SQLAlchemy's cross-database abstraction layer to extract source schema (tables, columns, views), recreate it on the target, and transfer data faithfully — handling dialect differences transparently under the hood.</p><br/><p>Packaged as an installable Python CLI via pip, keeping the interface minimal: just source and target connection URLs. Includes a pytest test suite and is open for community contributions under the MIT License.</p>",
+      stack: [
+        "Python",
+        "SQLAlchemy",
+        "PostgreSQL",
+        "MySQL",
+        "SQLite",
+        "SQL Server",
+        "pytest",
+      ],
+      link: "https://github.com/naga251602/easymigrate",
+      linkText: "Repository",
+      linkIcon: "github",
+      visual: `Source Database (any)<br/>↓<br/>SQLAlchemy Migration Engine<br/>↓<br/>Target Database (any)`,
+      screenshots: [],
+    },
+    gchat: {
+      title: "GChat | Real-Time Messaging App",
+      subtitle: "Project",
+      featured: false,
+      isNew: false,
+      description:
+        "<p>Built a real-time messaging application with Next.js App Router and Firebase, featuring Google OAuth authentication, instant message delivery via Firestore, and live typing indicators — all with sub-second latency.</p><br/><p>Architected a modular component structure separating chat UI, auth context, and Firebase initialization layers, with full TypeScript type safety across shared interfaces and React Context-based auth state management.</p><br/><p>Designed a fully responsive, accessible UI with Tailwind CSS adhering to WCAG principles, optimized across mobile, tablet, and desktop — with ESLint enforcing consistent code quality throughout the codebase.</p>",
+      stack: [
+        "Next.js",
+        "React",
+        "TypeScript",
+        "Firebase",
+        "Firestore",
+        "Tailwind CSS",
+        "ESLint",
+      ],
+      link: "https://github.com/naga251602/gchat",
+      linkText: "Repository",
+      linkIcon: "github",
+      visual: `Firebase Auth (Google)<br/>↓<br/>Firestore Real-Time Listeners<br/>↓<br/>Next.js App Router UI`,
+      screenshots: [],
     },
   },
 
@@ -415,6 +495,223 @@ Object.assign(skillMetaMap, {
 });
 
 // ============================================================
+// AUTO-REGISTER MISSING SKILLS FROM ALL DATA (default level 70)
+// Scans every stack in every data type and fills gaps in skillMetaMap
+// ============================================================
+(function autoRegisterMissingSkills() {
+  // Icon heuristics for common patterns
+  const iconHints = {
+    python: "devicon-python-plain",
+    go: "devicon-go-plain",
+    javascript: "devicon-javascript-plain",
+    typescript: "devicon-typescript-plain",
+    react: "devicon-react-original",
+    "next.js": "devicon-nextjs-plain",
+    "node.js": "devicon-nodejs-plain",
+    docker: "devicon-docker-plain",
+    kubernetes: "devicon-kubernetes-plain",
+    postgresql: "devicon-postgresql-plain",
+    mongodb: "devicon-mongodb-plain",
+    redis: "devicon-redis-plain",
+    sqlite: "devicon-sqlite-plain",
+    pytorch: "devicon-pytorch-plain",
+    pandas: "devicon-pandas-plain",
+    numpy: "devicon-numpy-plain",
+    "scikit-learn": "devicon-scikitlearn-plain",
+    fastapi: "devicon-fastapi-plain",
+    flask: "devicon-flask-original",
+    graphql: "devicon-graphql-plain",
+    "tailwind css": "devicon-tailwindcss-plain",
+    "html/css": "devicon-html5-plain",
+    aws: "devicon-amazonwebservices-plain-wordmark",
+    linux: "devicon-linux-plain",
+    nginx: "devicon-nginx-original",
+    "github actions": "devicon-githubactions-plain",
+    "c++": "devicon-cplusplus-plain",
+    c: "devicon-c-plain",
+    sql: "devicon-sqldeveloper-plain",
+  };
+
+  // Lucide fallbacks based on keyword matching
+  function guessMeta(name) {
+    const lower = name.toLowerCase();
+    // Check devicon map first
+    if (iconHints[lower]) {
+      return { name, icon: iconHints[lower], isLucide: false, level: 70 };
+    }
+    // Keyword → lucide icon
+    if (
+      lower.includes("ml") ||
+      lower.includes("machine learning") ||
+      lower.includes("deep learning")
+    )
+      return { name, isLucide: true, icon: "brain", level: 70 };
+    if (lower.includes("llm") || lower.includes("gpt") || lower.includes("ai"))
+      return { name, isLucide: true, icon: "bot", level: 70 };
+    if (lower.includes("api") || lower.includes("rest"))
+      return { name, isLucide: true, icon: "braces", level: 70 };
+    if (
+      lower.includes("database") ||
+      lower.includes("db") ||
+      lower.includes("sql")
+    )
+      return { name, isLucide: true, icon: "database", level: 70 };
+    if (
+      lower.includes("cloud") ||
+      lower.includes("aws") ||
+      lower.includes("gcp") ||
+      lower.includes("azure")
+    )
+      return { name, isLucide: true, icon: "cloud", level: 70 };
+    if (
+      lower.includes("graph") ||
+      lower.includes("network") ||
+      lower.includes("gnn") ||
+      lower.includes("gat")
+    )
+      return { name, isLucide: true, icon: "network", level: 70 };
+    if (
+      lower.includes("nlp") ||
+      lower.includes("text") ||
+      lower.includes("bert") ||
+      lower.includes("transformer")
+    )
+      return { name, isLucide: true, icon: "message-square", level: 70 };
+    if (
+      lower.includes("vision") ||
+      lower.includes("image") ||
+      lower.includes("cnn") ||
+      lower.includes("densenet")
+    )
+      return { name, isLucide: true, icon: "eye", level: 70 };
+    if (
+      lower.includes("data") ||
+      lower.includes("analytics") ||
+      lower.includes("pipeline")
+    )
+      return { name, isLucide: true, icon: "bar-chart-2", level: 70 };
+    if (lower.includes("test") || lower.includes("ci") || lower.includes("cd"))
+      return { name, isLucide: true, icon: "check-circle", level: 70 };
+    if (
+      lower.includes("auth") ||
+      lower.includes("oauth") ||
+      lower.includes("jwt") ||
+      lower.includes("security")
+    )
+      return { name, isLucide: true, icon: "shield-check", level: 70 };
+    if (lower.includes("algorithm") || lower.includes("struct"))
+      return { name, isLucide: true, icon: "cpu", level: 70 };
+    if (lower.includes("open source") || lower.includes("cli"))
+      return { name, isLucide: true, icon: "globe", level: 70 };
+    if (lower.includes("simulation") || lower.includes("monte"))
+      return { name, isLucide: true, icon: "shuffle", level: 70 };
+    if (
+      lower.includes("web") ||
+      lower.includes("socket") ||
+      lower.includes("ws")
+    )
+      return { name, isLucide: true, icon: "zap", level: 70 };
+    if (
+      lower.includes("design") ||
+      lower.includes("architecture") ||
+      lower.includes("system")
+    )
+      return { name, isLucide: true, icon: "layers", level: 70 };
+    if (
+      lower.includes("concurr") ||
+      lower.includes("thread") ||
+      lower.includes("async")
+    )
+      return { name, isLucide: true, icon: "git-branch", level: 70 };
+    // Generic fallback
+    return { name, isLucide: true, icon: "code-2", level: 70 };
+  }
+
+  // Collect every skill referenced in any data entry
+  for (const type of Object.values(detailsData)) {
+    for (const item of Object.values(type)) {
+      if (!Array.isArray(item.stack)) continue;
+      for (const skillName of item.stack) {
+        if (!skillMetaMap[skillName]) {
+          skillMetaMap[skillName] = guessMeta(skillName);
+        }
+      }
+    }
+  }
+
+  // Build set of every skill already covered by skillsConfig categories
+  const coveredSkills = new Set();
+  for (const arr of Object.values(skillsConfig))
+    arr.forEach((s) => coveredSkills.add(s.name));
+
+  // Collect skills in skillMetaMap that aren't in any existing category
+  const extras = Object.values(skillMetaMap).filter(
+    (s) => !coveredSkills.has(s.name),
+  );
+
+  // Append as a new "Tools & Other" category so renderSkills() picks them up
+  if (extras.length > 0) {
+    skillsConfig["Tools & Other"] = extras;
+  }
+})();
+
+// ============================================================
+// SKILL PILLS WITH OVERFLOW (+N more, expandable)
+// ============================================================
+// Renders up to `max` pills, then a clickable "+N more" chip
+// that reveals the rest inline. Click propagation is stopped
+// so it doesn't trigger parent card/row clicks.
+function getSkillPillsWithOverflow(stack, showFill = false, max = 4) {
+  if (!stack || stack.length === 0) return "";
+  const visible = stack.slice(0, max);
+  const hidden = stack.slice(max);
+  const uid = `overflow-${Math.random().toString(36).slice(2, 8)}`;
+
+  const visibleHtml = visible
+    .map((s) => getSkillPillHtml(s, showFill))
+    .join("");
+
+  if (hidden.length === 0) return visibleHtml;
+
+  const hiddenHtml = hidden.map((s) => getSkillPillHtml(s, showFill)).join("");
+
+  return `${visibleHtml}<button
+    class="inline-flex items-center px-2.5 py-1.5 border border-border rounded-md text-xs font-mono text-muted bg-hoverBg hover:border-fg hover:text-fg transition-all select-none cursor-none interactive"
+    onclick="event.stopPropagation();toggleOverflowPills('${uid}',this)"
+    data-open="false"
+    data-hidden-count="${hidden.length}"
+  >+${hidden.length} more</button><span id="${uid}" style="display:none">${hiddenHtml}</span>`;
+}
+
+function toggleOverflowPills(uid, trigger) {
+  const el = document.getElementById(uid);
+  if (!el) return;
+  const isOpen = trigger.dataset.open === "true";
+  const parent = trigger.parentElement;
+
+  if (isOpen) {
+    // Move pills back into the hidden span, restore trigger text
+    const pills = parent.querySelectorAll(`[data-overflow-for="${uid}"]`);
+    pills.forEach((p) => {
+      el.appendChild(p);
+      p.removeAttribute("data-overflow-for");
+    });
+    trigger.dataset.open = "false";
+    trigger.textContent = `+${trigger.dataset.hiddenCount} more`;
+  } else {
+    // Move pills out of hidden span into the flex parent, before the trigger
+    const pills = Array.from(el.children);
+    pills.forEach((p) => {
+      p.dataset.overflowFor = uid;
+      parent.insertBefore(p, trigger);
+    });
+    trigger.dataset.open = "true";
+    trigger.textContent = "Show less";
+    lucide.createIcons();
+  }
+}
+
+// ============================================================
 // BADGE HTML GENERATORS
 // ============================================================
 function getFeaturedBadgeHtml() {
@@ -581,10 +878,7 @@ function renderFeatured() {
             (d.stack || []).length
               ? `
           <div class="flex flex-wrap gap-1.5 relative z-20 pointer-events-auto">
-            ${(d.stack || [])
-              .slice(0, 4)
-              .map((s) => getSkillPillHtml(s, false))
-              .join("")}
+            ${getSkillPillsWithOverflow(d.stack, false, 3)}
           </div>`
               : ""
           }
@@ -664,11 +958,8 @@ function renderProjectsPreview() {
           ${d.isNew ? getNewBadgeHtml() : ""}
         </div>
         <p class="text-sm text-muted line-clamp-2 pr-8 mb-4 pointer-events-none">${stripHtml(d.description)}</p>
-        <div class="flex flex-wrap gap-2 relative z-20">
-          ${(d.stack || [])
-            .slice(0, 4)
-            .map((s) => getSkillPillHtml(s, false))
-            .join("")}
+        <div class="flex flex-wrap gap-2 relative z-20 pointer-events-auto">
+          ${getSkillPillsWithOverflow(d.stack, false, 4)}
         </div>
       </div>`,
     )
@@ -726,11 +1017,8 @@ function renderOthersPreview() {
           ${d.isNew ? getNewBadgeHtml() : ""}
         </div>
         <p class="text-sm text-muted line-clamp-2 pr-8 mb-4 pointer-events-none">${stripHtml(d.description)}</p>
-        <div class="flex flex-wrap gap-2 relative z-20">
-          ${(d.stack || [])
-            .slice(0, 4)
-            .map((s) => getSkillPillHtml(s, false))
-            .join("")}
+        <div class="flex flex-wrap gap-2 relative z-20 pointer-events-auto">
+          ${getSkillPillsWithOverflow(d.stack, false, 4)}
         </div>
       </div>`,
     )
@@ -744,11 +1032,93 @@ function renderSkills() {
   const c = document.getElementById("skills-container");
   if (!c) return;
   c.innerHTML = "";
+
+  const PREVIEW = 5;
+
   for (const [cat, arr] of Object.entries(skillsConfig)) {
-    c.innerHTML += `<div class="stagger-item">
-      <span class="block text-muted mb-4 font-mono text-xs uppercase tracking-wider">${cat}</span>
-      <div class="flex flex-wrap gap-2.5">${arr.map((s) => getSkillPillHtml(s.name, true)).join("")}</div>
-    </div>`;
+    const uid = `skill-cat-${cat.replace(/\W+/g, "-").toLowerCase()}`;
+    const needsToggle = arr.length > PREVIEW;
+    const allPills = arr.map((s) => getSkillPillHtml(s.name, true)).join("");
+
+    const toggleBtn = needsToggle
+      ? `
+      <button
+        class="interactive cursor-none mt-3 inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-wider text-muted hover:text-fg transition-colors"
+        onclick="toggleSkillCategory('${uid}', this)"
+        data-open="false"
+      >
+        <i data-lucide="chevron-down" class="w-3 h-3 transition-transform duration-300" id="${uid}-icon"></i>
+        <span id="${uid}-label">+${arr.length - PREVIEW} more</span>
+      </button>`
+      : "";
+
+    // Start fully expanded so we can measure, then collapse in rAF
+    c.innerHTML += `
+      <div class="stagger-item">
+        <span class="block text-muted mb-4 font-mono text-xs uppercase tracking-wider">${cat}</span>
+        <div
+          id="${uid}"
+          class="flex flex-wrap gap-2.5 overflow-hidden"
+          data-needs-collapse="${needsToggle}"
+          data-open="false"
+        >${allPills}</div>
+        ${toggleBtn}
+      </div>`;
+  }
+
+  // After DOM is painted: measure the height of one pill row, then lock collapsed height
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      document
+        .querySelectorAll("[data-needs-collapse='true']")
+        .forEach((el) => {
+          const fullH = el.scrollHeight;
+          el.dataset.fullHeight = fullH;
+
+          // Measure a single pill to get one-row height
+          const firstPill = el.querySelector("span");
+          const rowH = firstPill
+            ? firstPill.getBoundingClientRect().height + 10 // 10 = gap
+            : 40;
+          el.dataset.collapsedHeight = rowH;
+
+          // Now collapse it
+          el.style.maxHeight = rowH + "px";
+          // Enable transition only after initial collapse is set
+          requestAnimationFrame(() => {
+            el.style.transition =
+              "max-height 0.35s cubic-bezier(0.16, 1, 0.3, 1)";
+          });
+        });
+
+      // Refresh lucide icons after render
+      lucide.createIcons();
+    });
+  });
+}
+
+function toggleSkillCategory(uid, btn) {
+  const el = document.getElementById(uid);
+  const icon = document.getElementById(`${uid}-icon`);
+  const label = document.getElementById(`${uid}-label`);
+  if (!el) return;
+
+  const isOpen = btn.dataset.open === "true";
+
+  if (isOpen) {
+    const collapsedH = parseFloat(el.dataset.collapsedHeight) || 40;
+    el.style.maxHeight = collapsedH + "px";
+    btn.dataset.open = "false";
+    icon.style.transform = "rotate(0deg)";
+    const total = el.querySelectorAll(":scope > span").length;
+    const PREVIEW = 5;
+    label.textContent = `+${total - PREVIEW} more`;
+  } else {
+    const fullH = parseFloat(el.dataset.fullHeight) || el.scrollHeight;
+    el.style.maxHeight = fullH + "px";
+    btn.dataset.open = "true";
+    icon.style.transform = "rotate(180deg)";
+    label.textContent = "Show less";
   }
 }
 
@@ -770,12 +1140,54 @@ function renderFullScreenList(type, containerId, filterContainerId) {
   const allSkills = new Set();
   items.forEach(([, v]) => v.stack && v.stack.forEach((s) => allSkills.add(s)));
 
-  filterContainer.innerHTML = `<button onclick="filterList('${containerId}','all',this)" class="filter-btn active interactive cursor-none px-4 py-1.5 border border-border rounded-full text-xs font-mono bg-fg text-bg hover:opacity-85 transition-colors shadow-sm">All</button>`;
-  Array.from(allSkills)
-    .sort()
-    .forEach((skill) => {
-      filterContainer.innerHTML += `<button onclick="filterList('${containerId}','${skill}',this)" class="filter-btn interactive cursor-none px-4 py-1.5 border border-border rounded-full text-xs font-mono bg-hoverBg text-fg hover:bg-fg hover:text-bg transition-colors">${skill}</button>`;
+  // Build filter buttons — use data-skill attr to avoid special-char escaping issues in onclick
+  const skillsArray = Array.from(allSkills).sort();
+  const allBtn = `<button data-filter-container="${containerId}" data-skill="all" class="filter-btn active interactive cursor-none px-4 py-1.5 border border-border rounded-full text-xs font-mono bg-fg text-bg hover:opacity-85 transition-colors shadow-sm shrink-0">All</button>`;
+  const skillBtns = skillsArray
+    .map(
+      (skill) =>
+        `<button data-filter-container="${containerId}" data-skill="${skill.replace(/"/g, "&quot;")}" class="filter-btn interactive cursor-none px-4 py-1.5 border border-border rounded-full text-xs font-mono bg-hoverBg text-fg hover:bg-fg hover:text-bg transition-colors shrink-0">${skill}</button>`,
+    )
+    .join("");
+
+  const toggleId = `filter-overflow-${containerId}`;
+  const toggleBtn = `<button
+    onclick="event.stopPropagation();toggleFilterOverflow('${toggleId}',this)"
+    class="interactive cursor-none shrink-0 px-4 py-1.5 border border-border rounded-full text-xs font-mono text-muted hover:text-fg hover:border-fg transition-colors"
+    data-open="false"
+  >Show all filters <span class="opacity-60">(${skillsArray.length})</span></button>`;
+
+  filterContainer.innerHTML = `
+    <div class="flex flex-wrap gap-2 items-center overflow-hidden transition-all duration-300" style="max-height:2.6rem;" id="${toggleId}">
+      ${allBtn}${skillBtns}
+    </div>
+    ${skillsArray.length > 5 ? toggleBtn : ""}
+  `;
+
+  // Delegate filter clicks — avoids inline onclick + special char escaping entirely
+  filterContainer.addEventListener("click", (e) => {
+    const btn = e.target.closest("[data-skill]");
+    if (!btn) return;
+    const skill = btn.dataset.skill;
+    const cid = btn.dataset.filterContainer;
+    // Update active state
+    filterContainer.querySelectorAll(".filter-btn").forEach((b) => {
+      b.classList.remove("bg-fg", "text-bg", "shadow-sm");
+      b.classList.add("bg-hoverBg", "text-fg");
     });
+    btn.classList.remove("bg-hoverBg", "text-fg");
+    btn.classList.add("bg-fg", "text-bg", "shadow-sm");
+    // Show/hide items
+    document
+      .getElementById(cid)
+      ?.querySelectorAll(".filterable-item")
+      .forEach((item) => {
+        item.style.display =
+          skill === "all" || item.dataset.skills.split(",").includes(skill)
+            ? "flex"
+            : "none";
+      });
+  });
 
   container.innerHTML = "";
   items.forEach(([id, d]) => {
@@ -807,32 +1219,32 @@ function renderFullScreenList(type, containerId, filterContainerId) {
       <div class="group interactive cursor-none border-b border-border py-8 list-item-hover px-4 -mx-4 filterable-item relative flex flex-col" data-skills="${skillsData}" onclick="openDetails('${type}','${id}')">
         ${badge}${titleBlock}
         <p class="text-sm text-muted line-clamp-2 pr-8 mb-5 pointer-events-none">${stripHtml(d.description)}</p>
-        <div class="flex flex-wrap gap-2 relative z-20">${(d.stack || [])
-          .slice(0, 4)
-          .map((s) => getSkillPillHtml(s, false))
-          .join("")}</div>
+        <div class="flex flex-wrap gap-2 relative z-20 pointer-events-auto">${getSkillPillsWithOverflow(d.stack, false, 4)}</div>
         ${extra}
       </div>`;
   });
+
+  // Ensure all items are visible by default (guard against stale display:none from prev filter)
+  container.querySelectorAll(".filterable-item").forEach((el) => {
+    el.style.display = "flex";
+  });
+
   attachHoverListeners();
 }
 
-function filterList(containerId, skill, btn) {
-  btn.parentElement.querySelectorAll(".filter-btn").forEach((b) => {
-    b.classList.remove("bg-fg", "text-bg", "shadow-sm");
-    b.classList.add("bg-hoverBg", "text-fg");
-  });
-  btn.classList.remove("bg-hoverBg", "text-fg");
-  btn.classList.add("bg-fg", "text-bg", "shadow-sm");
-  document
-    .getElementById(containerId)
-    .querySelectorAll(".filterable-item")
-    .forEach((item) => {
-      item.style.display =
-        skill === "all" || item.dataset.skills.split(",").includes(skill)
-          ? "flex"
-          : "none";
-    });
+function toggleFilterOverflow(toggleId, btn) {
+  const el = document.getElementById(toggleId);
+  if (!el) return;
+  const isOpen = btn.dataset.open === "true";
+  if (isOpen) {
+    el.style.maxHeight = "2.6rem";
+    btn.dataset.open = "false";
+    btn.innerHTML = `Show all filters <span class="opacity-60">(${el.querySelectorAll(".filter-btn").length - 1})</span>`;
+  } else {
+    el.style.maxHeight = el.scrollHeight + "px";
+    btn.dataset.open = "true";
+    btn.innerHTML = `Hide filters`;
+  }
 }
 
 // ============================================================

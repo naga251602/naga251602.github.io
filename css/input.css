@@ -251,3 +251,7 @@ html.dark .current-badge {
 .stagger-parent.visible .featured-card {
   animation-play-state: running;
 }
+
+/* =============================================
+   SKILL CATEGORY COLLAPSE — transition added via JS after measure
+   ============================================= */
