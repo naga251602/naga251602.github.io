@@ -82,6 +82,7 @@ const detailsData = {
       company: "Aadithya Cars",
       period: "Apr 2024 - Nov 2024",
       isCurrent: false,
+      featured: false,
       subtitle: "Aadithya Cars • Apr 2024 - Nov 2024",
       description: `<ul class="list-disc pl-4 space-y-2">
         <li>Overhauled frontend pipeline cutting load time from 3.2s to 800ms (75% improvement) via lazy loading, code splitting, and asset compression — directly improving Core Web Vitals.</li>
@@ -484,6 +485,135 @@ function renderStats() {
 }
 
 // ============================================================
+// RENDER: FEATURED (max 3, cross-type, after hero)
+// ============================================================
+function renderFeatured() {
+  const c = document.getElementById("featured-list");
+  if (!c) return;
+
+  // Collect all featured items across all types, max 3
+  const allFeatured = [];
+  const typeConfig = {
+    project: { label: "Project", icon: "folder-open" },
+    experience: { label: "Experience", icon: "briefcase" },
+    publication: { label: "Publication", icon: "book-open" },
+    other: { label: "Other", icon: "layers" },
+  };
+
+  for (const [type, items] of Object.entries(detailsData)) {
+    for (const [id, d] of Object.entries(items)) {
+      if (d.featured) allFeatured.push({ type, id, d });
+    }
+  }
+
+  // Cap at 3
+  const items = allFeatured.slice(0, 3);
+
+  if (!items.length) {
+    document.getElementById("featured-section")?.classList.add("hidden");
+    return;
+  }
+
+  c.innerHTML = items
+    .map(({ type, id, d }, idx) => {
+      const { label, icon } = typeConfig[type] || { label: type, icon: "star" };
+      const isExp = type === "experience";
+      const isPub = type === "publication";
+
+      // Build the headline line
+      let headlineHtml = "";
+      if (isExp) {
+        headlineHtml = `
+          <h3 class="text-xl font-semibold text-fg group-hover:underline flex flex-wrap items-center gap-1.5">
+            ${d.title}
+            <span class="text-border mx-1">|</span>
+            <span class="text-muted font-normal inline-flex items-center gap-1.5">
+              <i data-lucide="building-2" class="w-4 h-4"></i>${d.company}
+            </span>
+          </h3>`;
+      } else {
+        headlineHtml = `
+          <h3 class="text-xl font-semibold text-fg group-hover:underline flex items-center gap-1.5">
+            ${d.title}
+            ${!isPub ? `<i data-lucide="arrow-up-right" class="w-4 h-4 text-muted group-hover:text-fg transition-colors shrink-0"></i>` : ""}
+          </h3>`;
+      }
+
+      // Meta right (period / venue / subtitle)
+      let metaHtml = "";
+      if (isExp)
+        metaHtml = `<span class="font-mono text-xs text-muted whitespace-nowrap">${d.period}</span>`;
+      if (isPub)
+        metaHtml = `<span class="font-mono text-xs text-fg bg-border px-2 py-0.5 rounded-sm whitespace-nowrap">${d.venue}</span>`;
+
+      // Cite button for publications
+      const citeHtml = isPub
+        ? `<button class="interactive cursor-none text-muted hover:text-fg font-mono text-xs uppercase tracking-wider transition-colors border border-border px-3 py-1.5 rounded-md hover:bg-hoverBg"
+             onclick="event.stopPropagation();copyCitation('${id}')">Cite</button>`
+        : "";
+
+      return `
+        <div
+          class="featured-card group interactive cursor-none flex flex-col gap-4 p-5 border border-border rounded-xl hover:border-fg/30 hover:bg-hoverBg transition-all duration-200 relative"
+          style="animation-delay:${idx * 0.08}s"
+          onclick="openDetails('${type}','${id}')"
+        >
+          <!-- Type pill -->
+          <div class="flex items-center justify-between gap-3">
+            <span class="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-widest text-muted border border-border px-2 py-0.5 rounded-sm">
+              <i data-lucide="${icon}" class="w-3 h-3"></i>${label}
+            </span>
+            ${metaHtml}
+          </div>
+
+          <!-- Headline -->
+          <div class="pointer-events-none">
+            ${headlineHtml}
+          </div>
+
+          <!-- Description -->
+          <p class="text-sm text-muted leading-relaxed line-clamp-2 pointer-events-none">
+            ${stripHtml(d.description)}
+          </p>
+
+          <!-- Stack pills -->
+          ${
+            (d.stack || []).length
+              ? `
+          <div class="flex flex-wrap gap-1.5 relative z-20 pointer-events-auto">
+            ${(d.stack || [])
+              .slice(0, 4)
+              .map((s) => getSkillPillHtml(s, false))
+              .join("")}
+          </div>`
+              : ""
+          }
+
+          <!-- Bottom row: link + cite -->
+          ${
+            d.link || isPub
+              ? `
+          <div class="flex items-center justify-between gap-3 pt-1 border-t border-border pt-3 relative z-20 pointer-events-auto mt-auto">
+            ${
+              d.link
+                ? `
+            <a href="${d.link}" target="_blank"
+               onclick="event.stopPropagation()"
+               class="interactive cursor-none inline-flex items-center gap-1.5 text-xs font-mono text-muted hover:text-fg transition-colors">
+              <i data-lucide="${d.linkIcon || "external-link"}" class="w-3.5 h-3.5"></i>${d.linkText}
+            </a>`
+                : "<span></span>"
+            }
+            ${citeHtml}
+          </div>`
+              : ""
+          }
+        </div>`;
+    })
+    .join("");
+}
+
+// ============================================================
 // RENDER: EXPERIENCE (from data)
 // ============================================================
 function renderExperience() {
@@ -513,13 +643,14 @@ function renderExperience() {
 }
 
 // ============================================================
-// RENDER: PROJECTS PREVIEW (featured first, top 2)
+// RENDER: PROJECTS PREVIEW (isNew first, exclude featured, top 2)
 // ============================================================
 function renderProjectsPreview() {
   const c = document.getElementById("projects-preview");
   if (!c) return;
   const sorted = Object.entries(detailsData.project)
-    .sort(([, a], [, b]) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0))
+    .filter(([, d]) => !d.featured)
+    .sort(([, a], [, b]) => (b.isNew ? 1 : 0) - (a.isNew ? 1 : 0))
     .slice(0, 2);
   c.innerHTML = sorted
     .map(
@@ -545,13 +676,14 @@ function renderProjectsPreview() {
 }
 
 // ============================================================
-// RENDER: PUBLICATIONS PREVIEW (featured first, top 2)
+// RENDER: PUBLICATIONS PREVIEW (isNew first, exclude featured, top 2)
 // ============================================================
 function renderPublicationsPreview() {
   const c = document.getElementById("publications-preview");
   if (!c) return;
   const sorted = Object.entries(detailsData.publication)
-    .sort(([, a], [, b]) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0))
+    .filter(([, d]) => !d.featured)
+    .sort(([, a], [, b]) => (b.isNew ? 1 : 0) - (a.isNew ? 1 : 0))
     .slice(0, 2);
   c.innerHTML = sorted
     .map(
@@ -563,7 +695,7 @@ function renderPublicationsPreview() {
             ${d.featured ? getFeaturedBadgeHtml() : ""}
             ${d.isNew ? getNewBadgeHtml() : ""}
           </div>
-          <span class="font-mono text-xs text-fg bg-border px-2 py-0.5 rounded-sm pointer-events-none shrink-0">${d.venue}</span>
+          <span class="font-mono text-xs text-fg bg-border px-2 py-0.5 rounded-sm pointer-events-none shrink-0 w-fit">${d.venue}</span>
         </div>
         <p class="text-sm text-muted line-clamp-2 pr-8 mb-4 pointer-events-none">${stripHtml(d.description)}</p>
         <div class="flex justify-end pointer-events-auto relative z-20">
@@ -625,9 +757,12 @@ function renderSkills() {
 // ============================================================
 function renderFullScreenList(type, containerId, filterContainerId) {
   const raw = Object.entries(detailsData[type] || {});
-  const items = [...raw].sort(
-    ([, a], [, b]) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0),
-  );
+  const items = [...raw].sort(([, a], [, b]) => {
+    // featured → isNew → rest
+    const fa = a.featured ? 2 : a.isNew ? 1 : 0;
+    const fb = b.featured ? 2 : b.isNew ? 1 : 0;
+    return fb - fa;
+  });
   const container = document.getElementById(containerId);
   const filterContainer = document.getElementById(filterContainerId);
   if (!container || !filterContainer) return;
@@ -1162,6 +1297,7 @@ function initScrollAnimations() {
 // BOOT
 // ============================================================
 renderStats();
+renderFeatured();
 renderExperience();
 renderProjectsPreview();
 renderPublicationsPreview();
