@@ -4,38 +4,25 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Gaurav N.V. | Engineer</title>
-
-    <!-- Ultra Minimalist Typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
       rel="stylesheet"
     />
-
-    <!-- Devicons for Skill Stack -->
     <link
       rel="stylesheet"
       type="text/css"
       href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
     />
-
-    <!-- Compiled Tailwind CSS -->
     <link rel="stylesheet" href="./css/index.css" />
-
-    <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
-
-    <!-- tailwind.config.js handles theme config -->
   </head>
-  <body
-    class="antialiased min-h-screen flex flex-col font-sans selection:bg-fg selection:text-bg"
-  >
-    <!-- Custom Cursor -->
+  <body class="antialiased min-h-screen flex flex-col font-sans">
     <div class="cursor-dot custom-cursor" id="cursor-dot"></div>
     <div class="cursor-outline custom-cursor" id="cursor-outline"></div>
 
-    <!-- Minimal Header -->
+    <!-- HEADER -->
     <header
       class="fixed top-0 w-full bg-bg/90 backdrop-blur-sm z-50 border-b border-border transition-colors duration-200"
     >
@@ -47,7 +34,6 @@
           class="font-bold tracking-tight text-fg hover:opacity-70 transition-opacity interactive"
           >Gaurav N.V.</a
         >
-
         <div class="flex items-center gap-6">
           <nav
             class="hidden md:flex gap-6 text-sm text-muted font-mono"
@@ -71,8 +57,19 @@
               class="hover:text-fg transition-colors interactive"
               >Projects</a
             >
+            <a
+              href="#research"
+              onclick="closeAllModals()"
+              class="hover:text-fg transition-colors interactive"
+              >Research</a
+            >
+            <a
+              href="#skills"
+              onclick="closeAllModals()"
+              class="hover:text-fg transition-colors interactive"
+              >Skills</a
+            >
           </nav>
-
           <button
             id="theme-toggle"
             class="text-fg hover:opacity-70 transition-opacity interactive"
@@ -80,7 +77,6 @@
           >
             <i data-lucide="moon" id="theme-icon" class="w-4 h-4"></i>
           </button>
-
           <button class="md:hidden text-fg interactive" id="mobile-menu-btn">
             <i data-lucide="menu" class="w-5 h-5"></i>
           </button>
@@ -88,7 +84,7 @@
       </div>
     </header>
 
-    <!-- Mobile Menu -->
+    <!-- MOBILE MENU -->
     <div
       id="mobile-menu"
       class="fixed inset-0 bg-bg z-[60] hidden flex-col justify-start px-8 opacity-0 transition-opacity duration-200 overflow-y-auto"
@@ -135,9 +131,9 @@
       </nav>
     </div>
 
-    <!-- Main Content -->
+    <!-- MAIN -->
     <main class="flex-1 w-full max-w-3xl mx-auto px-6 pt-32 pb-16 space-y-24">
-      <!-- Intro Section -->
+      <!-- ABOUT / HERO -->
       <section id="about" class="scroll-mt-32 fade-up">
         <div
           class="inline-flex items-center gap-2 px-3 py-1.5 border border-border rounded-full text-xs font-mono mb-8 bg-fg/5 text-fg font-medium"
@@ -152,13 +148,11 @@
           </span>
           Seeking Summer 2026 Internships
         </div>
-
         <h1
           class="text-4xl md:text-5xl font-bold tracking-tight leading-tight mb-6"
         >
-          Data Systems & <br />Backend Engineer.
+          Data Systems &amp; <br />Backend Engineer.
         </h1>
-
         <div
           class="text-base md:text-lg text-muted max-w-2xl leading-relaxed mb-8"
         >
@@ -167,7 +161,6 @@
           API design, concurrent systems in Go and Python, real-time data
           pipelines, and ML-integrated applications.
         </div>
-
         <div class="flex flex-col gap-6">
           <div class="flex flex-wrap items-center gap-4">
             <a
@@ -175,11 +168,8 @@
               download
               class="interactive magnetic inline-flex items-center gap-2 px-5 py-2.5 bg-fg text-bg hover:opacity-85 transition-opacity font-medium text-sm rounded-md shadow-sm"
             >
-              <i
-                data-lucide="file-text"
-                class="w-4 h-4 pointer-events-none"
-              ></i>
-              Resume
+              <i data-lucide="file-text" class="w-4 h-4 pointer-events-none"></i
+              >Resume
             </a>
             <div class="flex items-center gap-3">
               <a
@@ -202,7 +192,7 @@
                 ></i>
               </a>
               <a
-                href="/cdn-cgi/l/email-protection#0967686e686568797c497c7a6a276c6d7c"
+                href="mailto:gnagalap@usc.edu"
                 class="interactive magnetic p-2.5 border border-border rounded-md hover:bg-fg hover:text-bg transition-colors text-fg"
                 aria-label="Email"
               >
@@ -210,14 +200,12 @@
               </a>
             </div>
           </div>
-
-          <!-- Read More Button -->
           <div>
             <button
               onclick="openModal('about-modal')"
               class="interactive cursor-none group inline-flex items-center gap-2 font-mono text-xs md:text-sm text-muted hover:text-fg transition-colors"
             >
-              Read more about me & education
+              Read more about me &amp; education
               <i
                 data-lucide="arrow-right"
                 class="w-4 h-4 group-hover:translate-x-1 transition-transform"
@@ -225,339 +213,73 @@
             </button>
           </div>
         </div>
-
-        <!-- Stats Section -->
+        <!-- Stats — JS injected -->
         <div
+          id="stats-container"
           class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-12 mt-12 border-t border-border stagger-parent"
-        >
-          <div class="stagger-item flex flex-col">
-            <span class="text-4xl font-bold text-fg">2+</span>
-            <span
-              class="text-xs font-mono text-muted uppercase tracking-widest mt-1"
-              >Years Experience</span
-            >
-          </div>
-          <div
-            class="stagger-item flex flex-col"
-            style="transition-delay: 0.1s"
-          >
-            <span class="text-4xl font-bold text-fg">20+</span>
-            <span
-              class="text-xs font-mono text-muted uppercase tracking-widest mt-1"
-              >Projects Built</span
-            >
-          </div>
-          <div
-            class="stagger-item flex flex-col"
-            style="transition-delay: 0.2s"
-          >
-            <span class="text-4xl font-bold text-fg">3</span>
-            <span
-              class="text-xs font-mono text-muted uppercase tracking-widest mt-1"
-              >Papers Published</span
-            >
-          </div>
-        </div>
+        ></div>
       </section>
 
-      <!-- Experience Section -->
+      <!-- EXPERIENCE -->
       <section id="experience" class="scroll-mt-32 fade-up">
         <div class="flex items-baseline justify-between mb-8">
           <h2 class="text-2xl font-bold tracking-tight">Experience</h2>
         </div>
-
-        <div class="flex flex-col border-t border-border stagger-parent">
-          <!-- Job 1 -->
-          <div
-            class="stagger-item group interactive cursor-none border-b border-border py-6 list-item-hover px-2 -mx-2"
-            onclick="openDetails('experience', 'aadithya')"
-          >
-            <div
-              class="flex flex-col md:flex-row md:justify-between md:items-baseline gap-2 mb-2 pointer-events-none"
-            >
-              <h3
-                class="text-lg font-medium text-fg group-hover:underline transition-colors flex flex-wrap items-center gap-1.5"
-              >
-                Full Stack Developer
-                <span class="text-border mx-1">|</span>
-                <span
-                  class="text-muted font-normal inline-flex items-center gap-1.5"
-                >
-                  <i data-lucide="building-2" class="w-4 h-4"></i> Aadithya Cars
-                </span>
-              </h3>
-              <span class="font-mono text-xs text-muted"
-                >Apr 2024 - Nov 2024</span
-              >
-            </div>
-            <p class="text-sm text-muted line-clamp-2 pr-8 pointer-events-none">
-              Overhauled frontend pipeline cutting load time from 3.2s to 800ms.
-              Designed a chunk-based server-side ingestion pipeline replacing
-              monolithic full-memory reads, eliminating OOM crashes.
-            </p>
-          </div>
-
-          <!-- Job 2 -->
-          <div
-            class="stagger-item group interactive cursor-none border-b border-border py-6 list-item-hover px-2 -mx-2"
-            onclick="openDetails('experience', 'rmk_ra')"
-          >
-            <div
-              class="flex flex-col md:flex-row md:justify-between md:items-baseline gap-2 mb-2 pointer-events-none"
-            >
-              <h3
-                class="text-lg font-medium text-fg group-hover:underline transition-colors flex flex-wrap items-center gap-1.5"
-              >
-                Research Assistant
-                <span class="text-border mx-1">|</span>
-                <span
-                  class="text-muted font-normal inline-flex items-center gap-1.5"
-                >
-                  <i data-lucide="building-2" class="w-4 h-4"></i> R.M.K
-                  Engineering College
-                </span>
-              </h3>
-              <span class="font-mono text-xs text-muted"
-                >Sep 2023 - Apr 2024</span
-              >
-            </div>
-            <p class="text-sm text-muted line-clamp-2 pr-8 pointer-events-none">
-              Contributed to ML-driven applications, supporting data ingestion,
-              preprocessing pipelines, and backend integration. Implemented
-              systems in Python for sentiment analysis, text generation, and
-              medical image classification.
-            </p>
-          </div>
-
-          <!-- Job 3 -->
-          <div
-            class="stagger-item group interactive cursor-none border-b border-border py-6 list-item-hover px-2 -mx-2"
-            onclick="openDetails('experience', 'sawbon')"
-          >
-            <div
-              class="flex flex-col md:flex-row md:justify-between md:items-baseline gap-2 mb-2 pointer-events-none"
-            >
-              <h3
-                class="text-lg font-medium text-fg group-hover:underline transition-colors flex flex-wrap items-center gap-1.5"
-              >
-                Software Development Intern
-                <span class="text-border mx-1">|</span>
-                <span
-                  class="text-muted font-normal inline-flex items-center gap-1.5"
-                >
-                  <i data-lucide="building-2" class="w-4 h-4"></i> SAWBON
-                </span>
-              </h3>
-              <span class="font-mono text-xs text-muted">Feb 2022</span>
-            </div>
-            <p class="text-sm text-muted line-clamp-2 pr-8 pointer-events-none">
-              Built a suite of concurrent Go REST APIs using goroutines and
-              channels. Implemented Redis cache-aside strategy reducing
-              downstream DB read load by 30%.
-            </p>
-          </div>
-        </div>
+        <div
+          class="flex flex-col border-t border-border stagger-parent"
+          id="experience-list"
+        ></div>
       </section>
 
-      <!-- Projects Section -->
+      <!-- PROJECTS -->
       <section id="projects" class="scroll-mt-32 fade-up">
         <div class="flex items-baseline justify-between mb-8">
           <h2 class="text-2xl font-bold tracking-tight">Projects</h2>
         </div>
-
-        <div class="flex flex-col border-t border-border stagger-parent">
-          <!-- Featured Project 1 -->
-          <div
-            class="stagger-item group interactive cursor-none border-b border-border py-6 list-item-hover px-2 -mx-2 relative flex flex-col"
-            onclick="openDetails('project', 'aistora')"
+        <div
+          class="flex flex-col border-t border-border stagger-parent"
+          id="projects-preview"
+        ></div>
+        <div class="pt-6 flex justify-end">
+          <button
+            onclick="openModal('projects-modal')"
+            class="interactive group flex items-center gap-1 font-mono text-xs text-muted hover:text-fg transition-colors cursor-none"
           >
-            <div class="flex flex-col gap-2 mb-3 pointer-events-none">
-              <div class="flex items-center gap-3">
-                <h3
-                  class="text-lg font-medium text-fg group-hover:underline flex items-center gap-1.5"
-                >
-                  AIStora | Analytics Platform
-                  <i
-                    data-lucide="arrow-up-right"
-                    class="w-4 h-4 text-muted group-hover:text-fg transition-colors"
-                  ></i>
-                </h3>
-                <span
-                  class="bg-gradient-to-r from-red-500 to-violet-500 text-white text-[10px] font-mono font-bold uppercase tracking-widest px-2 py-0.5 rounded-sm shadow-sm"
-                  >Featured</span
-                >
-              </div>
-            </div>
-            <p
-              class="text-sm text-muted line-clamp-2 pr-8 mb-4 pointer-events-none"
-            >
-              In-memory columnar query engine in Python processing 100K+ row
-              datasets. Outperforms naive pandas by 3x. Features a React
-              dashboard for real-time visualization.
-            </p>
-            <!-- Auto populated via JS based on data-skills -->
-            <div
-              class="flex flex-wrap gap-2 relative z-20 auto-skill-container"
-              data-skills="Python,Flask,PostgreSQL,React"
-            >
-              <!-- Injected via JS -->
-            </div>
-          </div>
-
-          <!-- Project 2 -->
-          <div
-            class="stagger-item group interactive cursor-none border-b border-border py-6 list-item-hover px-2 -mx-2 relative flex flex-col"
-            onclick="openDetails('project', 'graphql')"
-          >
-            <div class="flex flex-col gap-2 mb-3 pointer-events-none">
-              <h3
-                class="text-lg font-medium text-fg group-hover:underline flex items-center gap-1.5"
-              >
-                GraphQL Task Management API
-                <i
-                  data-lucide="arrow-up-right"
-                  class="w-4 h-4 text-muted group-hover:text-fg transition-colors"
-                ></i>
-              </h3>
-            </div>
-            <p
-              class="text-sm text-muted line-clamp-2 pr-8 mb-4 pointer-events-none"
-            >
-              Schema-first GraphQL API using FastAPI and Strawberry, integrated
-              with Redis DataLoader batching to sustain 1000+ concurrent
-              connections.
-            </p>
-            <!-- Auto populated via JS based on data-skills -->
-            <div
-              class="flex flex-wrap gap-2 relative z-20 auto-skill-container"
-              data-skills="FastAPI,GraphQL,Redis,Python"
-            >
-              <!-- Injected via JS -->
-            </div>
-          </div>
-
-          <!-- View All Link -->
-          <div class="pt-6 flex justify-end">
-            <button
-              onclick="openModal('projects-modal')"
-              class="interactive group flex items-center gap-1 font-mono text-xs text-muted hover:text-fg transition-colors cursor-none"
-            >
-              View all projects
-              <i
-                data-lucide="arrow-right"
-                class="w-3 h-3 group-hover:translate-x-1 transition-transform"
-              ></i>
-            </button>
-          </div>
+            View all projects
+            <i
+              data-lucide="arrow-right"
+              class="w-3 h-3 group-hover:translate-x-1 transition-transform"
+            ></i>
+          </button>
         </div>
       </section>
 
-      <!-- Research Section -->
+      <!-- RESEARCH -->
       <section id="research" class="scroll-mt-32 fade-up">
         <div class="flex items-baseline justify-between mb-8">
           <h2 class="text-2xl font-bold tracking-tight">
-            Research & Publications
+            Research &amp; Publications
           </h2>
         </div>
-
-        <div class="flex flex-col border-t border-border stagger-parent">
-          <!-- Pub 1 -->
-          <div
-            class="stagger-item group border-b border-border py-6 px-2 -mx-2 list-item-hover relative"
-            onclick="openDetails('publication', 'human_ai')"
+        <div
+          class="flex flex-col border-t border-border stagger-parent"
+          id="publications-preview"
+        ></div>
+        <div class="pt-6 flex justify-end">
+          <button
+            onclick="openModal('publications-modal')"
+            class="interactive group flex items-center gap-1 font-mono text-xs text-muted hover:text-fg transition-colors cursor-none"
           >
-            <div
-              class="flex flex-col md:flex-row md:justify-between md:items-baseline gap-2 mb-2"
-            >
-              <h3
-                class="text-lg font-medium text-fg cursor-none interactive group-hover:underline pointer-events-none"
-              >
-                Human-AI Collaboration for Backend Text Generation
-              </h3>
-              <div class="flex items-center gap-4 pointer-events-none">
-                <span
-                  class="font-mono text-xs text-fg bg-border px-2 py-0.5 rounded-sm"
-                  >ICCDS 2024</span
-                >
-              </div>
-            </div>
-            <p
-              class="text-sm text-muted line-clamp-2 pr-8 mb-4 cursor-none interactive pointer-events-none"
-            >
-              Co-developed a keyword-driven content recommendation engine
-              leveraging GPT-based AI pipelines to dynamically generate and
-              personalize backend website copy.
-            </p>
-            <div class="flex justify-end pointer-events-auto">
-              <button
-                class="interactive cursor-none text-muted hover:text-fg font-mono text-xs uppercase tracking-wider transition-colors border border-border px-3 py-1.5 rounded-md hover:bg-hoverBg shadow-sm"
-                onclick="
-                  event.stopPropagation();
-                  copyCitation('human_ai');
-                "
-              >
-                Cite
-              </button>
-            </div>
-          </div>
-
-          <!-- Pub 2 -->
-          <div
-            class="stagger-item group border-b border-border py-6 px-2 -mx-2 list-item-hover relative"
-            onclick="openDetails('publication', 'iccds2024')"
-          >
-            <div
-              class="flex flex-col md:flex-row md:justify-between md:items-baseline gap-2 mb-2"
-            >
-              <h3
-                class="text-lg font-medium text-fg cursor-none interactive group-hover:underline pointer-events-none"
-              >
-                Sentiment-Based Drug Recommendation System
-              </h3>
-              <div class="flex items-center gap-4 pointer-events-none">
-                <span
-                  class="font-mono text-xs text-fg bg-border px-2 py-0.5 rounded-sm"
-                  >ICCDS 2024</span
-                >
-              </div>
-            </div>
-            <p
-              class="text-sm text-muted line-clamp-2 pr-8 mb-4 cursor-none interactive pointer-events-none"
-            >
-              NLP pipeline using fine-tuned BERT on domain-specific patient
-              review corpora to classify sentiment and generate ranked
-              recommendations at 88% accuracy.
-            </p>
-            <div class="flex justify-end pointer-events-auto">
-              <button
-                class="interactive cursor-none text-muted hover:text-fg font-mono text-xs uppercase tracking-wider transition-colors border border-border px-3 py-1.5 rounded-md hover:bg-hoverBg shadow-sm"
-                onclick="
-                  event.stopPropagation();
-                  copyCitation('iccds2024');
-                "
-              >
-                Cite
-              </button>
-            </div>
-          </div>
-
-          <!-- View All Link -->
-          <div class="pt-6 flex justify-end">
-            <button
-              onclick="openModal('publications-modal')"
-              class="interactive group flex items-center gap-1 font-mono text-xs text-muted hover:text-fg transition-colors cursor-none"
-            >
-              View all publications
-              <i
-                data-lucide="arrow-right"
-                class="w-3 h-3 group-hover:translate-x-1 transition-transform"
-              ></i>
-            </button>
-          </div>
+            View all publications
+            <i
+              data-lucide="arrow-right"
+              class="w-3 h-3 group-hover:translate-x-1 transition-transform"
+            ></i>
+          </button>
         </div>
       </section>
 
-      <!-- Skills / Stack Section (Dynamically Populated) -->
+      <!-- SKILLS -->
       <section id="skills" class="scroll-mt-32 fade-up">
         <h2
           class="text-2xl font-bold tracking-tight mb-6 border-b border-border pb-4"
@@ -567,139 +289,33 @@
         <div
           id="skills-container"
           class="grid grid-cols-1 md:grid-cols-2 gap-y-10 gap-x-8 text-sm stagger-parent"
-        >
-          <!-- Dynamic content injected here via JS -->
-        </div>
+        ></div>
       </section>
 
-      <!-- Others (Certifications, Coding Platforms, Open Source) Section -->
+      <!-- OTHERS -->
       <section id="others" class="scroll-mt-32 fade-up">
         <div class="flex items-baseline justify-between mb-8">
           <h2 class="text-2xl font-bold tracking-tight">Others</h2>
         </div>
-
-        <div class="flex flex-col border-t border-border stagger-parent">
-          <!-- PrintStruct Open Source -->
-          <div
-            class="stagger-item group interactive cursor-none border-b border-border py-6 list-item-hover px-2 -mx-2 relative flex flex-col"
-            onclick="openDetails('other', 'printstruct')"
+        <div
+          class="flex flex-col border-t border-border stagger-parent"
+          id="others-preview"
+        ></div>
+        <div class="pt-6 flex justify-end">
+          <button
+            onclick="openModal('others-modal')"
+            class="interactive group flex items-center gap-1 font-mono text-xs text-muted hover:text-fg transition-colors cursor-none"
           >
-            <div
-              class="flex flex-wrap items-center gap-3 mb-2 pointer-events-none"
-            >
-              <h3
-                class="text-lg font-medium text-fg group-hover:underline flex items-center gap-1.5"
-              >
-                Contributor — PrintStruct
-                <i
-                  data-lucide="arrow-up-right"
-                  class="w-4 h-4 text-muted group-hover:text-fg transition-colors"
-                ></i>
-              </h3>
-              <span
-                class="font-mono text-[10px] text-muted border border-border px-2 py-0.5 rounded-sm uppercase tracking-widest bg-bg"
-                >Open Source</span
-              >
-            </div>
-            <p
-              class="text-sm text-muted line-clamp-2 pr-8 mb-4 pointer-events-none"
-            >
-              Contributed to PrintStruct, a Python CLI tool on PyPI that
-              visualizes project directory structures. Refactored architecture
-              and eliminated technical debt.
-            </p>
-            <div
-              class="flex flex-wrap gap-2 relative z-20 auto-skill-container"
-              data-skills="Python,Open Source"
-            ></div>
-          </div>
-
-          <!-- Imagine Cup Hackathon -->
-          <div
-            class="stagger-item group interactive cursor-none border-b border-border py-6 list-item-hover px-2 -mx-2 relative flex flex-col"
-            onclick="openDetails('other', 'imagine_cup')"
-          >
-            <div
-              class="flex flex-wrap items-center gap-3 mb-2 pointer-events-none"
-            >
-              <h3
-                class="text-lg font-medium text-fg group-hover:underline flex items-center gap-1.5"
-              >
-                Microsoft Imagine Cup
-                <i
-                  data-lucide="arrow-up-right"
-                  class="w-4 h-4 text-muted group-hover:text-fg transition-colors"
-                ></i>
-              </h3>
-              <span
-                class="font-mono text-[10px] text-muted border border-border px-2 py-0.5 rounded-sm uppercase tracking-widest bg-bg"
-                >Hackathon</span
-              >
-            </div>
-            <p
-              class="text-sm text-muted line-clamp-2 pr-8 mb-4 pointer-events-none"
-            >
-              Built a collaborative platform connecting researchers, doctors,
-              and patients to share medical reports and treatment knowledge for
-              rare disease research.
-            </p>
-            <div
-              class="flex flex-wrap gap-2 relative z-20 auto-skill-container"
-              data-skills="React,Node.js,MongoDB"
-            ></div>
-          </div>
-
-          <!-- Complete Python Dev -->
-          <div
-            class="stagger-item group interactive cursor-none border-b border-border py-6 list-item-hover px-2 -mx-2 relative flex flex-col"
-            onclick="openDetails('other', 'cert_python')"
-          >
-            <div
-              class="flex flex-wrap items-center gap-3 mb-2 pointer-events-none"
-            >
-              <h3
-                class="text-lg font-medium text-fg group-hover:underline flex items-center gap-1.5"
-              >
-                The Complete Python Developer
-                <i
-                  data-lucide="arrow-up-right"
-                  class="w-4 h-4 text-muted group-hover:text-fg transition-colors"
-                ></i>
-              </h3>
-              <span
-                class="font-mono text-[10px] text-muted border border-border px-2 py-0.5 rounded-sm uppercase tracking-widest bg-bg"
-                >Certification</span
-              >
-            </div>
-            <p
-              class="text-sm text-muted line-clamp-2 pr-8 mb-4 pointer-events-none"
-            >
-              Udemy certified course covering advanced Python architecture,
-              decorators, generators, testing, and modern language features.
-            </p>
-            <div
-              class="flex flex-wrap gap-2 relative z-20 auto-skill-container"
-              data-skills="Python"
-            ></div>
-          </div>
-
-          <!-- View All Link -->
-          <div class="pt-6 flex justify-end">
-            <button
-              onclick="openModal('others-modal')"
-              class="interactive group flex items-center gap-1 font-mono text-xs text-muted hover:text-fg transition-colors cursor-none"
-            >
-              View all others
-              <i
-                data-lucide="arrow-right"
-                class="w-3 h-3 group-hover:translate-x-1 transition-transform"
-              ></i>
-            </button>
-          </div>
+            View all others
+            <i
+              data-lucide="arrow-right"
+              class="w-3 h-3 group-hover:translate-x-1 transition-transform"
+            ></i>
+          </button>
         </div>
       </section>
 
-      <!-- Contact Form Redesign - Minimalist/Brutalist -->
+      <!-- CONTACT -->
       <section
         id="contact"
         class="scroll-mt-32 fade-up border-t border-border pt-24 pb-8"
@@ -718,7 +334,7 @@
             </p>
             <div class="flex flex-col gap-4">
               <a
-                href="/cdn-cgi/l/email-protection#dfb1beb8beb3beafaa9faaacbcf1babbaa"
+                href="mailto:gnagalap@usc.edu"
                 class="interactive cursor-none inline-flex items-center gap-3 text-fg font-mono text-sm group w-fit"
               >
                 <span
@@ -726,11 +342,7 @@
                 >
                   <i data-lucide="mail" class="w-4 h-4 pointer-events-none"></i>
                 </span>
-                <span
-                  class="__cf_email__"
-                  data-cfemail="5d333c3a3c313c2d281d282e3e73383928"
-                  >[email&#160;protected]</span
-                >
+                gnagalap@usc.edu
               </a>
               <a
                 href="https://linkedin.com/in/gauravnv"
@@ -749,7 +361,6 @@
               </a>
             </div>
           </div>
-
           <div class="flex-1">
             <form id="contact-form" class="flex flex-col gap-10 lg:pt-4">
               <div class="relative group">
@@ -758,8 +369,8 @@
                   id="name"
                   name="name"
                   required
-                  class="w-full bg-transparent border-b border-border py-3 outline-none text-fg placeholder-transparent focus:border-fg transition-colors interactive cursor-none peer text-base font-sans"
                   placeholder="Name"
+                  class="w-full bg-transparent border-b border-border py-3 outline-none text-fg placeholder-transparent focus:border-fg transition-colors interactive cursor-none peer text-base font-sans"
                 />
                 <label
                   for="name"
@@ -773,8 +384,8 @@
                   id="email"
                   name="email"
                   required
-                  class="w-full bg-transparent border-b border-border py-3 outline-none text-fg placeholder-transparent focus:border-fg transition-colors interactive cursor-none peer text-base font-sans"
                   placeholder="Email"
+                  class="w-full bg-transparent border-b border-border py-3 outline-none text-fg placeholder-transparent focus:border-fg transition-colors interactive cursor-none peer text-base font-sans"
                 />
                 <label
                   for="email"
@@ -788,8 +399,8 @@
                   name="message"
                   required
                   rows="1"
-                  class="w-full bg-transparent border-b border-border py-3 outline-none text-fg placeholder-transparent focus:border-fg transition-colors interactive cursor-none peer text-base font-sans resize-none overflow-hidden"
                   placeholder="Message"
+                  class="w-full bg-transparent border-b border-border py-3 outline-none text-fg placeholder-transparent focus:border-fg transition-colors interactive cursor-none peer text-base font-sans resize-none overflow-hidden"
                   oninput="
                     this.style.height = '';
                     this.style.height = this.scrollHeight + 'px';
@@ -812,14 +423,14 @@
         </div>
       </section>
 
-      <!-- Footer -->
+      <!-- FOOTER -->
       <footer
         class="pt-16 pb-8 border-t border-border mt-8 text-center fade-up"
       >
         <p
           class="text-xs font-mono text-muted flex flex-wrap items-center justify-center gap-x-1.5 gap-y-1"
         >
-          <span>© 2025 Gaurav Nagalapuram.</span>
+          <span>&copy; 2025 Gaurav Nagalapuram.</span>
           <span class="inline-flex items-center gap-1.5 whitespace-nowrap">
             Crafted with
             <i
@@ -832,67 +443,58 @@
       </footer>
     </main>
 
-    <!-- Upward Slide-over Bottom Sheet UI (For Projects & Experience) -->
+    <!-- DRAWER OVERLAY -->
     <div
       id="drawer-overlay"
       class="fixed inset-0 bg-fg/10 backdrop-blur-sm z-[90] hidden opacity-0 transition-opacity interactive cursor-none"
       onclick="closeDrawer()"
     ></div>
+
+    <!-- DRAWER (redesigned) -->
     <div
       id="drawer"
       class="fixed bottom-0 left-0 right-0 mx-auto w-full max-w-3xl h-[90vh] md:h-[80vh] bg-bg border-t md:border-x border-border z-[100] translate-y-full flex flex-col overflow-hidden md:rounded-t-2xl shadow-2xl"
     >
+      <!-- Compact header bar -->
       <div
-        class="px-6 py-4 border-b border-border flex justify-between items-center bg-bg z-10 sticky top-0"
+        class="px-5 h-12 border-b border-border flex items-center justify-between bg-bg sticky top-0 z-10 shrink-0"
       >
         <span
           id="drawer-category"
-          class="font-mono text-xs text-muted uppercase tracking-widest"
+          class="font-mono text-[10px] text-muted uppercase tracking-widest truncate"
         ></span>
-        <div class="flex items-center gap-2">
-          <!-- Scroll sticky icons -->
+        <div class="flex items-center gap-1.5">
           <div
             id="drawer-header-actions"
-            class="flex items-center opacity-0 transition-opacity pointer-events-none duration-200"
-          >
-            <!-- injected via JS -->
-          </div>
-          <!-- Explicit X Exit Button -->
+            class="flex items-center gap-1.5 opacity-0 pointer-events-none transition-opacity duration-200"
+          ></div>
           <button
             onclick="closeDrawer()"
-            class="text-muted hover:text-fg transition-colors interactive cursor-none ml-2"
+            class="p-1.5 rounded-md text-muted hover:text-fg hover:bg-hoverBg transition-colors interactive cursor-none"
           >
-            <i data-lucide="x" class="w-6 h-6"></i>
+            <i data-lucide="x" class="w-4 h-4"></i>
           </button>
         </div>
       </div>
 
+      <!-- Scroll body -->
       <div
-        class="flex-1 overflow-y-auto p-6 md:p-8"
+        class="flex-1 overflow-y-auto px-6 pt-6 pb-10 md:px-8"
         id="drawer-scroll-container"
         onscroll="handleDrawerScroll(this)"
       >
         <h2
           id="drawer-title"
-          class="text-2xl md:text-3xl font-bold text-fg mb-4 leading-tight flex items-center gap-2"
-        >
-          <!-- Injected via JS -->
-        </h2>
-
-        <!-- Action buttons placed immediately under the title -->
+          class="text-2xl md:text-3xl font-bold text-fg mb-3 leading-tight flex flex-wrap items-center gap-2"
+        ></h2>
         <div
           id="drawer-actions"
           class="flex flex-wrap gap-3 mb-8 transition-opacity duration-200"
-        >
-          <!-- injected via JS -->
-        </div>
-
+        ></div>
         <div
           id="drawer-description"
           class="text-sm text-fg leading-relaxed space-y-4 mb-10"
-        >
-          <!-- Injected via JS -->
-        </div>
+        ></div>
 
         <div
           id="drawer-screenshots-container"
@@ -903,9 +505,7 @@
           >
             Screenshots
           </h4>
-          <div id="drawer-screenshots" class="space-y-4">
-            <!-- Injected via JS -->
-          </div>
+          <div id="drawer-screenshots" class="space-y-4"></div>
         </div>
 
         <div
@@ -917,9 +517,10 @@
           >
             Architecture
           </h4>
-          <div id="drawer-visual" class="text-sm font-mono text-muted">
-            <!-- Injected -->
-          </div>
+          <div
+            id="drawer-visual"
+            class="text-sm font-mono text-muted leading-loose"
+          ></div>
         </div>
 
         <div
@@ -931,17 +532,12 @@
           >
             Stack
           </h4>
-          <div
-            id="drawer-stack"
-            class="flex flex-wrap gap-2 text-sm text-fg font-mono"
-          >
-            <!-- Injected -->
-          </div>
+          <div id="drawer-stack" class="flex flex-wrap gap-2"></div>
         </div>
       </div>
     </div>
 
-    <!-- About Full Screen Modal -->
+    <!-- ABOUT MODAL -->
     <div
       id="about-modal"
       class="modal-view fixed inset-0 bg-bg z-40 hidden opacity-0 transition-opacity duration-300 overflow-y-auto"
@@ -953,12 +549,11 @@
           </h2>
           <button
             onclick="closeModal('about-modal')"
-            class="text-muted hover:text-fg transition-colors interactive cursor-none"
+            class="text-muted hover:text-fg transition-colors interactive cursor-none p-1.5 rounded-md hover:bg-hoverBg"
           >
             <i data-lucide="x" class="w-6 h-6"></i>
           </button>
         </div>
-
         <div class="text-muted text-sm leading-relaxed mb-20 space-y-6">
           <p>
             I am an MS Applied Data Science candidate at the University of
@@ -981,7 +576,6 @@
             scale.
           </p>
         </div>
-
         <h2 class="text-3xl font-bold tracking-tight mb-10">Education.</h2>
         <div class="mb-16">
           <div
@@ -999,7 +593,7 @@
           </p>
           <p class="text-xs text-muted mb-8 italic">GPA: 3.6 / 4.0</p>
           <div class="border-t border-border">
-            <div class="border-b border-border py-4 accordion-group">
+            <div class="border-b border-border py-4">
               <button
                 class="flex justify-between items-center w-full text-left font-medium text-sm text-fg interactive cursor-none accordion-btn"
               >
@@ -1020,7 +614,6 @@
             </div>
           </div>
         </div>
-
         <div class="mb-12">
           <div
             class="flex flex-col md:flex-row justify-between items-baseline mb-2"
@@ -1039,7 +632,7 @@
             CGPA: 8.75 / 10.0 | First Class
           </p>
           <div class="border-t border-border">
-            <div class="border-b border-border py-4 accordion-group">
+            <div class="border-b border-border py-4">
               <button
                 class="flex justify-between items-center w-full text-left font-medium text-sm text-fg interactive cursor-none accordion-btn"
               >
@@ -1051,12 +644,12 @@
               </button>
               <div class="hidden pt-4 text-sm text-muted accordion-content">
                 <ul class="list-disc pl-4 space-y-2">
-                  <li>Data Structures & Algorithms</li>
+                  <li>Data Structures &amp; Algorithms</li>
                   <li>Operating Systems</li>
-                  <li>Computer Networks & Database Management Systems</li>
-                  <li>Cloud Computing & Big Data Analytics</li>
-                  <li>AI & Machine Learning</li>
-                  <li>DevOps & Microservice Architecture</li>
+                  <li>Computer Networks &amp; Database Management Systems</li>
+                  <li>Cloud Computing &amp; Big Data Analytics</li>
+                  <li>AI &amp; Machine Learning</li>
+                  <li>DevOps &amp; Microservice Architecture</li>
                 </ul>
               </div>
             </div>
@@ -1065,7 +658,7 @@
       </div>
     </div>
 
-    <!-- Projects Full Screen Modal -->
+    <!-- PROJECTS MODAL -->
     <div
       id="projects-modal"
       class="modal-view fixed inset-0 bg-bg z-40 hidden opacity-0 transition-opacity duration-300 overflow-y-auto"
@@ -1077,26 +670,23 @@
           </h2>
           <button
             onclick="closeModal('projects-modal')"
-            class="text-muted hover:text-fg transition-colors interactive cursor-none"
+            class="text-muted hover:text-fg transition-colors interactive cursor-none p-1.5 rounded-md hover:bg-hoverBg"
           >
             <i data-lucide="x" class="w-6 h-6"></i>
           </button>
         </div>
-
-        <div class="flex flex-wrap gap-2 mb-10" id="projects-filter-container">
-          <!-- Filters injected via JS -->
-        </div>
-
+        <div
+          class="flex flex-wrap gap-2 mb-10"
+          id="projects-filter-container"
+        ></div>
         <div
           class="flex flex-col border-t border-border"
           id="projects-list-container"
-        >
-          <!-- Project cards injected via JS -->
-        </div>
+        ></div>
       </div>
     </div>
 
-    <!-- Publications Full Screen Modal -->
+    <!-- PUBLICATIONS MODAL -->
     <div
       id="publications-modal"
       class="modal-view fixed inset-0 bg-bg z-40 hidden opacity-0 transition-opacity duration-300 overflow-y-auto"
@@ -1108,29 +698,23 @@
           </h2>
           <button
             onclick="closeModal('publications-modal')"
-            class="text-muted hover:text-fg transition-colors interactive cursor-none"
+            class="text-muted hover:text-fg transition-colors interactive cursor-none p-1.5 rounded-md hover:bg-hoverBg"
           >
             <i data-lucide="x" class="w-6 h-6"></i>
           </button>
         </div>
-
         <div
           class="flex flex-wrap gap-2 mb-10"
           id="publications-filter-container"
-        >
-          <!-- Filters injected via JS -->
-        </div>
-
+        ></div>
         <div
           class="flex flex-col border-t border-border"
           id="publications-list-container"
-        >
-          <!-- Publication cards injected via JS -->
-        </div>
+        ></div>
       </div>
     </div>
 
-    <!-- Others Full Screen Modal -->
+    <!-- OTHERS MODAL -->
     <div
       id="others-modal"
       class="modal-view fixed inset-0 bg-bg z-40 hidden opacity-0 transition-opacity duration-300 overflow-y-auto"
@@ -1142,34 +726,28 @@
           </h2>
           <button
             onclick="closeModal('others-modal')"
-            class="text-muted hover:text-fg transition-colors interactive cursor-none"
+            class="text-muted hover:text-fg transition-colors interactive cursor-none p-1.5 rounded-md hover:bg-hoverBg"
           >
             <i data-lucide="x" class="w-6 h-6"></i>
           </button>
         </div>
-
-        <div class="flex flex-wrap gap-2 mb-10" id="others-filter-container">
-          <!-- Filters injected via JS -->
-        </div>
-
+        <div
+          class="flex flex-wrap gap-2 mb-10"
+          id="others-filter-container"
+        ></div>
         <div
           class="flex flex-col border-t border-border"
           id="others-list-container"
-        >
-          <!-- Cards injected via JS -->
-        </div>
+        ></div>
       </div>
     </div>
 
-    <!-- Notification Toast -->
+    <!-- TOAST -->
     <div
       id="toast"
       class="fixed bottom-8 left-1/2 -translate-x-1/2 z-[9999] bg-fg text-bg px-4 py-2 text-xs font-mono opacity-0 transition-opacity pointer-events-none flex items-center gap-2 rounded-md shadow-md"
-    >
-      <!-- Message injected via JS -->
-    </div>
+    ></div>
 
-    <!-- Scripts -->
     <script src="./js/index.js"></script>
   </body>
 </html>
