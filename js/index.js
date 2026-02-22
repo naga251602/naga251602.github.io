@@ -72,7 +72,7 @@ const detailsData = {
       linkText: "Repository",
       linkIcon: "github",
       visual: "",
-      screenshots: [],
+      screenshots: ["./resources/demo_gblog.png"],
     },
   },
 
