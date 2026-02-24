@@ -45,7 +45,7 @@ const detailsData = {
       linkText: "Repository",
       linkIcon: "github",
       visual: `13-League Data Pipeline<br/>&#8595;<br/>Dynamic OVR Ratings<br/>&#8595;<br/>GAT + Monte Carlo Engine`,
-      screenshots: ["./resources/demo_ipl.png"],
+      screenshots: ["./resources/demo_ipl.png", "./resources/demo_ipl.png"],
     },
     graphql: {
       title: "GraphQL Task Management API",
@@ -754,10 +754,10 @@ function getSkillPillHtml(skillName, showFill = false) {
     ? `<span class="skill-pill-tooltip absolute -top-8 left-1/2 -translate-x-1/2 whitespace-nowrap px-2 py-1 bg-fg text-bg text-[9px] font-mono rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-150 pointer-events-none z-30">tap to explore</span>`
     : "";
   return `<span
-    class="interactive relative inline-flex items-center gap-1.5 px-2.5 py-1.5 border border-border rounded-md text-xs font-mono bg-bg text-fg hover:border-fg transition-all cursor-none group overflow-visible shrink-0"
+    class="interactive relative inline-flex items-center gap-1.5 px-2.5 py-1.5 border border-border rounded-md text-xs font-mono bg-bg text-fg hover:border-fg transition-all cursor-none group overflow-visible"
     onclick="event.stopPropagation();openSkillDrawer('${meta.name}')"
     ${showFill ? `title="Skill Level: ${meta.level}%"` : ""}
-  >${fillHtml}${iconHtml}<span class="relative z-10 font-medium tracking-tight pointer-events-none whitespace-nowrap">${meta.name}</span>${tooltip}</span>`;
+  >${fillHtml}${iconHtml}<span class="relative z-10 font-medium tracking-tight pointer-events-none">${meta.name}</span>${tooltip}</span>`;
 }
 
 // Strip HTML for plain text previews
@@ -952,7 +952,7 @@ function renderExperience() {
 
         <p class="text-sm text-muted line-clamp-2 mb-4 pointer-events-none leading-relaxed">${stripHtml(d.description)}</p>
 
-        <div class="flex flex-wrap gap-1.5 relative z-20 pointer-events-auto overflow-visible pb-1">
+        <div class="flex flex-wrap gap-1.5 relative z-20 pointer-events-auto">
           ${getSkillPillsWithOverflow(d.stack, false, 4)}
         </div>
 
@@ -1365,16 +1365,13 @@ let _drawerOpen = false;
 function handleDrawerScroll(el) {
   const acts = document.getElementById("drawer-actions");
   const head = document.getElementById("drawer-header-actions");
-  const breadcrumb = document.getElementById("drawer-header-title");
   const scrolled = el.scrollTop > 60;
   if (scrolled) {
     if (head) head.classList.remove("opacity-0", "pointer-events-none");
     if (acts) acts.classList.add("opacity-0", "pointer-events-none");
-    if (breadcrumb) breadcrumb.classList.remove("opacity-0");
   } else {
     if (head) head.classList.add("opacity-0", "pointer-events-none");
     if (acts) acts.classList.remove("opacity-0", "pointer-events-none");
-    if (breadcrumb) breadcrumb.classList.add("opacity-0");
   }
 }
 
@@ -1432,8 +1429,6 @@ function openDrawerUI(isNew = true) {
   if (sc) sc.scrollTop = 0;
   const ha = document.getElementById("drawer-header-actions");
   if (ha) ha.classList.add("opacity-0", "pointer-events-none");
-  const ht = document.getElementById("drawer-header-title");
-  if (ht) ht.classList.add("opacity-0");
   const da = document.getElementById("drawer-actions");
   if (da) da.classList.remove("opacity-0", "pointer-events-none");
   _updateBackBtn();
@@ -1480,9 +1475,6 @@ function _renderDetailsPane(type, id) {
 
   setDrawerType(type);
 
-  const ht = document.getElementById("drawer-header-title");
-  if (ht) ht.textContent = d.title;
-
   const titleEl = document.getElementById("drawer-title");
   let titleContent = d.title;
   if (type === "project")
@@ -1517,9 +1509,7 @@ function _renderDetailsPane(type, id) {
   stBox.innerHTML = "";
   if (d.stack?.length) {
     stCon.style.display = "block";
-    d.stack.forEach((t) => {
-      stBox.innerHTML += getSkillPillHtml(t, false);
-    });
+    stBox.innerHTML = getSkillPillsWithOverflow(d.stack, false, 3);
   } else stCon.style.display = "none";
 
   const vis = document.getElementById("drawer-visual-container");
@@ -1739,8 +1729,6 @@ function _renderSkillPane(skill) {
     : `<i class="${meta.icon} text-xl"></i>`;
 
   setDrawerType("skill");
-  const _ht = document.getElementById("drawer-header-title");
-  if (_ht) _ht.textContent = skill;
   const _metaEl = document.getElementById("drawer-meta");
   if (_metaEl) _metaEl.style.display = "none";
 
@@ -1944,16 +1932,12 @@ const mobileBtn = document.getElementById("mobile-menu-btn");
 const closeMenuBtn = document.getElementById("close-menu-btn");
 const mobileMenu = document.getElementById("mobile-menu");
 function toggleMenu() {
-  const isHidden =
-    mobileMenu.style.display === "none" || mobileMenu.style.display === "";
-  if (isHidden) {
-    mobileMenu.style.display = "flex";
+  if (mobileMenu.classList.contains("hidden")) {
+    mobileMenu.classList.remove("hidden");
     setTimeout(() => mobileMenu.classList.remove("opacity-0"), 10);
   } else {
     mobileMenu.classList.add("opacity-0");
-    setTimeout(() => {
-      mobileMenu.style.display = "none";
-    }, 200);
+    setTimeout(() => mobileMenu.classList.add("hidden"), 200);
   }
 }
 mobileBtn.addEventListener("click", toggleMenu);

@@ -87,8 +87,7 @@
     <!-- MOBILE MENU -->
     <div
       id="mobile-menu"
-      class="fixed inset-0 bg-bg z-[60] justify-start px-8 opacity-0 transition-opacity duration-200 overflow-y-auto"
-      style="display: none; flex-direction: column"
+      class="fixed inset-0 bg-bg z-[60] hidden flex-col justify-start px-8 opacity-0 transition-opacity duration-200 overflow-y-auto"
     >
       <button
         id="close-menu-btn"
@@ -136,26 +135,18 @@
     <main class="flex-1 w-full max-w-3xl mx-auto px-6 pt-32 pb-16 space-y-24">
       <!-- ABOUT / HERO -->
       <section id="about" class="scroll-mt-32 fade-up">
-        <div class="flex flex-wrap items-center gap-3 mb-8">
-          <div
-            class="inline-flex items-center gap-2 px-3 py-1.5 border border-border rounded-full text-xs font-mono bg-fg/5 text-fg font-medium"
-          >
-            <span class="relative flex h-2 w-2">
-              <span
-                class="animate-ping absolute inline-flex h-full w-full rounded-full bg-violet-400 opacity-75"
-              ></span>
-              <span
-                class="relative inline-flex rounded-full h-2 w-2 bg-violet-500"
-              ></span>
-            </span>
-            Seeking Summer 2026 Internships
-          </div>
-          <div
-            class="inline-flex items-center gap-1.5 px-3 py-1.5 border border-border rounded-full text-xs font-mono bg-fg/5 text-muted"
-          >
-            <i data-lucide="map-pin" class="w-3 h-3 text-muted"></i>
-            Los Angeles, CA
-          </div>
+        <div
+          class="inline-flex items-center gap-2 px-3 py-1.5 border border-border rounded-full text-xs font-mono mb-8 bg-fg/5 text-fg font-medium"
+        >
+          <span class="relative flex h-2 w-2">
+            <span
+              class="animate-ping absolute inline-flex h-full w-full rounded-full bg-violet-400 opacity-75"
+            ></span>
+            <span
+              class="relative inline-flex rounded-full h-2 w-2 bg-violet-500"
+            ></span>
+          </span>
+          Seeking Summer 2026 Internships
         </div>
         <h1
           class="text-4xl md:text-5xl font-bold tracking-tight leading-tight mb-6"
@@ -531,10 +522,6 @@
             id="drawer-type-chip"
             class="shrink-0 inline-flex items-center gap-1 px-2 py-0.5 rounded border border-border text-[10px] font-mono font-bold uppercase tracking-widest text-muted bg-hoverBg"
           ></span>
-          <span
-            id="drawer-header-title"
-            class="text-xs font-semibold text-fg truncate opacity-0 pointer-events-none transition-opacity duration-200 max-w-[180px]"
-          ></span>
         </div>
         <div class="flex items-center gap-1 shrink-0">
           <div
@@ -557,33 +544,36 @@
         onscroll="handleDrawerScroll(this)"
       >
         <!-- Hero zone -->
-        <div class="px-6 md:px-8 pt-10 pb-5">
+        <div class="px-6 md:px-8 pt-10 pb-7">
+          <!-- Title -->
+          <br />
           <h2
             id="drawer-title"
-            class="text-xl md:text-2xl font-bold text-fg leading-tight mb-4"
+            class="text-xl md:text-2xl font-bold text-fg leading-snug mb-5"
           ></h2>
 
-          <!-- Meta strip -->
+          <!-- Meta strip (company / period / venue) -->
           <div
             id="drawer-meta"
-            class="mb-4 flex-wrap gap-x-5 gap-y-1.5"
+            class="flex-wrap gap-x-6 gap-y-2 mb-5"
             style="display: none"
           ></div>
 
-          <!-- Actions -->
+          <!-- CTA Actions -->
           <div
             id="drawer-actions"
-            class="flex flex-wrap gap-2.5 mb-5 transition-opacity duration-200"
+            class="flex flex-wrap gap-3 mb-6 transition-opacity duration-200"
           ></div>
 
-          <!-- Stack pills — label + pills -->
+          <!-- Stack pills — max 3 visible, rest behind +N more -->
           <div id="drawer-stack-container" style="display: none">
             <p
-              class="font-mono text-[10px] text-muted uppercase tracking-widest mb-2"
+              class="font-mono text-[10px] text-muted uppercase tracking-widest mb-3"
             >
               Stack
             </p>
-            <div id="drawer-stack" class="flex flex-wrap gap-1.5 mb-5"></div>
+            <div id="drawer-stack" class="flex flex-wrap gap-1.5"></div>
+            <br />
           </div>
         </div>
 
