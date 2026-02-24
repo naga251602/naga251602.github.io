@@ -754,10 +754,10 @@ function getSkillPillHtml(skillName, showFill = false) {
     ? `<span class="skill-pill-tooltip absolute -top-8 left-1/2 -translate-x-1/2 whitespace-nowrap px-2 py-1 bg-fg text-bg text-[9px] font-mono rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-150 pointer-events-none z-30">tap to explore</span>`
     : "";
   return `<span
-    class="interactive relative inline-flex items-center gap-1.5 px-2.5 py-1.5 border border-border rounded-md text-xs font-mono bg-bg text-fg hover:border-fg transition-all cursor-none group overflow-visible"
+    class="interactive relative inline-flex items-center gap-1.5 px-2.5 py-1.5 border border-border rounded-md text-xs font-mono bg-bg text-fg hover:border-fg transition-all cursor-none group overflow-visible shrink-0"
     onclick="event.stopPropagation();openSkillDrawer('${meta.name}')"
     ${showFill ? `title="Skill Level: ${meta.level}%"` : ""}
-  >${fillHtml}${iconHtml}<span class="relative z-10 font-medium tracking-tight pointer-events-none">${meta.name}</span>${tooltip}</span>`;
+  >${fillHtml}${iconHtml}<span class="relative z-10 font-medium tracking-tight pointer-events-none whitespace-nowrap">${meta.name}</span>${tooltip}</span>`;
 }
 
 // Strip HTML for plain text previews
@@ -952,7 +952,7 @@ function renderExperience() {
 
         <p class="text-sm text-muted line-clamp-2 mb-4 pointer-events-none leading-relaxed">${stripHtml(d.description)}</p>
 
-        <div class="flex flex-wrap gap-1.5 relative z-20 pointer-events-auto">
+        <div class="flex flex-wrap gap-1.5 relative z-20 pointer-events-auto overflow-visible pb-1">
           ${getSkillPillsWithOverflow(d.stack, false, 4)}
         </div>
 
@@ -1944,12 +1944,16 @@ const mobileBtn = document.getElementById("mobile-menu-btn");
 const closeMenuBtn = document.getElementById("close-menu-btn");
 const mobileMenu = document.getElementById("mobile-menu");
 function toggleMenu() {
-  if (mobileMenu.classList.contains("hidden")) {
-    mobileMenu.classList.remove("hidden");
+  const isHidden =
+    mobileMenu.style.display === "none" || mobileMenu.style.display === "";
+  if (isHidden) {
+    mobileMenu.style.display = "flex";
     setTimeout(() => mobileMenu.classList.remove("opacity-0"), 10);
   } else {
     mobileMenu.classList.add("opacity-0");
-    setTimeout(() => mobileMenu.classList.add("hidden"), 200);
+    setTimeout(() => {
+      mobileMenu.style.display = "none";
+    }, 200);
   }
 }
 mobileBtn.addEventListener("click", toggleMenu);
