@@ -746,14 +746,18 @@ function getSkillPillHtml(skillName, showFill = false) {
   const iconHtml = meta.isLucide
     ? `<i data-lucide="${meta.icon}" class="w-3.5 h-3.5 relative z-10 pointer-events-none"></i>`
     : `<i class="${meta.icon} text-sm relative z-10 transition-transform group-hover:scale-110 pointer-events-none"></i>`;
+  // Fill bg stays overflow-hidden via inner div; outer span is overflow-visible for tooltip
   const fillHtml = showFill
-    ? `<div class="absolute left-0 top-0 bottom-0 skill-fill-bg transition-opacity duration-300 opacity-[0.65] group-hover:opacity-100 pointer-events-none" style="width:${meta.level}%;"></div>`
+    ? `<div class="absolute inset-0 overflow-hidden rounded-md pointer-events-none"><div class="absolute left-0 top-0 bottom-0 skill-fill-bg transition-opacity duration-300 opacity-[0.65] group-hover:opacity-100" style="width:${meta.level}%;"></div></div>`
+    : "";
+  const tooltip = showFill
+    ? `<span class="skill-pill-tooltip absolute -top-8 left-1/2 -translate-x-1/2 whitespace-nowrap px-2 py-1 bg-fg text-bg text-[9px] font-mono rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-150 pointer-events-none z-30">tap to explore</span>`
     : "";
   return `<span
-    class="interactive relative overflow-hidden inline-flex items-center gap-1.5 px-2.5 py-1.5 border border-border rounded-md text-xs font-mono bg-bg text-fg hover:border-fg transition-all cursor-none group"
+    class="interactive relative inline-flex items-center gap-1.5 px-2.5 py-1.5 border border-border rounded-md text-xs font-mono bg-bg text-fg hover:border-fg transition-all cursor-none group overflow-visible"
     onclick="event.stopPropagation();openSkillDrawer('${meta.name}')"
     ${showFill ? `title="Skill Level: ${meta.level}%"` : ""}
-  >${fillHtml}${iconHtml}<span class="relative z-10 font-medium tracking-tight pointer-events-none">${meta.name}</span></span>`;
+  >${fillHtml}${iconHtml}<span class="relative z-10 font-medium tracking-tight pointer-events-none">${meta.name}</span>${tooltip}</span>`;
 }
 
 // Strip HTML for plain text previews
@@ -913,26 +917,50 @@ function renderFeatured() {
 function renderExperience() {
   const c = document.getElementById("experience-list");
   if (!c) return;
-  c.innerHTML = Object.entries(detailsData.experience)
-    .map(
-      ([id, d]) => `
-      <div class="stagger-item group interactive cursor-none border-b border-border py-6 list-item-hover px-2 -mx-2" onclick="openDetails('experience','${id}')">
-        <div class="flex flex-col md:flex-row md:justify-between md:items-start gap-2 mb-2 pointer-events-none">
+  const entries = Object.entries(detailsData.experience);
+  c.innerHTML = entries
+    .map(([id, d], idx) => {
+      const topSpine = idx === 0 ? "mt-7" : "";
+      const isLast = idx === entries.length - 1 ? "opacity-0" : "";
+      const dotClass = d.isCurrent
+        ? "bg-violet-500 border-violet-400 shadow-[0_0_8px_2px_rgba(139,92,246,0.45)]"
+        : "bg-bg border-border group-hover:border-fg";
+      return `
+      <div class="stagger-item group interactive cursor-none py-7 list-item-hover px-2 -mx-2 relative experience-row"
+           onclick="openDetails('experience','${id}')"
+           style="transition-delay:${idx * 0.07}s">
+
+        <!-- Timeline spine + dot -->
+        <div class="absolute left-0 top-0 bottom-0 flex flex-col items-center pointer-events-none exp-timeline">
+          <div class="w-px flex-1 bg-border group-hover:bg-fg/20 transition-colors duration-300 ${topSpine}"></div>
+          <div class="w-2.5 h-2.5 rounded-full border-2 shrink-0 transition-all duration-300 ${dotClass}"></div>
+          <div class="w-px flex-1 bg-border group-hover:bg-fg/20 transition-colors duration-300 ${isLast}"></div>
+        </div>
+
+        <!-- Content -->
+        <div class="flex flex-col md:flex-row md:justify-between md:items-start gap-1 mb-1.5 pointer-events-none">
           <div class="flex flex-wrap items-center gap-2">
-            <h3 class="text-lg font-medium text-fg group-hover:underline transition-colors flex flex-wrap items-center gap-1.5">
-              ${d.title}
-              <span class="text-border mx-1">|</span>
-              <span class="text-muted font-normal inline-flex items-center gap-1.5">
-                <i data-lucide="building-2" class="w-4 h-4"></i>${d.company}
-              </span>
-            </h3>
+            <h3 class="text-base font-semibold text-fg group-hover:underline transition-colors">${d.title}</h3>
             ${d.isCurrent ? getCurrentBadgeHtml() : ""}
           </div>
-          <span class="font-mono text-xs text-muted whitespace-nowrap shrink-0">${d.period}</span>
+          <span class="font-mono text-[11px] text-muted whitespace-nowrap shrink-0 mt-0.5">${d.period}</span>
         </div>
-        <p class="text-sm text-muted line-clamp-2 pr-8 pointer-events-none">${stripHtml(d.description)}</p>
-      </div>`,
-    )
+
+        <p class="text-sm text-muted mb-3 pointer-events-none inline-flex items-center gap-1.5">
+          <i data-lucide="building-2" class="w-3.5 h-3.5 shrink-0"></i>${d.company}
+        </p>
+
+        <p class="text-sm text-muted line-clamp-2 mb-4 pointer-events-none leading-relaxed">${stripHtml(d.description)}</p>
+
+        <div class="flex flex-wrap gap-1.5 relative z-20 pointer-events-auto">
+          ${getSkillPillsWithOverflow(d.stack, false, 4)}
+        </div>
+
+        <span class="absolute right-2 bottom-3 font-mono text-[10px] text-muted opacity-0 group-hover:opacity-60 transition-opacity duration-300 flex items-center gap-1 pointer-events-none select-none">
+          explore <i data-lucide="arrow-up-right" class="w-3 h-3"></i>
+        </span>
+      </div>`;
+    })
     .join("");
 }
 
@@ -1038,87 +1066,81 @@ function renderSkills() {
   for (const [cat, arr] of Object.entries(skillsConfig)) {
     const uid = `skill-cat-${cat.replace(/\W+/g, "-").toLowerCase()}`;
     const needsToggle = arr.length > PREVIEW;
-    const allPills = arr.map((s) => getSkillPillHtml(s.name, true)).join("");
 
-    const toggleBtn = needsToggle
-      ? `
-      <button
-        class="interactive cursor-none mt-3 inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-wider text-muted hover:text-fg transition-colors"
-        onclick="toggleSkillCategory('${uid}', this)"
-        data-open="false"
-      >
-        <i data-lucide="chevron-down" class="w-3 h-3 transition-transform duration-300" id="${uid}-icon"></i>
-        <span id="${uid}-label">+${arr.length - PREVIEW} more</span>
-      </button>`
+    // Split into visible (first PREVIEW) and hidden (rest)
+    const visiblePills = arr
+      .slice(0, PREVIEW)
+      .map((s) => getSkillPillHtml(s.name, true))
+      .join("");
+    const hiddenPills = needsToggle
+      ? arr
+          .slice(PREVIEW)
+          .map((s) => getSkillPillHtml(s.name, true))
+          .join("")
       : "";
 
-    // Start fully expanded so we can measure, then collapse in rAF
-    c.innerHTML += `
-      <div class="stagger-item">
-        <span class="block text-muted mb-4 font-mono text-xs uppercase tracking-wider">${cat}</span>
-        <div
-          id="${uid}"
-          class="flex flex-wrap gap-2.5 overflow-hidden"
-          data-needs-collapse="${needsToggle}"
+    const toggleBtn = needsToggle
+      ? `<button
+          class="interactive cursor-none mt-3 inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-wider text-muted hover:text-fg transition-colors"
+          onclick="toggleSkillCategory('${uid}', this)"
           data-open="false"
-        >${allPills}</div>
+        >
+          <i data-lucide="chevron-down" class="w-3 h-3 transition-transform duration-300" id="${uid}-icon"></i>
+          <span id="${uid}-label">+${arr.length - PREVIEW} more</span>
+        </button>`
+      : "";
+
+    // No max-height clipping — show/hide pills via display.
+    // pt-10 on the wrapper gives the tooltip (positioned -top-8) room above the first pill row
+    c.innerHTML += `
+      <div class="stagger-item overflow-visible">
+        <span class="block text-muted mb-3 font-mono text-xs uppercase tracking-wider">${cat}</span>
+        <div class="overflow-visible pt-10 -mt-10">
+          <div id="${uid}" class="flex flex-wrap gap-2.5 overflow-visible">
+            ${visiblePills}
+            <span id="${uid}-extra" style="display:contents">${hiddenPills}</span>
+          </div>
+        </div>
         ${toggleBtn}
       </div>`;
   }
 
-  // After DOM is painted: measure the height of one pill row, then lock collapsed height
   requestAnimationFrame(() => {
-    requestAnimationFrame(() => {
-      document
-        .querySelectorAll("[data-needs-collapse='true']")
-        .forEach((el) => {
-          const fullH = el.scrollHeight;
-          el.dataset.fullHeight = fullH;
-
-          // Measure a single pill to get one-row height
-          const firstPill = el.querySelector("span");
-          const rowH = firstPill
-            ? firstPill.getBoundingClientRect().height + 10 // 10 = gap
-            : 40;
-          el.dataset.collapsedHeight = rowH;
-
-          // Now collapse it
-          el.style.maxHeight = rowH + "px";
-          // Enable transition only after initial collapse is set
-          requestAnimationFrame(() => {
-            el.style.transition =
-              "max-height 0.35s cubic-bezier(0.16, 1, 0.3, 1)";
-          });
-        });
-
-      // Refresh lucide icons after render
-      lucide.createIcons();
+    // Hide extra pills on load
+    document.querySelectorAll("[id$='-extra']").forEach((el) => {
+      // display:contents means children are laid out inline — hide by hiding children
+      Array.from(el.children).forEach((pill) => {
+        pill.style.display = "none";
+      });
     });
+    lucide.createIcons();
   });
 }
 
 function toggleSkillCategory(uid, btn) {
-  const el = document.getElementById(uid);
+  const extraSpan = document.getElementById(`${uid}-extra`);
   const icon = document.getElementById(`${uid}-icon`);
   const label = document.getElementById(`${uid}-label`);
-  if (!el) return;
+  if (!extraSpan) return;
 
   const isOpen = btn.dataset.open === "true";
+  const pills = Array.from(extraSpan.children);
 
   if (isOpen) {
-    const collapsedH = parseFloat(el.dataset.collapsedHeight) || 40;
-    el.style.maxHeight = collapsedH + "px";
+    pills.forEach((p) => {
+      p.style.display = "none";
+    });
     btn.dataset.open = "false";
     icon.style.transform = "rotate(0deg)";
-    const total = el.querySelectorAll(":scope > span").length;
-    const PREVIEW = 5;
-    label.textContent = `+${total - PREVIEW} more`;
+    label.textContent = `+${pills.length} more`;
   } else {
-    const fullH = parseFloat(el.dataset.fullHeight) || el.scrollHeight;
-    el.style.maxHeight = fullH + "px";
+    pills.forEach((p) => {
+      p.style.display = "";
+    });
     btn.dataset.open = "true";
     icon.style.transform = "rotate(180deg)";
     label.textContent = "Show less";
+    lucide.createIcons();
   }
 }
 
@@ -1310,41 +1332,125 @@ if (contactForm) {
 }
 
 // ============================================================
-// DRAWER
+// DRAWER TYPE CONFIG
+// ============================================================
+const DRAWER_TYPE = {
+  project: { label: "Project", icon: "folder-open", accent: "#6d28d9" },
+  experience: { label: "Experience", icon: "briefcase", accent: "#2563eb" },
+  publication: { label: "Publication", icon: "book-open", accent: "#059669" },
+  other: { label: "Other", icon: "layers", accent: "#d97706" },
+  skill: { label: "Skill", icon: "cpu", accent: "#7c3aed" },
+};
+
+function setDrawerType(type) {
+  const cfg = DRAWER_TYPE[type] || DRAWER_TYPE.project;
+  const chip = document.getElementById("drawer-type-chip");
+  const accent = document.getElementById("drawer-accent");
+  if (chip) {
+    chip.innerHTML = `<i data-lucide="${cfg.icon}" class="w-3 h-3"></i>${cfg.label}`;
+  }
+  if (accent) accent.style.background = cfg.accent;
+}
+
+// ============================================================
+// DRAWER — with history stack + slide animations
 // ============================================================
 const drawer = document.getElementById("drawer");
 const drawerOverlay = document.getElementById("drawer-overlay");
 
+// History stack: each entry is { type, id } or { skill }
+let _drawerHistory = [];
+let _drawerOpen = false;
+
 function handleDrawerScroll(el) {
   const acts = document.getElementById("drawer-actions");
   const head = document.getElementById("drawer-header-actions");
-  if (el.scrollTop > 50) {
-    head.classList.remove("opacity-0", "pointer-events-none");
+  const breadcrumb = document.getElementById("drawer-header-title");
+  const scrolled = el.scrollTop > 60;
+  if (scrolled) {
+    if (head) head.classList.remove("opacity-0", "pointer-events-none");
     if (acts) acts.classList.add("opacity-0", "pointer-events-none");
+    if (breadcrumb) breadcrumb.classList.remove("opacity-0");
   } else {
-    head.classList.add("opacity-0", "pointer-events-none");
+    if (head) head.classList.add("opacity-0", "pointer-events-none");
     if (acts) acts.classList.remove("opacity-0", "pointer-events-none");
+    if (breadcrumb) breadcrumb.classList.add("opacity-0");
   }
 }
 
-function openDrawerUI() {
-  drawerOverlay.classList.remove("hidden");
-  void drawerOverlay.offsetWidth;
-  drawerOverlay.classList.remove("opacity-0");
-  drawer.classList.remove("translate-y-full");
-  document.body.style.overflow = "hidden";
-  document.getElementById("drawer-scroll-container").scrollTop = 0;
-  document
-    .getElementById("drawer-header-actions")
-    .classList.add("opacity-0", "pointer-events-none");
+// Slide the content pane: direction "forward" slides left→right (new page),
+// direction "back" slides right→left (going back)
+function _slideContent(direction, callback) {
+  const sc = document.getElementById("drawer-scroll-container");
+  if (!sc) {
+    callback();
+    return;
+  }
+  const outX = direction === "forward" ? "-20px" : "20px";
+  const inX = direction === "forward" ? "20px" : "-20px";
+  sc.style.transition = "opacity 0.18s ease, transform 0.18s ease";
+  sc.style.opacity = "0";
+  sc.style.transform = `translateX(${outX})`;
+  setTimeout(() => {
+    callback();
+    sc.scrollTop = 0;
+    sc.style.transition = "none";
+    sc.style.transform = `translateX(${inX})`;
+    sc.style.opacity = "0";
+    void sc.offsetWidth;
+    sc.style.transition = "opacity 0.22s ease, transform 0.22s ease";
+    sc.style.opacity = "1";
+    sc.style.transform = "translateX(0)";
+  }, 180);
+}
+
+function _updateBackBtn() {
+  const btn = document.getElementById("drawer-back-btn");
+  if (!btn) return;
+  if (_drawerHistory.length > 1) {
+    btn.classList.remove("hidden");
+  } else {
+    btn.classList.add("hidden");
+  }
+}
+
+function openDrawerUI(isNew = true) {
+  const sc = document.getElementById("drawer-scroll-container");
+  if (!_drawerOpen) {
+    // First open — slide up
+    drawerOverlay.classList.remove("hidden");
+    void drawerOverlay.offsetWidth;
+    drawerOverlay.classList.remove("opacity-0");
+    drawer.classList.remove("translate-y-full");
+    document.body.style.overflow = "hidden";
+    _drawerOpen = true;
+    if (sc) {
+      sc.style.opacity = "1";
+      sc.style.transform = "translateX(0)";
+    }
+  }
+  if (sc) sc.scrollTop = 0;
+  const ha = document.getElementById("drawer-header-actions");
+  if (ha) ha.classList.add("opacity-0", "pointer-events-none");
+  const ht = document.getElementById("drawer-header-title");
+  if (ht) ht.classList.add("opacity-0");
   const da = document.getElementById("drawer-actions");
   if (da) da.classList.remove("opacity-0", "pointer-events-none");
+  _updateBackBtn();
   attachHoverListeners();
 }
 
 function closeDrawer() {
   drawer.classList.add("translate-y-full");
   drawerOverlay.classList.add("opacity-0");
+  _drawerHistory = [];
+  _drawerOpen = false;
+  // Reset scroll pane transform
+  const sc = document.getElementById("drawer-scroll-container");
+  if (sc) {
+    sc.style.opacity = "";
+    sc.style.transform = "";
+  }
   setTimeout(() => {
     drawerOverlay.classList.add("hidden");
     if (!document.querySelector(".modal-view:not(.hidden)"))
@@ -1352,68 +1458,216 @@ function closeDrawer() {
   }, 300);
 }
 
-function openDetails(type, id) {
+function drawerGoBack() {
+  if (_drawerHistory.length <= 1) return;
+  _drawerHistory.pop(); // remove current
+  const prev = _drawerHistory[_drawerHistory.length - 1];
+  _slideContent("back", () => {
+    if (prev.skill !== undefined) {
+      _renderSkillPane(prev.skill);
+    } else {
+      _renderDetailsPane(prev.type, prev.id);
+    }
+    _updateBackBtn();
+    lucide.createIcons();
+  });
+}
+
+// Private: render details pane content (no history mutation)
+function _renderDetailsPane(type, id) {
   const d = detailsData[type]?.[id];
   if (!d) return;
-  document.getElementById("drawer-category").innerText = d.subtitle;
+
+  setDrawerType(type);
+
+  const ht = document.getElementById("drawer-header-title");
+  if (ht) ht.textContent = d.title;
+
+  const titleEl = document.getElementById("drawer-title");
   let titleContent = d.title;
   if (type === "project")
-    titleContent += ` <i data-lucide="arrow-up-right" class="w-5 h-5 text-muted"></i>`;
-  document.getElementById("drawer-title").innerHTML = titleContent;
+    titleContent += ` <i data-lucide="arrow-up-right" class="w-5 h-5 text-muted inline-block align-middle"></i>`;
+  titleEl.innerHTML = titleContent;
+
+  // Meta strip
+  const metaEl = document.getElementById("drawer-meta");
+  metaEl.innerHTML = "";
+  const metaItems = [];
+  if (d.company) metaItems.push({ icon: "building-2", text: d.company });
+  if (d.period) metaItems.push({ icon: "calendar", text: d.period });
+  if (d.venue) metaItems.push({ icon: "map-pin", text: d.venue });
+  if (metaItems.length) {
+    metaEl.style.display = "flex";
+    metaEl.innerHTML = metaItems
+      .map(
+        (m) =>
+          `<span class="inline-flex items-center gap-1.5 text-xs text-muted font-mono">
+        <i data-lucide="${m.icon}" class="w-3.5 h-3.5 shrink-0"></i>${m.text}
+      </span>`,
+      )
+      .join("");
+  } else {
+    metaEl.style.display = "none";
+  }
+
   document.getElementById("drawer-description").innerHTML = d.description;
 
-  // Visual
+  const stCon = document.getElementById("drawer-stack-container");
+  const stBox = document.getElementById("drawer-stack");
+  stBox.innerHTML = "";
+  if (d.stack?.length) {
+    stCon.style.display = "block";
+    d.stack.forEach((t) => {
+      stBox.innerHTML += getSkillPillHtml(t, false);
+    });
+  } else stCon.style.display = "none";
+
   const vis = document.getElementById("drawer-visual-container");
   if (d.visual) {
-    vis.classList.remove("hidden");
+    vis.style.display = "block";
     document.getElementById("drawer-visual").innerHTML = d.visual;
-  } else vis.classList.add("hidden");
+  } else vis.style.display = "none";
 
-  // Screenshots with max-height + lightbox
   const scCon = document.getElementById("drawer-screenshots-container");
   const scBox = document.getElementById("drawer-screenshots");
   scBox.innerHTML = "";
-  if (d.screenshots && d.screenshots.length > 0) {
-    scCon.classList.remove("hidden");
-    d.screenshots.forEach((src) => {
-      scBox.innerHTML += `
-        <div class="relative group/sc cursor-zoom-in" onclick="openImageLightbox('${src}')">
-          <img src="${src}" alt="Screenshot"
-            class="w-full rounded-md border border-border bg-hoverBg object-contain"
-            style="max-height:500px;" />
-          <div class="absolute inset-0 rounded-md flex items-center justify-center opacity-0 group-hover/sc:opacity-100 transition-opacity bg-fg/10 backdrop-blur-[1px]">
+  if (d.screenshots?.length) {
+    scCon.style.display = "block";
+    const imgs = d.screenshots;
+    if (imgs.length === 1) {
+      // Single image — no slider needed
+      scBox.innerHTML = `
+        <div class="relative group/sc cursor-zoom-in" onclick="openImageLightbox('${imgs[0]}')">
+          <img src="${imgs[0]}" alt="Screenshot"
+            class="w-full rounded-xl border border-border bg-hoverBg object-contain"
+            style="max-height:460px;" />
+          <div class="absolute inset-0 rounded-xl flex items-center justify-center opacity-0 group-hover/sc:opacity-100 transition-opacity bg-fg/10 backdrop-blur-[1px]">
             <span class="inline-flex items-center gap-1.5 bg-bg border border-border rounded-md px-3 py-1.5 text-xs font-mono text-fg">
               <i data-lucide="maximize-2" class="w-3.5 h-3.5"></i> Full size
             </span>
           </div>
         </div>`;
-    });
-  } else scCon.classList.add("hidden");
+    } else {
+      // Multiple images — slider
+      const sliderId = "sc-slider-" + Math.random().toString(36).slice(2, 7);
+      const slides = imgs
+        .map(
+          (src, i) => `
+        <div class="sc-slide shrink-0 w-full relative group/sc cursor-zoom-in" data-index="${i}" onclick="openImageLightbox('${src}')">
+          <img src="${src}" alt="Screenshot ${i + 1}"
+            class="w-full rounded-xl border border-border bg-hoverBg object-contain select-none"
+            style="max-height:460px;" />
+          <div class="absolute inset-0 rounded-xl flex items-center justify-center opacity-0 group-hover/sc:opacity-100 transition-opacity bg-fg/10 backdrop-blur-[1px]">
+            <span class="inline-flex items-center gap-1.5 bg-bg border border-border rounded-md px-3 py-1.5 text-xs font-mono text-fg">
+              <i data-lucide="maximize-2" class="w-3.5 h-3.5"></i> Full size
+            </span>
+          </div>
+        </div>`,
+        )
+        .join("");
 
-  // Stack
-  const stCon = document.getElementById("drawer-stack-container");
-  const stBox = document.getElementById("drawer-stack");
-  stBox.innerHTML = "";
-  if (d.stack?.length) {
-    stCon.classList.remove("hidden");
-    d.stack.forEach((t) => {
-      stBox.innerHTML += getSkillPillHtml(t, false);
-    });
-  } else stCon.classList.add("hidden");
+      const dots = imgs
+        .map(
+          (_, i) => `
+        <button onclick="sliderGo('${sliderId}',${i})"
+          class="sc-dot w-1.5 h-1.5 rounded-full transition-all duration-200 interactive cursor-none ${i === 0 ? "bg-fg scale-125" : "bg-border hover:bg-muted"}"
+          data-index="${i}"></button>`,
+        )
+        .join("");
 
-  // Actions
+      scBox.innerHTML = `
+        <div class="relative" id="${sliderId}">
+          <!-- Slide track -->
+          <div class="sc-track overflow-hidden rounded-xl">
+            <div class="sc-inner flex transition-transform duration-350 ease-out" style="transform:translateX(0%)">
+              ${slides}
+            </div>
+          </div>
+          <!-- Prev -->
+          <button onclick="sliderStep('${sliderId}',-1)"
+            class="interactive cursor-none absolute left-2 top-1/2 -translate-y-1/2 z-10 p-1.5 rounded-full bg-bg/80 backdrop-blur-sm border border-border text-fg hover:bg-fg hover:text-bg transition-colors shadow-md">
+            <i data-lucide="chevron-left" class="w-4 h-4"></i>
+          </button>
+          <!-- Next -->
+          <button onclick="sliderStep('${sliderId}',1)"
+            class="interactive cursor-none absolute right-2 top-1/2 -translate-y-1/2 z-10 p-1.5 rounded-full bg-bg/80 backdrop-blur-sm border border-border text-fg hover:bg-fg hover:text-bg transition-colors shadow-md">
+            <i data-lucide="chevron-right" class="w-4 h-4"></i>
+          </button>
+          <!-- Counter + dots -->
+          <div class="flex items-center justify-center gap-2 mt-3">
+            <span class="sc-counter font-mono text-[10px] text-muted">1 / ${imgs.length}</span>
+            <div class="flex items-center gap-1.5">${dots}</div>
+          </div>
+        </div>`;
+    }
+  } else scCon.style.display = "none";
+
   const actCon = document.getElementById("drawer-actions");
   const headCon = document.getElementById("drawer-header-actions");
   actCon.innerHTML = "";
   headCon.innerHTML = "";
   if (d.link) {
     const li = d.linkIcon || "external-link";
-    actCon.innerHTML = `<a href="${d.link}" target="_blank" class="interactive cursor-none inline-flex items-center gap-2 px-4 py-2 bg-fg text-bg hover:opacity-85 transition-opacity font-medium text-sm rounded-md shadow-sm"><i data-lucide="${li}" class="w-4 h-4"></i>${d.linkText}</a>`;
-    headCon.innerHTML = `<a href="${d.link}" target="_blank" class="interactive cursor-none p-1.5 border border-border rounded-md hover:bg-fg hover:text-bg transition-colors" title="${d.linkText}"><i data-lucide="${li}" class="w-4 h-4"></i></a>`;
+    actCon.innerHTML = `<a href="${d.link}" target="_blank"
+      class="interactive cursor-none inline-flex items-center gap-2 px-4 py-2 bg-fg text-bg hover:opacity-85 transition-opacity font-medium text-sm rounded-lg shadow-sm">
+      <i data-lucide="${li}" class="w-4 h-4"></i>${d.linkText}</a>`;
+    headCon.innerHTML = `<a href="${d.link}" target="_blank"
+      class="interactive cursor-none p-1.5 border border-border rounded-md hover:bg-fg hover:text-bg transition-colors" title="${d.linkText}">
+      <i data-lucide="${li}" class="w-4 h-4"></i></a>`;
   }
 
   lucide.createIcons();
-  openDrawerUI();
+}
+
+// Public: navigate forward to a details pane
+function openDetails(type, id) {
+  const isAlreadyOpen = _drawerOpen;
+  _drawerHistory.push({ type, id });
+
+  if (isAlreadyOpen) {
+    _slideContent("forward", () => {
+      _renderDetailsPane(type, id);
+      _updateBackBtn();
+      lucide.createIcons();
+    });
+  } else {
+    _renderDetailsPane(type, id);
+    openDrawerUI();
+  }
+}
+
+// ============================================================
+// SCREENSHOT SLIDER
+// ============================================================
+function _sliderState(sliderId) {
+  const root = document.getElementById(sliderId);
+  if (!root) return null;
+  const inner = root.querySelector(".sc-inner");
+  const slides = root.querySelectorAll(".sc-slide");
+  const dots = root.querySelectorAll(".sc-dot");
+  const counter = root.querySelector(".sc-counter");
+  const current = parseInt(inner.dataset.current || "0");
+  return { root, inner, slides, dots, counter, current, total: slides.length };
+}
+
+function sliderGo(sliderId, index) {
+  const s = _sliderState(sliderId);
+  if (!s) return;
+  const i = Math.max(0, Math.min(index, s.total - 1));
+  s.inner.style.transform = `translateX(-${i * 100}%)`;
+  s.inner.dataset.current = i;
+  s.dots.forEach((d, di) => {
+    d.classList.toggle("bg-fg", di === i);
+    d.classList.toggle("scale-125", di === i);
+    d.classList.toggle("bg-border", di !== i);
+  });
+  if (s.counter) s.counter.textContent = `${i + 1} / ${s.total}`;
+}
+
+function sliderStep(sliderId, dir) {
+  const s = _sliderState(sliderId);
+  if (!s) return;
+  sliderGo(sliderId, s.current + dir);
 }
 
 // ============================================================
@@ -1462,35 +1716,145 @@ function closeImageLightbox() {
 // ============================================================
 // SKILL DRAWER
 // ============================================================
-function openSkillDrawer(skill) {
-  document.getElementById("drawer-category").innerText = "Skill Filter";
-  document.getElementById("drawer-title").innerText = skill;
+
+// Private: render skill pane content
+function _renderSkillPane(skill) {
+  const meta = skillMetaMap[skill] || {
+    name: skill,
+    isLucide: true,
+    icon: "code-2",
+    level: 70,
+  };
+
+  const usageMap = { project: [], experience: [], publication: [], other: [] };
+  for (const [type, dict] of Object.entries(detailsData)) {
+    for (const [k, v] of Object.entries(dict || {})) {
+      if (v.stack && v.stack.includes(skill)) usageMap[type].push([k, v]);
+    }
+  }
+  const totalUsage = Object.values(usageMap).reduce((s, a) => s + a.length, 0);
+
+  const iconHtml = meta.isLucide
+    ? `<i data-lucide="${meta.icon}" class="w-5 h-5"></i>`
+    : `<i class="${meta.icon} text-xl"></i>`;
+
+  setDrawerType("skill");
+  const _ht = document.getElementById("drawer-header-title");
+  if (_ht) _ht.textContent = skill;
+  const _metaEl = document.getElementById("drawer-meta");
+  if (_metaEl) _metaEl.style.display = "none";
+
+  document.getElementById("drawer-title").innerHTML = `
+    <span class="inline-flex items-center gap-2.5">
+      <span class="p-1.5 border border-border rounded-md bg-hoverBg text-fg">${iconHtml}</span>
+      ${skill}
+    </span>`;
   document.getElementById("drawer-actions").innerHTML = "";
   document.getElementById("drawer-header-actions").innerHTML = "";
-  let html = "";
-  const addSection = (dict, label, key) => {
-    const m = Object.entries(dict || {}).filter(
-      ([, v]) => v.stack && v.stack.includes(skill),
-    );
-    if (!m.length) return;
-    html += `<div class="mb-6"><h4 class="font-mono text-xs text-muted uppercase tracking-widest mb-3">${label}</h4><div class="flex flex-col gap-2">`;
-    m.forEach(([k, v]) => {
-      html += `<button onclick="openDetails('${key}','${k}')" class="text-left p-4 border border-border rounded-md hover:bg-hoverBg transition-colors interactive cursor-none"><h5 class="font-medium text-fg">${v.title}</h5></button>`;
+
+  let html = `
+    <div class="mb-8 p-4 border border-border rounded-xl bg-hoverBg/50">
+      <div class="flex items-center justify-between mb-3">
+        <span class="font-mono text-xs text-muted uppercase tracking-wider">Proficiency</span>
+        <span class="font-mono text-xs font-bold text-fg">${meta.level}%</span>
+      </div>
+      <div class="w-full h-1.5 bg-border rounded-full overflow-hidden">
+        <div class="h-full rounded-full bg-gradient-to-r from-violet-500 to-violet-400 skill-bar-fill" style="width:0%" data-target="${meta.level}%"></div>
+      </div>
+      <div class="mt-3 flex items-center gap-1.5 text-xs text-muted font-mono">
+        <i data-lucide="layers" class="w-3.5 h-3.5"></i>
+        Used in <strong class="text-fg">${totalUsage}</strong> ${totalUsage === 1 ? "item" : "items"} across the portfolio
+      </div>
+    </div>`;
+
+  const sectionMeta = [
+    { key: "project", label: "Projects", icon: "folder-open" },
+    { key: "experience", label: "Experience", icon: "briefcase" },
+    { key: "publication", label: "Publications", icon: "book-open" },
+    { key: "other", label: "Others", icon: "layers" },
+  ];
+
+  let hasAny = false;
+  for (const { key, label, icon } of sectionMeta) {
+    const matches = usageMap[key];
+    if (!matches.length) continue;
+    hasAny = true;
+    html += `
+      <div class="mb-6">
+        <h4 class="font-mono text-[10px] text-muted uppercase tracking-widest mb-3 flex items-center gap-1.5">
+          <i data-lucide="${icon}" class="w-3.5 h-3.5"></i>${label}
+        </h4>
+        <div class="flex flex-col gap-2">`;
+    matches.forEach(([k, v]) => {
+      const isNew = v.isNew
+        ? `<span class="new-badge inline-flex items-center gap-1 text-[9px] font-mono font-bold uppercase tracking-widest px-1.5 py-0.5 rounded-sm"><i data-lucide="sparkles" class="w-2.5 h-2.5"></i>New</span>`
+        : "";
+      const isFeat = v.featured
+        ? `<span class="inline-flex items-center gap-1 bg-gradient-to-r from-red-500 to-violet-500 text-white text-[9px] font-mono font-bold uppercase tracking-widest px-1.5 py-0.5 rounded-sm"><i data-lucide="star" class="w-2 h-2"></i>Featured</span>`
+        : "";
+      const preview =
+        stripHtml(v.description).slice(0, 90) +
+        (stripHtml(v.description).length > 90 ? "…" : "");
+      html += `
+        <button onclick="openDetails('${key}','${k}')"
+          class="text-left p-4 border border-border rounded-xl hover:bg-hoverBg hover:border-fg/20 transition-all interactive cursor-none group/item">
+          <div class="flex flex-wrap items-center gap-1.5 mb-1.5">
+            <h5 class="font-medium text-fg text-sm group-hover/item:underline">${v.title}</h5>
+            ${isFeat}${isNew}
+          </div>
+          <p class="text-xs text-muted leading-relaxed">${preview}</p>
+        </button>`;
     });
     html += `</div></div>`;
-  };
-  addSection(detailsData.project, "Projects", "project");
-  addSection(detailsData.publication, "Publications", "publication");
-  addSection(detailsData.other, "Others", "other");
-  if (!html)
-    html = `<p class="text-muted text-sm">No items logged for <strong>${skill}</strong> yet.</p>`;
+  }
+
+  if (!hasAny)
+    html += `<p class="text-muted text-sm">Nothing logged for <strong class="text-fg">${skill}</strong> yet.</p>`;
+
   document.getElementById("drawer-description").innerHTML = html;
   [
     "drawer-visual-container",
     "drawer-stack-container",
     "drawer-screenshots-container",
-  ].forEach((id) => document.getElementById(id).classList.add("hidden"));
-  openDrawerUI();
+  ].forEach((id) => {
+    const el = document.getElementById(id);
+    if (el) el.style.display = "none";
+  });
+
+  // Animate bar
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      document.querySelectorAll(".skill-bar-fill").forEach((bar) => {
+        bar.style.transition = "width 0.7s cubic-bezier(0.16, 1, 0.3, 1)";
+        bar.style.width = bar.dataset.target;
+      });
+      lucide.createIcons();
+    });
+  });
+}
+
+// Public: navigate to skill pane
+function openSkillDrawer(skill) {
+  // Dismiss the hint permanently
+  const hint = document.getElementById("skill-pill-hint");
+  if (hint) {
+    hint.style.opacity = "0";
+    setTimeout(() => hint.remove(), 500);
+  }
+
+  const isAlreadyOpen = _drawerOpen;
+  _drawerHistory.push({ skill });
+
+  if (isAlreadyOpen) {
+    _slideContent("forward", () => {
+      _renderSkillPane(skill);
+      _updateBackBtn();
+      lucide.createIcons();
+    });
+  } else {
+    _renderSkillPane(skill);
+    openDrawerUI();
+  }
 }
 
 // ============================================================

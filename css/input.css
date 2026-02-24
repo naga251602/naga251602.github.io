@@ -253,5 +253,65 @@ html.dark .current-badge {
 }
 
 /* =============================================
-   SKILL CATEGORY COLLAPSE — transition added via JS after measure
+   EXPERIENCE TIMELINE
    ============================================= */
+.experience-row {
+  border-bottom: 1px solid var(--border);
+}
+.experience-row:last-child {
+  border-bottom: none;
+}
+
+/* Timeline column positioned to the left of the pl-6 padding */
+.exp-timeline {
+  position: absolute;
+  left: -18px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+}
+
+/* =============================================
+   SKILL PILL TOOLTIP
+   ============================================= */
+/* Allow tooltip to overflow the pill boundary */
+.skill-pill-wrap {
+  overflow: visible !important;
+}
+.skill-pill-tooltip {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* =============================================
+   SKILL BAR FILL ANIMATION
+   ============================================= */
+.skill-bar-fill {
+  transition: width 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* =============================================
+   DRAWER REDESIGN
+   ============================================= */
+/* Accent bar transition */
+#drawer-accent {
+  transition: background 0.35s ease;
+}
+
+/* Type chip icon alignment */
+#drawer-type-chip i {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* Architecture block */
+#drawer-visual {
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* =============================================
+   SCREENSHOT SLIDER
+   ============================================= */
+.sc-inner {
+  transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+}

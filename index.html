@@ -198,7 +198,7 @@
                 ></i>
               </a>
               <a
-                href="mailto:nagalapu@usc.edu"
+                href="/cdn-cgi/l/email-protection#cda3acaaaca1acbdb88db8beaee3a8a9b8"
                 class="interactive magnetic p-2.5 border border-border rounded-md hover:bg-fg hover:text-bg transition-colors text-fg"
                 aria-label="Email"
               >
@@ -245,11 +245,26 @@
       </section>
       <!-- EXPERIENCE -->
       <section id="experience" class="scroll-mt-32 fade-up">
-        <div class="flex items-baseline justify-between mb-8">
+        <div class="flex items-center justify-between mb-8">
           <h2 class="text-2xl font-bold tracking-tight">Experience</h2>
+          <span
+            id="skill-pill-hint"
+            class="font-mono text-[10px] text-muted flex items-center gap-1.5 opacity-100 transition-opacity duration-500 select-none"
+          >
+            <span class="relative flex h-1.5 w-1.5"
+              ><span
+                class="animate-ping absolute inline-flex h-full w-full rounded-full bg-violet-400 opacity-75"
+              ></span
+              ><span
+                class="relative inline-flex rounded-full h-1.5 w-1.5 bg-violet-400"
+              ></span
+            ></span>
+            tap a skill pill to explore
+          </span>
         </div>
+        <!-- pl-6 gives room for the timeline dots -->
         <div
-          class="flex flex-col border-t border-border stagger-parent"
+          class="flex flex-col border-t border-border stagger-parent pl-6"
           id="experience-list"
         ></div>
       </section>
@@ -304,14 +319,19 @@
 
       <!-- SKILLS -->
       <section id="skills" class="scroll-mt-32 fade-up">
-        <h2
-          class="text-2xl font-bold tracking-tight mb-6 border-b border-border pb-4"
-        >
-          Stack
-        </h2>
+        <div class="border-b border-border pb-4 mb-6 flex flex-col gap-2">
+          <h2 class="text-2xl font-bold tracking-tight">Stack</h2>
+          <p class="text-xs text-muted font-mono flex items-center gap-1.5">
+            <i
+              data-lucide="mouse-pointer-click"
+              class="w-3.5 h-3.5 text-violet-400"
+            ></i>
+            Click any pill to see every project, role and paper where I used it
+          </p>
+        </div>
         <div
           id="skills-container"
-          class="grid grid-cols-1 md:grid-cols-2 gap-y-10 gap-x-8 text-sm stagger-parent"
+          class="grid grid-cols-1 md:grid-cols-2 gap-y-10 gap-x-8 text-sm stagger-parent pb-4 overflow-visible"
         ></div>
       </section>
 
@@ -357,7 +377,7 @@
             </p>
             <div class="flex flex-col gap-4">
               <a
-                href="mailto:nagalapu@usc.edu"
+                href="/cdn-cgi/l/email-protection#fa949b9d9b969b8a8fba8f8999d49f9e8f"
                 class="interactive cursor-none inline-flex items-center gap-3 text-fg font-mono text-sm group w-fit"
               >
                 <span
@@ -365,7 +385,11 @@
                 >
                   <i data-lucide="mail" class="w-4 h-4 pointer-events-none"></i>
                 </span>
-                nagalapu@usc.edu
+                <span
+                  class="__cf_email__"
+                  data-cfemail="bad4dbdddbd6dbcacffacfc9d994dfdecf"
+                  >[email&#160;protected]</span
+                >
               </a>
               <a
                 href="https://linkedin.com/in/gauravnv"
@@ -473,23 +497,40 @@
       onclick="closeDrawer()"
     ></div>
 
-    <!-- DRAWER (redesigned) -->
+    <!-- DRAWER -->
     <div
       id="drawer"
       class="fixed bottom-0 left-0 right-0 mx-auto w-full max-w-3xl h-[90vh] md:h-[80vh] bg-bg border-t md:border-x border-border z-[100] translate-y-full flex flex-col overflow-hidden md:rounded-t-2xl shadow-2xl"
     >
-      <!-- Compact header bar -->
+      <!-- Accent bar -->
+      <div id="drawer-accent" class="h-0.5 w-full shrink-0"></div>
+
+      <!-- Header — fixed height, never grows -->
       <div
-        class="px-5 h-12 border-b border-border flex items-center justify-between bg-bg sticky top-0 z-10 shrink-0"
+        class="px-5 h-12 border-b border-border flex items-center justify-between bg-bg shrink-0 gap-3"
       >
-        <span
-          id="drawer-category"
-          class="font-mono text-[10px] text-muted uppercase tracking-widest truncate"
-        ></span>
-        <div class="flex items-center gap-1.5">
+        <div class="flex items-center gap-1.5 min-w-0">
+          <button
+            id="drawer-back-btn"
+            onclick="drawerGoBack()"
+            class="hidden shrink-0 p-1.5 rounded-md text-muted hover:text-fg hover:bg-hoverBg transition-colors interactive cursor-none"
+            title="Go back"
+          >
+            <i data-lucide="arrow-left" class="w-3.5 h-3.5"></i>
+          </button>
+          <span
+            id="drawer-type-chip"
+            class="shrink-0 inline-flex items-center gap-1 px-2 py-0.5 rounded border border-border text-[10px] font-mono font-bold uppercase tracking-widest text-muted bg-hoverBg"
+          ></span>
+          <span
+            id="drawer-header-title"
+            class="text-xs font-semibold text-fg truncate opacity-0 pointer-events-none transition-opacity duration-200 max-w-[180px]"
+          ></span>
+        </div>
+        <div class="flex items-center gap-1 shrink-0">
           <div
             id="drawer-header-actions"
-            class="flex items-center gap-1.5 opacity-0 pointer-events-none transition-opacity duration-200"
+            class="flex items-center gap-1 opacity-0 pointer-events-none transition-opacity duration-200"
           ></div>
           <button
             onclick="closeDrawer()"
@@ -500,63 +541,97 @@
         </div>
       </div>
 
-      <!-- Scroll body -->
+      <!-- THE ONLY SCROLLABLE ZONE -->
       <div
-        class="flex-1 overflow-y-auto px-6 pt-6 pb-10 md:px-8"
+        class="flex-1 min-h-0 overflow-y-auto"
         id="drawer-scroll-container"
         onscroll="handleDrawerScroll(this)"
       >
-        <h2
-          id="drawer-title"
-          class="text-2xl md:text-3xl font-bold text-fg mb-3 leading-tight flex flex-wrap items-center gap-2"
-        ></h2>
-        <div
-          id="drawer-actions"
-          class="flex flex-wrap gap-3 mb-8 transition-opacity duration-200"
-        ></div>
+        <!-- Hero zone -->
+        <div class="px-6 md:px-8 pt-10 pb-5">
+          <br />
+          <h2
+            id="drawer-title"
+            class="text-xl md:text-xl font-bold text-fg leading-tight"
+          ></h2>
+
+          <!-- Meta strip -->
+          <div
+            id="drawer-meta"
+            class="mb-4 flex-wrap gap-x-5 gap-y-1.5"
+            style="display: none"
+          ></div>
+
+          <!-- Actions -->
+          <div
+            id="drawer-actions"
+            class="flex flex-wrap gap-2.5 mb-5 transition-opacity duration-200"
+          ></div>
+
+          <!-- Stack pills — label + pills -->
+          <div id="drawer-stack-container" style="display: none">
+            <p
+              class="font-mono text-[10px] text-muted uppercase tracking-widest mb-2"
+            >
+              Stack
+            </p>
+            <div id="drawer-stack" class="flex flex-wrap gap-1.5 mb-5"></div>
+          </div>
+        </div>
+
+        <!-- Divider -->
+        <div class="px-6 md:px-8 my-2">
+          <div class="border-t border-border"></div>
+        </div>
+
+        <!-- Description -->
         <div
           id="drawer-description"
-          class="text-sm text-fg leading-relaxed space-y-4 mb-10"
+          class="px-6 md:px-8 py-7 text-sm text-fg leading-relaxed space-y-4"
         ></div>
 
+        <!-- Screenshots -->
         <div
           id="drawer-screenshots-container"
-          class="hidden mb-10 border-t border-border pt-8"
+          class="px-6 md:px-8 pb-8"
+          style="display: none"
         >
-          <h4
-            class="font-mono text-xs text-muted uppercase tracking-widest mb-4"
-          >
-            Screenshots
-          </h4>
-          <div id="drawer-screenshots" class="space-y-4"></div>
+          <div class="border-t border-border pt-8 mt-2">
+            <div class="flex items-center gap-2 mb-4">
+              <i data-lucide="image" class="w-3.5 h-3.5 text-muted"></i>
+              <span
+                class="font-mono text-[10px] text-muted uppercase tracking-widest"
+                >Screenshots</span
+              >
+            </div>
+            <div id="drawer-screenshots" class="space-y-4"></div>
+          </div>
         </div>
 
+        <!-- Architecture -->
         <div
           id="drawer-visual-container"
-          class="hidden mb-10 border-t border-border pt-8"
+          class="px-6 md:px-8 pb-8"
+          style="display: none"
         >
-          <h4
-            class="font-mono text-xs text-muted uppercase tracking-widest mb-4"
-          >
-            Architecture
-          </h4>
-          <div
-            id="drawer-visual"
-            class="text-sm font-mono text-muted leading-loose"
-          ></div>
+          <div class="border-t border-border pt-8 mt-2">
+            <div class="flex items-center gap-2 mb-4">
+              <i data-lucide="git-branch" class="w-3.5 h-3.5 text-muted"></i>
+              <span
+                class="font-mono text-[10px] text-muted uppercase tracking-widest"
+                >Architecture</span
+              >
+            </div>
+            <div
+              id="drawer-visual"
+              class="text-sm font-mono text-muted leading-loose bg-hoverBg rounded-xl p-5"
+            ></div>
+          </div>
         </div>
 
-        <div
-          id="drawer-stack-container"
-          class="hidden mb-10 border-t border-border pt-8"
-        >
-          <h4
-            class="font-mono text-xs text-muted uppercase tracking-widest mb-4"
-          >
-            Stack
-          </h4>
-          <div id="drawer-stack" class="flex flex-wrap gap-2"></div>
-        </div>
+        <!-- Bottom breathing room -->
+        <div class="h-16"></div>
+        <br />
       </div>
     </div>
 
@@ -770,7 +845,6 @@
       id="toast"
       class="fixed bottom-8 left-1/2 -translate-x-1/2 z-[9999] bg-fg text-bg px-4 py-2 text-xs font-mono opacity-0 transition-opacity pointer-events-none flex items-center gap-2 rounded-md shadow-md"
     ></div>
-
     <script src="./js/index.js"></script>
   </body>
 </html>
