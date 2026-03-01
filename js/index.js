@@ -158,19 +158,78 @@ const detailsData = {
 
   experience: {
     aadithya: {
-      title: "Full Stack Developer",
+      title: "Freelance Full-Stack Developer",
       company: "Aadithya Cars",
       period: "Apr 2024 - Nov 2024",
       isCurrent: false,
       featured: false,
       subtitle: "Aadithya Cars • Apr 2024 - Nov 2024",
       description: `<ul class="list-disc pl-4 space-y-2">
-        <li>Overhauled frontend pipeline cutting load time from 3.2s to 800ms (75% improvement) via lazy loading, code splitting, and asset compression — directly improving Core Web Vitals.</li>
-        <li>Designed a chunk-based server-side ingestion pipeline replacing monolithic full-memory reads, eliminating OOM crashes on large inventory datasets and enabling 4x throughput.</li>
-        <li>Refactored render-critical JavaScript paths by decoupling layout recalculation from DOM writes, reducing time-to-interactive by 40% across high-traffic listing pages.</li>
-        <li>Integrated third-party valuation and financing APIs with retry logic and circuit breaker patterns, maintaining 99.5% uptime under upstream instability.</li>
+        <li>Reduced page load time <strong>75% (3.2s → 800ms)</strong> via lazy loading, code splitting, and Brotli compression, raising Lighthouse Performance score to 95+.</li>
+        <li>Replaced monolithic CSV ingestion with a chunk-based streaming pipeline, eliminating OOM crashes and achieving <strong>4× throughput</strong> on 500K+ row inventory datasets.</li>
+        <li>Integrated third-party valuation and financing APIs with exponential-backoff retry and circuit-breaker patterns, maintaining <strong>99.5% uptime</strong> and cutting time-to-interactive by 40%.</li>
+        <li>Improved SQL query performance <strong>35%</strong> via composite index design and query plan analysis on PostgreSQL tables with 1M+ records.</li>
       </ul>`,
-      stack: ["JavaScript", "React", "Node.js", "System Architecture"],
+      stack: [
+        "React",
+        "Node.js",
+        "PostgreSQL",
+        "JavaScript",
+        "System Architecture",
+      ],
+      link: "",
+      linkText: "",
+      visual: "",
+    },
+    virtusa_2: {
+      title: "Software Engineering Intern",
+      company: "Virtusa",
+      period: "Dec 2023 - Apr 2024",
+      isCurrent: false,
+      featured: false,
+      subtitle: "Virtusa • Dec 2023 - Apr 2024",
+      description: `<ul class="list-disc pl-4 space-y-2">
+        <li>Led a team of 4 interns to deliver an <strong>EMart Inventory Management System</strong> (Spring Boot, Angular, MySQL) — real-time warehouse/shelf stock tracking, expiry alerting 2–3 days in advance, and maker-checker approval workflow, reducing manual stock discrepancy errors by ~40%.</li>
+        <li>Shipped <strong>3 backend modules</strong> (Public Employment Center, Tamil Nadu EB Bill System, barcode generation) with a CSV ingestion pipeline validating SHA-256 hashes and auto-generating signed PDF invoices emailed to vendors, cutting invoice processing time from ~2 days to same-day.</li>
+      </ul>`,
+      stack: [
+        "Java",
+        "Java EE",
+        "Spring Boot",
+        "Spring Security",
+        "Spring AOP",
+        "Spring Hibernate",
+        "Angular",
+        "MySQL",
+        "JDBC",
+        "REST APIs",
+      ],
+      link: "",
+      linkText: "",
+      visual: "",
+    },
+    virtusa_1: {
+      title: "Software Engineering Intern",
+      company: "Virtusa",
+      period: "Jul 2022 - Aug 2022",
+      isCurrent: false,
+      featured: false,
+      subtitle: "Virtusa • Jul 2022 - Aug 2022",
+      description: `<ul class="list-disc pl-4 space-y-2">
+        <li>Led a team of 3 interns to build and demo a full-stack <strong>e-commerce grocery application</strong> (Spring MVC, Angular 9+, MySQL) end-to-end in 6 weeks — covering product catalog, cart, checkout, and order management across 5 core user flows.</li>
+        <li>Designed <strong>8 RESTful API endpoints</strong> and a normalized MySQL schema with Spring Hibernate ORM; integrated Spring Security for auth, achieving &lt;3s page load under simulated 50-user load during final demo review.</li>
+      </ul>`,
+      stack: [
+        "Java",
+        "Spring MVC",
+        "Spring Security",
+        "Spring Hibernate",
+        "Angular",
+        "MySQL",
+        "JDBC",
+        "REST APIs",
+        "Bootstrap",
+      ],
       link: "",
       linkText: "",
       visual: "",
@@ -184,7 +243,7 @@ const detailsData = {
       description: `<ul class="list-disc pl-4 space-y-2">
         <li>Contributed to the development of ML-driven applications under faculty supervision, supporting data ingestion, preprocessing pipelines, and backend integration.</li>
         <li>Implemented backend systems in Python integrating machine learning models for sentiment analysis, text generation, and medical image classification.</li>
-        <li>Assisted in experimental evaluation, result analysis, and manuscript preparation, contributing to accepted IEEE conference publications.</li>
+        <li>Assisted in experimental evaluation, result analysis, and manuscript preparation, contributing to <strong>3 accepted IEEE conference publications</strong> (7 total citations).</li>
       </ul>`,
       stack: ["Python", "Machine Learning", "NLP", "Computer Vision"],
       link: "",
@@ -194,13 +253,13 @@ const detailsData = {
     sawbon: {
       title: "Software Development Intern",
       company: "SAWBON",
-      period: "Feb 2022",
+      period: "Feb 2022 - Mar 2022",
       isCurrent: false,
-      subtitle: "SAWBON • Feb 2022",
+      subtitle: "SAWBON • Feb 2022 - Mar 2022",
       description: `<ul class="list-disc pl-4 space-y-2">
-        <li>Built a suite of concurrent Go REST APIs using goroutines, channels, and connection pooling, sustaining sub-250ms p95 response times under load with zero downtime.</li>
-        <li>Implemented a Redis cache-aside strategy with TTL-based invalidation, reducing downstream DB read load by 30% and cutting median API latency by 15%.</li>
-        <li>Wrote unit and integration tests using Go's testing package, achieving 78% code coverage on critical service paths.</li>
+        <li>Built concurrent Go REST APIs using goroutines, channels, and connection pooling, sustaining <strong>sub-250ms p95 response times</strong> under 500 concurrent users with zero downtime.</li>
+        <li>Implemented Redis cache-aside with TTL-based invalidation, reducing DB read load by <strong>30%</strong> and cutting median API latency by <strong>15%</strong>.</li>
+        <li>Achieved <strong>78% code coverage</strong> on critical service paths via unit and integration tests using Go's testing package.</li>
       </ul>`,
       stack: ["Go", "Redis", "REST APIs", "Concurrency"],
       link: "",
