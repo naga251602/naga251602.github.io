@@ -1,856 +1,808 @@
-<!doctype html>
-<html lang="en" class="scroll-smooth">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Gaurav N.V. | Engineer</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
-    />
-    <link rel="stylesheet" href="./css/index.css" />
-    <script src="https://unpkg.com/lucide@latest"></script>
-  </head>
-  <body class="antialiased min-h-screen flex flex-col font-sans">
-    <div class="cursor-dot custom-cursor" id="cursor-dot"></div>
-    <div class="cursor-outline custom-cursor" id="cursor-outline"></div>
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Naga | Systems Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@500;700;800&family=Source+Sans+3:wght@400;600&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com/3.4.17"></script>
+<style>
+:root{--bg:#121214;--lg:#2a2a2e;--gr:#80808a;--dg:#cfcfd4;--dk:#f2f2f3;--sec:#8fb0c8;--ter:#e8a87c;--hl:rgba(143,176,200,.12);color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+:root[data-theme="light"]{--bg:#f4f1ea;--lg:#dcd8cc;--gr:#7a7a80;--dg:#3d3d44;--dk:#15151a;--sec:#2b4c7e;--ter:#c8553d;--hl:rgba(43,76,126,.08);color-scheme:light}
+html{scroll-behavior:smooth;scroll-padding-top:5rem}
+body{background:var(--bg);color:var(--dg);font:17px/1.75 'Source Sans 3',system-ui,sans-serif}
+h1,h2,h3,.hd{font-family:'Schibsted Grotesk',system-ui,sans-serif;color:var(--dk);font-weight:700;letter-spacing:-.02em}
+a{color:var(--sec)}a:hover{text-decoration:underline}
+.mono{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:.8rem}
+.k{color:var(--ter);font-weight:600}.m{background:linear-gradient(transparent 58%,color-mix(in srgb,var(--sec) 38%,transparent) 58%);color:var(--dk);font-weight:600;padding:0 .12em;border-radius:2px}.sec{margin-top:6rem}.sec>h2{font-size:1.8rem;margin-bottom:.9rem}
+.line{border:1px solid var(--lg);border-radius:8px}
+.chip{border:1px solid var(--lg);border-radius:999px;padding:.05rem .75rem;color:var(--dg)}button.chip{cursor:pointer}.chip.on{background:var(--hl);border-color:var(--sec);color:var(--dk)}
+.toc a{display:block;padding:.15rem 0 .15rem .8rem;border-left:2px solid var(--lg);color:var(--gr);text-decoration:none}.toc a.on{border-color:var(--ter);color:var(--dk)}
+.card{display:block;padding:1.6rem 0;border-top:1px solid var(--lg)}
+/* paper figures */
+.paper{--ink:#1d2433;--ink2:#5b6475;--blue:#2b4c7e;--red:#c8553d;background:#fffefb linear-gradient(#ece8dc 1px,transparent 1px) 0 0/24px 24px;background-image:linear-gradient(#ece8dc 1px,transparent 1px),linear-gradient(90deg,#ece8dc 1px,transparent 1px);background-size:24px 24px;border-radius:6px;padding:1.4rem;color:var(--ink);box-shadow:0 18px 40px -12px rgba(0,0,0,.5);font-family:'IBM Plex Mono',monospace;font-size:.8rem;line-height:1.6}
+.paper svg text{fill:var(--ink);font-family:'IBM Plex Mono',monospace;font-size:10.5px}
+.paper .cap{color:var(--ink2);margin-top:.9rem;font-size:.75rem}
+.pb{fill:#fffefb;stroke:var(--ink);stroke-width:1.6}.pf{fill:#dfe8f7;stroke:var(--blue);stroke-width:2}.pa{stroke:var(--blue);stroke-width:1.6;fill:none;marker-end:url(#ar)}
+.pbtn{border:1.5px solid var(--ink);background:#fffefb;color:var(--ink);padding:.2rem .7rem;border-radius:4px;cursor:pointer}.pbtn:hover,.pbtn.on{background:var(--ink);color:#fffefb}
+.trk{flex:1;height:14px;border-bottom:1.5px solid var(--ink)}.bar{height:100%;background:var(--blue);transition:width .7s}
+.lr{display:flex;gap:.8rem;align-items:center;margin:.45rem 0;cursor:default}.lr:hover .bar{background:var(--red)}
+.sq{display:inline-block;width:10px;height:10px;margin:1px;border:1.3px solid var(--ink);border-radius:2px}.sq.on{background:var(--blue)}.sq.w{background:var(--red);border-color:var(--red)}
+.nd{cursor:grab;touch-action:none;transition:opacity .2s}.nd circle{fill:#fffefb;stroke:var(--ink);stroke-width:1.6}.nd.hub circle{fill:var(--blue);stroke:var(--blue)}.nd.h circle{fill:var(--red);stroke:var(--red)}
+.ed{stroke:#b9b4a4;stroke-width:1.3;transition:.2s}.ed.lit{stroke:var(--red);stroke-width:2.2}.dim{opacity:.15}
+#res{position:absolute;left:0;right:0;top:100%;z-index:30;background:var(--bg);border:1px solid var(--lg);border-radius:8px;margin-top:4px;overflow:hidden}
+#res button{display:block;width:100%;text-align:left;padding:.4rem .8rem}#res button:hover{background:var(--hl)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 
-    <!-- HEADER -->
-    <header
-      class="fixed top-0 w-full bg-bg/90 backdrop-blur-sm z-50 border-b border-border transition-colors duration-200"
-    >
-      <div
-        class="max-w-3xl mx-auto px-6 h-16 flex justify-between items-center"
-      >
-        <a
-          href="#"
-          class="font-bold tracking-tight text-fg hover:opacity-70 transition-opacity interactive"
-          >Gaurav N.V.</a
-        >
-        <div class="flex items-center gap-6">
-          <nav
-            class="hidden md:flex gap-6 text-sm text-muted font-mono"
-            id="desktop-nav"
-          >
-            <a
-              href="#about"
-              onclick="closeAllModals()"
-              class="hover:text-fg transition-colors interactive"
-              >About</a
-            >
-            <a
-              href="#experience"
-              onclick="closeAllModals()"
-              class="hover:text-fg transition-colors interactive"
-              >Experience</a
-            >
-            <a
-              href="#projects"
-              onclick="closeAllModals()"
-              class="hover:text-fg transition-colors interactive"
-              >Projects</a
-            >
-            <a
-              href="#research"
-              onclick="closeAllModals()"
-              class="hover:text-fg transition-colors interactive"
-              >Research</a
-            >
-            <a
-              href="#skills"
-              onclick="closeAllModals()"
-              class="hover:text-fg transition-colors interactive"
-              >Skills</a
-            >
-          </nav>
-          <button
-            id="theme-toggle"
-            class="text-fg hover:opacity-70 transition-opacity interactive"
-            aria-label="Toggle Theme"
-          >
-            <i data-lucide="moon" id="theme-icon" class="w-4 h-4"></i>
-          </button>
-          <button class="md:hidden text-fg interactive" id="mobile-menu-btn">
-            <i data-lucide="menu" class="w-5 h-5"></i>
-          </button>
-        </div>
-      </div>
-    </header>
+.hero-figure {
+        margin: 30px 0 0;
+        position: relative;
+        border: 1px solid var(--line);
+        border-radius: 7px;
+        overflow: hidden;
+      }
+      .hero-figure picture {
+        display: block;
+      }
+      .hero-figure img {
+        display: block;
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+      }
+      .hero-figure .signal {
+        position: absolute;
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: #7188b4;
+        top: 49%;
+        left: 75%;
+        animation: signal 3s ease-in-out infinite;
+      }
+      .hero-figure figcaption {
+        display: flex;
+        justify-content: space-between;
+        padding: 9px 14px;
+        background: var(--panel);
+        font-size: 10px;
+        color: var(--muted);
+      }
+      
+@keyframes signal {
+        0%,
+        100% {
+          opacity: 0.2;
+          transform: translateX(0);
+        }
+        50% {
+          opacity: 1;
+          transform: translateX(30px);
+        }
+      }
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/dompurify@3.2.6/dist/purify.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-clike.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-c.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-cpp.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-python.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@10.9.3/dist/mermaid.min.js"></script>
+<style>
+/* Additions only: original selectors and layout are intentionally untouched. */
+:root{--text:var(--dg);--heading:var(--dk);--line:var(--lg);--panel:var(--hl)}
+#extra-nav{display:grid;grid-template-columns:repeat(4,1fr);gap:5px;margin-top:18px}
+#extra-nav a{display:flex;align-items:center;justify-content:center;min-height:34px;border:1px solid transparent;border-radius:6px;color:var(--gr)}
+#extra-nav a.on{border-color:var(--lg);background:var(--hl);color:var(--sec)}
+#extra-nav svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.addon h1{font-size:2.5rem;margin:0 0 1rem}.addon h2{font-size:1.8rem;margin:2.5rem 0 1rem}.addon h3{font-size:1.15rem;margin:1rem 0 .5rem}.addon p{margin:.8rem 0 1rem}.addon .muted{color:var(--gr)}.addon .filters{display:flex;gap:8px;flex-wrap:wrap;margin:1rem 0}.addon input,.addon select{background:var(--bg);color:var(--dg);border:1px solid var(--lg);padding:.4rem .65rem;border-radius:5px}.addon .entry{padding:1.3rem 0;border-bottom:1px solid var(--lg)}.addon .entry h3{margin:.3rem 0}.addon .empty{padding:1.2rem;border:1px dashed var(--lg);border-radius:6px}.addon .tag{font-size:.7rem;color:var(--gr)}.addon .metric-row{display:flex;gap:25px;flex-wrap:wrap;margin:20px 0}.addon .metric{font-family:'Schibsted Grotesk',sans-serif;font-size:1.8rem;color:var(--dk)}.addon .metric small{display:block;font:11px 'IBM Plex Mono',monospace;color:var(--gr)}.addon .chart{width:100%;height:120px}.addon .heatmap{display:grid;grid-template-rows:repeat(7,9px);grid-auto-flow:column;grid-auto-columns:9px;gap:3px;overflow:auto}.addon .heatmap span{border-radius:2px;background:var(--lg)}
+.addon .prose h1{margin-top:1rem}.addon .prose p{margin:1rem 0}.addon .prose ul,.addon .prose ol{padding-left:1.5rem}.addon .prose ul{list-style:disc}.addon .prose ol{list-style:decimal}.addon .prose blockquote{border-left:2px solid var(--ter);padding:1rem}.addon .prose table{display:block;overflow:auto;border-collapse:collapse}.addon .prose td,.addon .prose th{border:1px solid var(--lg);padding:8px}.addon .prose figure{margin:20px 0}.addon .prose img{max-width:100%;cursor:zoom-in}.addon .prose figcaption{font-size:.75rem;color:var(--gr)}.addon .caution{background:linear-gradient(transparent 58%,#e8a87c44 58%);color:var(--dk)}.addon mark{color:inherit}.addon pre{padding:18px;background:var(--hl);border:1px solid var(--lg);border-radius:5px;overflow:auto;font:12px/1.7 'IBM Plex Mono',monospace}.addon .code-wrap{position:relative}.addon .code-wrap pre{padding-top:45px}.addon .code-wrap>button{position:absolute;right:8px;top:8px;font-size:11px;border:1px solid var(--lg);border-radius:4px;padding:3px 8px;background:var(--bg)}.addon .token.keyword,.addon .token.tag{color:var(--sec)}.addon .token.string,.addon .token.number{color:var(--ter)}.addon .token.comment{color:var(--gr)}.addon .mermaid{overflow:auto}.addon .katex-display{overflow-x:auto;overflow-y:hidden}
+.addon .simulation{margin:20px 0;border:1px solid var(--lg);border-radius:6px;overflow:hidden}.addon .toolbar{display:flex;gap:6px;flex-wrap:wrap;padding:9px;border-bottom:1px solid var(--lg)}.addon .toolbar button{font:11px 'IBM Plex Mono',monospace;padding:5px 7px;border:1px solid var(--lg);border-radius:4px}.addon .toolbar button.active{background:var(--hl);color:var(--sec)}.addon .sim-body{display:grid;grid-template-columns:1fr}.addon .sim-body.split{grid-template-columns:1fr 1fr}.addon .sim-code{width:100%;min-height:360px;background:var(--bg);color:var(--dg);padding:14px;border:0;resize:vertical;font:12px/1.7 'IBM Plex Mono',monospace}.addon .sim-frame{width:100%;border:0;min-height:300px;background:var(--bg)}.addon .simulation:fullscreen{background:var(--bg);overflow:auto}.addon [hidden]{display:none!important}.addon .control{display:block;font-size:.8rem;margin:10px 0}.addon .control input{width:100%;accent-color:var(--sec)}.addon .console{white-space:pre-wrap;overflow:auto;max-height:180px;font:11px/1.7 'IBM Plex Mono',monospace;overflow-wrap:anywhere}.addon .progress-ring{width:62px;height:62px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--ter) var(--read,0%),var(--lg) 0)}.addon .progress-ring span{display:grid;place-items:center;width:52px;height:52px;border-radius:50%;background:var(--bg)}
+#addon-palette,#image-dialog{background:var(--bg);color:var(--dg);border:1px solid var(--lg);border-radius:8px;padding:18px;width:min(600px,92vw)}#addon-palette::backdrop,#image-dialog::backdrop{background:#0009}#addon-palette input{width:100%;background:transparent;border-bottom:1px solid var(--lg);padding:10px 4px;color:var(--dk);outline:none}#addon-results{max-height:50vh;overflow:auto}#addon-results a{display:block;padding:10px;border-radius:4px}#addon-results a.selected{background:var(--hl)}#addon-toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--dk);color:var(--bg);padding:8px 16px;border-radius:5px;z-index:70;display:none;font-size:12px}#image-dialog img{width:100%}
+@media(max-width:1023px){#extra-nav{grid-template-columns:repeat(8,1fr)}.addon .sim-body.split{grid-template-columns:1fr}}
+/* Requested navigation and contextual-pane refinements. */
+#extra-nav{display:flex;flex-direction:column;gap:3px;margin-top:20px}
+#extra-nav a{justify-content:flex-start;padding:4px 10px;min-height:30px}
+#toc{display:block}
+[data-home-widget][hidden]{display:none!important}
+#added-context[hidden],#coding-profiles[hidden]{display:none!important}
+#coding-profiles>h2{margin-top:0}
+.profile-compact{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.profile-mini{border-top:1px solid var(--lg);padding-top:10px;min-width:0}
+.profile-mini p{margin:.4rem 0}.profile-mini .mono{font-size:.65rem}
+.profile-rating{font:1.6rem 'Schibsted Grotesk',sans-serif;color:var(--dk)}
+.profile-rating small{font:10px 'IBM Plex Mono',monospace;color:var(--gr)}
+.profile-mini .chart{height:90px}.profile-mini summary{cursor:pointer;color:var(--sec)}
+/* Same paper palette and 24px graph grid as the original Home figures. */
+.addon pre,.addon .mermaid,.addon .katex-display,.addon .simulation,.addon .sim-code,.addon .toolbar,.addon .console{
+ --sec:#2b4c7e;--ter:#c8553d;--text:#1d2433;--heading:#1d2433;--line:#d9d4c4;--muted:#5b6475;
+ background-color:#fffefb;background-image:linear-gradient(#ece8dc 1px,transparent 1px),linear-gradient(90deg,#ece8dc 1px,transparent 1px);background-size:24px 24px;color:#1d2433;border-color:#d9d4c4;
+}
+.addon .mermaid,.addon .katex-display{padding:1.4rem;border-radius:6px;box-shadow:0 18px 40px -12px rgba(0,0,0,.5)}
+.addon .katex{color:inherit}.addon .prose .katex:not(.katex-display .katex){background:#fffefb;color:#1d2433;padding:.1em .25em;border-radius:3px}
+.addon pre,.addon .simulation{box-shadow:0 18px 40px -12px rgba(0,0,0,.5)}
+.addon .code-wrap>button,.addon .toolbar button{background:#fffefb;border:1px solid #1d2433;color:#1d2433}
+.addon .toolbar button.active,.addon .toolbar button:hover{background:#1d2433;color:#fffefb}
+.addon .token.comment{color:#5b6475}.addon .token.keyword,.addon .token.tag{color:#2b4c7e}.addon .token.string,.addon .token.number{color:#a4432b}
+.addon .sim-frame{background:#fffefb}.addon .console{padding:10px;border-radius:4px}
+@media(max-width:1023px){#extra-nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.profile-compact{grid-template-columns:1fr}.profile-mini{display:grid;grid-template-columns:1fr 1fr;column-gap:12px}.profile-mini details{grid-column:1/-1}}
+.addon .prose :not(pre)>code{background:#fffefb;color:#1d2433;border:1px solid #ece8dc;padding:.1em .3em;border-radius:3px}
+/* Icon utilities and mobile-only navigation. */
+#hdr{align-items:center;gap:10px}
+.social-icon{display:inline-flex;align-items:center;justify-content:center;width:30px;height:32px;color:var(--sec);border-radius:5px}
+.social-icon:hover{background:var(--hl)}.social-icon svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.social-icon.unavailable{opacity:.35;cursor:default}#mobile-theme,#mobile-pages{display:none}
+main[data-page="projects"]>#work{margin-top:0}
+#github>#coding-profiles{margin-top:30px;padding-top:20px;border-top:1px solid var(--lg)}
+#github>#coding-profiles>h3{font-size:.85rem;letter-spacing:.06em;margin:0 0 16px}
+.note-card{display:grid;grid-template-columns:145px minmax(0,1fr);gap:22px;border:1px solid var(--lg);border-radius:7px;margin:20px 0;overflow:hidden;transition:border-color .2s,transform .2s}
+.note-card:hover{border-color:var(--sec);transform:translateY(-2px)}
+.note-art{display:flex;flex-direction:column;justify-content:center;padding:14px;background:#fffefb linear-gradient(#ece8dc 1px,transparent 1px);background-image:linear-gradient(#ece8dc 1px,transparent 1px),linear-gradient(90deg,#ece8dc 1px,transparent 1px);background-size:24px 24px;color:#2b4c7e}
+.note-art svg{width:100%}.note-art .mono{font-size:8px;letter-spacing:.08em;margin-top:10px;text-align:center}.note-body{padding:18px 18px 16px 0}
+.addon .note-body>p:first-child{font-size:.65rem;margin:0 0 10px}.addon .note-body h3{font-size:1.25rem;margin:0 0 10px}.note-body h3 a{color:var(--dk)}.note-arrow{color:var(--ter)}
+.addon .note-excerpt{font-size:.9rem;color:var(--gr);margin:0 0 12px}.addon .note-body .filters{margin:0;font-size:.65rem}
+.context-list{padding-left:17px;margin:12px 0;list-style:disc;font-size:.8rem}.context-list li{margin:8px 0}
+.research-card{border:1px solid var(--lg);border-top:3px solid var(--sec);border-radius:7px;padding:25px;margin-top:30px}.addon .research-card h2{margin:14px 0;font-size:1.55rem}
+.demo-label{font:10px 'IBM Plex Mono',monospace;letter-spacing:.12em;color:var(--ter)}.research-facts{display:grid;grid-template-columns:1fr 1fr;gap:20px;border-top:1px solid var(--lg);border-bottom:1px solid var(--lg);padding:18px 0;margin:20px 0}.research-facts p{font-size:.9rem}.status-dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--ter);margin-right:7px}
+.experience-card{display:grid;grid-template-columns:16px minmax(0,1fr);gap:20px;padding:28px 0;margin-top:20px}.experience-axis{border-left:1px solid var(--lg);position:relative}.experience-axis span{position:absolute;left:-5px;top:10px;width:9px;height:9px;border-radius:50%;background:var(--ter)}.addon .experience-card h2{margin:14px 0;font-size:1.6rem}.experience-points{list-style:disc;padding-left:18px}.experience-points li{padding:5px 0;font-size:.95rem}
+@media(max-width:1023px){
+ #left-pane{display:none!important}#toc,#in-page-label{display:none!important}
+ #mobile-theme{display:inline-flex}#mobile-pages{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:45;justify-content:space-around;background:var(--bg);border-top:1px solid var(--lg);padding:10px 5px calc(9px + env(safe-area-inset-bottom))}
+ #mobile-pages a{display:flex;flex-direction:column;align-items:center;gap:5px;font:9px 'IBM Plex Mono',monospace;color:var(--gr);min-width:50px;padding:3px}
+ #mobile-pages svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+ #mobile-pages a.on{color:var(--ter)}body{padding-bottom:80px}#top{bottom:90px!important}
+ #right-pane.contextual-pane{display:block!important;position:static;margin-top:35px}#hdr{gap:5px}
+}
+@media(max-width:600px){.note-card{grid-template-columns:90px minmax(0,1fr);gap:14px}.note-art{padding:7px}.note-art .mono{font-size:6px}.addon .note-body h3{font-size:1.05rem}.note-body{padding:15px 12px 15px 0}.research-facts{grid-template-columns:1fr}.research-card{padding:18px}#hdr{gap:2px}.social-icon{width:27px}.social-icon svg{width:17px}}
+@media(prefers-reduced-motion:reduce){.note-card:hover{transform:none}}
+/* Wider work surfaces; the Home layout keeps its existing width. */
+.desktop-social-label{display:none}
+@media(min-width:1024px){#hdr .social-icon svg{display:none}#hdr .desktop-social-label{display:inline}#hdr .social-icon{width:auto;padding:0 4px}#hdr{gap:20px}#hdr [data-social="Email"]{display:none}}
+.tag-group{display:flex;flex-wrap:wrap;gap:7px;align-items:center;min-width:0;max-width:100%}
+.tag-group>.chip{max-width:100%;overflow-wrap:anywhere;white-space:normal;line-height:1.6;text-align:left}
+.tag-group>.tag-hidden{display:none!important}
+.tag-toggle{color:var(--sec);border:0;border-bottom:1px dotted var(--sec);padding:2px 0;margin-left:3px;font-size:.7rem;cursor:pointer;flex-shrink:0}
+.tag-toggle[hidden]{display:none!important}
+.research-summary{border-top:1px solid var(--lg)}.research-summary h2 a{color:var(--dk)}.research-summary:hover{border-color:var(--sec)}
+.runner-status{font:10px/1.5 'IBM Plex Mono',monospace;align-self:center;max-width:100%;overflow-wrap:anywhere;color:#5b6475}.runner-status[data-error=true]{color:#a4432b}
+/* Blog note callouts and document navigation. */
+.addon .prose blockquote.note-callout{border-left:2px solid var(--ter);background:color-mix(in srgb,var(--ter) 7%,var(--bg));padding:14px 18px;margin:26px 0;border-radius:0 5px 5px 0}
+.note-callout-label{display:flex;align-items:center;gap:8px;font:12px 'IBM Plex Mono',monospace;color:var(--ter)}
+.note-callout-label svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linejoin:round;stroke-linecap:round}
+.addon .note-callout p{margin:10px 0 0}.addon .note-callout .m{background:linear-gradient(transparent 50%,color-mix(in srgb,var(--ter) 25%,transparent) 50%);color:var(--dk)}
+.post-sources{border-top:1px solid var(--lg);margin-top:40px;padding-top:10px}.post-sources li{margin:8px 0;font-size:.9rem}
+.detail-navigation{margin-bottom:24px}.breadcrumbs{display:flex;gap:9px;flex-wrap:wrap;color:var(--gr);font-size:.65rem;margin-bottom:16px;overflow-wrap:anywhere}.breadcrumbs [aria-current]{color:var(--dg)}.detail-back{display:inline-block;font-size:.75rem}
+/* Obsidian-inspired graph, using the site's own dark/light theme tokens. */
+.sidebar-graph-card{min-width:0}.notebook-graph{color:var(--dg);min-width:0}.notebook-graph>svg{display:block;width:100%;height:auto;min-height:150px;touch-action:none;cursor:grab;overflow:hidden;background:radial-gradient(ellipse at center,var(--hl),transparent 70%);border-radius:6px}
+.graph-edge{stroke:var(--gr);stroke-opacity:.3;stroke-width:1.4}.graph-edge.connected{stroke:var(--ter);stroke-opacity:.9;stroke-width:2}
+.graph-node{cursor:pointer;outline:none}.graph-node circle{stroke:var(--bg);stroke-width:2}.graph-node.current circle{stroke:var(--ter);stroke-width:4}.graph-node:focus circle{stroke:var(--dk);stroke-width:4}
+.graph-node text{fill:var(--dg);font:12px 'IBM Plex Mono',monospace;pointer-events:none}.sidebar-graph-card .graph-node text{font-size:19px}.graph-node:hover text,.graph-node:focus text{fill:var(--dk)}.notebook-graph .faded{opacity:.15}
+.graph-caption{color:var(--gr);font-size:.6rem!important;line-height:1.6;margin:8px 0!important}.graph-expand{display:block;width:100%;margin-top:10px;padding:7px;border:1px solid var(--lg);border-radius:5px;color:var(--sec);font-size:.65rem}.graph-expand:hover{background:var(--hl)}
+#notebook-dialog{background:var(--bg);color:var(--dg);border:1px solid var(--lg);border-radius:10px;width:min(1000px,94vw);max-height:92dvh;overflow:auto;padding:24px}#notebook-dialog::backdrop{background:#000b;backdrop-filter:blur(5px)}
+.graph-dialog-top{display:flex;align-items:center;justify-content:space-between;gap:20px}.graph-dialog-top h2{font-size:1.5rem}.graph-dialog-top button{font-size:1.6rem;width:35px;line-height:1;color:var(--gr)}.graph-help{color:var(--gr);font-size:.7rem;margin:10px 0 18px}
+#large-notes-graph>svg{max-height:62dvh}.graph-tools{display:flex;gap:8px;margin-bottom:10px}.graph-tools input{flex:1;min-width:0;background:var(--bg);color:var(--dg);border:1px solid var(--lg);border-radius:5px;padding:7px 10px;font-size:.8rem}.graph-tools button{width:32px;border:1px solid var(--lg);border-radius:5px;color:var(--sec)}
+.graph-legend{display:flex;gap:15px;flex-wrap:wrap;margin-top:12px;font:10px 'IBM Plex Mono',monospace;color:var(--gr)}.graph-legend span{display:flex;gap:6px;align-items:center}.graph-legend i{width:6px;height:6px;border-radius:50%}
+@media(max-width:600px){#notebook-dialog{padding:16px}.graph-dialog-top h2{font-size:1.2rem}.graph-help{font-size:.6rem}.breadcrumbs{font-size:.6rem}}
+/* Position animation is synchronized in JS so edges stay attached to nodes. */
+.graph-node,.graph-edge{transition:opacity .22s ease}
+.graph-node circle{transition:fill .22s ease,stroke .22s ease,stroke-width .22s ease}
+.graph-node text{transition:fill .22s ease}
+.notebook-graph svg:active{cursor:grabbing}
+@media(prefers-reduced-motion:reduce){.graph-node,.graph-edge,.graph-node circle,.graph-node text{transition:none!important}}
 
-    <!-- MOBILE MENU -->
-    <div
-      id="mobile-menu"
-      class="fixed inset-0 bg-bg z-[60] hidden flex-col justify-start px-8 opacity-0 transition-opacity duration-200 overflow-y-auto"
-    >
-      <button
-        id="close-menu-btn"
-        class="absolute top-6 right-6 text-fg hover:opacity-70 interactive"
-      >
-        <i data-lucide="x" class="w-6 h-6"></i>
-      </button>
-      <nav
-        class="flex flex-col items-center gap-8 text-2xl font-medium w-full text-center mt-[25%] pb-12"
-      >
-        <a
-          href="#about"
-          onclick="closeAllModals()"
-          class="mobile-link text-muted hover:text-fg interactive"
-          >About</a
-        >
-        <a
-          href="#experience"
-          onclick="closeAllModals()"
-          class="mobile-link text-muted hover:text-fg interactive"
-          >Experience</a
-        >
-        <a
-          href="#projects"
-          onclick="closeAllModals()"
-          class="mobile-link text-muted hover:text-fg interactive"
-          >Projects</a
-        >
-        <a
-          href="#research"
-          onclick="closeAllModals()"
-          class="mobile-link text-muted hover:text-fg interactive"
-          >Research</a
-        >
-        <a
-          href="#skills"
-          onclick="closeAllModals()"
-          class="mobile-link text-muted hover:text-fg interactive"
-          >Skills</a
-        >
-      </nav>
-    </div>
+#left-recent-posts{margin-top:28px;padding:12px}#left-recent-posts a{font-size:.78rem;line-height:1.6;display:block}
 
-    <!-- MAIN -->
-    <main class="flex-1 w-full max-w-3xl mx-auto px-6 pt-32 pb-16 space-y-24">
-      <!-- ABOUT / HERO -->
-      <section id="about" class="scroll-mt-32 fade-up">
-        <div class="flex flex-wrap items-center gap-3 mb-8">
-          <div
-            class="inline-flex items-center gap-2 px-3 py-1.5 border border-border rounded-full text-xs font-mono bg-fg/5 text-fg font-medium"
-          >
-            <span class="relative flex h-2 w-2">
-              <span
-                class="animate-ping absolute inline-flex h-full w-full rounded-full bg-violet-400 opacity-75"
-              ></span>
-              <span
-                class="relative inline-flex rounded-full h-2 w-2 bg-violet-500"
-              ></span>
-            </span>
-            Seeking Summer 2026 Internships
-          </div>
-          <div
-            class="inline-flex items-center gap-1.5 px-3 py-1.5 border border-border rounded-full text-xs font-mono bg-fg/5 text-muted"
-          >
-            <i data-lucide="map-pin" class="w-3 h-3"></i>
-            Los Angeles, CA
-          </div>
-        </div>
-        <h1
-          class="text-4xl md:text-5xl font-bold tracking-tight leading-tight mb-6"
-        >
-          Software Engineer &amp; <br />AI/ML Systems Builder.
-        </h1>
+</style></head>
+<body>
+<svg width="0" height="0" style="position:absolute"><defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#2b4c7e"/></marker></defs></svg>
+<div id="pgb" class="fixed top-0 left-0 h-[2px] z-40" style="background:var(--ter);width:0"></div>
 
-        <p class="text-sm md:text-base text-muted mt-4 mb-8 leading-relaxed">
-          Full Stack &nbsp;·&nbsp; Machine Learning &nbsp;·&nbsp; Distributed
-          Computing &nbsp;·&nbsp; Databases
-        </p>
+<header class="sticky top-0 z-30 border-b" style="background:color-mix(in srgb,var(--bg) 85%,transparent);backdrop-filter:blur(10px);border-color:var(--lg)"><div class="max-w-6xl mx-auto px-6 py-3 flex items-center justify-between"><a href="#" class="hd text-xl">🛠️ Naga</a><nav class="mono flex gap-4" id="hdr"></nav></div></header>
+<div class="max-w-6xl mx-auto px-6 py-10 lg:grid lg:grid-cols-[200px_minmax(0,1fr)] xl:grid-cols-[200px_minmax(0,1fr)_220px] lg:gap-12">
+<aside class="lg:sticky lg:top-24 self-start mb-12 lg:mb-0">
+ <a href="#" class="hidden">🛠️ Naga</a>
+ <div class="relative mt-5"><input id="s" placeholder="Search ( / )" class="line w-full px-3 py-2 mono outline-none bg-transparent" style="color:var(--dk)" autocomplete="off"><div id="res" hidden></div></div>
+ <button id="th" class="line mono mt-3 w-full py-1">light / dark</button>
+ <nav class="toc mono mt-8 hidden lg:block" id="toc"></nav>
+ 
+</aside>
 
-        <div
-          class="text-base md:text-lg text-muted max-w-2xl leading-relaxed mb-8"
-        >
-          MS Applied Data Science candidate at USC with 2+ years of backend and
-          full-stack engineering experience. Specializing in high-performance
-          API design, concurrent systems in Go and Python, real-time data
-          pipelines, and ML-integrated applications.
-        </div>
-        <div class="flex flex-col gap-6">
-          <div class="flex flex-wrap items-center gap-4">
-            <a
-              href="./resources/resume.pdf"
-              download
-              class="interactive magnetic inline-flex items-center gap-2 px-5 py-2.5 bg-fg text-bg hover:opacity-85 transition-opacity font-medium text-sm rounded-md shadow-sm"
-            >
-              <i data-lucide="file-text" class="w-4 h-4 pointer-events-none"></i
-              >Resume
-            </a>
-            <div class="flex items-center gap-3">
-              <a
-                href="https://github.com/naga251602"
-                target="_blank"
-                class="interactive magnetic p-2.5 border border-border rounded-md hover:bg-fg hover:text-bg transition-colors text-fg"
-                aria-label="GitHub"
-              >
-                <i data-lucide="github" class="w-4 h-4 pointer-events-none"></i>
-              </a>
-              <a
-                href="https://linkedin.com/in/gauravnv"
-                target="_blank"
-                class="interactive magnetic p-2.5 border border-border rounded-md hover:bg-fg hover:text-bg transition-colors text-fg"
-                aria-label="LinkedIn"
-              >
-                <i
-                  data-lucide="linkedin"
-                  class="w-4 h-4 pointer-events-none"
-                ></i>
-              </a>
-              <a
-                href="/cdn-cgi/l/email-protection#cda3acaaaca1acbdb88db8beaee3a8a9b8"
-                class="interactive magnetic p-2.5 border border-border rounded-md hover:bg-fg hover:text-bg transition-colors text-fg"
-                aria-label="Email"
-              >
-                <i data-lucide="mail" class="w-4 h-4 pointer-events-none"></i>
-              </a>
-            </div>
-          </div>
-          <div>
-            <button
-              onclick="openModal('about-modal')"
-              class="interactive cursor-none group inline-flex items-center gap-2 font-mono text-xs md:text-sm text-muted hover:text-fg transition-colors"
-            >
-              Read more about me &amp; education
-              <i
-                data-lucide="arrow-right"
-                class="w-4 h-4 group-hover:translate-x-1 transition-transform"
-              ></i>
-            </button>
-          </div>
-        </div>
-        <!-- Stats — JS injected -->
-        <div
-          id="stats-container"
-          class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-12 mt-12 border-t border-border stagger-parent"
-        ></div>
-      </section>
+<main>
+<section id="intro">
+     <figure class="hero-figure">
+            <picture
+              ><img
+                src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22640%22%20height%3D%22380%22%20viewBox%3D%220%200%20640%20380%22%3E%3Cdefs%3E%3Cpattern%20id%3D%22g%22%20width%3D%2224%22%20height%3D%2224%22%20patternUnits%3D%22userSpaceOnUse%22%3E%3Ccircle%20cx%3D%221%22%20cy%3D%221%22%20r%3D%221%22%20fill%3D%22%23bfc8d9%22/%3E%3C/pattern%3E%3C/defs%3E%3Crect%20width%3D%22640%22%20height%3D%22380%22%20fill%3D%22%23e9edf5%22/%3E%3Crect%20width%3D%22640%22%20height%3D%22380%22%20fill%3D%22url%28%23g%29%22/%3E%3Cg%20fill%3D%22%23f8f9fc%22%20stroke%3D%22%23687d9f%22%20stroke-width%3D%221.5%22%3E%3Cpath%20d%3D%22m180%20230%20140-65%20140%2065-140%2065z%22/%3E%3Cpath%20d%3D%22m180%20230v27l140%2065%20140-65v-27l-140%2065z%22/%3E%3Cpath%20d%3D%22m180%20174%20140-65%20140%2065-140%2065z%22/%3E%3Cpath%20d%3D%22m180%20174v27l140%2065%20140-65v-27l-140%2065z%22/%3E%3Cpath%20d%3D%22m180%20118%20140-65%20140%2065-140%2065z%22/%3E%3Cpath%20d%3D%22m180%20118v27l140%2065%20140-65v-27l-140%2065z%22/%3E%3C/g%3E%3Cg%20stroke%3D%22%23a4b1ca%22%20fill%3D%22none%22%3E%3Cpath%20d%3D%22m215%20118%20105-48%20105%2048-105%2049zM250%20102l107%2048M285%2086l107%2048M250%20134l105-48M285%20151l105-49%22/%3E%3C/g%3E%3Cg%20fill%3D%22%235679a8%22%3E%3Ccircle%20cx%3D%22202%22%20cy%3D%22139%22%20r%3D%223%22/%3E%3Ccircle%20cx%3D%22202%22%20cy%3D%22195%22%20r%3D%223%22/%3E%3Ccircle%20cx%3D%22202%22%20cy%3D%22251%22%20r%3D%223%22/%3E%3C/g%3E%3Cg%20font-family%3D%22monospace%22%20font-size%3D%2211%22%20fill%3D%22%234a6083%22%3E%3Ctext%20x%3D%2236%22%20y%3D%2242%22%3EFIG.%2001%20/%20PERSISTENCE%3C/text%3E%3Ctext%20x%3D%2236%22%20y%3D%22350%22%3E4096%20bytes%20per%20page%3C/text%3E%3Ctext%20x%3D%22470%22%20y%3D%22350%22%3EDISK%20%E2%86%92%20MEMORY%3C/text%3E%3Cpath%20d%3D%22M451%20118h94%22%20stroke%3D%22%23687d9f%22/%3E%3Ctext%20x%3D%22485%22%20y%3D%22108%22%3Epage%200x01%3C/text%3E%3C/g%3E%3C/svg%3E"
+                alt="Technical illustration of three stacked storage pages, with a grid of records on the top page"
+                width="640"
+                height="380" /></picture
+            ><span class="signal" aria-hidden="true"></span>
+         
+          </figure>
+          <br/>
+<!-- <svg viewBox="0 0 1584 396" class="w-full mb-10" style="border-radius:14px;display:block" role="img" aria-label="Banner: Naga, systems engineer"><defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0f1c2b"/><stop offset="1" stop-color="#1a3a55"/></linearGradient><pattern id="gd" width="44" height="44" patternUnits="userSpaceOnUse"><path d="M44 0H0V44" fill="none" stroke="#8fb0c8" stroke-opacity=".09"/></pattern></defs><rect width="1584" height="396" fill="url(#bg)"/><rect width="1584" height="396" fill="url(#gd)"/>
+<g fill="none" stroke="#e8a87c" stroke-opacity=".4" stroke-width="2"><path d="M700 76H880L960 125"/><path d="M640 330H880L960 275"/><path d="M780 200H960"/></g>
+<text x="70" y="150" font-size="108" font-weight="800" fill="#f2f2f3" style="font-family:'Schibsted Grotesk',sans-serif">Naga</text><text x="74" y="212" font-size="42" fill="#9fc3d9" style="font-family:'Schibsted Grotesk',sans-serif">Systems engineer | Linux internals</text>
+<g style="font-family:'IBM Plex Mono',monospace" font-size="27" fill="#f2f2f3"><g stroke="#8fb0c8" stroke-opacity=".6" stroke-width="2" fill="none"><rect x="74" y="240" width="124" height="46" rx="23"/><rect x="214" y="240" width="124" height="46" rx="23"/><rect x="354" y="240" width="124" height="46" rx="23"/><rect x="494" y="240" width="108" height="46" rx="23"/></g><text x="94" y="272">C++20</text><text x="236" y="272">Linux</text><text x="376" y="272">eBPF</text><text x="518" y="272">perf</text><text x="74" y="352" fill="#e8a87c">USC | MS Applied Data Science</text></g><g id="bi"></g></svg> -->
+ <p class="mono" style="color:var(--ter)">naga@usc:~$ whoami</p>
+ <h1 class="text-4xl md:text-6xl leading-[1.05] mt-3">I love digging into <span id="rw" style="color:var(--sec)">storage engines</span>.</h1>
+ <p class="mt-6 max-w-xl">Hi, I’m Naga 👋 I am doing my MS in Applied Data Science at USC, and outside class I build the systems I want to understand: a database, a RocksDB investigation, a market data engine and a Linux scheduler.</p>
+ <p class="mt-4 max-w-xl">My long term goal is to get really good at competitive programming and work on storage, networking and kernel code where nanoseconds matter. I also built my own PC, so I like hardware too.</p>
+<div class="flex flex-wrap gap-x-10 gap-y-4 mt-9"><div><span class="hd text-3xl m">4</span><div class="mono" style="color:var(--gr)">systems projects</div></div><div><span class="hd text-3xl m" id="hs">554</span><div class="mono" style="color:var(--gr)">GitHub contributions, last year</div></div><div><span class="hd text-3xl m">4KB</span><div class="mono" style="color:var(--gr)">pages in my database</div></div></div>
+</section>
 
-      <!-- FEATURED -->
-      <section id="featured" class="scroll-mt-32 fade-up">
-        <div class="flex items-center gap-3 mb-8">
-          <h2 class="text-2xl font-bold tracking-tight">Featured</h2>
-          <span
-            class="inline-flex items-center gap-1 bg-gradient-to-r from-red-500 to-violet-500 text-white text-[10px] font-mono font-bold uppercase tracking-widest px-2 py-0.5 rounded-sm shadow-sm"
-          >
-            <i data-lucide="star" class="w-2.5 h-2.5"></i>Picks
-          </span>
-        </div>
-        <div
-          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 stagger-parent"
-          id="featured-list"
-        >
-          <!-- injected by JS -->
-        </div>
-      </section>
-      <!-- EXPERIENCE -->
-      <section id="experience" class="scroll-mt-32 fade-up">
-        <div class="flex items-center justify-between mb-8">
-          <h2 class="text-2xl font-bold tracking-tight">Experience</h2>
-          <span
-            id="skill-pill-hint"
-            class="font-mono text-[10px] text-muted flex items-center gap-1.5 opacity-100 transition-opacity duration-500 select-none"
-          >
-            <span class="relative flex h-1.5 w-1.5"
-              ><span
-                class="animate-ping absolute inline-flex h-full w-full rounded-full bg-violet-400 opacity-75"
-              ></span
-              ><span
-                class="relative inline-flex rounded-full h-1.5 w-1.5 bg-violet-400"
-              ></span
-            ></span>
-            tap a skill pill to explore
-          </span>
-        </div>
-        <!-- pl-6 gives room for the timeline dots -->
-        <div
-          class="flex flex-col border-t border-border stagger-parent pl-6"
-          id="experience-list"
-        ></div>
-      </section>
 
-      <!-- PROJECTS -->
-      <section id="projects" class="scroll-mt-32 fade-up">
-        <div class="flex items-baseline justify-between mb-8">
-          <h2 class="text-2xl font-bold tracking-tight">Projects</h2>
-        </div>
-        <div
-          class="flex flex-col border-t border-border stagger-parent"
-          id="projects-preview"
-        ></div>
-        <div class="pt-6 flex justify-end">
-          <button
-            onclick="openModal('projects-modal')"
-            class="interactive group flex items-center gap-1 font-mono text-xs text-muted hover:text-fg transition-colors cursor-none"
-          >
-            View all projects
-            <i
-              data-lucide="arrow-right"
-              class="w-3 h-3 group-hover:translate-x-1 transition-transform"
-            ></i>
-          </button>
-        </div>
-      </section>
 
-      <!-- RESEARCH -->
-      <section id="research" class="scroll-mt-32 fade-up">
-        <div class="flex items-baseline justify-between mb-8">
-          <h2 class="text-2xl font-bold tracking-tight">
-            Research &amp; Publications
-          </h2>
-        </div>
-        <div
-          class="flex flex-col border-t border-border stagger-parent"
-          id="publications-preview"
-        ></div>
-        <div class="pt-6 flex justify-end">
-          <button
-            onclick="openModal('publications-modal')"
-            class="interactive group flex items-center gap-1 font-mono text-xs text-muted hover:text-fg transition-colors cursor-none"
-          >
-            View all publications
-            <i
-              data-lucide="arrow-right"
-              class="w-3 h-3 group-hover:translate-x-1 transition-transform"
-            ></i>
-          </button>
-        </div>
-      </section>
 
-      <!-- SKILLS -->
-      <section id="skills" class="scroll-mt-32 fade-up">
-        <div class="border-b border-border pb-4 mb-6 flex flex-col gap-2">
-          <h2 class="text-2xl font-bold tracking-tight">Stack</h2>
-          <p class="text-xs text-muted font-mono flex items-center gap-1.5">
-            <i
-              data-lucide="mouse-pointer-click"
-              class="w-3.5 h-3.5 text-violet-400"
-            ></i>
-            Click any pill to see every project, role and paper where I used it
-          </p>
-        </div>
-        <div
-          id="skills-container"
-          class="grid grid-cols-1 md:grid-cols-2 gap-y-10 gap-x-8 text-sm stagger-parent pb-4 overflow-visible"
-        ></div>
-      </section>
 
-      <!-- OTHERS -->
-      <section id="others" class="scroll-mt-32 fade-up">
-        <div class="flex items-baseline justify-between mb-8">
-          <h2 class="text-2xl font-bold tracking-tight">Others</h2>
-        </div>
-        <div
-          class="flex flex-col border-t border-border stagger-parent"
-          id="others-preview"
-        ></div>
-        <div class="pt-6 flex justify-end">
-          <button
-            onclick="openModal('others-modal')"
-            class="interactive group flex items-center gap-1 font-mono text-xs text-muted hover:text-fg transition-colors cursor-none"
-          >
-            View all others
-            <i
-              data-lucide="arrow-right"
-              class="w-3 h-3 group-hover:translate-x-1 transition-transform"
-            ></i>
-          </button>
-        </div>
-      </section>
 
-      <!-- CONTACT -->
-      <section
-        id="contact"
-        class="scroll-mt-32 fade-up border-t border-border pt-24 pb-8"
-      >
-        <div class="flex flex-col lg:flex-row gap-16 lg:gap-24">
-          <div class="flex-1 lg:max-w-md">
-            <h2
-              class="text-4xl md:text-5xl font-bold tracking-tight leading-tight mb-6"
-            >
-              Let's <br class="hidden lg:block" />Connect.
-            </h2>
-            <p class="text-muted text-base leading-relaxed mb-10">
-              Whether you're looking to build scalable infrastructure, real-time
-              data pipelines, or just want to chat about backend systems, my
-              inbox is always open.
-            </p>
-            <div class="flex flex-col gap-4">
-              <a
-                href="/cdn-cgi/l/email-protection#fa949b9d9b969b8a8fba8f8999d49f9e8f"
-                class="interactive cursor-none inline-flex items-center gap-3 text-fg font-mono text-sm group w-fit"
-              >
-                <span
-                  class="p-2 border border-border rounded-md group-hover:bg-fg group-hover:text-bg transition-colors"
-                >
-                  <i data-lucide="mail" class="w-4 h-4 pointer-events-none"></i>
-                </span>
-                <span
-                  class="__cf_email__"
-                  data-cfemail="bad4dbdddbd6dbcacffacfc9d994dfdecf"
-                  >[email&#160;protected]</span
-                >
-              </a>
-              <a
-                href="https://linkedin.com/in/gauravnv"
-                target="_blank"
-                class="interactive cursor-none inline-flex items-center gap-3 text-fg font-mono text-sm group w-fit"
-              >
-                <span
-                  class="p-2 border border-border rounded-md group-hover:bg-fg group-hover:text-bg transition-colors"
-                >
-                  <i
-                    data-lucide="linkedin"
-                    class="w-4 h-4 pointer-events-none"
-                  ></i>
-                </span>
-                LinkedIn
-              </a>
-            </div>
-          </div>
-          <div class="flex-1">
-            <form id="contact-form" class="flex flex-col gap-10 lg:pt-4">
-              <div class="relative group">
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  required
-                  placeholder="Name"
-                  class="w-full bg-transparent border-b border-border py-3 outline-none text-fg placeholder-transparent focus:border-fg transition-colors interactive cursor-none peer text-base font-sans"
-                />
-                <label
-                  for="name"
-                  class="absolute left-0 top-3 text-base text-muted cursor-text peer-focus:text-xs peer-focus:-top-4 peer-focus:text-fg peer-valid:text-xs peer-valid:-top-4 transition-all pointer-events-none"
-                  >Name</label
-                >
-              </div>
-              <div class="relative group">
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  required
-                  placeholder="Email"
-                  class="w-full bg-transparent border-b border-border py-3 outline-none text-fg placeholder-transparent focus:border-fg transition-colors interactive cursor-none peer text-base font-sans"
-                />
-                <label
-                  for="email"
-                  class="absolute left-0 top-3 text-base text-muted cursor-text peer-focus:text-xs peer-focus:-top-4 peer-focus:text-fg peer-valid:text-xs peer-valid:-top-4 transition-all pointer-events-none"
-                  >Email</label
-                >
-              </div>
-              <div class="relative group">
-                <textarea
-                  id="message"
-                  name="message"
-                  required
-                  rows="1"
-                  placeholder="Message"
-                  class="w-full bg-transparent border-b border-border py-3 outline-none text-fg placeholder-transparent focus:border-fg transition-colors interactive cursor-none peer text-base font-sans resize-none overflow-hidden"
-                  oninput="
-                    this.style.height = '';
-                    this.style.height = this.scrollHeight + 'px';
-                  "
-                ></textarea>
-                <label
-                  for="message"
-                  class="absolute left-0 top-3 text-base text-muted cursor-text peer-focus:text-xs peer-focus:-top-4 peer-focus:text-fg peer-valid:text-xs peer-valid:-top-4 transition-all pointer-events-none"
-                  >Message</label
-                >
-              </div>
-              <button
-                type="submit"
-                class="interactive cursor-none self-start lg:self-end px-10 py-4 bg-fg text-bg hover:opacity-85 transition-opacity font-bold text-sm rounded-md flex items-center gap-2"
-              >
-                Send Message <i data-lucide="arrow-right" class="w-4 h-4"></i>
-              </button>
-            </form>
-          </div>
-        </div>
-      </section>
 
-      <!-- FOOTER -->
-      <footer
-        class="pt-16 pb-8 border-t border-border mt-8 text-center fade-up"
-      >
-        <p
-          class="text-xs font-mono text-muted flex flex-wrap items-center justify-center gap-x-1.5 gap-y-1"
-        >
-          <span>&copy; 2025 Gaurav Nagalapuram.</span>
-          <span class="inline-flex items-center gap-1.5 whitespace-nowrap">
-            Crafted with
-            <i
-              data-lucide="heart"
-              class="w-3.5 h-3.5 text-red-500 fill-current animate-pulse inline"
-            ></i>
-            in Los Angeles
-          </span>
-        </p>
-      </footer>
-    </main>
 
-    <!-- DRAWER OVERLAY -->
-    <div
-      id="drawer-overlay"
-      class="fixed inset-0 bg-fg/10 backdrop-blur-sm z-[90] hidden opacity-0 transition-opacity interactive cursor-none"
-      onclick="closeDrawer()"
-    ></div>
 
-    <!-- DRAWER -->
-    <div
-      id="drawer"
-      class="fixed bottom-0 left-0 right-0 mx-auto w-full max-w-3xl h-[90vh] md:h-[80vh] bg-bg border-t md:border-x border-border z-[100] translate-y-full flex flex-col overflow-hidden md:rounded-t-2xl shadow-2xl"
-    >
-      <!-- Accent bar -->
-      <div id="drawer-accent" class="h-0.5 w-full shrink-0"></div>
 
-      <!-- Header — fixed height, never grows -->
-      <div
-        class="px-5 h-12 border-b border-border flex items-center justify-between bg-bg shrink-0 gap-3"
-      >
-        <div class="flex items-center gap-1.5 min-w-0">
-          <button
-            id="drawer-back-btn"
-            onclick="drawerGoBack()"
-            class="hidden shrink-0 p-1.5 rounded-md text-muted hover:text-fg hover:bg-hoverBg transition-colors interactive cursor-none"
-            title="Go back"
-          >
-            <i data-lucide="arrow-left" class="w-3.5 h-3.5"></i>
-          </button>
-          <span
-            id="drawer-type-chip"
-            class="shrink-0 inline-flex items-center gap-1 px-2 py-0.5 rounded border border-border text-[10px] font-mono font-bold uppercase tracking-widest text-muted bg-hoverBg"
-          ></span>
-        </div>
-        <div class="flex items-center gap-1 shrink-0">
-          <div
-            id="drawer-header-actions"
-            class="flex items-center gap-1 opacity-0 pointer-events-none transition-opacity duration-200"
-          ></div>
-          <button
-            onclick="closeDrawer()"
-            class="p-1.5 rounded-md text-muted hover:text-fg hover:bg-hoverBg transition-colors interactive cursor-none"
-          >
-            <i data-lucide="x" class="w-4 h-4"></i>
-          </button>
-        </div>
-      </div>
 
-      <!-- THE ONLY SCROLLABLE ZONE -->
-      <div
-        class="flex-1 min-h-0 overflow-y-auto"
-        id="drawer-scroll-container"
-        onscroll="handleDrawerScroll(this)"
-      >
-        <br />
-        <!-- Hero zone -->
-        <div class="px-6 md:px-8 pt-10 pb-7">
-          <!-- Title -->
-          <h2
-            id="drawer-title"
-            class="text-xl md:text-xl font-bold text-fg leading-snug mb-5"
-          ></h2>
 
-          <!-- Meta strip (company / period / venue) -->
-          <div
-            id="drawer-meta"
-            class="flex-wrap gap-x-6 gap-y-2 mb-5"
-            style="display: none"
-          ></div>
 
-          <!-- CTA Actions -->
-          <div
-            id="drawer-actions"
-            class="flex flex-wrap gap-3 mb-6 transition-opacity duration-200"
-          ></div>
 
-          <!-- Stack pills — max 3 visible, rest behind +N more -->
-          <div id="drawer-stack-container" style="display: none">
-            <p
-              class="font-mono text-[10px] text-muted uppercase tracking-widest mb-3"
-            >
-              Stack
-            </p>
-            <div id="drawer-stack" class="flex flex-wrap gap-1.5"></div>
-            <br />
-          </div>
-        </div>
+<section id="graph" class="sec"><h2>Knowledge graph</h2>
+<p class="max-w-xl mb-6">Built from my storage systems notes. Drag the nodes around, or hover and click one to see how it connects. Blue dots are projects, white dots are ideas they share.</p>
+<div class="paper"><svg id="kg" viewBox="0 0 900 520" class="w-full"></svg><p class="cap" id="np">Drag nodes around, click to pin. Fig 3. Knowledge graph.</p><button class="pbtn mt-3" id="gr">reset layout</button></div></section><section id="work" class="sec"><h2>Projects</h2>
+<div class="flex flex-wrap gap-2 mono mb-4" id="flt"></div><div id="cards"></div><button id="more" class="line mono px-4 py-2 mt-4">Load more</button></section><section id="skills" class="sec"><h2>Skills</h2><p class="max-w-xl mb-6">The tools I use across the four projects. Tap a skill to see where it shows up.</p><div class="grid sm:grid-cols-2 gap-8" id="sk"></div><p class="mono mt-6" id="sku" style="color:var(--dk)">&nbsp;</p></section><section id="play" class="sec"><h2>Playgrounds</h2><p class="max-w-xl mb-5">Two interactive toys. Pick one.</p><div class="flex flex-wrap gap-2 mono mb-6" id="tabs"></div><div class="pane" id="t_path"><h3 class="text-xl mb-2">Where a write goes</h3>
+<p class="max-w-xl mb-6">Every project below is about one question: how do we hide how slow the bottom of the stack is? Click a stop, then play with the scale.</p>
+<div class="paper"><svg viewBox="0 0 560 64" class="w-full" id="stsvg"></svg><p class="cap" id="stn"></p>
+<hr class="my-4" style="border-color:#d9d4c4">
+<div class="flex gap-2 mb-2"><button class="pbtn on" id="sl">log scale</button><button class="pbtn" id="sn">linear scale</button></div><div id="lg"></div><p class="cap" id="ln">Hover a row. Switch to linear to see how tiny the caches are next to fsync.</p>
+<p class="cap">Fig 1. Rough cost of one access, orders of magnitude only.</p></div></div><div class="pane" id="t_lsm" hidden><h3 class="text-xl mb-2">LSM write amplification</h3>
+<p class="max-w-xl mb-6">A small model of how RocksDB takes writes. Each put hits the WAL, fills a 4 key memtable, then flushes to L0 and gets merged down by compaction. Compaction rewrites data already on disk, so write amplification keeps climbing. Press auto, then hover the chart.</p>
+<div class="paper"><div class="flex flex-wrap gap-2 mb-4"><button class="pbtn" id="p1">put x1</button><button class="pbtn" id="p16">put x16</button><button class="pbtn" id="p64">put x64</button><button class="pbtn" id="au">auto: off</button><button class="pbtn" id="rs">reset</button></div>
+<div class="grid md:grid-cols-2 gap-6"><div class="space-y-2"><div>memtable <span id="rm"></span></div><div>L0 <span id="r0"></span></div><div>L1 <span id="r1"></span></div><div>L2 <span id="r2"></span></div><p class="mt-3">puts <b id="u">0</b> | disk writes <b id="d">0</b> | amp <b id="wa" style="color:var(--red)">1.0x</b></p></div>
+<svg viewBox="0 0 320 170" class="w-full" id="wc" style="cursor:crosshair"><g id="wg"></g><line id="wx" y1="12" y2="140" stroke="#c8553d" stroke-dasharray="3" visibility="hidden"/></svg></div>
+<p class="cap" id="wt">Fig 2. Write amp = disk writes / puts (WAL + flush + compaction). A model, not RocksDB numbers.</p></div></div></section><section id="github" class="sec"><h2>GitHub map</h2>
+<p class="max-w-xl mb-6" id="gt"></p>
+<div class="paper"><div class="overflow-x-auto"><svg id="gm" viewBox="0 0 720 118" style="min-width:640px" class="w-full"></svg></div><p class="cap" id="gc">Hover a square. Fig 4. Contributions over the last year (snapshot).</p></div></section>
 
-        <!-- Divider -->
-        <div class="px-6 md:px-8 my-2">
-          <div class="border-t border-border"></div>
-        </div>
 
-        <!-- Description -->
-        <div
-          id="drawer-description"
-          class="px-6 md:px-8 py-7 text-sm text-fg leading-relaxed space-y-4"
-        ></div>
+<section id="about" class="sec"><h2>About me</h2>
+<div class="grid md:grid-cols-5 gap-8"><div class="md:col-span-3 space-y-4"><p>I started in data science, but I kept getting curious about what happens underneath: where a byte goes when I call write(), why one lock makes a program slow, how the kernel picks the next task. So I started building those layers myself.</p><p>I like projects where I can measure something and then make it better. I work in C++ and use Linux tools like perf and eBPF, and I try to back every idea with a benchmark.</p><p>Outside of systems, I built my own PC, I have worked on campus before, and I am slowly leveling up my competitive programming.</p></div>
+<ul class="md:col-span-2 mono space-y-2"><li>📍 USC, Los Angeles</li><li>🎓 MS Applied Data Science</li><li>🖥️ Built my own PC</li><li>🏁 Goal: advanced competitive programmer</li></ul></div><p class="mt-8 mb-3">Want to talk storage, networking or kernel work? Find me here:</p><div class="mono flex flex-wrap gap-3" id="soc2"></div></section>
+<footer class="mono mt-24 pt-6" style="border-top:1px solid var(--lg);color:var(--gr)">Built with Tailwind | Naga</footer>
+</main>
+<aside class="hidden xl:flex flex-col gap-4 xl:sticky xl:top-24 self-start">
+<div class="line p-4"><p class="mono" style="color:var(--gr)">local time | USC, LA</p><p class="hd text-3xl mt-1" id="clk">--:--</p><canvas id="gl" width="320" height="320" aria-label="Spinning globe" style="width:100%;max-width:170px;height:auto;margin:.6rem auto 0;display:block"></canvas></div>
+<div class="line p-4"><p class="mono mb-2" style="color:var(--ter)">currently</p><ul class="space-y-1" style="font-size:.95rem"><li>Building 4 systems projects</li><li>MS Applied Data Science</li><li>Practicing competitive programming</li></ul></div>
+<div class="line p-4"><p class="mono" style="color:var(--gr)">GitHub, last year</p><p class="hd text-2xl"><span id="gtot"></span> <span class="mono">contributions</span></p><svg id="mini" viewBox="0 0 266 36" class="w-full mt-3" style="cursor:zoom-in"></svg><p class="mono mt-2" style="color:var(--gr);font-size:.7rem">click the map to zoom</p></div>
+<div class="line p-4"><p class="mono mb-2" style="color:var(--ter)">jump to</p><div class="flex flex-col gap-1 mono"><a href="#play" onclick="tab('path')">memory latency</a><a href="#play" onclick="tab('lsm')">LSM playground</a><a href="#graph">knowledge graph</a></div></div>
+</aside></div>
 
-        <!-- Screenshots -->
-        <div
-          id="drawer-screenshots-container"
-          class="px-6 md:px-8 pb-8"
-          style="display: none"
-        >
-          <div class="border-t border-border pt-8 mt-2">
-            <div class="flex items-center gap-2 mb-4">
-              <i data-lucide="image" class="w-3.5 h-3.5 text-muted"></i>
-              <span
-                class="font-mono text-[10px] text-muted uppercase tracking-widest"
-                >Screenshots</span
-              >
-            </div>
-            <div id="drawer-screenshots" class="space-y-4"></div>
-          </div>
-        </div>
+<div id="zm" style="display:none;background:rgba(0,0,0,.72)" class="fixed inset-0 z-50 items-center justify-center p-4"><div class="paper w-full max-w-4xl"><div class="flex justify-between mb-2"><b>GitHub contributions | last year</b><button class="pbtn" id="zx">close</button></div><div class="overflow-x-auto"><svg id="big" viewBox="0 0 850 140" style="min-width:600px" class="w-full"></svg></div><p class="cap" id="zc">Hover a square.</p></div></div>
+<button id="top" aria-label="Back to top" class="line mono fixed right-5 z-40 w-11 h-11" style="bottom:calc(1.25rem + env(safe-area-inset-bottom,0px));background:var(--bg);color:var(--dk);opacity:0;pointer-events:none;transition:opacity .3s">↑</button>
+<script>
+// ===== EDIT ME: the first 4 show in the header (GitHub, LinkedIn, Resume, Email). Empty url = dimmed. The rest show under Find me =====
+const SOCIALS=[["GitHub","https://github.com/naga251602"],["LinkedIn",""],["Resume",""],["Email","mailto:nagalapu@usc.edu"],["X",""],["LeetCode",""],["Codeforces",""],["Website",""]];
+// GitHub snapshot: first day (a Sunday) + daily counts
+const GH_START="2025-10-19",GH="0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,9,7,0,0,0,0,0,4,0,2,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,6,0,0,4,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,11,1,7,16,4,9,6,0,0,0,2,4,5,5,1,0,11,7,6,1,1,1,25,2,6,6,6,4,3,1,6,2,2,1,2,2,2,2,0,0,0,0,1,0,1,2,2,1,0,0,12,0,0,0,1,5,0,2,0,0,0,0,0,0,0,0,0,0,0,5,6,4,15,9,1,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,2,0,0,0,0,0,0,21,7,0,2,2,0,0,0,2,19,41,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,1,0,0,0,7,3,124,0,0,0,7,8,0,0,0,0,2,1,0,0,7,0,1,5,0".split(',').map(Number);
+const $=i=>document.getElementById(i),R=document.documentElement;
+$('th').onclick=()=>R.dataset.theme=R.dataset.theme=='light'?'dark':'light';
+// socials
+$('hdr').innerHTML=SOCIALS.slice(0,4).map(s=>s[1]?`<a href="${s[1]}" target="_blank" rel="noopener">${s[0]}</a>`:`<span title="Add your link in SOCIALS" style="color:var(--gr);opacity:.55">${s[0]}</span>`).join('');$('soc2').innerHTML=SOCIALS.filter(s=>s[1]).map(s=>`<a class="chip" href="${s[1]}" target="_blank" rel="noopener">${s[0]}</a>`).join('');
+// rotating word
+const W=["storage engines","Linux schedulers","packet pipelines","write ahead logs","eBPF programs"];let wi=0;
+if(!matchMedia('(prefers-reduced-motion:reduce)').matches)setInterval(()=>{$('rw').textContent=W[++wi%W.length]},2200);
+// toc + progress
+const SEC=[['intro','Intro'],['graph','Knowledge graph'],['work','Projects'],['skills','Skills'],['play','Playgrounds'],['github','GitHub map'],['about','About me']];
+$('toc').innerHTML=SEC.map(([i,t])=>`<a href="#${i}" data-i="${i}">${t}</a>`).join('');
+addEventListener('scroll',()=>{$('pgb').style.width=scrollY/(document.body.scrollHeight-innerHeight)*100+'%';let c='intro';SEC.forEach(([i])=>{if($(i).getBoundingClientRect().top<innerHeight*.4)c=i});document.querySelectorAll('.toc a').forEach(a=>a.classList.toggle('on',a.dataset.i==c))},{passive:true});
+// write path stepper
+const ST=[["CPU core","~0.3 ns","The core runs my put(). Registers cost almost nothing."],["Caches","1 to 15 ns","Data moves in 64 byte lines. A cache friendly layout keeps the hot path here."],["DRAM","~80 ns","The buffer pool keeps hot 4KB pages here. A cache miss comes here."],["NVMe","~100 us read","A write is only safe after fsync, around 1 ms. That is why the WAL exists."]];
+function setSt(k){$('stsvg').innerHTML=ST.map((s,i)=>`<g style="cursor:pointer" onclick="setSt(${i})"><rect class="${i==k?'pf':'pb'}" x="4" y="8" width="112" height="46" rx="4" transform="translate(${i*146} 0)"/><text x="${60+i*146}" y="35" text-anchor="middle">${s[0]}</text></g>${i<3?`<path class="pa" d="M${118+i*146} 31H${148+i*146}"/>`:''}`).join('');
+ $('stn').innerHTML=`<b>${ST[k][0]} | ${ST[k][1]}</b><br>${ST[k][2]}`}setSt(0);
+// latency ladder (interactive)
+const L=[["L1 cache",1],["L2 cache",4],["L3 cache",15],["DRAM",80],["NVMe read",1e5],["fsync",1e6]],fmt=v=>v>=1e6?'~1 ms':v>=1e3?'~'+v/1e3+' us':'~'+v+' ns';let mode='log';
+function lad(){$('lg').innerHTML=L.map(([n,v],i)=>`<div class="lr" data-i="${i}"><span style="width:5.5rem">${n}</span><div class="trk"><div class="bar" style="width:${mode=='log'?Math.max(3,Math.log10(v)/6.1*100):Math.max(.6,v/1e6*100)}%"></div></div><span style="width:4.2rem;text-align:right">${fmt(v)}</span></div>`).join('');
+ document.querySelectorAll('.lr').forEach(r=>r.onmouseenter=()=>{const[n,v]=L[r.dataset.i];$('ln').textContent=n+' is about '+Math.round(v).toLocaleString()+'x slower than an L1 hit.'});
+ $('sl').classList.toggle('on',mode=='log');$('sn').classList.toggle('on',mode!='log')}
+$('sl').onclick=()=>{mode='log';lad()};$('sn').onclick=()=>{mode='lin';lad()};lad();
+// projects
+const P=[
+{id:'db',t:'Durable DB',lv:'intermediate',tg:'storage',st:['C++20','POSIX I/O','B+ tree','WAL','GoogleTest'],d:'A persistent key value store from scratch. Fixed 4KB pages, a B+ tree index, write ahead logging with crash recovery and an LRU buffer pool, built on raw pread, pwrite and fsync.',dl:'A crash recoverable database with verified persistence, indexing, caching and documented benchmarks.',g:'durable-db'},
+{id:'rdb',t:'RocksDB Performance Lab',lv:'advanced',tg:'storage',st:['RocksDB','LSM','perf','FlameGraph','db_bench'],d:'Study and tune the real RocksDB. Trace Put() and Get(), compare leveled and universal compaction, measure write and read amplification, then try an optimization and an upstream pull request.',dl:'A reproducible performance investigation, a tested improvement, a benchmark report and ideally an upstream contribution.',g:'rocksdb-performance-lab'},
+{id:'pf',t:'PulseFeed',lv:'advanced',tg:'networking',st:['UDP multicast','epoll','SPSC ring','order book','CPU pinning'],d:'A low latency market data engine. It decodes ITCH style packets, detects gaps and recovers from a snapshot, passes messages through a lock free ring buffer and updates an in memory order book.',dl:'A working simulated market data system with packet loss recovery and p50, p99, p99.9 latency benchmarks.',g:'pulsefeed'},
+{id:'ks',t:'KernelSched',lv:'advanced',tg:'kernel',st:['sched_ext','eBPF','libbpf','NUMA','stress-ng'],d:'A custom CPU scheduler on Linux sched_ext. Per CPU queues, affinity and NUMA aware placement, wake up latency traced with eBPF, benchmarked against the default scheduler using PulseFeed workloads.',dl:'A workload aware scheduler with reproducible latency, fairness and throughput comparisons.',g:'kernelsched'}];
+let F='all',SHOWN=2;
+function cards(){const fl=P.filter(p=>F=='all'||p.tg==F);$('more').hidden=fl.length<=SHOWN;$('more').textContent='Load more ('+(fl.length-SHOWN)+' left)';$('cards').innerHTML=fl.slice(0,SHOWN).map(p=>`<article id="p_${p.id}" class="card"><div class="flex flex-wrap items-baseline gap-x-4"><h3 class="text-2xl">${{db:'🗄️',rdb:'🪨',pf:'⚡',ks:'🧠'}[p.id]} ${p.t}</h3><span class="mono" style="color:var(--ter)">${p.lv} | ${p.tg}</span></div><p class="mt-2 max-w-xl">${p.d}</p><div class="flex flex-wrap gap-2 mono mt-3">${p.st.map(s=>`<span class="chip">${s}</span>`).join('')}</div><p class="mt-3 max-w-xl" style="color:var(--gr)">Deliverable: ${p.dl}</p><p class="mono mt-2"><a href="https://github.com/naga251602/${p.g}">github.com/naga251602/${p.g}</a></p></article>`).join('');
+ $('flt').innerHTML=['all','storage','networking','kernel'].map(t=>`<button class="chip ${t==F?'on':''}" onclick="F='${t}';SHOWN=2;cards()">${t}</button>`).join('')}$('more').onclick=()=>{SHOWN+=2;cards()};cards();
+// LSM sim + amp chart
+let M,A,B,C,U,D,H,AU=null;function rs(){M=A=B=C=U=D=0;H=[];dr()}
+function put(n){while(n--){U++;if(++M==4){M=0;A++;D+=4;if(A==3){D+=A*4+B;B+=A*4;A=0;if(B>=24){D+=B+C;C+=B;B=0}}}H.push((U+D)/U)}dr()}
+function sq(n,m,c){let s='';for(let i=0;i<m;i++)s+=`<span class="sq ${i<n?c:''}"></span>`;return s+(n>m?' +'+(n-m):'')}
+function dr(){$('rm').innerHTML=sq(M,4,'w');$('r0').innerHTML=sq(A,3,'on');$('r1').innerHTML=sq(B,24,'on');$('r2').innerHTML=sq(C,48,'on');$('u').textContent=U;$('d').textContent=U+D;$('wa').textContent=((U+D)/Math.max(1,U)).toFixed(1)+'x';
+ const n=H.length,mx=Math.max(2,Math.ceil(Math.max(1,...H))),X=i=>34+i/Math.max(1,n-1)*276,Y=v=>140-(v-1)/(mx-1)*124;let g='';
+ for(let k=1;k<=mx;k++)g+=`<line x1="34" x2="310" y1="${Y(k)}" y2="${Y(k)}" stroke="#d9d4c4"/><text x="4" y="${Y(k)+3}">${k}x</text>`;
+ g+=`<path d="M34 12V140H310" fill="none" stroke="#1d2433" stroke-width="1.5"/><text x="34" y="158">puts 1 to ${n}</text>`;
+ if(n>1){const q=H.map((v,i)=>`${X(i)},${Y(v)}`).join(' ');g+=`<polygon points="34,140 ${q} ${X(n-1)},140" fill="#dfe8f7"/><polyline points="${q}" fill="none" stroke="#2b4c7e" stroke-width="2"/><circle cx="${X(n-1)}" cy="${Y(H[n-1])}" r="3.5" fill="#c8553d"/>`}
+ $('wg').innerHTML=g}
+$('wc').onmousemove=e=>{if(H.length<2)return;const r=$('wc').getBoundingClientRect(),x=(e.clientX-r.left)/r.width*320,i=Math.min(H.length-1,Math.max(0,Math.round((x-34)/276*(H.length-1)))),X=34+i/(H.length-1)*276;$('wx').setAttribute('x1',X);$('wx').setAttribute('x2',X);$('wx').setAttribute('visibility','visible');$('wt').textContent='after put #'+(i+1)+': write amp '+H[i].toFixed(2)+'x'};
+$('wc').onmouseleave=()=>$('wx').setAttribute('visibility','hidden');
+$('p1').onclick=()=>put(1);$('p16').onclick=()=>put(16);$('p64').onclick=()=>put(64);$('rs').onclick=rs;
+$('au').onclick=()=>{if(AU){clearInterval(AU);AU=null;$('au').textContent='auto: off'}else{AU=setInterval(()=>{if(U>=600)$('au').click();else put(1)},150);$('au').textContent='auto: on'}};
+rs();put(40);
+// knowledge graph
+const N={db:["Durable DB",140,130,1,"B+ tree database with WAL and crash recovery."],rdb:["RocksDB Lab",140,400,1,"Performance investigation of a real LSM engine."],pf:["PulseFeed",760,130,1,"Low latency market data pipeline."],ks:["KernelSched",760,400,1,"Custom scheduler built on sched_ext."],
+bpt:["B+ tree",60,45,0,"Index with all values in leaves, good for range scans."],pg:["4KB pages",250,50,0,"Fixed size units the database reads and writes."],lru:["LRU pool",45,215,0,"Buffer pool that evicts the least recently used page."],fs:["fsync",260,215,0,"Forces data to disk so it survives a crash."],wal:["WAL",340,300,0,"Log the change first, then apply it. Replayed after a crash."],
+lsm:["LSM tree",50,320,0,"Memtable plus sorted files merged by compaction."],blm:["Bloom filter",70,470,0,"Skips files that definitely do not hold a key."],cmp:["compaction",250,470,0,"Background merging. Leveled and universal trade writes for reads."],bench:["db_bench",270,385,0,"RocksDB benchmark tool for custom workloads."],
+perf:["perf",450,260,0,"Linux profiler for CPU, cache misses and I/O."],lin:["Linux",450,110,0,"Shared platform for every project."],cpp:["C++20",450,400,0,"Main language."],gt:["GoogleTest",450,480,0,"Unit tests across projects."],atom:["atomics",600,300,0,"Lock free building block for rings and per CPU data."],
+ep:["epoll",840,45,0,"Scalable nonblocking I/O."],udp:["UDP multicast",670,45,0,"How the market feed arrives."],spsc:["SPSC ring",840,215,0,"Single producer single consumer lock free queue."],lob:["order book",660,215,0,"In memory bids and asks."],
+se:["sched_ext",840,320,0,"Write schedulers as eBPF programs."],ebpf:["eBPF",840,480,0,"Safe programs inside the kernel, also used for tracing."],eev:["EEVDF",680,480,0,"Current default Linux scheduler to compare against."],numa:["NUMA",680,385,0,"Memory locality across sockets."]};
+const E="db-bpt db-pg db-lru db-fs db-wal rdb-wal rdb-lsm rdb-blm rdb-cmp rdb-bench rdb-perf pf-perf ks-perf pf-ep pf-udp pf-spsc pf-lob pf-atom ks-atom ks-se ks-ebpf ks-eev ks-numa pf-ks db-lin rdb-lin pf-lin ks-lin db-cpp rdb-cpp pf-cpp ks-cpp db-gt rdb-gt pf-gt ks-gt wal-fs spsc-atom cmp-lsm blm-lsm".split(' ');
+const kg=$('kg');let g='';E.forEach(e=>{const[a,b]=e.split('-');g+=`<line class="ed" data-a="${a}" data-b="${b}" x1="${N[a][1]}" y1="${N[a][2]}" x2="${N[b][1]}" y2="${N[b][2]}"/>`});
+for(const k in N){const[l,x,y,hub]=N[k];g+=`<g class="nd${hub?' hub':''}" data-k="${k}"><circle cx="${x}" cy="${y}" r="${hub?11:6}"/><text x="${x}" y="${y-(hub?17:11)}" text-anchor="middle" style="font-size:12px">${l}</text></g>`}
+kg.innerHTML=g;
+function hl(k){const ns=new Set([k]);kg.querySelectorAll('.ed').forEach(e=>{const on=k&&(e.dataset.a==k||e.dataset.b==k);e.classList.toggle('lit',!!on);e.classList.toggle('dim',!!k&&!on);if(on){ns.add(e.dataset.a);ns.add(e.dataset.b)}});
+ kg.querySelectorAll('.nd').forEach(n=>{n.classList.toggle('dim',!!k&&!ns.has(n.dataset.k));n.classList.toggle('h',n.dataset.k==k)})}
+function info(k){const hubs=[...new Set(E.filter(e=>e.split('-').includes(k)).flatMap(e=>e.split('-')).filter(x=>N[x][3]&&x!=k))].map(x=>N[x][0]);
+ $('np').innerHTML=`<b>${N[k][0]}</b> | ${N[k][4]}${hubs.length?' Used in: '+hubs.join(', ')+'.':''}`}
+let pin=null,dg=null,mvd=false;const N0=JSON.parse(JSON.stringify(N));
+function mv(k,x,y){N[k][1]=x;N[k][2]=y;const n=kg.querySelector(`.nd[data-k="${k}"]`);n.firstChild.setAttribute('cx',x);n.firstChild.setAttribute('cy',y);n.lastChild.setAttribute('x',x);n.lastChild.setAttribute('y',y-(N[k][3]?17:11));kg.querySelectorAll('.ed').forEach(e=>{if(e.dataset.a==k){e.setAttribute('x1',x);e.setAttribute('y1',y)}if(e.dataset.b==k){e.setAttribute('x2',x);e.setAttribute('y2',y)}})}
+kg.querySelectorAll('.nd').forEach(n=>{n.onmouseenter=()=>{if(!dg)hl(n.dataset.k)};n.onpointerdown=e=>{dg=n.dataset.k;mvd=false;n.setPointerCapture(e.pointerId);e.preventDefault()};n.onpointermove=e=>{if(dg!=n.dataset.k)return;const p=kg.createSVGPoint();p.x=e.clientX;p.y=e.clientY;const q=p.matrixTransform(kg.getScreenCTM().inverse());mvd=true;mv(dg,Math.max(20,Math.min(880,q.x)),Math.max(25,Math.min(500,q.y)))};n.onpointerup=()=>{if(dg&&!mvd){pin=dg;info(pin);hl(pin)}dg=null}});kg.onmouseleave=()=>hl(pin);
+// github map
+const gm=$('gm'),T=GH.reduce((a,b)=>a+b,0),lv=c=>c==0?0:c<3?1:c<6?2:c<10?3:4,CL=['#ece8dc','#c3d3ee','#8fb0e0','#4d7cc4','#2b4c7e'],d0=new Date(GH_START+'T00:00:00');let m='',last=-1;
+GH.forEach((c,i)=>{const col=Math.floor(i/7),row=i%7,dt=new Date(d0.getTime()+i*864e5),ds=dt.toDateString();
+ if(row==0&&dt.getMonth()!=last&&col<51){last=dt.getMonth();m+=`<text x="${col*13+4}" y="10">${dt.toLocaleString('en',{month:'short'})}</text>`}
+ m+=`<rect x="${col*13+4}" y="${row*13+16}" width="11" height="11" rx="2" fill="${CL[lv(c)]}" stroke="#d9d4c4" stroke-width=".6" data-t="${c} contribution${c==1?'':'s'} on ${ds}"/>`});
+gm.innerHTML=m;gm.onmousemove=e=>{if(e.target.dataset.t)$('gc').textContent=e.target.dataset.t};
+$('gt').innerHTML=`<b style="color:var(--dk)">${T}</b> contributions in the last year. This is a snapshot of my real GitHub activity. See the live one at <a href="https://github.com/naga251602">github.com/naga251602</a>.`;
+// search
+const IX=[...P.map(p=>({t:p.t,s:'project | '+p.tg,go:()=>{F='all';SHOWN=9;cards();$('p_'+p.id).scrollIntoView()}})),...Object.keys(N).filter(k=>!N[k][3]).map(k=>({t:N[k][0],s:'concept',go:()=>{$('graph').scrollIntoView();pin=k;info(k);hl(k)}}))];
+const si=$('s'),rr=$('res');si.oninput=()=>{const v=si.value.toLowerCase().trim();if(!v){rr.hidden=true;return}
+ const mm=IX.filter(x=>x.t.toLowerCase().includes(v)||x.s.includes(v)).slice(0,6);rr.hidden=!mm.length;rr.innerHTML='';mm.forEach(x=>{const b=document.createElement('button');b.className='mono';b.innerHTML=`<span style="color:var(--dk)">${x.t}</span> <span style="color:var(--gr)">${x.s}</span>`;b.onclick=()=>{x.go();rr.hidden=true;si.value=''};rr.appendChild(b)})};
+addEventListener('keydown',e=>{if(e.key=='/'&&document.activeElement!=si&&!/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName)&&!document.activeElement.isContentEditable){e.preventDefault();si.focus()}if(e.key=='Escape'){rr.hidden=true;si.blur()}});
+// playground tabs
+function tab(t){['path','lsm'].forEach(i=>$('t_'+i).hidden=i!=t);document.querySelectorAll('#tabs button').forEach(b=>b.classList.toggle('on',b.dataset.t==t))}
+$('tabs').innerHTML=[['path','Memory latency'],['lsm','LSM write amp']].map(([i,l])=>`<button class="chip" data-t="${i}" onclick="tab('${i}')">${l}</button>`).join('');tab('path');
+$('gr').onclick=()=>Object.keys(N).forEach(k=>mv(k,N0[k][1],N0[k][2]));
+// back to top
+const tb=$('top');addEventListener('scroll',()=>{const o=scrollY>500;tb.style.opacity=o?1:0;tb.style.pointerEvents=o?'auto':'none'},{passive:true});tb.onclick=()=>scrollTo({top:0});
+// skills
+const SK={Languages:[['C++20','db rdb pf'],['C','ks'],['eBPF C','ks']],Systems:[['Linux','db rdb pf ks'],['POSIX I/O','db'],['Sockets','pf'],['epoll','pf'],['Threads','rdb pf'],['Atomics','pf ks']],Storage:[['B+ trees','db'],['WAL','db rdb'],['LSM trees','rdb'],['Buffer pool','db'],['Bloom filters','rdb']],Tools:[['GDB','db'],['Valgrind','db'],['perf','rdb pf ks'],['FlameGraph','rdb pf'],['CMake','db rdb pf ks'],['GoogleTest','db rdb pf'],['bpftool','ks'],['ftrace','ks'],['Git','db rdb pf ks']]},PN={db:'Durable DB',rdb:'RocksDB Lab',pf:'PulseFeed',ks:'KernelSched'};
+$('sk').innerHTML=Object.entries(SK).map(([g,a])=>`<div><p class="mono mb-2" style="color:var(--ter)">${g}</p><div class="flex flex-wrap gap-2 mono">${a.map(([n,u])=>`<button class="chip" data-u="${u}">${n}</button>`).join('')}</div></div>`).join('');
+document.querySelectorAll('#sk .chip').forEach(b=>b.onclick=()=>{document.querySelectorAll('#sk .chip').forEach(x=>x.classList.toggle('on',x==b));$('sku').textContent=b.textContent+' is used in: '+b.dataset.u.split(' ').map(x=>PN[x]).join(', ')+'.'});
+// right panel
+function clk(){$('clk').textContent=new Date().toLocaleTimeString('en-US',{timeZone:'America/Los_Angeles',hour:'2-digit',minute:'2-digit'})}clk();setInterval(clk,30000);
+$('gtot').textContent=T;$('hs').textContent=T;
 
-        <!-- Architecture -->
-        <div
-          id="drawer-visual-container"
-          class="px-6 md:px-8 pb-8"
-          style="display: none"
-        >
-          <div class="border-t border-border pt-8 mt-2">
-            <div class="flex items-center gap-2 mb-4">
-              <i data-lucide="git-branch" class="w-3.5 h-3.5 text-muted"></i>
-              <span
-                class="font-mono text-[10px] text-muted uppercase tracking-widest"
-                >Architecture</span
-              >
-            </div>
-            <div
-              id="drawer-visual"
-              class="text-sm font-mono text-muted leading-loose bg-hoverBg rounded-xl p-5"
-            ></div>
-          </div>
-        </div>
+// banner icons
+// const ICN=['<ellipse cx="32" cy="14" rx="20" ry="8"/><path d="M12 14v34c0 4.4 9 8 20 8s20-3.6 20-8V14M12 31c0 4.4 9 8 20 8s20-3.6 20-8"/>','<rect x="14" y="14" width="36" height="36" rx="4"/><rect x="25" y="25" width="14" height="14"/><path d="M22 6v8M32 6v8M42 6v8M22 50v8M32 50v8M42 50v8M6 22h8M6 32h8M6 42h8M50 22h8M50 32h8M50 42h8"/>','<circle cx="32" cy="12" r="6"/><circle cx="12" cy="50" r="6"/><circle cx="52" cy="50" r="6"/><path d="M29 17L15 45M35 17L49 45M18 50H46"/>','<rect x="6" y="10" width="52" height="44" rx="6"/><path d="M17 26l10 8-10 8M33 43h14"/>','<rect x="8" y="18" width="48" height="28" rx="5"/><circle cx="20" cy="32" r="3.5"/><path d="M32 32h16M32 26h16M32 38h8"/>','<path d="M10 16h44M10 32h44M10 48h44"/><rect x="14" y="11" width="12" height="10"/><rect x="30" y="27" width="16" height="10"/><rect x="20" y="43" width="10" height="10"/>'];
+// $('bi').innerHTML=ICN.map((d,i)=>`<g transform="translate(${960+(i%3)*150} ${60+Math.floor(i/3)*150})"><rect width="130" height="130" rx="22" fill="#fff" fill-opacity=".05" stroke="#8fb0c8" stroke-opacity=".4" stroke-width="2"/><g transform="translate(17 17) scale(1.5)" fill="none" stroke="${i%2?'#e8a87c':'#8fb0c8'}" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">${d}</g></g>`).join('');
+// spinning globe
+const z0=n=>'0'.repeat(n),o1=n=>'1'.repeat(n),LM=[z0(6)+o1(11)+z0(19),z0(1)+o1(16)+z0(2)+o1(17),z0(1)+o1(11)+z0(2)+o1(2)+z0(1)+o1(19),z0(3)+o1(10)+z0(4)+o1(19),z0(4)+o1(9)+z0(4)+o1(18)+z0(1),z0(5)+o1(7)+z0(5)+o1(17)+z0(2),z0(6)+o1(5)+z0(6)+o1(15)+z0(4),z0(8)+o1(4)+z0(5)+o1(8)+z0(1)+o1(6)+z0(4),z0(10)+o1(5)+z0(3)+o1(6)+z0(3)+o1(6)+z0(3),z0(10)+o1(5)+z0(3)+o1(6)+z0(4)+o1(4)+z0(4),z0(10)+o1(5)+z0(3)+o1(7)+z0(4)+o1(5)+z0(2),z0(10)+o1(4)+z0(4)+o1(6)+z0(5)+o1(6)+z0(1),z0(10)+o1(3)+z0(6)+o1(3)+z0(8)+o1(4)+z0(1)+o1(1),z0(10)+o1(2)+z0(24),z0(11)+o1(2)+z0(23),o1(36),o1(36),o1(36)];
+(function(){const c=$('gl'),x=c.getContext&&c.getContext('2d');if(!x)return;const S=c.width,rd=S*.44,cx=S/2,tl=.41,ct=Math.cos(tl),st=Math.sin(tl);let rot=0;
+const land=(la,lo)=>LM[Math.min(17,Math.max(0,Math.round((80-la)/10)))][(((Math.floor((lo+180)/10))%36)+36)%36]=='1';
+function pt(la,g){const f=la*Math.PI/180,l=(g+rot)*Math.PI/180,X=Math.cos(f)*Math.sin(l),Y=Math.sin(f),Z=Math.cos(f)*Math.cos(l);return[X,Y*ct-Z*st,Y*st+Z*ct]}
+function fr(){const cs=getComputedStyle(R),a=cs.getPropertyValue('--sec').trim(),b=cs.getPropertyValue('--gr').trim(),h=cs.getPropertyValue('--ter').trim();x.clearRect(0,0,S,S);
+x.strokeStyle=cs.getPropertyValue('--lg').trim();x.lineWidth=2;x.beginPath();x.arc(cx,cx,rd+3,0,7);x.stroke();
+for(let la=-84;la<=84;la+=6)for(let g=-180;g<180;g+=6){const[X,Y,Z]=pt(la,g);if(Z<=0)continue;const L=land(la,g);x.globalAlpha=L?.35+Z*.65:.18;x.fillStyle=L?a:b;x.beginPath();x.arc(cx+rd*X,cx-rd*Y,L?2.6:1.5,0,7);x.fill()}
+const[X,Y,Z]=pt(34,-118);if(Z>0){x.globalAlpha=1;x.fillStyle=h;x.beginPath();x.arc(cx+rd*X,cx-rd*Y,5+Math.sin(Date.now()/250)*1.5,0,7);x.fill()}x.globalAlpha=1;
+rot=(rot+.3)%360;if(!matchMedia('(prefers-reduced-motion:reduce)').matches)requestAnimationFrame(fr)}fr()})();
+// zoomable github map
+const DK=['var(--lg)','color-mix(in srgb,var(--sec) 30%,var(--lg))','color-mix(in srgb,var(--sec) 55%,var(--lg))','color-mix(in srgb,var(--sec) 80%,var(--lg))','var(--sec)'];
+function bm(p,cl,mo){const f=p*.82;let m='',last=-1;GH.forEach((c,i)=>{const col=Math.floor(i/7),row=i%7,dt=new Date(d0.getTime()+i*864e5);if(mo&&row==0&&dt.getMonth()!=last&&col<51){last=dt.getMonth();m+=`<text x="${col*p}" y="${p*.9}">${dt.toLocaleString('en',{month:'short'})}</text>`}m+=`<rect x="${col*p}" y="${row*p+(mo?p*1.3:0)}" width="${f}" height="${f}" rx="${p*.2}" style="fill:${cl[lv(c)]}" data-t="${c} contribution${c==1?'':'s'} on ${dt.toDateString()}"/>`});return m}
+$('mini').innerHTML=bm(5,DK,false);$('big').innerHTML=bm(16,CL,true);
+const zm=$('zm'),zo=o=>zm.style.display=o?'flex':'none';$('mini').onclick=()=>zo(1);$('zx').onclick=()=>zo(0);zm.onclick=e=>{if(e.target==zm)zo(0)};$('big').onmousemove=e=>{if(e.target.dataset.t)$('zc').textContent=e.target.dataset.t};addEventListener('keydown',e=>{if(e.key=='Escape')zo(0)});
+// highlight keywords (accent text) and metrics (marker highlight)
+const KW=['storage engines','B+ tree','write ahead logging','crash recovery','LSM tree','compaction','sched_ext','eBPF','epoll','UDP multicast','ring buffer','order book','buffer pool','RocksDB','NUMA','fsync','WAL','Linux','C++20','C++','perf','competitive programming','Bloom filters','kernel'].sort((a,b)=>b.length-a.length).map(k=>k.replace(/[+.*?^${}()|[\]\\]/g,'\\$&'));
+const HRE=new RegExp('(?<![\\w+])('+KW.join('|')+')(?![\\w])|\\b(p50|p99\\.9|p99|\\d+(?:[.,]\\d+)?\\s?(?:KB|ns|us|ms|x|%)?)(?![\\w])','g');
+function hiText(r){const w=document.createTreeWalker(r,NodeFilter.SHOW_TEXT),ns=[];while(w.nextNode())ns.push(w.currentNode);ns.forEach(n=>{if(n.parentElement.closest('.k,.m,script,style,button,a,svg'))return;const t=n.nodeValue;if(t.search(HRE)<0)return;const sp=document.createElement('span');sp.innerHTML=t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(HRE,(m,k)=>k?`<span class="k">${m}</span>`:`<span class="m">${m}</span>`);n.replaceWith(sp)})}
+const _c=cards;cards=function(){_c();hiText($('cards'))};cards();
+document.querySelectorAll('#intro p,#about p,#skills>p,#play>p,#graph>p,#github>p').forEach(hiText);
+</script><script>document.addEventListener("DOMContentLoaded",()=>{
+window.INLINE_STATS={"updatedAt": "2026-10-19T19:00:27.515298+00:00", "platforms": {"codeforces": {"handle": "t7rx", "rating": 750, "maxRating": 750, "solved": 81, "history": [{"date": "2026-09-25", "rating": 383}, {"date": "2026-10-07", "rating": 609}, {"date": "2026-10-10", "rating": 750}], "daily": [{"date": "2026-04-24", "count": 4}, {"date": "2026-04-25", "count": 1}, {"date": "2026-04-26", "count": 3}, {"date": "2026-07-14", "count": 1}, {"date": "2026-07-15", "count": 7}, {"date": "2026-07-16", "count": 6}, {"date": "2026-09-01", "count": 3}, {"date": "2026-09-19", "count": 1}, {"date": "2026-09-20", "count": 5}, {"date": "2026-09-21", "count": 1}, {"date": "2026-09-22", "count": 5}, {"date": "2026-09-23", "count": 2}, {"date": "2026-09-24", "count": 4}, {"date": "2026-09-25", "count": 4}, {"date": "2026-09-28", "count": 5}, {"date": "2026-09-29", "count": 2}, {"date": "2026-09-30", "count": 2}, {"date": "2026-10-01", "count": 2}, {"date": "2026-10-02", "count": 2}, {"date": "2026-10-05", "count": 1}, {"date": "2026-10-06", "count": 1}, {"date": "2026-10-07", "count": 2}, {"date": "2026-10-09", "count": 4}, {"date": "2026-10-10", "count": 2}, {"date": "2026-10-12", "count": 5}, {"date": "2026-10-13", "count": 2}, {"date": "2026-10-14", "count": 4}], "recent": [{"name": "Move Brackets", "time": 1792021706, "url": "https://codeforces.com/contest/1374/problem/C"}, {"name": "EhAb AnD gCd", "time": 1792020909, "url": "https://codeforces.com/contest/1325/problem/A"}, {"name": "Even Array", "time": 1792018601, "url": "https://codeforces.com/contest/1367/problem/B"}, {"name": "Parity", "time": 1791969404, "url": "https://codeforces.com/contest/1110/problem/A"}, {"name": "Forked!", "time": 1791945900, "url": "https://codeforces.com/contest/1904/problem/A"}, {"name": "Party Monster", "time": 1791881201, "url": "https://codeforces.com/contest/2227/problem/B"}, {"name": "Tatar TV Show", "time": 1791865977, "url": "https://codeforces.com/contest/2236/problem/B"}, {"name": "Games on the Train", "time": 1791864372, "url": "https://codeforces.com/contest/2236/problem/A"}], "updatedAt": "2026-10-19T19:00:07.433622+00:00"}, "atcoder": {"handle": "t7rx", "rating": 44, "maxRating": 44, "solved": 12, "history": [{"date": "2026-09-19", "rating": 9}, {"date": "2026-09-26", "rating": 41}, {"date": "2026-10-03", "rating": 44}], "daily": [{"date": "2026-09-17", "count": 4}, {"date": "2026-09-19", "count": 4}, {"date": "2026-09-22", "count": 1}, {"date": "2026-09-26", "count": 3}], "recent": [{"name": "abc477_c", "time": 1790430761, "url": "https://atcoder.jp/contests/abc477/tasks/abc477_c"}, {"name": "abc477_b", "time": 1790425257, "url": "https://atcoder.jp/contests/abc477/tasks/abc477_b"}, {"name": "abc477_a", "time": 1790424162, "url": "https://atcoder.jp/contests/abc477/tasks/abc477_a"}, {"name": "abc476_c", "time": 1790101182, "url": "https://atcoder.jp/contests/abc476/tasks/abc476_c"}, {"name": "abc476_b", "time": 1789820620, "url": "https://atcoder.jp/contests/abc476/tasks/abc476_b"}, {"name": "abc476_a", "time": 1789819884, "url": "https://atcoder.jp/contests/abc476/tasks/abc476_a"}, {"name": "abc475_b", "time": 1789810353, "url": "https://atcoder.jp/contests/abc475/tasks/abc475_b"}, {"name": "abc475_a", "time": 1789809180, "url": "https://atcoder.jp/contests/abc475/tasks/abc475_a"}], "updatedAt": "2026-10-19T19:00:16.536172+00:00"}, "leetcode": {"handle": "t7rx", "rating": null, "maxRating": 1500, "solved": 295, "history": [{"date": "2026-09-19", "rating": 1500}, {"date": "2026-09-26", "rating": 1500}, {"date": "2026-09-26", "rating": 1500}], "daily": [], "recent": [{"name": "Maximum Product Pair With Target Sum", "time": 1791749978, "url": "https://leetcode.com/problems/maximum-product-pair-with-target-sum/"}, {"name": "Prime Subset Selection I", "time": 1791714897, "url": "https://leetcode.com/problems/prime-subset-selection-i/"}, {"name": "Three Fibonacci Sum", "time": 1791713370, "url": "https://leetcode.com/problems/three-fibonacci-sum/"}, {"name": "Repeated DNA Sequences", "time": 1791333074, "url": "https://leetcode.com/problems/repeated-dna-sequences/"}, {"name": "Shortest Path in Binary Matrix", "time": 1791325128, "url": "https://leetcode.com/problems/shortest-path-in-binary-matrix/"}, {"name": "Clone Graph", "time": 1791231664, "url": "https://leetcode.com/problems/clone-graph/"}, {"name": "Course Schedule II", "time": 1790872231, "url": "https://leetcode.com/problems/course-schedule-ii/"}, {"name": "Course Schedule", "time": 1790872060, "url": "https://leetcode.com/problems/course-schedule/"}, {"name": "Count Values With Equally Spaced Occurrences II", "time": 1790715124, "url": "https://leetcode.com/problems/count-values-with-equally-spaced-occurrences-ii/"}, {"name": "Number of Intersecting Interval Pairs II", "time": 1790714273, "url": "https://leetcode.com/problems/number-of-intersecting-interval-pairs-ii/"}, {"name": "Rearrange Array by Removing Distinct Values", "time": 1790478681, "url": "https://leetcode.com/problems/rearrange-array-by-removing-distinct-values/"}, {"name": "Minimum Queen Moves to Reach Target", "time": 1790434733, "url": "https://leetcode.com/problems/minimum-queen-moves-to-reach-target/"}, {"name": "Non-overlapping Intervals", "time": 1790197251, "url": "https://leetcode.com/problems/non-overlapping-intervals/"}, {"name": "Merge Intervals", "time": 1790046543, "url": "https://leetcode.com/problems/merge-intervals/"}, {"name": "Best Time to Buy and Sell Stock II", "time": 1790026603, "url": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/"}, {"name": "Lemonade Change", "time": 1790026396, "url": "https://leetcode.com/problems/lemonade-change/"}, {"name": "Assign Cookies", "time": 1790025571, "url": "https://leetcode.com/problems/assign-cookies/"}, {"name": "Number of Intersecting Interval Pairs I", "time": 1789872236, "url": "https://leetcode.com/problems/number-of-intersecting-interval-pairs-i/"}, {"name": "Subsets II", "time": 1789794756, "url": "https://leetcode.com/problems/subsets-ii/"}, {"name": "Median of Two Sorted Arrays", "time": 1789679501, "url": "https://leetcode.com/problems/median-of-two-sorted-arrays/"}], "updatedAt": "2026-10-19T19:00:21.896800+00:00"}}, "contests": [{"name": "Codeforces Round (Div. 3)", "start": 1793457300, "url": "https://codeforces.com/contests/2278"}, {"name": "Codeforces Round (Div. 2)", "start": 1793025300, "url": "https://codeforces.com/contests/2272"}, {"name": "Codeforces Round (Div. 2)", "start": 1792839900, "url": "https://codeforces.com/contests/2277"}], "proudProblems": []};
+// Demo content is visibly labeled and is not presented as real employment/research.
+// Replace these objects with verified entries and set demo:false when ready.
+window.ADDON_CONFIG={
+ goal:1600,
+ research:[{
+  demo:true,slug:'wal-batching',skills:['C++','WAL','Linux','Benchmarking','Crash recovery','Latency analysis'],title:'The cost of durability: WAL batching under load',
+  abstract:'An example investigation into the trade-off between synchronization frequency, write throughput and tail latency in a small key-value store.',
+  question:'How does batch size affect p99 write latency under a fixed durability contract?',
+  method:'Replay the same workload across batch sizes; compare throughput, latency distributions and crash-recovery checks.',
+  status:'Proposed experiment · demo',url:'',bibtex:''
+ }],
+ experience:[{
+  demo:true,role:'Systems engineering intern',company:'Example storage team',dates:'Illustrative role',
+  description:'A sample experience entry showing how a systems role can describe ownership, technical decisions and evidence.',
+  highlights:['Trace a write from the API through the WAL and page cache.','Build a repeatable benchmark and investigate the slow path.','Document recovery behavior and the performance trade-offs.'],
+  skills:['C++','Linux','Storage','Profiling']
+ }]
+};
 
-        <!-- Bottom breathing room -->
-        <div class="h-16"></div>
-        <br />
-      </div>
-    </div>
+window.POSTS=[{"slug": "wal-before-pages", "title": "Why the log comes before the page", "date": "2026-10-19", "tags": ["storage", "Durable DB"], "project": "db", "takeaways": ["Sync the log before acknowledging durable writes.", "Validate partial log records.", "Test recovery separately from throughput."], "sample": true, "sources": [{"title": "SQLite — Write-Ahead Logging", "url": "https://www.sqlite.org/wal.html"}, {"title": "Linux manual — fsync(2)", "url": "https://man7.org/linux/man-pages/man2/fsync.2.html"}], "body": "# Why the log comes before the page\n\nA small storage-engine thought experiment. This is an illustrative notebook entry, not a benchmark or a claim that Durable DB is complete.\n\n> [!NOTE]\n> ==Durability is an explicit contract.== This simulation models ordering; it does not emulate a device cache or a real crash.\n\n## The uncomfortable window\n\nA process changes a value in memory. It writes a database page. Before that page is completely persisted, the machine loses power. What should the next process trust?\n\n==A successful write() is not a durability guarantee.== The operating system may still hold the bytes in a cache.\n\n## Record intent first\n\nA write-ahead log records enough information to redo a change. A simple ordering is:\n\n1. Append the log record.\n2. Synchronize the log before acknowledging durable success.\n3. Apply the change to a database page.\n4. Recover by replaying durable records after a crash.\n\n```mermaid\nflowchart TD\n  A[Append record] --> B[Sync WAL]\n  B --> C[Acknowledge write]\n  B --> D[Update page]\n  D --> E[Checkpoint later]\n```\n\n!!The log also needs framing and validation.!! A crash can leave a partial final record. Checksums and record lengths help detect incomplete or corrupt data.\n\n## Try the failure\n\nAppend a batch, then crash before syncing. Try again, this time syncing first. Compare what survives.\n\n```sim\n<h2>A tiny recovery model</h2>\n<button id=\"append\">Append</button><button id=\"sync\">Sync</button><button id=\"crash\">Crash</button>\n<pre id=\"state\"></pre>\n<script>\nlet pending=0,durable=0;\nfunction draw(){state.textContent='Unsynced: '+pending+'\\nDurable: '+durable}\nappend.onclick=()=>{pending++;draw()};\nsync.onclick=()=>{durable+=pending;pending=0;draw()};\ncrash.onclick=()=>{console.log('Lost '+pending+' unsynced records');pending=0;draw()};draw();\n<\/script>\n```\n\n## A cost worth sharing\n\nIf one synchronization takes $T_s$ and we share it across $b$ writes, the synchronization component per write is roughly:\n\n$$T_{write} \\approx \\frac{T_s}{b}$$\n\nThis omits queueing, serialization and device behavior. Larger batches can improve throughput while making some writes wait longer.\n\n```cpp\n// Ordering sketch only, not a complete WAL implementation.\nappend_log(record);\nsync_log();\nacknowledge_write();\napply_to_page(record);\n```\n\n## What to measure next\n\nMeasure throughput, tail latency and recovery correctness separately. A fast implementation that loses acknowledged writes has failed its durability contract.\n\n==Crash tests are part of the design, not just a final check.==\n"}, {"slug": "pages-and-locality", "title": "A page is a useful boundary", "date": "2026-10-19", "tags": ["storage", "C++"], "project": "db", "takeaways": ["Pages are addressable units.", "Choose page size against a measured workload."], "sample": true, "sources": [{"title": "SQLite — Database File Format", "url": "https://www.sqlite.org/fileformat.html"}], "body": "# A page is a useful boundary\n\nA short illustrative note about the 4 KB page choice in the Durable DB roadmap.\n\n> [!NOTE]\n> ==Keep the memory budget fixed when comparing page sizes.== Otherwise cache capacity can change alongside the layout.\n\n## Bytes need structure\n\nA file is a sequence of bytes. A storage engine needs a predictable way to find records, validate them, and decide which bytes to cache.\n\n==A fixed-size page gives the storage engine an addressable unit.== A page identifier maps to an offset:\n\n$$offset = page\\_id \\times page\\_size$$\n\n```cpp\nconstexpr std::size_t page_size = 4096;\nconst auto offset = page_id * page_size;\n// Real I/O must handle short reads, errors, and integer bounds.\n```\n\n## Locality changes the cost\n\nNearby records can share a cached page. But larger pages may bring in data a query never uses. Smaller pages can add bookkeeping and more I/O operations.\n\n| Choice | Possible benefit | Possible cost |\n| --- | --- | --- |\n| Larger pages | More nearby records per read | More unused bytes per read |\n| Smaller pages | Less overfetch | More page lookups |\n\n## Measure the workload\n\n!!4 KB is a design choice, not a universal optimum.!! Compare point lookups and range scans under a fixed memory budget before choosing a page size for performance.\n"}];
 
-    <!-- ABOUT MODAL -->
-    <div
-      id="about-modal"
-      class="modal-view fixed inset-0 bg-bg z-40 hidden opacity-0 transition-opacity duration-300 overflow-y-auto"
-    >
-      <div class="max-w-3xl mx-auto px-6 pt-32 pb-24 relative">
-        <div class="flex justify-between items-center mb-8">
-          <h2 class="text-3xl md:text-4xl font-bold tracking-tight">
-            About Me.
-          </h2>
-          <button
-            onclick="closeModal('about-modal')"
-            class="text-muted hover:text-fg transition-colors interactive cursor-none p-1.5 rounded-md hover:bg-hoverBg"
-          >
-            <i data-lucide="x" class="w-6 h-6"></i>
-          </button>
-        </div>
-        <div class="text-muted text-sm leading-relaxed mb-20 space-y-6">
-          <p>
-            I am an MS Applied Data Science candidate at the University of
-            Southern California (USC), driven by a passion for designing
-            high-performance systems and turning complex data into actionable
-            insights.
-          </p>
-          <p>
-            With over 2 years of experience in backend engineering and
-            full-stack development, I have honed my skills in building robust
-            APIs, scalable architectures, and efficient data pipelines. My
-            journey spans from optimizing frontend load times by 75% to
-            architecting custom in-memory columnar query engines that outperform
-            traditional analytical tools.
-          </p>
-          <p>
-            I thrive in environments where performance and reliability are
-            critical, and I'm actively seeking Summer 2026 internship
-            opportunities where I can tackle challenging engineering problems at
-            scale.
-          </p>
-        </div>
-        <h2 class="text-3xl font-bold tracking-tight mb-10">Education.</h2>
-        <div class="mb-16">
-          <div
-            class="flex flex-col md:flex-row justify-between items-baseline mb-2"
-          >
-            <h3 class="text-xl font-medium text-fg">
-              University of Southern California
-            </h3>
-            <span class="font-mono text-xs text-muted"
-              >Jan 2025 - Dec 2026</span
-            >
-          </div>
-          <p class="text-sm text-muted mb-2 font-mono uppercase tracking-wide">
-            MS Applied Data Science
-          </p>
-          <p class="text-xs text-muted mb-8 italic">GPA: 3.6 / 4.0</p>
-          <div class="border-t border-border">
-            <div class="border-b border-border py-4">
-              <button
-                class="flex justify-between items-center w-full text-left font-medium text-sm text-fg interactive cursor-none accordion-btn"
-              >
-                Courses
-                <i
-                  data-lucide="chevron-down"
-                  class="w-4 h-4 transition-transform duration-200 accordion-icon text-muted"
-                ></i>
-              </button>
-              <div class="hidden pt-4 text-sm text-muted accordion-content">
-                <ul class="list-disc pl-4 space-y-2">
-                  <li>Python Programming</li>
-                  <li>Machine Learning</li>
-                  <li>Deep Learning</li>
-                  <li>Foundations of Data Management</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="mb-12">
-          <div
-            class="flex flex-col md:flex-row justify-between items-baseline mb-2"
-          >
-            <h3 class="text-xl font-medium text-fg">
-              R.M.K. Engineering College
-            </h3>
-            <span class="font-mono text-xs text-muted"
-              >Aug 2020 - Apr 2024</span
-            >
-          </div>
-          <p class="text-sm text-muted mb-2 font-mono uppercase tracking-wide">
-            B.Tech in Information Technology
-          </p>
-          <p class="text-xs text-muted mb-8 italic">
-            CGPA: 8.75 / 10.0 | First Class
-          </p>
-          <div class="border-t border-border">
-            <div class="border-b border-border py-4">
-              <button
-                class="flex justify-between items-center w-full text-left font-medium text-sm text-fg interactive cursor-none accordion-btn"
-              >
-                Courses
-                <i
-                  data-lucide="chevron-down"
-                  class="w-4 h-4 transition-transform duration-200 accordion-icon text-muted"
-                ></i>
-              </button>
-              <div class="hidden pt-4 text-sm text-muted accordion-content">
-                <ul class="list-disc pl-4 space-y-2">
-                  <li>Data Structures &amp; Algorithms</li>
-                  <li>Operating Systems</li>
-                  <li>Computer Networks &amp; Database Management Systems</li>
-                  <li>Cloud Computing &amp; Big Data Analytics</li>
-                  <li>AI &amp; Machine Learning</li>
-                  <li>DevOps &amp; Microservice Architecture</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+/* Starter simulations use the explicit sim-control and sim-visibility messages. */
+window.SIM_TEMPLATES = {
+  wal: {title:'WAL & crash recovery',controls:[{key:'batch',label:'Writes per batch',min:1,max:12,value:4}],code:`<h2>What survives a crash?</h2><p>A teaching model: append → sync the log → apply.</p><div class="buttons"><button id="write">Append writes</button><button id="sync">fsync log</button><button id="apply">Apply to pages</button><button id="crash">Crash + recover</button></div><div id="view"></div><p id="note">Unsynced writes can be lost.</p>
+<script>
+let batch=4, pending=[],durable=[],pages=[],next=1;
+function draw(){document.getElementById('view').innerHTML=[['Unsynced log',pending],['Durable log',durable],['Pages',pages]].map(([name,items])=>'<h3>'+name+'</h3><div class="cells">'+(items.map(x=>'<span>'+x+'</span>').join('')||'<i>empty</i>')+'</div>').join('')}
+write.onclick=()=>{for(let i=0;i<batch;i++)pending.push(next++);draw();console.log('Appended',batch,'records')};
+sync.onclick=()=>{durable.push(...pending);pending=[];draw();console.log('Log is durable')};
+apply.onclick=()=>{pages=[...durable];draw();console.log('Applied durable records to pages')};
+crash.onclick=()=>{let lost=pending.length;pending=[];pages=[...durable];draw();document.getElementById('note').textContent='Recovered '+pages.length+' records from durable WAL. Lost '+lost+' unsynced records.';console.log('Recovery finished')};
+addEventListener('message',e=>{if(e.data.type==='sim-control'&&e.data.key==='batch')batch=Number(e.data.value)});draw();
+<\/script>`},
+  sorting:{title:'Insertion sort',controls:[{key:'speed',label:'Step delay (ms)',min:30,max:700,value:180}],code:`<h2>Insertion sort, one move at a time</h2><button id="start">Play / pause</button> <button id="reset">Shuffle</button><canvas id="c" width="620" height="280"></canvas><p>Compare, shift, insert. The left side stays sorted.</p><script>
+const c=document.getElementById('c'),ctx=c.getContext('2d');let a=[],i=1,j=1,play=false,visible=true,delay=180,last=0;
+function draw(){ctx.clearRect(0,0,620,280);a.forEach((n,k)=>{ctx.fillStyle=getComputedStyle(document.documentElement).getPropertyValue(k===j?'--ter':'--sec');ctx.fillRect(k*25+8,270-n*2.4,19,n*2.4)})}
+function shuffle(){a=Array.from({length:24},()=>10+Math.floor(Math.random()*90));i=j=1;play=false;draw()}reset.onclick=shuffle;start.onclick=()=>play=!play;
+function tick(t){if(play&&visible&&t-last>delay){last=t;if(i>=a.length){play=false;console.log('Sorted',a.length,'items')}else if(j>0&&a[j]<a[j-1]){[a[j],a[j-1]]=[a[j-1],a[j]];j--}else{j=++i}draw()}requestAnimationFrame(tick)}
+addEventListener('message',e=>{if(e.data.type==='sim-control'&&e.data.key==='speed')delay=+e.data.value;if(e.data.type==='sim-visibility')visible=e.data.visible;if(e.data.type==='sim-theme')draw()});shuffle();requestAnimationFrame(tick);
+<\/script>`},
+  grid:{title:'Breadth-first search',controls:[{key:'speed',label:'Step delay (ms)',min:30,max:500,value:90}],code:`<h2>Find a path through the grid</h2><p>Click cells to toggle walls. Start is top left; goal is bottom right.</p><button id="start">Run BFS</button> <button id="reset">Clear</button><canvas id="c" width="600" height="300"></canvas><p id="result">Four-direction movement. All steps cost one.</p><script>
+const c=document.getElementById('c'),ctx=c.getContext('2d'),W=20,H=10;let walls=new Set(),seen=new Set(),q=[],parent={},path=new Set(),running=false,visible=true,delay=90,last=0;
+function draw(){ctx.clearRect(0,0,600,300);for(let i=0;i<200;i++){ctx.fillStyle=i===0||i===199?'#c8553d':path.has(i)?'#e8a87c':walls.has(i)?'#414653':seen.has(i)?'#8fb0c8':'#9a9aa033';ctx.fillRect(i%W*30+2,Math.floor(i/W)*30+2,26,26)}}
+c.onclick=e=>{if(running)return;const r=c.getBoundingClientRect(),x=Math.floor((e.clientX-r.left)/r.width*W),y=Math.floor((e.clientY-r.top)/r.height*H),n=y*W+x;if(n===0||n===199)return;walls.has(n)?walls.delete(n):walls.add(n);draw()};
+reset.onclick=()=>{running=false;walls.clear();seen.clear();path.clear();result.textContent='Click to add walls.';draw()};start.onclick=()=>{seen=new Set([0]);q=[0];parent={};path.clear();running=true;result.textContent='Searching…'};
+function tick(t){if(running&&visible&&t-last>delay){last=t;if(!q.length){running=false;result.textContent='No path exists.'}else{const n=q.shift();if(n===199){running=false;let k=n;while(k!==undefined){path.add(k);k=parent[k]}result.textContent='Shortest path: '+(path.size-1)+' steps';console.log(result.textContent)}else{const x=n%W,y=Math.floor(n/W);for(const [dx,dy] of [[1,0],[-1,0],[0,1],[0,-1]]){const a=x+dx,b=y+dy,m=b*W+a;if(a>=0&&a<W&&b>=0&&b<H&&!walls.has(m)&&!seen.has(m)){seen.add(m);parent[m]=n;q.push(m)}}}}draw()}requestAnimationFrame(tick)}
+addEventListener('message',e=>{if(e.data.type==='sim-control')delay=+e.data.value;if(e.data.type==='sim-visibility')visible=e.data.visible});draw();requestAnimationFrame(tick);
+<\/script>`},
+  canvas:{title:'Canvas boilerplate',controls:[{key:'radius',label:'Radius',min:10,max:100,value:45}],code:`<h2>A small canvas experiment</h2><canvas id="c" width="600" height="300"></canvas><script>
+const canvas=document.getElementById('c'),ctx=canvas.getContext('2d');let radius=45;
+function draw(){ctx.clearRect(0,0,600,300);ctx.fillStyle=getComputedStyle(document.documentElement).getPropertyValue('--sec');ctx.beginPath();ctx.arc(300,150,radius,0,Math.PI*2);ctx.fill()}
+addEventListener('message',e=>{if(e.data.type==='sim-control')radius=+e.data.value;draw()});draw();console.log('Canvas ready');
+<\/script>`},
+  graph:{title:'Draggable nodes',controls:[],code:`<h2>Drag a node</h2><canvas id="c" width="600" height="320" style="touch-action:none"></canvas><script>
+const c=document.getElementById('c'),ctx=c.getContext('2d');let nodes=[[150,90],[300,160],[450,80],[430,260],[130,260]],drag=-1;
+function draw(){ctx.clearRect(0,0,600,320);ctx.strokeStyle='#8fb0c8';ctx.fillStyle='#e8a87c';nodes.forEach((p,i)=>{ctx.beginPath();ctx.moveTo(...p);ctx.lineTo(...nodes[(i+1)%nodes.length]);ctx.stroke();ctx.beginPath();ctx.arc(...p,12,0,7);ctx.fill()})}
+function point(e){let r=c.getBoundingClientRect();return[(e.clientX-r.left)/r.width*600,(e.clientY-r.top)/r.height*320]}
+c.onpointerdown=e=>{let [x,y]=point(e);drag=nodes.findIndex(p=>Math.hypot(p[0]-x,p[1]-y)<25);c.setPointerCapture(e.pointerId)};c.onpointermove=e=>{if(drag>=0){let [x,y]=point(e);nodes[drag]=[Math.max(12,Math.min(588,x)),Math.max(12,Math.min(308,y))];draw()}};c.onpointerup=c.onpointercancel=()=>drag=-1;draw();
+<\/script>`}
+};
+// Models preserved from the original portfolio, now editable in the playground.
+SIM_TEMPLATES.lsm={title:'LSM write amplification',controls:[{key:'batch',label:'Puts per click',min:1,max:64,value:4}],code:`<h2>LSM write amplification</h2><p>A teaching model, not measured RocksDB performance.</p><button id="put">Put batch</button><button id="reset">Reset</button><pre id="state"></pre><canvas id="c" width="600" height="220"></canvas><script>
+let mem=0,l0=0,l1=0,l2=0,puts=0,writes=0,batch=4,history=[];const c=document.getElementById('c'),ctx=c.getContext('2d');
+function draw(){state.textContent='Memtable: '+mem+'/4\\nL0 files: '+l0+'\\nL1 keys: '+l1+'\\nL2 keys: '+l2+'\\nPuts: '+puts+' | disk record writes: '+writes+'\\nWrite amplification: '+(puts?writes/puts:0).toFixed(2)+'x';ctx.clearRect(0,0,600,220);ctx.strokeStyle='#8fb0c8';ctx.beginPath();let max=Math.max(2,...history);history.forEach((v,i)=>{let x=10+i/Math.max(1,history.length-1)*580,y=210-v/max*190;i?ctx.lineTo(x,y):ctx.moveTo(x,y)});ctx.stroke()}
+put.onclick=()=>{for(let i=0;i<batch;i++){puts++;writes++;if(++mem===4){mem=0;l0++;writes+=4;if(l0===3){writes+=l0*4+l1;l1+=l0*4;l0=0;if(l1>=24){writes+=l1+l2;l2+=l1;l1=0}}}history.push(writes/puts)}draw();console.log('Write amp',writes/puts)};
+reset.onclick=()=>{mem=l0=l1=l2=puts=writes=0;history=[];draw()};addEventListener('message',e=>{if(e.data.type==='sim-control')batch=+e.data.value});draw();
+<\/script>`};
+SIM_TEMPLATES.latency={title:'Memory & storage latency',controls:[],code:`<h2>Where a write goes</h2><p>Approximate orders of magnitude, not hardware benchmarks.</p><button id="mode">Switch to linear scale</button><div id="bars"></div><p>Log scale makes small costs visible. Linear scale shows why persistence dominates.</p><script>
+const rows=[['L1 cache',1],['L2 cache',4],['L3 cache',15],['DRAM',80],['NVMe read',100000],['fsync',1000000]];let log=true;
+function draw(){bars.innerHTML=rows.map(([name,n])=>'<p>'+name+' · '+(n>=1000000?'~1 ms':n>=1000?'~'+n/1000+' µs':'~'+n+' ns')+'</p><div style="height:12px;background:var(--line)"><div style="height:100%;background:var(--sec);width:'+(log?Math.max(1,Math.log10(n)/6*100):Math.max(.1,n/1000000*100))+'%"></div></div>').join('')}
+mode.onclick=()=>{log=!log;mode.textContent='Switch to '+(log?'linear':'log')+' scale';draw()};draw();
+<\/script>`};
 
-    <!-- PROJECTS MODAL -->
-    <div
-      id="projects-modal"
-      class="modal-view fixed inset-0 bg-bg z-40 hidden opacity-0 transition-opacity duration-300 overflow-y-auto"
-    >
-      <div class="max-w-3xl mx-auto px-6 pt-32 pb-24 relative">
-        <div class="flex justify-between items-center mb-8">
-          <h2 class="text-3xl md:text-4xl font-bold tracking-tight">
-            All Projects.
-          </h2>
-          <button
-            onclick="closeModal('projects-modal')"
-            class="text-muted hover:text-fg transition-colors interactive cursor-none p-1.5 rounded-md hover:bg-hoverBg"
-          >
-            <i data-lucide="x" class="w-6 h-6"></i>
-          </button>
-        </div>
-        <div
-          class="flex flex-wrap gap-2 mb-10"
-          id="projects-filter-container"
-        ></div>
-        <div
-          class="flex flex-col border-t border-border"
-          id="projects-list-container"
-        ></div>
-      </div>
-    </div>
+/* Each run gets an opaque origin and an independent message token.
+   This isolates DOM/storage, not CPU. Cooperative pause is a template protocol. */
+window.Simulations = (() => {
+  const instances = new Set();
+  const allowedLibraries = {
+    d3:'https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js',
+    p5:'https://cdn.jsdelivr.net/npm/p5@1.9.4/lib/p5.min.js'
+  };
+  const colors = () => ({bg:'#fffefb',sec:'#2b4c7e',ter:'#c8553d',text:'#1d2433',heading:'#1d2433',line:'#d9d4c4'});
+  function mount(host, source, {split=false, onConsole=()=>{}, controls=[]}={}) {
+    let original=source, token='', stopped=false, currentTab=split?'split':'preview';
+    host.classList.add('simulation');
+    host.innerHTML=`<div class="toolbar"><button data-tab="preview">Preview</button><button data-tab="code">Code</button><button data-tab="split">Split</button><button data-action="run">Run ↗</button><button data-action="stop">Stop</button><button data-action="reset">Reset</button><button data-action="copy">Copy</button><button data-action="download">Download</button><button data-action="fullscreen" aria-label="Fullscreen simulation">⛶</button></div><div class="sim-body"><textarea class="sim-code" spellcheck="false" aria-label="Simulation HTML and JavaScript"></textarea><iframe class="sim-frame" title="Sandboxed simulation" sandbox="allow-scripts" referrerpolicy="no-referrer"></iframe></div>`;
+    const editor=host.querySelector('textarea'),body=host.querySelector('.sim-body');let frame=host.querySelector('iframe');const status=document.createElement('span');status.className='runner-status';status.setAttribute('role','status');host.querySelector('.toolbar').append(status);let readinessTimer=null;
+    editor.value=source;
+    function tab(name){currentTab=name;body.classList.toggle('split',name==='split');editor.hidden=name==='preview';frame.hidden=name==='code';host.querySelectorAll('[data-tab]').forEach(b=>b.classList.toggle('active',b.dataset.tab===name));}
+    function send(data){if(!stopped)frame.contentWindow?.postMessage(data,'*')}
+    function run(){
+      stopped=false;clearTimeout(readinessTimer);status.textContent='Starting…';delete status.dataset.error;token=globalThis.crypto?.randomUUID?.()||String(Math.random()).slice(2);onConsole('— new run —');
+      const next=document.createElement('iframe');next.className='sim-frame';next.title='Sandboxed simulation';next.setAttribute('sandbox','allow-scripts');next.referrerPolicy='no-referrer';next.hidden=currentTab==='code';frame.replaceWith(next);frame=next;
+      let code=editor.value, scripts='';
+      code=code.replace(/^\s*libs:\s*([^\n]+)\n/,(_,names)=>{scripts=names.split(',').map(n=>allowedLibraries[n.trim()]).filter(Boolean).map(url=>`<script src="${url}"><\/script>`).join('');return ''});
+      const theme=colors();
+      const bridge=`(()=>{const hostWindow=window.parent;const TOKEN=${JSON.stringify(token)};const emit=(type,value)=>hostWindow.postMessage({type,token:TOKEN,value},'*');
+        ['log','warn','error'].forEach(level=>{console[level]=(...args)=>emit('sim-console',level+': '+args.map(x=>{try{return typeof x==='string'?x:JSON.stringify(x)}catch{return String(x)}}).join(' ').slice(0,2000))});
+        addEventListener('error',e=>emit('sim-console','error: '+e.message));addEventListener('unhandledrejection',e=>emit('sim-console','error: '+String(e.reason)));
+        addEventListener('message',e=>{if(e.source!==hostWindow)return;if(e.data.type==='sim-theme')Object.entries(e.data.colors).forEach(([k,v])=>document.documentElement.style.setProperty('--'+k,v))});
+        addEventListener('DOMContentLoaded',()=>{let last=0;new ResizeObserver(()=>{const h=Math.min(1600,Math.max(280,document.documentElement.scrollHeight));if(h!==last){last=h;emit('sim-height',h)}}).observe(document.body);emit('sim-ready',true)});})();`;
+      const policy="default-src 'none'; script-src 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net; style-src 'unsafe-inline'; img-src data: blob:; font-src data:; connect-src 'none'; media-src 'none'; frame-src 'none'; worker-src blob:; base-uri 'none'; form-action 'none'";
+      frame.srcdoc=`<!doctype html><html><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="${policy}"><meta name="viewport" content="width=device-width"><style>:root{${Object.entries(theme).map(([k,v])=>'--'+k+':'+v).join(';')}}*{box-sizing:border-box}body{margin:0;padding:24px;background:var(--bg);color:var(--text);font:14px/1.6 ui-monospace,monospace;background-image:linear-gradient(#ece8dc 1px,transparent 1px),linear-gradient(90deg,#ece8dc 1px,transparent 1px);background-size:24px 24px}h2{font-size:20px;color:var(--heading)}h3{font-size:12px;margin-top:24px;text-transform:uppercase;letter-spacing:.1em}button{padding:7px 12px;margin:3px;background:transparent;color:var(--sec);border:1px solid var(--line);border-radius:4px;cursor:pointer}canvas{display:block;width:100%;height:auto;margin-top:20px}.cells{display:flex;gap:5px;flex-wrap:wrap}.cells span{padding:5px 10px;border:1px solid var(--sec);border-radius:3px}.cells i{opacity:.5}</style><script>${bridge}<\/script>${scripts}</head><body>${code}</body></html>`;
+    }
+    const receive=e=>{if(e.source!==frame.contentWindow||e.data?.token!==token)return;
+      if(e.data.type==='sim-height'&&Number.isFinite(e.data.value))frame.style.height=Math.min(1600,Math.max(280,e.data.value))+'px';
+      if(e.data.type==='sim-console'){onConsole(String(e.data.value).slice(0,2000));if(String(e.data.value).startsWith('error:')){status.textContent=String(e.data.value).slice(0,180);status.dataset.error='true'}}
+      if(e.data.type==='sim-ready'){clearTimeout(readinessTimer);if(status.dataset.error!=='true')status.textContent='Ready';controls.forEach(c=>send({type:'sim-control',key:c.key,value:c.value}));send({type:'sim-visibility',visible:!document.hidden})}
+    };
+    addEventListener('message',receive);
+    const observer=new IntersectionObserver(entries=>send({type:'sim-visibility',visible:entries[0].isIntersecting&&!document.hidden}));observer.observe(host);
+    const visibility=()=>send({type:'sim-visibility',visible:!document.hidden&&host.getBoundingClientRect().bottom>0&&host.getBoundingClientRect().top<innerHeight});document.addEventListener('visibilitychange',visibility);
+    host.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>tab(b.dataset.tab));
+    host.querySelector('[data-action=run]').onclick=()=>{tab('preview');run()};
+    host.querySelector('[data-action=stop]').onclick=()=>{stopped=true;clearTimeout(readinessTimer);status.textContent='Stopped';frame.srcdoc='<p style="font:14px system-ui;padding:24px">Simulation stopped. Press Run to restart.</p>';onConsole('Stopped')};
+    host.querySelector('[data-action=reset]').onclick=()=>{editor.value=original;tab('preview');run()};
+    host.querySelector('[data-action=copy]').onclick=()=>window.copyText(editor.value);
+    host.querySelector('[data-action=download]').onclick=()=>window.downloadText('simulation.html',frame.srcdoc,'text/html');
+    host.querySelector('[data-action=fullscreen]').onclick=async()=>{try{if(document.fullscreenElement)await document.exitFullscreen();else await host.requestFullscreen()}catch{window.toast('Fullscreen is unavailable in this browser.')}};
+    editor.addEventListener('keydown',e=>{if(e.key==='Tab'){e.preventDefault();editor.setRangeText('  ',editor.selectionStart,editor.selectionEnd,'end')}});
+    const instance={editor,send,run,setSource(code){original=code;editor.value=code;run()},theme(){send({type:'sim-theme',colors:colors()})},destroy(){clearTimeout(readinessTimer);observer.disconnect();removeEventListener('message',receive);document.removeEventListener('visibilitychange',visibility);frame.srcdoc='';instances.delete(instance)}};
+    instances.add(instance);tab(currentTab);run();return instance;
+  }
+  return {mount,clear(){[...instances].forEach(i=>i.destroy())},theme(){instances.forEach(i=>i.theme())}};
+})();
 
-    <!-- PUBLICATIONS MODAL -->
-    <div
-      id="publications-modal"
-      class="modal-view fixed inset-0 bg-bg z-40 hidden opacity-0 transition-opacity duration-300 overflow-y-auto"
-    >
-      <div class="max-w-3xl mx-auto px-6 pt-32 pb-24 relative">
-        <div class="flex justify-between items-center mb-8">
-          <h2 class="text-3xl md:text-4xl font-bold tracking-tight">
-            All Publications.
-          </h2>
-          <button
-            onclick="closeModal('publications-modal')"
-            class="text-muted hover:text-fg transition-colors interactive cursor-none p-1.5 rounded-md hover:bg-hoverBg"
-          >
-            <i data-lucide="x" class="w-6 h-6"></i>
-          </button>
-        </div>
-        <div
-          class="flex flex-wrap gap-2 mb-10"
-          id="publications-filter-container"
-        ></div>
-        <div
-          class="flex flex-col border-t border-border"
-          id="publications-list-container"
-        ></div>
-      </div>
-    </div>
+window.renderPost = async function(root, markdown) {
+  if(!window.marked||!window.DOMPurify){root.innerHTML='<p class="empty">Markdown libraries could not load. The original text is shown below.</p><pre></pre>';root.querySelector('pre').textContent=markdown;return}
+  const simulations=[];
+  markdown=markdown.replace(/^```sim\s*\n([\s\S]*?)^```\s*$/gm,(_,code)=>{simulations.push(code);return `<div class="sim-placeholder" data-sim="${simulations.length-1}"></div>`});
+  root.innerHTML=DOMPurify.sanitize(marked.parse(markdown),{ADD_ATTR:['data-sim'],FORBID_TAGS:['style','iframe','form'],FORBID_ATTR:['style']});
+  root.querySelectorAll('blockquote').forEach(block=>{
+    const first=block.querySelector('p');if(!first||!first.textContent.startsWith('[!NOTE]'))return;
+    const walker=document.createTreeWalker(first,NodeFilter.SHOW_TEXT);const text=walker.nextNode();if(text)text.textContent=text.textContent.replace(/^\[!NOTE\]\s*/, '');
+    block.classList.add('note-callout');block.setAttribute('role','note');
+    const label=document.createElement('div');label.className='note-callout-label';label.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3h14v14l-4 4H5zM9 8h6M9 12h6M14 21v-5h5"/></svg><span>Note</span>';block.prepend(label);
+  });
+  // Transform marker syntax only in text, never inside code or markup attributes.
+  const walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT),nodes=[];while(walker.nextNode())nodes.push(walker.currentNode);
+  nodes.forEach(n=>{if(n.parentElement.closest('pre,code'))return;const parts=n.textContent.split(/(==[^=]+==|!![^!]+!!)/g);if(parts.length<2)return;const frag=document.createDocumentFragment();parts.forEach(p=>{if(p.startsWith('==')||p.startsWith('!!')){const mark=document.createElement('mark');mark.className=p.startsWith('!!')?'caution':'m';mark.textContent=p.slice(2,-2);frag.append(mark)}else frag.append(document.createTextNode(p))});n.replaceWith(frag)});
+  root.querySelectorAll('.sim-placeholder').forEach(el=>Simulations.mount(el,simulations[+el.dataset.sim]));
+  root.querySelectorAll('pre code').forEach(code=>{
+    if(code.classList.contains('language-mermaid')){const div=document.createElement('div');div.className='mermaid';div.textContent=code.textContent;code.parentElement.replaceWith(div);return}
+    const pre=code.parentElement,wrap=document.createElement('div');wrap.className='code-wrap';pre.replaceWith(wrap);wrap.append(pre);const b=document.createElement('button');b.textContent='Copy code';b.onclick=()=>copyText(code.textContent);wrap.append(b);if(window.Prism)Prism.highlightElement(code);
+  });
+  root.querySelectorAll('img').forEach(img=>{img.loading='lazy';img.onclick=()=>{const dialog=document.getElementById('image-dialog');dialog.querySelector('img').src=img.src;dialog.querySelector('img').alt=img.alt;dialog.showModal()};if(img.title){const f=document.createElement('figure'),cap=document.createElement('figcaption');cap.textContent=img.title;img.replaceWith(f);f.append(img,cap)}});
+  if(window.renderMathInElement)renderMathInElement(root,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});
+  if(window.mermaid){try{mermaid.initialize({startOnLoad:false,securityLevel:'strict',theme:'base',themeVariables:{background:'#fffefb',primaryColor:'#dfe8f7',primaryTextColor:'#1d2433',primaryBorderColor:'#2b4c7e',lineColor:'#2b4c7e',secondaryColor:'#fffefb',tertiaryColor:'#ece8dc',fontFamily:'IBM Plex Mono, monospace'}});await mermaid.run({nodes:root.querySelectorAll('.mermaid')})}catch{root.querySelectorAll('.mermaid').forEach(el=>el.title='Diagram could not render; source shown.')}}
+};
 
-    <!-- OTHERS MODAL -->
-    <div
-      id="others-modal"
-      class="modal-view fixed inset-0 bg-bg z-40 hidden opacity-0 transition-opacity duration-300 overflow-y-auto"
-    >
-      <div class="max-w-3xl mx-auto px-6 pt-32 pb-24 relative">
-        <div class="flex justify-between items-center mb-8">
-          <h2 class="text-3xl md:text-4xl font-bold tracking-tight">
-            All Others.
-          </h2>
-          <button
-            onclick="closeModal('others-modal')"
-            class="text-muted hover:text-fg transition-colors interactive cursor-none p-1.5 rounded-md hover:bg-hoverBg"
-          >
-            <i data-lucide="x" class="w-6 h-6"></i>
-          </button>
-        </div>
-        <div
-          class="flex flex-wrap gap-2 mb-10"
-          id="others-filter-container"
-        ></div>
-        <div
-          class="flex flex-col border-t border-border"
-          id="others-list-container"
-        ></div>
-      </div>
-    </div>
+/* An SVG notebook graph: drag, pan, zoom, search, neighbor highlight and navigation. */
+window.NotebookGraph = (() => {
+ const NS='http://www.w3.org/2000/svg';const mounted=new WeakMap();
+ function mount(host,data,{large=false,current='#/',navigate=()=>{}}={}){
+  mounted.get(host)?.destroy();host.innerHTML='';host.classList.add('notebook-graph');
+  const tools=document.createElement('div');tools.className='graph-tools';
+  tools.innerHTML='<input aria-label="Find a graph node" placeholder="Find a node…"><button aria-label="Zoom in">+</button><button aria-label="Zoom out">−</button><button aria-label="Reset graph">↺</button>';
+  if(large)host.append(tools);
+  const svg=document.createElementNS(NS,'svg');svg.setAttribute('viewBox','0 0 620 450');svg.setAttribute('role','group');svg.setAttribute('aria-label','Connected notebook graph. Select a node to open its page.');host.append(svg);
+  const viewport=document.createElementNS(NS,'g');svg.append(viewport);
+  const caption=document.createElement('p');caption.className='graph-caption mono';caption.textContent='Select a node to open · drag to arrange';host.append(caption);
+  const nodes=data.nodes.map((n,i)=>({...n,tx:n.x,ty:n.y,vx:0,vy:0,phase:i*1.7})),nodeMap=new Map(nodes.map(n=>[n.id,n]));
+  const colors={project:'var(--sec)',blog:'var(--ter)',skill:'#a999c9',research:'#7bb7a5',experience:'#c6ae7d'};
+  const edges=data.edges.filter(([a,b])=>nodeMap.has(a)&&nodeMap.has(b)).map(([a,b])=>{const e=document.createElementNS(NS,'line');e.classList.add('graph-edge');viewport.append(e);return {a,b,e}});
+  const groups=new Map();let zoom=1,dx=0,dy=0,drag=null,query='',viewZoom=1,viewX=0,viewY=0;
+  const reduced=matchMedia('(prefers-reduced-motion:reduce)');let frame=0,visible=true,disposed=false,last=0,elapsed=0;
+  function wake(){if(!frame&&!disposed&&visible&&!document.hidden)frame=requestAnimationFrame(tick)}
+  function tick(time){frame=0;if(disposed||!visible||document.hidden)return;const dt=Math.min(2,Math.max(.1,last?(time-last)/16.667:1));last=time;elapsed+=dt/60;
+    nodes.forEach(n=>{const held=drag?.id===n.id;let tx=n.tx,ty=n.ty;
+      if(!reduced.matches&&!held){tx+=Math.sin(elapsed*.88+n.phase)*4.5;ty+=Math.cos(elapsed*.69+n.phase)*3.6;
+        if(drag&&drag.id!=='pan'&&drag.moved){const lead=nodeMap.get(drag.id);if(data.edges.some(e=>e.includes(n.id)&&e.includes(lead.id))){tx+=(lead.tx-drag.nx)*.08;ty+=(lead.ty-drag.ny)*.08}}}
+      if(reduced.matches){n.x=tx;n.y=ty;n.vx=n.vy=0}else{const strength=held ? 0.32 : 0.055,damping=Math.pow(held ? 0.48 : 0.77,dt);n.vx=(n.vx+(tx-n.x)*strength*dt)*damping;n.vy=(n.vy+(ty-n.y)*strength*dt)*damping;n.x=Math.max(25,Math.min(595,n.x+n.vx*dt));n.y=Math.max(30,Math.min(425,n.y+n.vy*dt))}});
+    const ease=reduced.matches?1:1-Math.pow(.76,dt);viewZoom+=(zoom-viewZoom)*ease;viewX+=(dx-viewX)*ease;viewY+=(dy-viewY)*ease;refresh();if(!reduced.matches)wake();
+  }
+  const visibility=new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;if(visible){last=0;wake()}else{cancelAnimationFrame(frame);frame=0}});visibility.observe(host);
+  const onVisibility=()=>{if(document.hidden){cancelAnimationFrame(frame);frame=0}else{last=0;wake()}};document.addEventListener('visibilitychange',onVisibility);reduced.addEventListener('change',wake);
+  function refresh(){viewport.setAttribute('transform',`translate(${viewX} ${viewY}) scale(${viewZoom})`);edges.forEach(({a,b,e})=>{const p=nodeMap.get(a),q=nodeMap.get(b);e.setAttribute('x1',p.x);e.setAttribute('y1',p.y);e.setAttribute('x2',q.x);e.setAttribute('y2',q.y)});nodes.forEach(n=>groups.get(n.id).setAttribute('transform',`translate(${n.x} ${n.y})`))}
+  function highlight(id){const neighbors=new Set([id]);edges.forEach(({a,b,e})=>{const on=a===id||b===id;if(on){neighbors.add(a);neighbors.add(b)}e.classList.toggle('connected',on);e.classList.toggle('faded',!!id&&!on)});nodes.forEach(n=>groups.get(n.id).classList.toggle('faded',id?!neighbors.has(n.id):!!query&&!n.label.toLowerCase().includes(query)))}
+  function point(e){const p=svg.createSVGPoint();p.x=e.clientX;p.y=e.clientY;return p.matrixTransform(svg.getScreenCTM().inverse())}
+  nodes.forEach(n=>{
+   const g=document.createElementNS(NS,'g');g.classList.add('graph-node');g.setAttribute('tabindex','0');g.setAttribute('role','link');g.setAttribute('aria-label',n.label+' · '+n.type);if(n.href===current)g.classList.add('current');
+   const circle=document.createElementNS(NS,'circle');circle.setAttribute('r',n.type==='skill'?6:9);circle.setAttribute('fill',colors[n.type]);
+   const label=document.createElementNS(NS,'text');label.setAttribute('y','-15');label.setAttribute('text-anchor','middle');label.textContent=n.label;
+   g.append(circle,label);viewport.append(g);groups.set(n.id,g);
+   g.onpointerenter=()=>{if(!drag){highlight(n.id);caption.textContent=n.label+' · '+n.type+' · click to open'}};g.onpointerleave=()=>{if(!drag)highlight(null)};
+   g.onfocus=()=>highlight(n.id);g.onblur=()=>highlight(null);
+   g.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();navigate(n.href)}};
+   g.onpointerdown=e=>{e.preventDefault();e.stopPropagation();const p=point(e);drag={id:n.id,x:p.x,y:p.y,nx:n.tx,ny:n.ty,moved:false};g.setPointerCapture(e.pointerId)};
+   g.onpointermove=e=>{if(drag?.id!==n.id)return;const p=point(e);if(Math.hypot(p.x-drag.x,p.y-drag.y)>4)drag.moved=true;if(drag.moved){n.tx=Math.max(25,Math.min(595,drag.nx+(p.x-drag.x)/viewZoom));n.ty=Math.max(30,Math.min(425,drag.ny+(p.y-drag.y)/viewZoom));wake()}};
+   g.onpointerup=e=>{if(drag?.id!==n.id)return;const moved=drag.moved;drag=null;g.releasePointerCapture(e.pointerId);if(!moved)navigate(n.href)};g.onpointercancel=()=>drag=null;
+  });
+  svg.onpointerdown=e=>{if(e.target!==svg)return;const p=point(e);drag={id:'pan',x:p.x,y:p.y,dx,dy};svg.setPointerCapture(e.pointerId)};
+  svg.onpointermove=e=>{if(drag?.id!=='pan')return;const p=point(e);dx=drag.dx+p.x-drag.x;dy=drag.dy+p.y-drag.y;wake()};svg.onpointerup=svg.onpointercancel=()=>{if(drag?.id==='pan')drag=null};
+  function scale(mult,center={x:310,y:225}){const next=Math.min(3,Math.max(.55,zoom*mult));dx=center.x-(center.x-dx)*next/zoom;dy=center.y-(center.y-dy)*next/zoom;zoom=next;wake()}
+  // Mini graph does not hijack page scrolling. Wheel zoom is available in expanded view.
+  if(large)svg.addEventListener('wheel',e=>{e.preventDefault();scale(e.deltaY<0?1.12:1/1.12,point(e))},{passive:false});
+  const buttons=tools.querySelectorAll('button');buttons[0].onclick=()=>scale(1.2);buttons[1].onclick=()=>scale(1/1.2);buttons[2].onclick=()=>{zoom=1;dx=dy=0;nodes.forEach((n,i)=>{n.tx=data.nodes[i].x;n.ty=data.nodes[i].y});wake()};
+  tools.querySelector('input').oninput=e=>{query=e.target.value.toLowerCase();highlight(null)};
+  const legend=document.createElement('div');legend.className='graph-legend';Object.entries(colors).forEach(([type,color])=>{const span=document.createElement('span');const dot=document.createElement('i');dot.style.background=color;span.append(dot,document.createTextNode(type));legend.append(span)});if(large)host.append(legend);
+  refresh();wake();const instance={destroy(){disposed=true;cancelAnimationFrame(frame);visibility.disconnect();document.removeEventListener('visibilitychange',onVisibility);reduced.removeEventListener('change',wake);host.innerHTML='';mounted.delete(host)}};mounted.set(host,instance);return instance;
+ }
+ return {mount,destroy(host){mounted.get(host)?.destroy()}};
+})();
 
-    <!-- TOAST -->
-    <div
-      id="toast"
-      class="fixed bottom-8 left-1/2 -translate-x-1/2 z-[9999] bg-fg text-bg px-4 py-2 text-xs font-mono opacity-0 transition-opacity pointer-events-none flex items-center gap-2 rounded-md shadow-md"
-    ></div>
-    <script src="./js/index.js"></script>
-  </body>
-</html>
+/* Progressive additions. Never reconstruct the original homepage or sidebars. */
+(() => {
+  const q=id=>document.getElementById(id),esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const url=x=>/^(https?:\/\/|mailto:|assets\/)/.test(x||'')?esc(x):'#';
+  const main=document.querySelector('main'),originalSections=[...main.children].filter(x=>x.tagName==='SECTION'),originalFooter=main.querySelector('footer');
+  const left=q('s').closest('aside'),right=q('gl').closest('aside');left.id='left-pane';right.id='right-pane';
+  const extension=document.createElement('div');extension.className='addon';extension.id='added-pages';extension.hidden=true;main.insertBefore(extension,originalFooter);
+  const homeWidgets=[...right.children];homeWidgets.forEach(el=>el.setAttribute('data-home-widget',''));
+  const currentCard=homeWidgets.find(el=>[...el.querySelectorAll('p')].some(p=>p.textContent.trim()==='currently'));
+  if(currentCard)currentCard.innerHTML='<p class="mono mb-2" style="color:var(--ter)">recent posts</p>'+POSTS.slice(0,3).map(p=>'<p class="text-sm mt-3"><a href="#/blog/'+p.slug+'">'+esc(p.title)+'</a></p>').join('');
+  const codingSection=document.createElement('div');codingSection.id='coding-profiles';codingSection.className='addon';q('github').append(codingSection);q('github').querySelector('h2').textContent='Code & contributions';
+  // Reorder existing nodes, preserving their canvas/SVG state and handlers.
+  ['intro','work','graph','play','skills','github'].forEach(id=>main.insertBefore(q(id),extension));main.insertBefore(q('about'),originalFooter);
+  q('play').insertAdjacentHTML('beforeend','<p class="mono mt-6"><a href="#/playground">Open the simulation editor ↗</a></p>');
+  const context=document.createElement('div');context.className='addon line p-4';context.id='added-context';context.hidden=true;right.append(context);
+  const pages=[['home','Home'],['projects','Projects'],['research','Research'],['experience','Experience'],['blog','Blog'],['playground','Playground']];
+  const nav=document.createElement('nav');nav.id='extra-nav';nav.setAttribute('aria-label','Additional pages');nav.innerHTML=pages.map(([id,label])=>`<a class="mono" href="#/${id==='home'?'':id}" aria-label="${label}">${label}</a>`).join('');left.insertBefore(nav,q('toc'));
+  const tocTitle=document.createElement('p');tocTitle.id='in-page-label';tocTitle.className='mono mt-8 mb-3';tocTitle.style.color='var(--gr)';tocTitle.textContent='In this page';left.insertBefore(tocTitle,q('toc'));q('toc').classList.remove('hidden','lg:block','mt-8');
+  if(currentCard){currentCard.id='left-recent-posts';left.append(currentCard)}
+
+  const iconPaths={
+    GitHub:'<path d="M9 19c-4 1-4-2-6-2m12 5v-4a3.4 3.4 0 0 0-1-2.7c3.3-.4 6.8-1.6 6.8-7.3a5.7 5.7 0 0 0-1.5-4c.2-.7.6-2.4-.2-4 0 0-1.3-.4-4.2 1.5a14 14 0 0 0-7.6 0C4.4-.4 3.1 0 3.1 0c-.8 1.6-.4 3.3-.2 4a5.7 5.7 0 0 0-1.5 4c0 5.7 3.5 6.9 6.8 7.3A3.4 3.4 0 0 0 7.2 18v4" transform="translate(1 1) scale(.9)"/>',
+    LinkedIn:'<rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 10v7M7 7v.1M11 17v-7m0 3c0-4 6-4 6 0v4"/>',
+    Resume:'<path d="M6 2h8l4 4v16H6zM14 2v5h4M9 11h6M9 15h6M9 19h4"/>',
+    Email:'<rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 5 10 8L22 5"/>',
+    home:'<path d="m3 10 9-7 9 7v11H3zM9 21v-8h6v8"/>',
+    projects:'<path d="M3 6h7l2 3h9v11H3z"/>',
+    experience:'<rect x="3" y="7" width="18" height="14" rx="2"/><path d="M8 7V3h8v4M3 12h18"/>',
+    research:'<path d="M9 3h6M10 3v7L4 21h16l-6-11V3M7 16h10"/>',
+    blog:'<path d="M4 3h12v18H4zM8 8h4M8 12h4M8 16h4m5-9 3-3 2 2-3 3"/>',
+    sun:'<circle cx="12" cy="12" r="4"/><path d="M12 1v2m0 18v2M1 12h2m18 0h2M4 4l2 2m12 12 2 2M4 20l2-2M18 6l2-2"/>',
+    moon:'<path d="M20 15A9 9 0 0 1 9 4a9 9 0 1 0 11 11z"/>'
+  };
+  const svgIcon=name=>'<svg viewBox="0 0 24 24" aria-hidden="true">'+iconPaths[name]+'</svg>';
+  q('hdr').innerHTML=SOCIALS.slice(0,4).map(([name,link])=>link?`<a class="social-icon" data-social="${name}" href="${url(link)}" target="_blank" rel="noopener" title="${name}" aria-label="${name}">${svgIcon(name)}<span class="desktop-social-label">${esc(name)}</span></a>`:`<span class="social-icon unavailable" data-social="${name}" title="${name}: link not configured" role="img" aria-label="${name}: link not configured">${svgIcon(name)}<span class="desktop-social-label">${esc(name)}</span></span>`).join('');
+  const mobileTheme=document.createElement('button');mobileTheme.id='mobile-theme';mobileTheme.className='social-icon';q('hdr').append(mobileTheme);
+  function themeIcon(){const light=R.dataset.theme==='light';mobileTheme.innerHTML=svgIcon(light?'moon':'sun');mobileTheme.setAttribute('aria-label',light?'Switch to dark theme':'Switch to light theme');mobileTheme.title=mobileTheme.getAttribute('aria-label')}
+  mobileTheme.onclick=()=>q('th').click();
+  const mobileNav=document.createElement('nav');mobileNav.id='mobile-pages';mobileNav.setAttribute('aria-label','Mobile page navigation');mobileNav.innerHTML=[['home','Home'],['projects','Projects'],['experience','Experience'],['research','Research'],['blog','Blog']].map(([id,label])=>`<a href="#/${id==='home'?'':id}" aria-label="${label}">${svgIcon(id)}<span>${label}</span></a>`).join('');document.body.append(mobileNav);
+  let active='home',generation=0,stats=window.INLINE_STATS||{platforms:{}},sim=null,timer=null;
+  const chip=x=>`<span class="chip">${esc(x)}</span>`;
+  const head=(title,text)=>`<h1>${title}</h1><p style="color:var(--gr)">${text}</p>`;
+  const empty=(title,text)=>`<div class="empty"><h3>${title}</h3><p class="muted">${text}</p></div>`;
+  window.toast=text=>{q('addon-toast').textContent=text;q('addon-toast').style.display='block';clearTimeout(window._noteToast);window._noteToast=setTimeout(()=>q('addon-toast').style.display='none',2500)};
+  window.copyText=async text=>{try{await navigator.clipboard.writeText(text);toast('Copied')}catch{toast('Select and copy the text manually.')}};
+  window.downloadText=(name,text,type='text/plain')=>{const u=URL.createObjectURL(new Blob([text],{type}));const a=document.createElement('a');a.href=u;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(u),1000)};
+  document.body.insertAdjacentHTML('beforeend','<div id="addon-toast" role="status"></div><dialog id="addon-palette"><button id="palette-close" class="mono" style="float:right">close</button><input id="addon-command" placeholder="Find a page, project, concept or post…" aria-label="Search notebook"><div id="addon-results"></div><p class="mono mt-3" style="color:var(--gr)">↑ ↓ choose · Enter open · Esc close</p></dialog><dialog id="image-dialog"><button class="mono" id="image-close">close</button><img alt=""></dialog>');
+  q('image-close').onclick=()=>q('image-dialog').close();q('palette-close').onclick=()=>q('addon-palette').close();
+  // Keep both original maps and the exact original modal. Add keyboard access.
+  [q('mini'),q('gm')].forEach(el=>{el.style.cursor='zoom-in';el.setAttribute('tabindex','0');el.setAttribute('role','button');el.setAttribute('aria-label','Open enlarged GitHub contributions map');el.onclick=()=>zo(1);el.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();zo(1)}}});
+  // Preserve the original theme button in its original position.
+  try{const saved=localStorage.getItem('naga-theme');if(saved)R.dataset.theme=saved}catch{}
+  const originalTheme=q('th').onclick;q('th').onclick=()=>{originalTheme();try{localStorage.setItem('naga-theme',R.dataset.theme)}catch{}Simulations.theme();themeIcon()};themeIcon();
+  // Keep original inline search, extending its existing index.
+  IX.forEach(item=>{const old=item.go;item.go=()=>{showHome();old()}});
+  pages.forEach(([id,title])=>IX.push({t:title,s:'page',go:()=>{location.hash='/'+(id==='home'?'':id)}}));
+  POSTS.forEach(p=>IX.push({t:p.title,s:'blog',go:()=>{location.hash='/blog/'+p.slug}}));
+  let selection=0;
+  const commands=()=>[...IX];
+  function search(){const query=q('addon-command').value.toLowerCase();const list=commands().filter(x=>(x.t+' '+x.s).toLowerCase().includes(query));selection=Math.max(0,Math.min(selection,list.length-1));q('addon-results').innerHTML=list.map((x,i)=>`<a href="#" class="${i===selection?'selected':''}">${esc(x.t)} <span class="mono" style="color:var(--gr)">${esc(x.s)}</span></a>`).join('')||'<p>No matches.</p>';q('addon-results').querySelectorAll('a').forEach((a,i)=>a.onclick=e=>{e.preventDefault();q('addon-palette').close();list[i].go()})}
+  addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'){e.preventDefault();q('addon-palette').showModal();q('addon-command').value='';selection=0;search();q('addon-command').focus()}});
+  q('addon-command').oninput=()=>{selection=0;search()};q('addon-command').onkeydown=e=>{if(e.key==='ArrowDown'||e.key==='ArrowUp'){e.preventDefault();selection+=e.key==='ArrowDown'?1:-1;search();q('addon-results').querySelector('.selected')?.scrollIntoView({block:'nearest'})}if(e.key==='Enter'){e.preventDefault();q('addon-results').querySelector('.selected')?.click()}};
+  // The homepage DOM remains mounted: graphs, clock, globe, maps and controls keep their state.
+  // Smooth the original Home graph without replacing its nodes or interactions.
+  (()=>{
+    const rawMove=mv,targets=Object.fromEntries(Object.entries(N).map(([id,n],i)=>[id,{x:n[1],y:n[2],vx:0,vy:0,phase:i*1.7}]));
+    const reduced=matchMedia('(prefers-reduced-motion:reduce)');let raf=0,visible=false,last=0,elapsed=0;
+    function wake(){if(!raf&&visible&&!document.hidden)raf=requestAnimationFrame(tick)}
+    mv=function(id,x,y){targets[id].x=x;targets[id].y=y;if(reduced.matches)rawMove(id,x,y);wake()};
+    function tick(time){raf=0;if(!visible||document.hidden)return;const dt=Math.min(2,Math.max(.1,last?(time-last)/16.667:1));last=time;elapsed+=dt/60;
+      Object.entries(targets).forEach(([id,t])=>{const held=dg===id;let x=t.x,y=t.y;if(!held&&!reduced.matches){x+=Math.sin(elapsed*.88+t.phase)*4.2;y+=Math.cos(elapsed*.69+t.phase)*3.3}
+        if(reduced.matches){rawMove(id,t.x,t.y);t.vx=t.vy=0;return}
+        const strength=held ? 0.32 : 0.06,damping=Math.pow(held ? 0.48 : 0.77,dt);t.vx=(t.vx+(x-N[id][1])*strength*dt)*damping;t.vy=(t.vy+(y-N[id][2])*strength*dt)*damping;rawMove(id,Math.max(20,Math.min(880,N[id][1]+t.vx*dt)),Math.max(25,Math.min(500,N[id][2]+t.vy*dt)))});
+      if(!reduced.matches)wake();
+    }
+    new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;if(visible){last=0;wake()}else{cancelAnimationFrame(raf);raf=0}}).observe(q('kg'));
+    document.addEventListener('visibilitychange',()=>{if(document.hidden){cancelAnimationFrame(raf);raf=0}else{last=0;wake()}});reduced.addEventListener('change',wake);
+  })();
+  const returnOrigins=new Map();let pendingReturn=null;
+  document.addEventListener('click',e=>{
+    const a=e.target.closest('a[href]');if(!a)return;const target=a.getAttribute('href');
+    if(/^#\/(projects|blog|research)\/[^/]+$/.test(target)&&target!==location.hash){
+      const origin={hash:location.hash||'#/',scroll:scrollY};returnOrigins.set(target,origin);
+      try{sessionStorage.setItem('naga-return:'+target,JSON.stringify(origin))}catch{}
+    }
+    if(a.dataset.returnTo){pendingReturn={hash:target,scroll:+a.dataset.returnScroll||0}}
+  },true);
+  function detailNavigation(page,slug){
+    if(!slug||!['projects','blog','research'].includes(page))return;
+    const key='#/'+page+'/'+slug;let origin=returnOrigins.get(key);
+    if(!origin){try{origin=JSON.parse(sessionStorage.getItem('naga-return:'+key)||'null')}catch{}}
+    if(!origin||!/^#(?:\/|[a-zA-Z])/.test(origin.hash))origin={hash:'#/'+page,scroll:0};
+    const pageLabel=pages.find(p=>p[0]===page)?.[1]||page;
+    const originPage=origin.hash.startsWith('#/')?origin.hash.slice(2).split('/')[0]:'home';
+    const label=pages.find(p=>p[0]===(originPage||'home'))?.[1]||'previous page';
+    const title=extension.querySelector('h1')?.textContent||slug;
+    const bar=document.createElement('div');bar.className='detail-navigation';
+    const crumb=document.createElement('nav');crumb.className='breadcrumbs mono';crumb.setAttribute('aria-label','Breadcrumb');
+    crumb.innerHTML='<a href="#/">Home</a><span aria-hidden="true">/</span><a href="#/'+page+'">'+esc(pageLabel)+'</a><span aria-hidden="true">/</span><span aria-current="page">'+esc(title)+'</span>';
+    const back=document.createElement('a');back.className='mono detail-back';back.href=origin.hash;back.dataset.returnTo='true';back.dataset.returnScroll=String(origin.scroll);back.textContent='← Back to '+label;
+    bar.append(crumb,back);extension.prepend(bar);
+  }
+  const graphCard=homeWidgets.find(el=>[...el.querySelectorAll('p')].some(p=>p.textContent.trim()==='jump to'))||document.createElement('div');
+  graphCard.className='line p-4 sidebar-graph-card';graphCard.id='sidebar-notebook';
+  graphCard.innerHTML='<p class="mono mb-2" style="color:var(--ter)">connected notebook</p><div id="sidebar-notes-graph"></div><button class="mono graph-expand" id="expand-notes-graph">⤢ Click to view larger</button>';
+  document.body.insertAdjacentHTML('beforeend','<dialog id="notebook-dialog"><div class="graph-dialog-top"><h2>Connected notebook</h2><button id="close-notebook" aria-label="Close notebook graph">×</button></div><p class="mono graph-help">Drag nodes · pan the background · scroll to zoom · select to open</p><div id="large-notes-graph"></div></dialog>');
+  q('close-notebook').onclick=()=>q('notebook-dialog').close();q('notebook-dialog').addEventListener('close',()=>NotebookGraph.destroy(q('large-notes-graph')));
+  function graphData(){
+    const nodes=[],edges=[];
+    P.forEach((p,i)=>nodes.push({id:p.id,label:p.t.replace(' Performance Lab',' Lab'),type:'project',href:'#/projects/'+p.id,x:115+i%2*140,y:105+Math.floor(i/2)*230}));
+    POSTS.forEach((p,i)=>{nodes.push({id:p.slug,label:p.slug.includes('wal')?'WAL before pages':'Pages & locality',type:'blog',href:'#/blog/'+p.slug,x:450,y:95+i*115});if(p.project)edges.push([p.slug,p.project])});
+    const skills=[['cpp','C++',320,235],['linux','Linux',190,220],['wal','WAL',350,90],['perf','Performance',430,345]];
+    skills.forEach(([id,label,x,y])=>nodes.push({id,label,type:'skill',href:'#skills',x,y}));
+    P.forEach(p=>{edges.push([p.id,'cpp'],[p.id,'linux'])});edges.push(['db','wal'],['rdb','wal'],['rdb','perf'],['pf','perf'],['wal-before-pages','wal'],['pages-and-locality','cpp']);
+    ADDON_CONFIG.research.forEach((r,i)=>{const id='research-'+i;nodes.push({id,label:r.demo?'WAL batching (demo)':r.title,type:'research',href:'#/research/'+(r.slug||id),x:520,y:300+i*55});edges.push([id,'rdb'],[id,'wal'])});
+    nodes.push({id:'experience',label:'Experience',type:'experience',href:'#/experience',x:285,y:405});edges.push(['experience','cpp'],['experience','perf']);return{nodes,edges};
+  }
+  function graphNavigate(href){if(q('notebook-dialog').open)q('notebook-dialog').close();const a=document.createElement('a');a.href=href;a.hidden=true;document.body.append(a);a.click();a.remove()}
+  function mountSidebarGraph(page,slug){
+    graphCard.hidden=false;if(page==='home')right.append(graphCard);else right.insertBefore(graphCard,context);
+    NotebookGraph.mount(q('sidebar-notes-graph'),graphData(),{current:'#/'+(page==='home'?'':page)+(slug?'/'+slug:''),navigate:graphNavigate});
+  }
+  q('expand-notes-graph').onclick=()=>{q('notebook-dialog').showModal();NotebookGraph.mount(q('large-notes-graph'),graphData(),{large:true,current:location.hash||'#/',navigate:graphNavigate})};
+  function showHome(){history.replaceState(null,'','#/');render('home')}
+  function side(html){context.innerHTML=html;context.hidden=!html}
+  function toc(){
+    let nodes=[...main.querySelectorAll('h2')].filter(h=>!h.closest('[hidden]'));
+    if(active==='home')nodes.unshift(q('intro').querySelector('h1'));
+    if(!nodes.length){const title=main.querySelector('#added-pages h1');if(title&&!title.closest('[hidden]'))nodes=[title]}
+    const headings=nodes.map((h,i)=>{if(!h.id)h.id='page-heading-'+active+'-'+i;return{id:h.id,label:h.closest('#intro')?'Intro':h.textContent}});
+    q('toc').innerHTML=headings.map(h=>`<a href="#${h.id}" data-i="${h.id}">${esc(h.label)}</a>`).join('');
+    q('toc').querySelectorAll('a').forEach(a=>a.onclick=e=>{e.preventDefault();q(a.dataset.i)?.scrollIntoView()});
+  }
+  function row(p){
+    const wal=p.slug.includes('wal');
+    const art=wal?'<path d="M20 45h24m36 0h24m36 0h20" stroke="#2b4c7e"/><rect x="15" y="24" width="32" height="40" rx="3"/><rect x="78" y="24" width="32" height="40" rx="3"/><rect x="141" y="24" width="32" height="40" rx="3"/><path d="M23 34h16m-16 8h16m47-8h16m-16 8h16m47-8h16m-16 8h16" stroke="#2b4c7e"/><circle cx="94" cy="73" r="4" fill="#c8553d"/>':'<path d="m30 56 65-30 65 30-65 30zM30 46l65-30 65 30-65 30zM30 36 95 6l65 30-65 30z"/><path d="m55 36 40-19 40 19-40 19z" stroke="#c8553d"/>';
+    return `<article class="note-card"><a class="note-art" href="#/blog/${p.slug}" tabindex="-1" aria-hidden="true"><svg viewBox="0 0 190 95" fill="#fffefb" stroke="#2b4c7e" stroke-width="1.4">${art}</svg><span class="mono">${wal?'LOG → SYNC → RECOVER':'4096 BYTES / PAGE'}</span></a><div class="note-body"><p class="mono muted">${p.date} · ${Math.max(1,Math.ceil(p.body.split(/\s+/).length/220))} min${p.sample?' · demo note':''}</p><h3><a href="#/blog/${p.slug}">${esc(p.title)} <span class="note-arrow">↗</span></a></h3><p class="note-excerpt">${esc(p.takeaways?.[0]||'An experiment from the systems notebook.')}</p><div class="filters mono">${p.tags.map(chip).join('')}</div></div></article>`;
+  }
+  async function blog(slug,version){const post=POSTS.find(p=>p.slug===slug);if(slug&&!post){extension.innerHTML=head('Note not found.','Choose a post from the blog.');return}if(post){extension.innerHTML='<div id="post-body" class="prose"></div>';const index=POSTS.indexOf(post);side(`<p class="mono" style="color:var(--ter)">reading progress</p><div class="progress-ring" id="read-ring"><span id="read-percent">0%</span></div><p class="mono mt-4">Key takeaways</p><ul class="text-sm">${post.takeaways.map(t=>'<li class="mt-2">'+esc(t)+'</li>').join('')}</ul><div class="filters">${post.tags.map(chip).join('')}</div>${POSTS[index-1]?'<p><a href="#/blog/'+POSTS[index-1].slug+'">← Previous note</a></p>':''}${POSTS[index+1]?'<p><a href="#/blog/'+POSTS[index+1].slug+'">Next note →</a></p>':''}<a href="#/projects/${post.project||''}">Related project ↗</a>`);await renderPost(q('post-body'),post.body);if(version!==generation)return;if(post.sources?.length)q('post-body').insertAdjacentHTML('beforeend','<section class="post-sources"><h2>Sources</h2><ol>'+post.sources.map(source=>'<li><a href="'+url(source.url)+'" target="_blank" rel="noopener">'+esc(source.title)+' ↗</a></li>').join('')+'</ol></section>');return}
+    extension.innerHTML=head('Blog','Notes on storage, Linux and the details underneath.')+'<input id="blog-query" class="w-full mono" placeholder="Search posts" aria-label="Search posts"><div id="blog-tags" class="filters mono"></div><div id="blog-list"></div>';let tag='all';const draw=()=>{q('blog-tags').innerHTML=['all',...new Set(POSTS.flatMap(p=>p.tags))].map(t=>`<button class="chip ${t===tag?'on':''}" data-tag="${esc(t)}">${esc(t)}</button>`).join('');q('blog-tags').querySelectorAll('button').forEach(b=>b.onclick=()=>{tag=b.dataset.tag;draw()});const query=q('blog-query').value.toLowerCase();q('blog-list').innerHTML=POSTS.filter(p=>(tag==='all'||p.tags.includes(tag))&&(p.title+' '+p.body).toLowerCase().includes(query)).map(row).join('')||'<p>No matching notes.</p>'};q('blog-query').oninput=draw;draw();side('<p class="mono" style="color:var(--ter)">inside the notebook</p><p class="hd text-2xl">'+POSTS.length+' notes</p><p class="text-sm">Storage internals, practical trade-offs and runnable experiments.</p><p class="mono mt-4">Topics</p><div class="filters mono">'+[...new Set(POSTS.flatMap(p=>p.tags))].map(chip).join('')+'</div><p class="mono mt-4">Start here</p><p class="text-sm"><a href="#/blog/wal-before-pages">What survives a crash? ↗</a></p><p class="mono mt-4">Reading path</p><p class="text-sm">Understand the page → follow the write → test a failure.</p>')}
+  function playground(){extension.innerHTML=head('Simulation playground','The original latency and LSM demos are still on Home. This editor is for your own experiments.')+`<select class="mono" id="starter" aria-label="Simulation template">${Object.entries(SIM_TEMPLATES).map(([id,t])=>'<option value="'+id+'">'+t.title+'</option>').join('')}</select> <button id="draft-save" class="chip mono">save draft</button> <button id="draft-load" class="chip mono">load draft</button><div id="sim-editor"></div><p class="mono muted">Run applies edits. Download exports the last run. Arbitrary blocking code may still freeze a tab.</p>`;side('<p class="mono" style="color:var(--ter)">simulation controls</p><div id="controls"></div><p class="mono mt-4">console <button id="clear-console">[clear]</button></p><div class="console" id="sim-console" role="log"></div>');let lines=[],controls=[];const log=line=>{lines.push(line);lines=lines.slice(-50);q('sim-console').textContent=lines.join('\n')};
+    function start(id,source){sim?.destroy();controls=SIM_TEMPLATES[id].controls.map(c=>({...c}));sim=Simulations.mount(q('sim-editor'),source,{split:false,onConsole:log,controls});q('controls').innerHTML=controls.map(c=>`<label class="control">${c.label}: <output id="control-${c.key}">${c.value}</output><input type="range" data-key="${c.key}" min="${c.min}" max="${c.max}" value="${c.value}"></label>`).join('')||'<p class="text-sm">Interact with the simulation directly.</p>';q('controls').querySelectorAll('input').forEach(input=>input.oninput=()=>{const c=controls.find(c=>c.key===input.dataset.key);c.value=+input.value;q('control-'+c.key).textContent=c.value;sim.send({type:'sim-control',key:c.key,value:c.value})})}
+    q('starter').onchange=()=>start(q('starter').value,SIM_TEMPLATES[q('starter').value].code);q('clear-console').onclick=()=>{lines=[];q('sim-console').textContent=''};q('draft-save').onclick=()=>{try{localStorage.setItem('naga-original-draft',JSON.stringify({id:q('starter').value,code:sim.editor.value}));toast('Draft saved')}catch{toast('Storage unavailable; use Download.')}};q('draft-load').onclick=()=>{try{const d=JSON.parse(localStorage.getItem('naga-original-draft'));if(!d||!SIM_TEMPLATES[d.id]){toast('No saved draft');return}q('starter').value=d.id;start(d.id,d.code)}catch{toast('Draft could not be loaded')}};start('wal',SIM_TEMPLATES.wal.code)}
+  function chart(history){if(!history?.length)return '<p class="mono muted">No rating history connected.</p>';const values=history.map(h=>h.rating),lo=Math.min(...values)-50,hi=Math.max(...values)+50;return `<svg class="chart" viewBox="0 0 600 120" role="img" aria-label="Rating history"><polyline fill="none" stroke="var(--sec)" stroke-width="2" points="${values.map((v,i)=>`${10+i/Math.max(1,values.length-1)*580},${105-(v-lo)/(hi-lo)*95}`).join(' ')}"/>${values.map((v,i)=>`<circle cx="${10+i/Math.max(1,values.length-1)*580}" cy="${105-(v-lo)/(hi-lo)*95}" r="3" fill="var(--ter)"><title>${esc(history[i].date)}: ${v}</title></circle>`).join('')}</svg>`}
+  function coding(){
+    codingSection.innerHTML='<h3 class="mono">Competitive programming</h3><div class="profile-compact">'+[['codeforces','Codeforces','https://codeforces.com/profile/'],['leetcode','LeetCode','https://leetcode.com/u/'],['atcoder','AtCoder','https://atcoder.jp/users/']].map(([key,title,base])=>{
+      const p=stats.platforms?.[key]||{handle:'t7rx'};
+      return `<div class="profile-mini"><p class="mono" style="color:var(--sec)">${p.handle?'<a href="'+base+encodeURIComponent(p.handle)+'">'+title+' ↗</a>':title}</p><p class="profile-rating">${p.rating??'—'} <small>rating</small></p><p class="mono muted">${p.solved??'—'} solved · peak ${p.maxRating??'—'}</p>${p.handle?'<p class="mono muted">@'+esc(p.handle)+'</p>':'<p class="mono muted">Not connected yet</p>'}${p.history?.length?'<details><summary class="mono">Rating history</summary>'+chart(p.history)+'</details>':''}${p.error?'<p class="mono muted">Showing last available snapshot.</p>':''}</div>`;
+    }).join('')+'</div>';
+  }
+  function project(id){const p=P.find(p=>p.id===id);if(!p){extension.innerHTML=head('Project not found.','Choose a project from the project list.');return}extension.innerHTML=head(esc(p.t),esc(p.d))+`<section><h2>Approach</h2><div class="filters mono">${p.st.map(chip).join('')}</div><p>${esc(p.d)}</p></section><section><h2>Intended result</h2><p>${esc(p.dl)}</p><p class="mono muted">Project scope, not a claim of completed benchmark results.</p></section><section><h2>Related notes</h2>${POSTS.filter(x=>x.project===id).map(row).join('')||'<p>No linked posts yet.</p>'}</section>`;side('<p class="mono" style="color:var(--ter)">quick facts</p><p class="text-sm">'+esc(p.tg)+' · '+esc(p.lv)+'</p><p class="mono mt-4">target deliverable</p><p class="text-sm">'+esc(p.dl)+'</p><p class="mono mt-4">building blocks</p><div class="filters mono">'+p.st.map(chip).join('')+'</div><p class="text-sm"><a href="https://github.com/naga251602/'+p.g+'">GitHub ↗</a></p><p class="text-sm"><a href="#/playground">Simulation editor ↗</a></p>')}
+  // Add detail links without changing the existing project card design.
+  const previousCards=cards;cards=function(){previousCards();P.forEach(p=>{const card=q('p_'+p.id);if(card&&!card.querySelector('[data-details]'))card.insertAdjacentHTML('beforeend','<p class="mono mt-3"><a data-details href="#/projects/'+p.id+'">Project notes ↗</a></p>')});};cards();
+  function researchPage(slug){
+    const entries=ADDON_CONFIG.research;
+    const researchSlug=(r,i)=>r.slug||'research-'+i;
+    const selected=entries.find((r,i)=>researchSlug(r,i)===slug);
+    if(slug&&!selected){extension.innerHTML=head('Research not found','Return to the research list.');return}
+    if(selected){const r=selected;extension.innerHTML=head(esc(r.title),esc(r.abstract))+`<p class="demo-label">${r.demo?'ILLUSTRATIVE DEMO · NOT A PUBLICATION':esc(r.status)}</p><div class="filters mono">${(r.skills||[]).map(chip).join('')}</div><section><h2>Research question</h2><p>${esc(r.question)}</p></section><section><h2>Method</h2><p>${esc(r.method)}</p></section><section><h2>Evaluation</h2><p>Compare throughput, p50 and p99 latency under the same workload and durability contract. Validate recovery separately from performance.</p></section><section><h2>Status & findings</h2><p>${esc(r.status)}</p><p>${r.demo?'This is a sample experiment plan. No measured findings are claimed.':esc(r.findings||'Results will be added when available.')}</p></section>`;
+      side('<p class="mono" style="color:var(--ter)">research details</p><p class="text-sm">'+esc(r.status)+'</p><div class="filters mono">'+(r.skills||[]).map(chip).join('')+'</div>'+(r.url?'<p><a href="'+url(r.url)+'">Paper ↗</a></p>':'')+(r.bibtex?'<button class="chip mono" id="research-citation">Copy BibTeX</button>':'')+'<p class="mono mt-4">Related project</p><p><a href="#/projects/rdb">RocksDB Performance Lab ↗</a></p>');if(q('research-citation'))q('research-citation').onclick=()=>copyText(r.bibtex);return;
+    }
+    extension.innerHTML=head('Research','Questions, methods and work in progress.')+entries.map((r,i)=>`<article class="research-card research-summary"><p class="demo-label">${r.demo?'DEMO / ILLUSTRATIVE RESEARCH':'RESEARCH'}</p><h2><a href="#/research/${researchSlug(r,i)}">${esc(r.title)} ↗</a></h2><p>${esc(r.abstract)}</p><div class="filters mono">${(r.skills||[]).map(chip).join('')}</div><p class="mono muted">${esc(r.status)}</p><a class="mono" href="#/research/${researchSlug(r,i)}">Read research →</a></article>`).join('');
+    side('<p class="mono" style="color:var(--ter)">research lens</p><p class="text-sm">How do storage choices change durability, throughput and tail latency?</p><p class="mono mt-4">Evaluation plan</p><ol class="context-list"><li>Define a reproducible workload</li><li>Fix the memory and durability budget</li><li>Compare latency distributions</li><li>Document limitations</li></ol><p class="text-sm"><a href="#/projects/rdb">RocksDB Performance Lab ↗</a></p>');
+  }
+  function experiencePage(){
+    extension.innerHTML=head('Experience','The work, the decisions and the lessons.')+ADDON_CONFIG.experience.map(r=>`<section class="experience-card"><div class="experience-axis"><span></span></div><div><p class="demo-label">${r.demo?'DEMO / ILLUSTRATIVE ROLE':esc(r.dates)}</p><h2>${esc(r.role)}</h2><h3>${esc(r.company)}</h3><p>${esc(r.description)}</p><ul class="experience-points">${(r.highlights||[]).map(x=>'<li>'+esc(x)+'</li>').join('')}</ul><div class="filters mono">${(r.skills||[]).map(chip).join('')}</div>${r.demo?'<p class="mono muted">A sample card, not a claim of employment.</p>':''}</div></section>`).join('');
+    side('<p class="mono" style="color:var(--ter)">scope of the work</p><p class="text-sm">Storage correctness, profiling and measurable performance improvements.</p><p class="mono mt-4">Engineering habits</p><ul class="context-list"><li>Reproduce before optimizing</li><li>Test failure paths</li><li>Compare against a baseline</li><li>Write down the trade-offs</li></ul><p class="mono mt-4">Skills in these cards</p><div class="filters mono">'+[...new Set(ADDON_CONFIG.experience.flatMap(r=>r.skills||[]))].map(chip).join('')+'</div><p class="text-sm"><a href="#/projects">Explore project plans ↗</a></p>');
+  }
+  let tagFrame=0;
+  function wrapTags(){
+    cancelAnimationFrame(tagFrame);tagFrame=requestAnimationFrame(()=>{
+      document.querySelectorAll('.chip').forEach(chip=>{if(chip.closest('[hidden]'))return;const group=chip.parentElement;if(![...group.children].every(el=>el.classList.contains('chip')||el.classList.contains('tag-toggle')))return;if(group.classList.contains('tag-group'))return;group.classList.add('tag-group');group.dataset.expanded='false'});
+      document.querySelectorAll('.tag-group').forEach(group=>{
+        if(group.closest('[hidden]')||!group.getClientRects().length)return;
+        const tags=[...group.children].filter(el=>el.classList.contains('chip')&&!el.classList.contains('tag-toggle'));
+        let toggle=group.querySelector(':scope > .tag-toggle');if(toggle)toggle.hidden=true;
+        tags.forEach(t=>{t.hidden=false;t.classList.remove('tag-hidden')});
+        const first=tags[0]?.offsetTop;const overflowTags=tags.filter(t=>t.offsetTop-first>38);const overflow=overflowTags.length>0;
+        if(!overflow){if(toggle)toggle.remove();return}
+        if(!toggle){toggle=document.createElement('button');toggle.type='button';toggle.className='tag-toggle mono';group.append(toggle);toggle.onclick=()=>{group.dataset.expanded=group.dataset.expanded==='true'?'false':'true';wrapTags()}}
+        const expanded=group.dataset.expanded==='true';
+        if(!expanded)overflowTags.forEach(t=>t.classList.add('tag-hidden'));
+        toggle.hidden=false;const label=expanded?'Show less':(['flt','blog-tags'].includes(group.id)?'Show all filters':'View all');if(toggle.textContent!==label)toggle.textContent=label;toggle.setAttribute('aria-expanded',String(expanded));
+      });
+    });
+  }
+  new MutationObserver(records=>{if(records.some(r=>r.type==='childList'&&(r.addedNodes.length||r.removedNodes.length)))wrapTags()}).observe(main,{childList:true,subtree:true});
+  new MutationObserver(()=>wrapTags()).observe(context,{childList:true,subtree:true});
+  addEventListener('resize',wrapTags);document.fonts?.ready.then(wrapTags);
+  async function render(page='home',slug=''){const version=++generation;active=page;main.dataset.page=page;right.classList.toggle('contextual-pane',page!=='home');homeWidgets.forEach(el=>el.hidden=page!=='home');codingSection.hidden=page!=='home';if(page==='home')coding();Simulations.clear();sim=null;clearInterval(timer);side('');extension.innerHTML='';extension.hidden=true;originalSections.forEach(s=>s.hidden=page!=='home');[...nav.querySelectorAll('a'),...mobileNav.querySelectorAll('a')].forEach(a=>{const on=a.getAttribute('href')==='#/'+(page==='home'?'':page);a.classList.toggle('on',on);if(on)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')});
+    if(page==='home'){extension.hidden=false;extension.innerHTML='<section class="sec"><h2>Latest notebook entries</h2>'+POSTS.slice(0,2).map(row).join('')+'</section>'}else if(page==='projects'&&!slug){q('work').hidden=false;q('skills').hidden=false;side('<p class="mono" style="color:var(--ter)">the project roadmap</p><p class="hd text-2xl">4 systems</p><ol class="context-list"><li>Durable DB: persistence & recovery</li><li>RocksDB Lab: measure & optimize</li><li>PulseFeed: latency & data flow</li><li>KernelSched: scheduling & locality</li></ol><p class="mono mt-4">Evidence to collect</p><p class="text-sm">Correctness tests, reproducible workloads, tail-latency traces and benchmark notes.</p><p class="mono mt-4">Try the ideas</p><p class="text-sm"><a href="#/blog/wal-before-pages">WAL & recovery note ↗</a></p><p class="text-sm"><a href="#/playground">Simulation editor ↗</a></p>')}else{extension.hidden=false;if(page==='blog')await blog(slug,version);else if(page==='playground')playground();else if(page==='projects')project(slug);else if(page==='research')researchPage(slug);else if(page==='experience')experiencePage();else extension.innerHTML=head('Page not found','Use the page navigation to continue.');}
+    if(version!==generation)return;detailNavigation(page,slug);mountSidebarGraph(page,slug);toc();wrapTags();if(pendingReturn&&pendingReturn.hash===location.hash){const y=pendingReturn.scroll;pendingReturn=null;requestAnimationFrame(()=>window.scrollTo({top:y,behavior:'instant'}))}else if(page!=='home')window.scrollTo({top:0,behavior:'instant'});document.title=page==='home'?'Naga | Systems Engineer':(pages.find(p=>p[0]===page)?.[1]||'Notebook')+' | Naga';
+  }
+  function route(){const hash=location.hash;if(!hash.startsWith('#/')){if(active!=='home')showHome();if(hash&&q(hash.slice(1)))q(hash.slice(1)).scrollIntoView();return}const [page,slug]=hash.slice(2).split('/');if(page==='about'){history.replaceState(null,'','#/');render('home').then(()=>q('about').scrollIntoView());return}if(page==='coding'){history.replaceState(null,'','#/');render('home').then(()=>codingSection.scrollIntoView());return}render(page||'home',slug)}
+  // Original jump-to links still reveal their original sections from any page.
+  document.querySelectorAll('a[href="#play"],a[href="#graph"]').forEach(a=>a.addEventListener('click',()=>{if(active!=='home')showHome()}));
+  addEventListener('hashchange',route);
+  addEventListener('scroll',()=>{const headings=[...q('toc').querySelectorAll('a')];let current=headings[0];headings.forEach(a=>{if(q(a.dataset.i)?.getBoundingClientRect().top<innerHeight*.4)current=a});headings.forEach(a=>a.classList.toggle('on',a===current));if(q('read-ring')){const rect=extension.getBoundingClientRect(),available=rect.height-innerHeight;const n=available>0?Math.min(100,Math.max(0,-rect.top/available*100)):100;q('read-ring').style.setProperty('--read',n+'%');q('read-percent').textContent=Math.round(n)+'%'}},{passive:true});
+  route();if(!location.hash||!location.hash.startsWith('#/'))render('home');
+  if(location.protocol!=='file:')fetch('stats.json').then(r=>{if(!r.ok)throw Error();return r.json()}).then(data=>{stats=data;coding();if(active==='home')toc()}).catch(()=>{});
+})();
+
+});</script></body></html>
